@@ -1,0 +1,210 @@
+<nav class="w-full bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto lg:px-10 md:px-5 px-2">
+    <!-- TOP BAR -->
+    <div class="flex items-center justify-between md:h-24 h-20">
+      <!-- LEFT -->
+      <div class="flex items-center gap-4">
+        <!-- Mobile Button -->
+        <button class="lg:hidden text-[#7b5a4a]" (click)="toggleMenu()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 transition-all duration-300"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              *ngIf="!isOpen"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+            <path
+              *ngIf="isOpen"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+        <!-- Logo -->
+        <a href="/">
+          <img
+            src="/assets/Logo.png"
+            class="h-10 md:h-14 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+          />
+        </a>
+      </div>
+
+      <!-- RIGHT BUTTONS -->
+      <div class="flex items-center gap-4">
+        <!-- CONTACT BUTTON WITH DROPDOWN -->
+        <div class="relative group">
+          <button
+            class="hidden md:flex items-center gap-2 border border-[#7b5a4a] text-[#7b5a4a] px-5 py-2 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <i class="fa-solid fa-phone"></i>
+            CONTACT
+            <i
+              class="fa-solid fa-angle-down ml-1 transition-transform duration-300 group-hover:rotate-180"
+            ></i>
+          </button>
+
+          <!-- DROPDOWN MENU -->
+          <div
+            class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50"
+          >
+            <a
+              *ngFor="let c of contactItems"
+              [routerLink]="c.path"
+              class="block px-4 py-2 hover:bg-[#7b5a4a]/10 rounded-md text-[#7b5a4a]"
+            >
+              {{ c.title }}
+            </a>
+          </div>
+        </div>
+
+        <!-- SIGN IN BUTTON -->
+        <button
+          class="flex items-center gap-2 bg-[#7b5a4a] text-white px-6 py-2 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+        >
+          <i class="fa-solid fa-right-to-bracket"></i>
+          SIGN IN
+        </button>
+      </div>
+    </div>
+
+    <!-- DESKTOP MENU -->
+    <div
+      class="hidden lg:flex items-center gap-6 text-[#7b5a4a] font-medium pb-6"
+    >
+      <ng-container *ngFor="let item of menuItems">
+        <div class="relative group">
+          <!-- BUTTON -->
+          <div
+            class="flex items-center gap-1 px-3 py-2 rounded-md cursor-pointer transition-all duration-300 group-hover:bg-[#7b5a4a]/10"
+          >
+            <span>{{ item.title }}</span>
+            <i
+              *ngIf="item.dropdown"
+              class="fa-solid fa-angle-down transition-all duration-300 group-hover:rotate-180"
+            ></i>
+          </div>
+
+          <!-- UNDERLINE -->
+          <span
+            class="absolute left-3 right-3 bottom-0 h-[2px] bg-[#7b5a4a] scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"
+          ></span>
+
+          <!-- DROPDOWN -->
+          <div
+            *ngIf="item.dropdown"
+            class="absolute left-0 mt-3 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
+          >
+            <a
+              *ngFor="let d of item.dropdown"
+              [routerLink]="d.path"
+              class="block px-4 py-2 hover:bg-[#7b5a4a]/10 rounded-md"
+            >
+              {{ d.title }}
+            </a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- OVERLAY -->
+  <div
+    *ngIf="isOpen"
+    class="fixed inset-0 bg-black/40 z-40 lg:hidden"
+    (click)="toggleMenu()"
+  ></div>
+
+  <!-- MOBILE DRAWER -->
+  <div
+    class="fixed top-0 left-0 h-full w-[280px] bg-white z-50 shadow-xl transform transition-transform duration-300 ease-in-out lg:hidden"
+    [class.translate-x-0]="isOpen"
+    [class.-translate-x-full]="!isOpen"
+  >
+    <!-- Header -->
+    <div class="flex items-center justify-between px-5 h-20 border-b">
+      <img src="/assets/Logo.png" class="h-10" />
+      <button (click)="toggleMenu()" class="text-2xl text-[#7b5a4a]">×</button>
+    </div>
+
+    <!-- Menu -->
+    <div class="flex flex-col px-4 py-4 text-[#7b5a4a] font-medium">
+      <!-- MAIN MENU ITEMS -->
+      <div *ngFor="let item of menuItems; let i = index" class="mb-2">
+        <!-- MAIN ITEM -->
+        <div
+          (click)="toggleSubMenu(i)"
+          class="flex items-center justify-between px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 hover:bg-[#7b5a4a]/10"
+          [ngClass]="{ 'bg-[#7b5a4a]/20': activeIndex === i }"
+        >
+          <span>{{ item.title }}</span>
+          <i
+            *ngIf="item.dropdown"
+            class="fa-solid fa-angle-down transition-all duration-300"
+            [class.rotate-180]="activeIndex === i"
+          ></i>
+        </div>
+
+        <!-- SUB MENU -->
+        <div
+          *ngIf="item.dropdown"
+          class="overflow-hidden transition-all duration-300"
+          [style.maxHeight]="
+            activeIndex === i ? item.dropdown.length * 40 + 'px' : '0px'
+          "
+        >
+          <div class="flex flex-col ml-6 mt-2">
+            <a
+              *ngFor="let sub of item.dropdown"
+              [routerLink]="sub.path"
+              class="px-3 py-2 rounded-md text-sm transition-all hover:bg-[#7b5a4a]/10 hover:translate-x-1"
+            >
+              {{ sub.title }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT DROPDOWN IN MOBILE -->
+      <div class="mb-2">
+        <div
+          (click)="toggleContactMenu()"
+          class="flex items-center justify-between px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 hover:bg-[#7b5a4a]/10"
+          [ngClass]="{ 'bg-[#7b5a4a]/20': contactActive }"
+        >
+          <span>CONTACT</span>
+          <i
+            class="fa-solid fa-angle-down transition-all duration-300"
+            [class.rotate-180]="contactActive"
+          ></i>
+        </div>
+
+        <div
+          class="overflow-hidden transition-all duration-300"
+          [style.maxHeight]="
+            contactActive ? contactItems.length * 40 + 'px' : '0px'
+          "
+        >
+          <div class="flex flex-col ml-6 mt-2">
+            <a
+              *ngFor="let c of contactItems"
+              [routerLink]="c.path"
+              class="px-3 py-2 rounded-md text-sm transition-all hover:bg-[#7b5a4a]/10 hover:translate-x-1"
+            >
+              {{ c.title }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
