@@ -1,5 +1,5 @@
-<nav class="w-full bg-white shadow-sm sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto lg:px-10 md:px-5 px-2">
+<nav class="w-full bg-white shadow-sm relative top-0 z-50">
+  <div class="mx-auto lg:px-10 md:px-5 px-2">
     <!-- TOP BAR -->
     <div class="flex items-center justify-between md:h-24 h-20">
       <!-- LEFT -->
@@ -87,7 +87,7 @@
           <div
             class="flex items-center gap-1 px-3 py-2 rounded-md cursor-pointer transition-all duration-300 group-hover:bg-[#7b5a4a]/10"
           >
-            <span>{{ item.title }}</span>
+            <span class="text-sm">{{ item.title }}</span>
             <i
               *ngIf="item.dropdown"
               class="fa-solid fa-angle-down transition-all duration-300 group-hover:rotate-180"
