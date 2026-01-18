@@ -49,7 +49,7 @@ export class TherapyCardSectionComponent implements AfterViewInit {
   currentIndex = 0;
   cardsPerView = 3;
   maxIndex = 0;
-  dots: number[] = [];
+  dots = Array(this.therapyList.length).fill(0);
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 

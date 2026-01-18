@@ -1,0 +1,42 @@
+<section class="bg-[#fff4dc] py-16 px-4 sm:px-10 mt-8">
+  <h2 class="text-center text-3xl sm:text-4xl font-serif text-[#7b5a4a] mb-14">
+    Mental Health Conditions
+  </h2>
+
+  <div
+    class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+  >
+    <!-- LEFT -->
+    <div class="text-[#7b5a4a]">
+      <h3 class="text-2xl font-serif mb-4">
+        {{ conditions[selectedIndex].title }}
+      </h3>
+
+      <p class="leading-relaxed mb-8 max-w-md">
+        {{ conditions[selectedIndex].desc }}
+      </p>
+
+      <button class="bg-[#7b5a4a] text-white px-6 py-3 rounded-lg">
+        Book a Session
+      </button>
+    </div>
+
+    <!-- RIGHT SCROLL LIST -->
+    <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-10">
+      <div class="space-y-5 max-h-[260px] overflow-y-auto pr-2">
+        <div
+          *ngFor="let item of conditions; let i = index"
+          (click)="selectCondition(i)"
+          class="py-4 rounded-lg text-center cursor-pointer transition"
+          [ngClass]="
+            i === selectedIndex
+              ? 'bg-[#7b5a4a] text-white shadow'
+              : 'border border-[#d7c2b5] text-[#7b5a4a] hover:bg-[#f7efe8]'
+          "
+        >
+          {{ item.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

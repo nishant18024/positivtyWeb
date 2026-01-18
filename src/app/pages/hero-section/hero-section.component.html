@@ -1,16 +1,27 @@
-<section class="bg-[#836054] text-white relative overflow-hidden px-10">
+<section class="bg-[#836054] text-white relative overflow-hidden">
   <div
-    class="mx-auto px-6 lg:px-16 py-8 grid grid-cols-1 lg:grid-cols-2 items-center gap-10"
+    class="max-w-7xl mx-auto px-6 lg:px-16 py-14 grid grid-cols-1 lg:grid-cols-2 items-center gap-10"
   >
+    <!-- MOBILE IMAGE -->
+    <div class="flex justify-center lg:hidden">
+      <img
+        src="/assets/education.png"
+        alt="Student"
+        class="w-[200px] object-contain"
+      />
+    </div>
+
     <!-- LEFT CONTENT -->
-    <div class="z-10">
-      <h3 class="text-md sm:text-4xl lg:text-2xl font-serif leading-tight mb-4">
+    <div class="z-10 text-center lg:text-left">
+      <h3
+        class="text-2xl sm:text-3xl lg:text-4xl font-serif leading-tight mb-4"
+      >
         Strong Minds, Bright <br class="hidden sm:block" />
         Futures
       </h3>
 
       <p
-        class="text-[#ffe6c7] max-w-xl text-sm sm:text-base leading-relaxed mb-6"
+        class="text-[#ffe6c7] max-w-xl mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed mb-6"
       >
         From time management to mental wellness, get the right tools to face
         challenges head-on and keep moving forward—toward a successful,
@@ -24,33 +35,22 @@
       </button>
     </div>
 
-    <!-- RIGHT IMAGE -->
-    <div class="relative flex justify-center lg:justify-end">
+    <!-- DESKTOP IMAGE + DECORATION -->
+    <div class="relative hidden lg:flex justify-end">
       <!-- Decorative Circles -->
       <div
-        class="absolute right-10 top-1/2 -translate-y-1/2 w-[250px] h-[250px] border-2 border-[#f2d1a0] rounded-full opacity-70 hidden lg:block"
+        class="absolute right-10 top-1/2 -translate-y-1/2 w-[260px] h-[260px] border-2 border-[#f2d1a0] rounded-full opacity-70"
       ></div>
 
       <div
-        class="absolute right-0 top-1/2 -translate-y-1/2 w-[240px] h-[240px] border-2 border-[#f2d1a0] rounded-full opacity-40 hidden lg:block"
+        class="absolute right-0 top-1/2 -translate-y-1/2 w-[240px] h-[240px] border-2 border-[#f2d1a0] rounded-full opacity-40"
       ></div>
 
-      <!-- IMAGE -->
       <img
         src="/assets/education.png"
         alt="Student"
-        class="relative z-10 w-[200px] object-contain"
+        class="relative z-10 w-[220px] object-contain"
       />
     </div>
   </div>
-
-  <!-- BOTTOM WAVE -->
-  <!-- <div class="absolute bottom-0 left-0 w-full">
-    <svg viewBox="0 0 1440 120" class="w-full h-[80px]">
-      <path
-        fill="#8b6758"
-        d="M0,40 C240,120 480,0 720,40 960,80 1200,20 1440,40 L1440,0 L0,0 Z"
-      ></path>
-    </svg>
-  </div> -->
 </section>
