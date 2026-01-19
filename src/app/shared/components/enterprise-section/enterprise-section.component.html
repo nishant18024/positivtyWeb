@@ -1,33 +1,43 @@
-<section class="relative w-full h-[520px] sm:h-[600px] mt-8">
+<section class="relative w-full h-[480px] mt-8 overflow-hidden">
   <!-- Background Image -->
   <img
-    src="/assets/doremon.jpg"
-    class="absolute inset-0 w-full h-full object-cover"
-    alt=""
-  />
+  src="https://positivtystaticassets.blob.core.windows.net/images/homepage/enterprise-banner.png"
+  class="absolute inset-0 w-full h-full object-cover"
+  alt="Enterprise Banner"
+/>
 
-  <!-- Blur Overlay -->
-  <div class="absolute inset-0 bg-black/20 backdrop-blur-[2px]"></div>
 
-  <!-- Content Card -->
+  <!-- Optional dark overlay -->
+  <!-- <div class="absolute inset-0 bg-black/20"></div> -->
+
+  <!--  Card Wrapper -->
   <div
-    class="py-3 relative z-10 max-w-xl bg-[#7b5a4a]/90 text-white rounded-3xl px-8 sm:px-14 sm:py-14 -mr-10 sm:mx-10 mt-24"
+    class="absolute bottom-20 left-0 rounded-tr-3xl rounded-br-3xl rounded-tl-none rounded-bl-none max-w-xl"
   >
-    <h4 class="text-2xl sm:text-4xl mb-4">
-      Positivity For Enterprises
-    </h4>
-
-    <p class=" text-sm sm:text-lg mb-8">
-      We offer special services for corporations to improve business
-      productivity and create a happy and collaborative business workforce. Gift
-      your employees individual counseling and therapy sessions that can help
-      enhance their personal and professional lives.
-    </p>
-
-    <button
-      class="bg-[#ffd89a] text-[#7b5a4a] font-semibold px-8 py-3 rounded-full hover:bg-[#ffcf7a] transition"
+    <div
+      class="backdrop-blur-[12px] pt-6 pb-6 pr-6 rounded-tr-3xl rounded-br-3xl rounded-tl-none rounded-bl-none"
     >
-      ENQUIRE NOW
-    </button>
+      <!-- Content -->
+      <div
+        class="pl-6 pr-6 py-5 bg-[#7b5a4a]/90 text-white rounded-tr-3xl rounded-br-3xl"
+      >
+        <h4 class="text-lg md:text-xl mb-2 font-semibold">
+          Positivity For Enterprises
+        </h4>
+
+        <p class="text-[12px] md:text-sm mb-6 leading-relaxed">
+          We offer special services for corporations to improve business
+          productivity and create a happy and collaborative business workforce.
+          Gift your employees individual counseling and therapy sessions that
+          can help enhance their personal and professional lives.
+        </p>
+
+        <button
+          class="bg-[#ffd89a] text-[#7b5a4a] font-semibold px-7 py-2.5 rounded-full hover:bg-[#ffcf7a] transition text-sm sm:text-base"
+        >
+          ENQUIRE NOW
+        </button>
+      </div>
+    </div>
   </div>
 </section>

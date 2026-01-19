@@ -57,49 +57,57 @@ export class HeaderComponent {
     {
       title: 'Psychologist & Therapist',
       dropdown: [
-        { title: 'Find Therapist', path: '/psychologist/find-therapist' },
-        { title: 'Book Session', path: '/psychologist/book-session' },
-        { title: 'Specialists', path: '/psychologist/specialists' }
+        { title: 'View Therapist', path: '/psychologist/view-therapist' },
+        { title: 'Join As A Therapist', path: '/psychologist/join-as-therapist' }
       ]
     },
     {
       title: 'Services For',
       dropdown: [
         { title: 'Individuals', path: '/services/individuals' },
-        { title: 'Couples', path: '/services/couples' },
-        { title: 'Children', path: '/services/children' }
+        { title: 'Enterprises', path: '/services/enterprises' },
+        { title: 'School And Universities', path: '/services/school-and-universities' }
       ]
     },
     {
       title: 'Join A Community',
       dropdown: [
-        { title: 'Forums', path: '/community/forums' },
-        { title: 'Events', path: '/community/events' },
-        { title: 'Groups', path: '/community/groups' }
+        { title: 'Community Home', path: '/community/community-home' },
+        { title: 'Webinars', path: '/community/webinars' },
+        { title: 'Blog & Articles', path: '/community/blog-articles' },
+        { title: 'Real At Positivty', path: '/community/real-at-positivity' },
+        { title: 'Resource Groups', path: '/community/resource-groups' }
       ]
     },
     {
       title: 'Mental Health Conditions',
       dropdown: [
-        { title: 'Anxiety', path: '/conditions/anxiety' },
+        { title: 'Bipolar Disorder', path: '/conditions/bipolar-disorder' },
         { title: 'Depression', path: '/conditions/depression' },
-        { title: 'Stress', path: '/conditions/stress' }
+        { title: 'Disruptive Behavior', path: '/conditions/disruptive-behavior' },
+        { title: 'Schizophrenia', path: '/conditions/schizophrenia' },
+        { title: 'Aeneralized Anxiety', path: '/conditions/aeralized-anxiety' },
+        { title: 'Adjustment Disorders', path: '/conditions/adjustment-disorders' },
+        { title: 'PTSD', path: '/conditions/ptsd' },
+        { title: 'Addictions', path: '/conditions/addictions' },
+        { title: 'Eating Disorders', path: '/conditions/eating-disorders' },
       ]
     },
     {
       title: 'Resources',
       dropdown: [
-        { title: 'Blogs', path: '/resources/blogs' },
-        { title: 'Guides', path: '/resources/guides' },
-        { title: 'Videos', path: '/resources/videos' }
+        { title: 'Resources', path: '/resources/resources' }
       ]
     },
     {
       title: 'Positivity',
       dropdown: [
-        { title: 'Quotes', path: '/positivity/quotes' },
-        { title: 'Stories', path: '/positivity/stories' },
-        { title: 'Meditation', path: '/positivity/meditation' }
+        { title: 'Why Us', path: '/positivity/why-us' },
+        { title: 'About Us', path: '/positivity/about-us' },
+        { title: 'Leadership', path: '/positivity/leadership' },
+        { title: 'Talent', path: '/positivity/talent' },
+        { title: 'Terms & Conditions', path: '/positivity/terms-conditions' },
+        { title: 'Privacy', path: '/positivity/privacy' }
       ]
     }
   ];
