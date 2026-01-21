@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +12,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
+  constructor(private router: Router) { }
+
   isOpen = false;
   activeIndex: number | null = null;
   contactActive: boolean = false;
@@ -57,16 +60,16 @@ export class HeaderComponent {
     {
       title: 'Psychologist & Therapist',
       dropdown: [
-        { title: 'View Therapist', path: '/psychologist/view-therapist' },
-        { title: 'Join As A Therapist', path: '/psychologist/join-as-therapist' }
+        { title: 'View Therapist', path: '/view-therapist' },
+        { title: 'Join As A Therapist', path: '/join-as-therapist' }
       ]
     },
     {
       title: 'Services For',
       dropdown: [
-        { title: 'Individuals', path: '/services/individuals' },
-        { title: 'Enterprises', path: '/services/enterprises' },
-        { title: 'School And Universities', path: '/services/school-and-universities' }
+        { title: 'Individuals', path: '/individuals' },
+        { title: 'Enterprises', path: '/enterprises' },
+        { title: 'School And Universities', path: '/school-and-universities' }
       ]
     },
     {
@@ -102,14 +105,18 @@ export class HeaderComponent {
     {
       title: 'Positivity',
       dropdown: [
-        { title: 'Why Us', path: '/positivity/why-us' },
-        { title: 'About Us', path: '/positivity/about-us' },
-        { title: 'Leadership', path: '/positivity/leadership' },
-        { title: 'Talent', path: '/positivity/talent' },
-        { title: 'Terms & Conditions', path: '/positivity/terms-conditions' },
-        { title: 'Privacy', path: '/positivity/privacy' }
+        { title: 'Why Us', path: '/why-us' },
+        { title: 'About Us', path: '/about-us' },
+        { title: 'Leadership', path: '/leadership' },
+        { title: 'Talent', path: '/talent' },
+        { title: 'Terms & Conditions', path: '/terms-conditions' },
+        { title: 'Privacy', path: '/privacy' }
       ]
     }
   ];
+
+  goToAboutDetials() {
+    this.router.navigate(['/about']);
+  }
 
 }

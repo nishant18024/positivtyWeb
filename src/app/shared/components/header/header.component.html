@@ -1,4 +1,4 @@
-<nav class="w-full bg-white shadow-sm relative top-0 z-50">
+<nav class="w-full bg-white dark:bg-black shadow-sm relative top-0 z-50">
   <div class="mx-auto lg:px-10 md:px-5 px-2">
     <!-- TOP BAR -->
     <div class="flex items-center justify-between md:h-24 h-20">
@@ -44,7 +44,7 @@
         <!-- CONTACT BUTTON WITH DROPDOWN -->
         <div class="relative group">
           <button
-            class="hidden md:flex items-center gap-2 border border-[#7b5a4a] text-[#7b5a4a] px-5 py-2 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+            class="hidden md:flex items-center gap-2 border border-[#7b5a4a] text-[#7b5a4a] dark:text-white dark:border-white px-5 py-2 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
           >
             <i class="fa-solid fa-phone"></i>
             CONTACT
@@ -55,12 +55,12 @@
 
           <!-- DROPDOWN MENU -->
           <div
-            class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50"
+            class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50"
           >
             <a
               *ngFor="let c of contactItems"
               [routerLink]="c.path"
-              class="block px-4 py-2 hover:bg-[#7b5a4a]/10 rounded-md text-[#7b5a4a]"
+              class="block px-4 py-2 hover:bg-[#7b5a4a]/10 rounded-md text-[#7b5a4a] dark:text-white"
             >
               {{ c.title }}
             </a>
@@ -79,7 +79,7 @@
 
     <!-- DESKTOP MENU -->
     <div
-      class="hidden lg:flex items-center gap-6 text-[#7b5a4a] font-medium pb-6"
+      class="hidden lg:flex items-center gap-6 text-[#7b5a4a] dark:text-white font-medium pb-6"
     >
       <ng-container *ngFor="let item of menuItems">
         <div class="relative group">
@@ -102,12 +102,13 @@
           <!-- DROPDOWN -->
           <div
             *ngIf="item.dropdown"
-            class="absolute left-0 mt-3 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
+            class="absolute left-0 mt-3 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
           >
             <a
               *ngFor="let d of item.dropdown"
               [routerLink]="d.path"
-              class="block px-4 py-2 hover:bg-[#7b5a4a]/10 rounded-md"
+              routerLinkActive="bg-[#7b5a4a]/20 font-semibold"
+              class="block px-4 py-2 rounded-md hover:bg-[#7b5a4a]/10"
             >
               {{ d.title }}
             </a>

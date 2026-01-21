@@ -1,8 +1,8 @@
 <div
-  class="bg-white rounded-[28px] border border-[#e7cfc2] p-6 w-full max-w-sm mx-auto shadow-sm"
+  class="bg-white dark:bg-gray-800 rounded-[28px] border border-[#e7cfc2] p-6 w-full max-w-sm mx-auto shadow-sm"
 >
   <!-- CONTENT -->
-  <div class="bg-[#fff4e6] rounded-3xl px-4 pt-4 pb-5 text-center">
+  <div class="bg-[#fff4e6] dark:bg-gray-600  rounded-3xl px-4 pt-4 pb-5 text-center">
     <!-- IMAGE -->
     <div class="relative flex justify-center">
       <div class="w-64 h-50 rounded-2xl overflow-hidden shadow-md bg-gray-200">
@@ -25,7 +25,7 @@
     <div class="mb-2">
       <div class="flex justify-between items-center">
         <!-- NAME -->
-        <h3 class="text-md font-semibold text-[#5a3f32]">
+        <h3 class="text-md font-semibold text-[#5a3f32] dark:text-white">
           {{ title }}
         </h3>
 
@@ -38,38 +38,38 @@
       </div>
 
       <!-- GRADE -->
-      <p class="text-sm text-[#7b5a4a] mt-1">
+      <p class="text-sm text-[#7b5a4a] dark:text-white mt-1">
         {{ name }}
       </p>
       <!-- TITLE -->
-      <p class="text-sm text-[#7b5a4a] mt-1">
+      <p class="text-sm text-[#7b5a4a] dark:text-white mt-1">
         {{ grade }}
       </p>
     </div>
 
     <!-- SEGMENTS -->
     <div class="flex justify-between items-center">
-      <p class="text-[#7b5a4a] text-sm mb-2">Price</p>
+      <p class="text-[#7b5a4a] dark:text-white text-sm mb-2">Price</p>
 
-      <span class="px-3 py-1 rounded-lg text-sm text-[#7b5a4a] justify-end">
+      <span class="px-3 py-1 rounded-lg text-sm text-[#7b5a4a] dark:text-white justify-end">
         rupee {{ price }}
       </span>
     </div>
 
     <!-- Total Session -->
     <div class="flex justify-between items-center">
-      <p class="text-[#7b5a4a] text-sm mb-2">Total Session</p>
+      <p class="text-[#7b5a4a] dark:text-white text-sm mb-2">Total Session</p>
 
-      <span class="px-3 py-1 rounded-lg text-sm text-[#7b5a4a] justify-end">
+      <span class="px-3 py-1 rounded-lg text-sm text-[#7b5a4a] dark:text-white justify-end">
         {{ totalSession }}
       </span>
     </div>
 
     <!-- Mode Of Session -->
     <div class="flex justify-between items-center">
-      <p class="text-[#7b5a4a] text-sm mb-2">Mode Of Session</p>
+      <p class="text-[#7b5a4a]  dark:text-white text-sm mb-2">Mode Of Session</p>
 
-      <span class="px-3 py-1 rounded-lg text-sm text-[#7b5a4a] justify-end">
+      <span class="px-3 py-1 rounded-lg text-sm text-[#7b5a4a] dark:text-white justify-end">
         {{ modeOfSession }}
       </span>
     </div>
@@ -77,10 +77,10 @@
 
   <!-- BUTTON -->
   <button
-    class="mt-6 w-full bg-[#7b5a4a] text-white py-3 rounded-full font-medium hover:opacity-90 transition"
+    class="mt-6 w-full bg-[#7b5a4a]  text-white py-3 rounded-full font-medium hover:opacity-90 transition"
   >
     Book Now
   </button>
 
-  <p class="mt-3 text-[#7b5a4a] text-center cursor-pointer">View Details</p>
+  <p class="mt-3 text-[#7b5a4a] dark:text-[#fff]/80  text-center cursor-pointer">View Details</p>
 </div>

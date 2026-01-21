@@ -1,0 +1,35 @@
+<div
+  class="max-w-sm bg-[#fff3dc] rounded-bl-xl rounded-br-xl overflow-hidden shadow-lg hover:shadow-xl transition mb-2 mt-"
+>
+  <!-- IMAGE SECTION -->
+  <div class="relative h-64 w-full overflow-hidden">
+    <!-- diagonal white cut -->
+    <div
+      class="absolute bottom-0 right-0 w-full h-full bg-white clip-diagonal z-10"
+    ></div>
+
+    <img
+      [src]="image"
+      [alt]="title"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+
+    <!-- floating icon -->
+    <div
+      class="absolute bottom-4 right-4 z-20 bg-[#fed591] w-14 h-14 rounded-lg flex items-center justify-center shadow-md"
+    >
+      <i class="{{ icon }} text-2xl text-[#7b4f32]"></i>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="p-6">
+    <h4 class="text-xl font-serif font-semibold text-[#7b4f32] mb-3">
+      {{ title }}
+    </h4>
+
+    <p class="text-sm text-[#5a4036] leading-relaxed">
+      {{ description }}
+    </p>
+  </div>
+</div>

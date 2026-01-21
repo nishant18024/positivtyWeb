@@ -1,21 +1,22 @@
-<section class="py-16 px-6 lg:px-16">
-  <div class="max-w-2xl mx-auto text-center text-[#7b5a4a] dark:text-[#fff] mb-12 px-4">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-4">
-      Top-Rated Mental Health Packages
+<!-- service offers section -->
+<section class="py-12 px-4 md:px-10">
+  <div class="mx-auto text-center mb-10">
+    <h2
+      class="text-xl md:text-4xl font-serif text-[#2e1f18] dark:text-white mb-4"
+    >
+      Services We Offer
     </h2>
-    <p class="text-sm md:text-base text-[#7b5a4a]/80 dark:text-[#fff]/80 leading-relaxed">
-      Affordable, flexible therapy from top counselors. View therapist profiles,
-      compare options, and start your journey today.
+    <p class="text-[#8b5e3c] dark:text-white font-medium">
+      Your Journey, Your Way
     </p>
   </div>
-
   <!-- SLIDER WRAPPER -->
   <div class="max-w-7xl mx-auto relative">
     <!-- LEFT -->
     <button
       (click)="prev()"
       [disabled]="currentIndex === 0"
-      class="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-[#7b5a4a] bg-white flex items-center justify-center text-[#7b5a4a] hover:bg-[#7b5a4a] hover:text-white transition disabled:opacity-40"
+      class="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-[#7b5a4a] flex items-center justify-center text-[#7b5a4a] hover:bg-[#7b5a4a] hover:text-white transition disabled:opacity-40"
     >
       <i class="fa-solid fa-angle-left"></i>
     </button>
@@ -27,19 +28,15 @@
         [style.transform]="transformStyle"
       >
         <div
-          *ngFor="let item of packageList"
+          *ngFor="let item of serviceOfferList"
           class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3"
         >
-          <app-session-package-card
+          <app-service-card
+            [icon]="item.icon"
             [image]="item.image"
-            [rating]="item.rating"
-            [grade]="item.grade"
-            [name]="item.name"
             [title]="item.title"
-            [price]="item.price"
-            [totalSession]="item.totalSession"
-            [modeOfSession]="item.modeOfSession"
-          ></app-session-package-card>
+            [description]="item.description"
+          />
         </div>
       </div>
     </div>

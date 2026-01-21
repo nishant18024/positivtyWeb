@@ -1,0 +1,32 @@
+<div
+  class="relative w-[260px] h-[340px] rounded-xl overflow-hidden group cursor-pointer shadow-lg"
+>
+  <!-- Image -->
+  <img
+    [src]="image"
+    [alt]="name"
+    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+  />
+
+  <!-- Overlay -->
+  <div
+    class="absolute inset-0 bg-[#8b6a5c] opacity-0 group-hover:opacity-100 transition duration-300"
+  ></div>
+
+  <!-- Content -->
+  <div
+    class="absolute inset-0 flex flex-col items-center justify-center text-center
+           opacity-0 group-hover:opacity-100 transition duration-300"
+  >
+    <h3 class="text-white text-lg font-semibold mb-3">
+      {{ name }}
+    </h3>
+
+    <button
+      class="px-5 py-2 text-sm rounded-full bg-[#f3c892] text-[#2e1f18]
+             hover:bg-[#e6b97d] transition"
+    >
+      {{ buttonText }}
+    </button>
+  </div>
+</div>
