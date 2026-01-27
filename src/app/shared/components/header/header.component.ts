@@ -85,15 +85,15 @@ export class HeaderComponent {
     {
       title: 'Mental Health Conditions',
       dropdown: [
-        { title: 'Bipolar Disorder', path: '/conditions/bipolar-disorder' },
-        { title: 'Depression', path: '/conditions/depression' },
-        { title: 'Disruptive Behavior', path: '/conditions/disruptive-behavior' },
-        { title: 'Schizophrenia', path: '/conditions/schizophrenia' },
-        { title: 'Aeneralized Anxiety', path: '/conditions/aeralized-anxiety' },
-        { title: 'Adjustment Disorders', path: '/conditions/adjustment-disorders' },
-        { title: 'PTSD', path: '/conditions/ptsd' },
-        { title: 'Addictions', path: '/conditions/addictions' },
-        { title: 'Eating Disorders', path: '/conditions/eating-disorders' },
+        { title: 'Bipolar Disorder', path: '/bipolar-disorder' },
+        { title: 'Depression', path: '/depression' },
+        { title: 'Disruptive Behavior', path: '/disruptive-behavior' },
+        { title: 'Schizophrenia', path: '/schizophrenia' },
+        { title: 'Aeneralized Anxiety', path: '/aeneralized-anxity' },
+        { title: 'Adjustment Disorders', path: '/adjustment-disorders' },
+        { title: 'PTSD', path: 'ptsd' },
+        { title: 'Addictions', path: '/addictions' },
+        { title: 'Eating Disorders', path: '/eating-disorders' },
       ]
     },
     {
