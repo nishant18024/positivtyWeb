@@ -10,6 +10,7 @@ import { EatingDisordersComponent } from './pages/mental-health-conditions/eatin
 import { AdjustmentDisordersComponent } from './pages/mental-health-conditions/adjustment-disorders/adjustment-disorders.component';
 import { AeneralizedAnxietyComponent } from './pages/mental-health-conditions/aeneralized-anxiety/aeneralized-anxiety.component';
 import { DisruptiveBehaviorComponent } from './pages/mental-health-conditions/disruptive-behavior/disruptive-behavior.component';
+import { GiftASessionComponent } from './pages/services-for/gift-a-session/gift-a-session.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -23,4 +24,5 @@ export const routes: Routes = [
     { path: 'ptsd', component: PtsdComponent },
     { path: 'addictions', component: AddictionsComponent },
     { path: 'eating-disorders', component: EatingDisordersComponent },
+    { path: 'gift-a-session', component: GiftASessionComponent }
 ];

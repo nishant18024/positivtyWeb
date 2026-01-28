@@ -1,0 +1,42 @@
+<div class="space-y-4">
+  <div
+    *ngFor="let item of faqs; let i = index"
+    class="rounded-lg overflow-hidden bg-white shadow-md mb-3"
+  >
+    <!-- Header -->
+    <button
+      (click)="toggle(i)"
+      class="w-full flex justify-between items-center px-6 py-3 text-left transition-all"
+      [ngClass]="
+        openIndex === i ? 'bg-[#8b6a5a] text-white' : 'bg-white text-[#3b2a23]'
+      "
+    >
+      <span class="font-semibold text-lg md:text-xl">
+        {{ i + 1 }}. {{ item.q }}
+      </span>
+
+      <svg
+        class="w-5 h-5 transition-transform duration-300"
+        [class.rotate-180]="openIndex === i"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </button>
+
+    <!-- Body -->
+    <div
+      *ngIf="openIndex === i"
+      class="bg-white px-6 py-6 text-gray-700 leading-relaxed"
+    >
+      {{ item.a }}
+    </div>
+  </div>
+</div>
