@@ -54,7 +54,7 @@
         <button
           class="bg-[#7b5a4a] text-white px-10 py-4 rounded-full text-sm tracking-wide hover:bg-[#6a4c3e] transition"
         >
-          GIFT A SESSION
+          Read More
         </button>
       </div>
 
@@ -69,115 +69,126 @@
     </div>
   </section>
 
-  <!-- how it works section  -->
-  <section class="md:px-28 px-10 py-10 bg-[#f8faff] dark:bg-black">
-    <!-- sender steps  -->
-    <div class="w-full flex items-center my-8 max-w-md">
-      <div class="w-2 h-10 bg-[#f6c26b] rounded-l-md"></div>
-      <div
-        class="flex-1 h-10 px-6 flex items-center bg-gradient-to-r from-[#8b5e4d] to-transparent rounded-r-md"
-      >
-        <h2 class="text-white text-2xl font-serif">For the Sender</h2>
+  <div *ngIf="!login">
+    <!-- how it works section  -->
+    <section class="md:px-28 px-10 py-10 bg-[#f8faff] dark:bg-black">
+      <!-- sender steps  -->
+      <div class="w-full flex items-center my-8 max-w-md">
+        <div class="w-2 h-10 bg-[#f6c26b] rounded-l-md"></div>
+        <div
+          class="flex-1 h-10 px-6 flex items-center bg-gradient-to-r from-[#8b5e4d] to-transparent rounded-r-md"
+        >
+          <h2 class="text-white text-2xl font-serif">For the Sender</h2>
+        </div>
       </div>
-    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <app-step-card
-        *ngFor="let item of senderSteps"
-        [icon]="item.icon"
-        [title]="item.title"
-        [desc]="item.desc"
-      >
-      </app-step-card>
-    </div>
-
-    <!-- receiver steps  -->
-    <div class="w-full flex items-center my-8 max-w-md">
-      <div class="w-2 h-10 bg-[#f6c26b] rounded-l-md"></div>
-      <div
-        class="flex-1 h-10 px-6 flex items-center bg-gradient-to-r from-[#8b5e4d] to-transparent rounded-r-md"
-      >
-        <h2 class="text-white text-2xl font-serif">For the Receiver</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <app-step-card
+          *ngFor="let item of senderSteps"
+          [icon]="item.icon"
+          [title]="item.title"
+          [desc]="item.desc"
+        >
+        </app-step-card>
       </div>
-    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <app-step-card
-        *ngFor="let item of receiverSteps"
-        [icon]="item.icon"
-        [title]="item.title"
-        [desc]="item.desc"
+      <!-- receiver steps  -->
+      <div class="w-full flex items-center my-8 max-w-md">
+        <div class="w-2 h-10 bg-[#f6c26b] rounded-l-md"></div>
+        <div
+          class="flex-1 h-10 px-6 flex items-center bg-gradient-to-r from-[#8b5e4d] to-transparent rounded-r-md"
+        >
+          <h2 class="text-white text-2xl font-serif">For the Receiver</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <app-step-card
+          *ngFor="let item of receiverSteps"
+          [icon]="item.icon"
+          [title]="item.title"
+          [desc]="item.desc"
+        >
+        </app-step-card>
+      </div>
+    </section>
+
+    <!-- why gift a session section -->
+    <section class="md:px-28 px-10 py-10 bg-[#fff4df]">
+      <h3
+        class="text-2xl md:text-4xl font-serif text-[#836054] text-center mb-6"
       >
-      </app-step-card>
-    </div>
-  </section>
-
-  <!-- why gift a session section -->
-  <section class="md:px-28 px-10 py-10 bg-[#fff4df]">
-    <h3 class="text-2xl md:text-4xl font-serif text-[#836054] text-center mb-6">
-      Why Gift a Session?
-    </h3>
-
-    <div>
-      <app-gift-a-session-card
-        *ngFor="let item of whyGiftASession"
-        [image]="item.image"
-        [title]="item.title"
-        [description]="item.description"
-        [reverse]="item.reverse"
-      >
-      </app-gift-a-session-card>
-    </div>
-  </section>
-
-  <!-- faqs section  -->
-  <div class="md:px-48 px-10 py-10 bg-[#f8faff] dark:bg-black">
-    <h3
-      class="text-3xl font-serif text-[#1f1b17] dark:text-white leading-tight mb-6 text-center"
-    >
-      FAQs (Frequently Asked Questions)
-    </h3>
-    <app-faqs [faqs]="faqs" class="max-w-5xl mx-auto"></app-faqs>
-  </div>
-
-  <section
-    class="relative w-full h-[520px] md:h-[600px] bg-center bg-cover"
-    style="
-      background-image: url(&quot;https://www.positivty.com/assets/images/icons/Looking-to-gift-a-session.jpg&quot;);
-    "
-  >
-    <div
-      class="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 text-white"
-    >
-      <p class="tracking-wide text-sm mb-3 opacity-90">Start Your Journey</p>
-
-      <h1 class="text-3xl md:text-5xl font-serif mb-6">
-        Looking to gift a session?
-      </h1>
-
-      <p class="max-w-xl text-sm md:text-base leading-relaxed opacity-95 mb-10">
-        Once you're logged in, you'll be able to complete the gifting process
-        and share this experience with <br class="hidden md:block" />
-        someone special.
-      </p>
+        Why Gift a Session?
+      </h3>
 
       <div>
-        <div class="mb-8">
-          <button
-            class="bg-[#8b5e4d] hover:bg-[#fff] hover:text-[#8b5e4d] transition text-white px-10 py-4 rounded-full text-sm tracking-wide"
-          >
-            PLEASE LOG IN TO CONTINUE.
-          </button>
-        </div>
+        <app-gift-a-session-card
+          *ngFor="let item of whyGiftASession"
+          [image]="item.image"
+          [title]="item.title"
+          [description]="item.description"
+          [reverse]="item.reverse"
+        >
+        </app-gift-a-session-card>
+      </div>
+    </section>
+
+    <!-- faqs section  -->
+    <div class="md:px-48 px-10 py-10 bg-[#f8faff] dark:bg-black">
+      <h3
+        class="text-3xl font-serif text-[#1f1b17] dark:text-white leading-tight mb-6 text-center"
+      >
+        FAQs (Frequently Asked Questions)
+      </h3>
+      <app-faqs [faqs]="faqs" class="max-w-5xl mx-auto"></app-faqs>
+    </div>
+
+    <section
+      class="relative w-full h-[520px] md:h-[600px] bg-center bg-cover"
+      style="
+        background-image: url(&quot;https://www.positivty.com/assets/images/icons/Looking-to-gift-a-session.jpg&quot;);
+      "
+    >
+      <div
+        class="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 text-white"
+      >
+        <p class="tracking-wide text-sm mb-3 opacity-90">Start Your Journey</p>
+
+        <h1 class="text-3xl md:text-5xl font-serif mb-6">
+          Looking to gift a session?
+        </h1>
+
+        <p
+          class="max-w-xl text-sm md:text-base leading-relaxed opacity-95 mb-10"
+        >
+          Once you're logged in, you'll be able to complete the gifting process
+          and share this experience with <br class="hidden md:block" />
+          someone special.
+        </p>
 
         <div>
-          <button
-            class="bg-[#0f224a] transition-transform duration-300 hover:scale-110 text-white px-10 py-4 rounded-full text-sm tracking-wide"
-          >
-            REGISTER NOW
-          </button>
+          <div class="mb-8">
+            <button
+              class="bg-[#8b5e4d] hover:bg-[#fff] hover:text-[#8b5e4d] transition text-white px-10 py-4 rounded-full text-sm tracking-wide"
+            >
+              PLEASE LOG IN TO CONTINUE.
+            </button>
+          </div>
+
+          <div>
+            <button
+              class="bg-[#0f224a] transition-transform duration-300 hover:scale-110 text-white px-10 py-4 rounded-full text-sm tracking-wide"
+            >
+              REGISTER NOW
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+
+  <div *ngIf="login" class="py-10 px-6">
+    <!-- form section -->
+    <app-gift-form></app-gift-form>
+  </div>
 </section>

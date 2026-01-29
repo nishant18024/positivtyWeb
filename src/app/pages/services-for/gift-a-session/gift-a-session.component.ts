@@ -2,17 +2,18 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FaqComponent } from "../../../shared/components/faqs/faqs.component";
 import { StepCardComponent } from "../../../shared/components/step-card/step-card.component";
-import { title } from 'process';
 import { GiftASessionCardComponent } from "../../../shared/components/gift-a-session-card/gift-a-session-card.component";
-import { reverse } from 'dns';
+import { GiftFormComponent } from "../../../shared/components/gift-form/gift-form.component";
 
 @Component({
   selector: 'app-gift-a-session',
-  imports: [CommonModule, FaqComponent, StepCardComponent, GiftASessionCardComponent],
+  imports: [CommonModule, FaqComponent, StepCardComponent, GiftASessionCardComponent, GiftFormComponent],
   templateUrl: './gift-a-session.component.html',
   styleUrl: './gift-a-session.component.scss'
 })
 export class GiftASessionComponent {
+
+  login = false; // if true then show form otherwise show all pages
 
   senderSteps = [
     {

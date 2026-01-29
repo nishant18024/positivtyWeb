@@ -1,0 +1,219 @@
+<form
+  [formGroup]="giftForm"
+  class="max-w-5xl mx-auto bg-[#fff9f3] p-10 rounded-3xl border"
+>
+  <h2 class="text-3xl font-serif mb-8">Recipients Details :</h2>
+
+  <!-- Grid -->
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- First Name -->
+    <div>
+      <label>First Name <span class="text-red-500">*</span></label>
+      <input
+        formControlName="firstName"
+        class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+        placeholder="First Name"
+      />
+    </div>
+
+    <!-- Last Name -->
+    <div>
+      <label>Last Name <span class="text-red-500">*</span></label>
+      <input
+        formControlName="lastName"
+        class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+        placeholder="Last Name"
+      />
+    </div>
+
+    <!-- Phone -->
+    <div>
+      <label>Contact Number <span class="text-red-500">*</span></label>
+      <input
+        formControlName="phone"
+        class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+        placeholder="+91 XXXXXXXX"
+      />
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label>Email ID <span class="text-red-500">*</span></label>
+      <input
+        formControlName="email"
+        class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+        placeholder="someone@email.com"
+      />
+    </div>
+
+    <!-- Relationship -->
+    <div>
+      <label
+        >Your Relationship with Recipient
+        <span class="text-red-500">*</span></label
+      >
+      <select
+        formControlName="relationship"
+        class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+      >
+        <option value="">Select</option>
+        <option>Friend</option>
+        <option>Family</option>
+        <option>Colleague</option>
+        <option>Others</option>
+      </select>
+    </div>
+
+    <!-- Other Relationship -->
+    <div *ngIf="giftForm.value.relationship === 'Others'">
+      <label>Other Relationship <span class="text-red-500">*</span></label>
+      <input
+        formControlName="otherRelationship"
+        class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+        placeholder="Relation"
+      />
+    </div>
+  </div>
+
+  <!-- Identity -->
+  <div class="mt-6">
+    <label class="block mb-2 text-sm font-medium">
+      Do you want this person to know who you are?
+    </label>
+
+    <div
+      class="relative w-18 h-8 rounded-full cursor-pointer transition flex items-center px-1"
+      [ngClass]="
+        giftForm.value.showIdentity === 'yes' ? 'bg-[#8b5e4b]' : 'bg-[#ffd8a8]'
+      "
+      (click)="toggleIdentity()"
+    >
+      <!-- Sliding Circle -->
+      <div
+        class="absolute top-1 w-6 h-6 bg-white rounded-full transition-all duration-300 flex items-center justify-center"
+        [ngClass]="
+          giftForm.value.showIdentity === 'yes' ? 'left-[46px]' : 'left-1'
+        "
+      >
+        <span
+          *ngIf="giftForm.value.showIdentity === 'yes'"
+          class="text-[#8b5e4b] text-sm"
+          >✔</span
+        >
+      </div>
+
+      <!-- Active Text Only -->
+      <div class="w-full flex px-4 text-sm font-semibold">
+        <span *ngIf="giftForm.value.showIdentity === 'yes'" class="text-white"
+          >Yes</span
+        >
+        <span
+          *ngIf="giftForm.value.showIdentity === 'no'"
+          class="text-white ml-auto"
+          >No</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Sender Info -->
+  <div
+    *ngIf="giftForm.value.showIdentity === 'yes'"
+    class="grid md:grid-cols-2 gap-6 mt-6"
+  >
+    <div>
+      <label>Your Name <span class="text-red-500">*</span></label>
+      <input
+        formControlName="senderName"
+        class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+      />
+    </div>
+    <div>
+      <label>Your Email <span class="text-red-500">*</span></label>
+      <input
+        formControlName="senderEmail"
+        class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+      />
+    </div>
+  </div>
+
+  <!-- Message -->
+  <div class="mt-6">
+    <label>Message</label>
+    <textarea
+      formControlName="message"
+      rows="4"
+      class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+    ></textarea>
+  </div>
+
+  <!-- Amount -->
+  <div class="mt-6 w-64">
+    <label>Select Amount <span class="text-red-500">*</span></label>
+    <select
+      formControlName="amount"
+      class="w-full px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#8b5e4b]"
+    >
+      <option value="">Select</option>
+      <option value="50">₹50</option>
+      <option value="100">₹100</option>
+      <option value="200">₹200</option>
+    </select>
+  </div>
+
+  <!-- Submit -->
+  <button
+    type="button"
+    (click)="openReviewModal()"
+    class="mt-10 bg-[#8b5e4b] text-white px-10 py-3 rounded-full"
+  >
+    SUBMIT
+  </button>
+</form>
+
+<!-- ================= MODAL ================= -->
+
+<div
+  *ngIf="showReviewModal"
+  class="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+>
+  <div
+    class="bg-white rounded-3xl w-[90%] max-w-xl p-8 animation:scaleIn 0.25s ease-out"
+  >
+    <h2 class="text-2xl font-serif text-center mb-6">Review</h2>
+
+    <div class="border border-dashed rounded-xl p-5 bg-[#fff3e0] space-y-2">
+      <div class="flex justify-space-between gap-4">
+        <div class="space-y-2">
+          <p class="text-sm text-[#8b5e4b]">
+            👤 {{ giftForm.value.firstName }} {{ giftForm.value.lastName }}
+          </p>
+          <p class="text-sm text-[#8b5e4b]">📧 {{ giftForm.value.email }}</p>
+        </div>
+        <div class="space-y-2">
+          <p class="text-sm text-[#8b5e4b]">📞 {{ giftForm.value.phone }}</p>
+          <p class="text-sm text-[#8b5e4b]">💰 ₹{{ giftForm.value.amount }}</p>
+        </div>
+      </div>
+      <p class="text-sm text-[#8b5e4b]">
+        💬 {{ giftForm.value.message || "-" }}
+      </p>
+    </div>
+
+    <div class="flex justify-between mt-8">
+      <button
+        (click)="closeReviewModal()"
+        class="border border-[#8b5e4b] text-[#8b5e4b] px-6 py-2 rounded-full hover:bg-[#8b5e4b] hover:text-white transition"
+      >
+        MODIFY
+      </button>
+
+      <button
+        (click)="confirmAndPay()"
+        class="bg-[#8b5e4b] text-white px-6 py-2 rounded-full"
+      >
+        CONFIRM AND PAY
+      </button>
+    </div>
+  </div>
+</div>
