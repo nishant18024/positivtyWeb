@@ -79,7 +79,7 @@
 
     <!-- DESKTOP MENU -->
     <div
-      class="hidden lg:flex items-center gap-6 text-[#7b5a4a] dark:text-white font-medium pb-6"
+      class="hidden lg:flex items-center gap-4 text-[#7b5a4a] dark:text-white font-medium pb-6"
     >
       <ng-container *ngFor="let item of menuItems">
         <div class="relative group">
@@ -102,13 +102,13 @@
           <!-- DROPDOWN -->
           <div
             *ngIf="item.dropdown"
-            class="absolute left-0 mt-3 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
+            class="absolute left-0 mt-3 w-60 bg-white dark:bg-gray-800 shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
           >
             <a
               *ngFor="let d of item.dropdown"
               [routerLink]="d.path"
               routerLinkActive="bg-[#7b5a4a]/20 font-semibold"
-              class="block px-4 py-2 rounded-md hover:bg-[#7b5a4a]/10"
+              class="block px-4 py-2 rounded-md hover:bg-[#7b5a4a]/10 text-sm"
             >
               {{ d.title }}
             </a>

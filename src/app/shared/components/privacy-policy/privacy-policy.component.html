@@ -1,0 +1,181 @@
+<!-- HERO / BREADCRUMB -->
+<section class="bg-[#f8d79c] dark:bg-[#3a2a1f] py-10 text-center">
+  <h1
+    class="text-xl md:text-2xl font-serif font-semibold text-[#3b2a1f] dark:text-white"
+  >
+    PRIVACY POLICY
+  </h1>
+  <p class="mt-2 text-sm text-[#7b5a4a] dark:text-gray-300">
+    Home / Privacy Policy
+  </p>
+</section>
+
+<!-- CONTENT -->
+
+<div class="max-w-7xl mx-auto px-18 py-6">
+  <div class="bg-[#ededed] dark:bg-[#ededed] p-12">
+    <!-- Introduction -->
+    <div class="mb-10">
+      <p
+        *ngFor="let paragraph of introduction"
+        class="mb-4 text-gray-700 leading-relaxed text-justify"
+      >
+        {{ paragraph }}
+      </p>
+    </div>
+
+    <!-- Sections -->
+    <div
+      *ngFor="let section of sections; let isLast = last"
+      [class.mb-10]="!isLast"
+    >
+      <!-- Section Title -->
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ section.title }}
+      </h2>
+
+      <!-- Subsections (for Definitions) -->
+      <div *ngIf="section.subsections" class="space-y-4">
+        <div *ngFor="let subsection of section.subsections">
+          <h3 class="text-base font-bold text-gray-800 mb-2">
+            {{ subsection.title }}
+          </h3>
+          <p class="text-gray-700 leading-relaxed mb-4 text-justify">
+            {{ subsection.content }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <p
+        *ngIf="section.content && !section.subsections"
+        class="text-gray-700 leading-relaxed mb-4 text-justify"
+      >
+        {{ section.content }}
+      </p>
+
+      <!-- Reminder Text (before lists) -->
+      <p
+        *ngIf="section.reminder && !section.list"
+        class="text-gray-700 leading-relaxed mb-4 text-justify italic"
+      >
+        {{ section.reminder }}
+      </p>
+
+      <!-- Sub Title -->
+      <p
+        *ngIf="section.subTitle"
+        class="text-gray-700 leading-relaxed mb-3 text-justify"
+      >
+        {{ section.subTitle }}
+      </p>
+
+      <!-- Bulleted List -->
+      <ul *ngIf="section.list" class="list-disc pl-6 mb-4 space-y-2">
+        <li
+          *ngFor="let item of section.list"
+          class="text-gray-700 leading-relaxed text-justify"
+        >
+          {{ item }}
+        </li>
+      </ul>
+
+      <!-- Second List (list2) -->
+      <ul *ngIf="section.list2" class="list-disc pl-6 mb-4 space-y-2">
+        <li
+          *ngFor="let item of section.list2"
+          class="text-gray-700 leading-relaxed text-justify"
+        >
+          {{ item }}
+        </li>
+      </ul>
+
+      <!-- Reminder Text (after lists) -->
+      <p
+        *ngIf="section.reminder && section.list"
+        class="text-gray-700 leading-relaxed mb-4 text-justify italic"
+      >
+        {{ section.reminder }}
+      </p>
+
+      <!-- Additional Paragraphs -->
+      <div *ngIf="section.additionalParagraphs" class="mb-4">
+        <p
+          *ngFor="let para of section.additionalParagraphs"
+          class="text-gray-700 leading-relaxed mb-3 text-justify"
+        >
+          {{ para }}
+        </p>
+      </div>
+
+      <!-- Additional Paragraphs 2 -->
+      <div *ngIf="section.additionalParagraphs2" class="mb-4">
+        <p
+          *ngFor="let para of section.additionalParagraphs2"
+          class="text-gray-700 leading-relaxed mb-3 text-justify"
+        >
+          {{ para }}
+        </p>
+      </div>
+
+      <!-- Footer Text -->
+      <p
+        *ngIf="section.footer"
+        class="text-gray-700 leading-relaxed mb-4 text-justify"
+      >
+        {{ section.footer }}
+      </p>
+
+      <!-- Uppercase Notice Text -->
+      <p
+        *ngIf="section.uppercaseText"
+        class="text-gray-700 leading-relaxed mb-4 text-justify font-medium"
+      >
+        {{ section.uppercaseText }}
+      </p>
+
+      <p
+        *ngIf="section.uppercaseText2"
+        class="text-gray-700 leading-relaxed mb-4 text-justify font-medium"
+      >
+        {{ section.uppercaseText2 }}
+      </p>
+
+      <!-- Additional Note -->
+      <p
+        *ngIf="section.additionalNote"
+        class="text-gray-700 leading-relaxed mb-3 text-justify"
+      >
+        {{ section.additionalNote }}
+      </p>
+
+      <!-- Bullets -->
+      <ul *ngIf="section.bullets" class="list-disc pl-6 mb-4 space-y-2">
+        <li
+          *ngFor="let bullet of section.bullets"
+          class="text-gray-700 leading-relaxed text-justify"
+        >
+          {{ bullet }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="mt-10 pt-6 border-t border-gray-200">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Contact Information</h2>
+      <p class="text-gray-700 leading-relaxed mb-2">
+        <span class="font-semibold">Address:</span>
+        {{ contactInfo.address }}
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        <span class="font-semibold">E-mail id:</span>
+        <a
+          [routerLink]="'mailto:' + contactInfo.email"
+          class="text-blue-600 hover:underline"
+        >
+          {{ contactInfo.email }}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

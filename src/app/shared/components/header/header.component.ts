@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import path from 'node:path';
 
 @Component({
   selector: 'app-header',
@@ -60,14 +61,21 @@ export class HeaderComponent {
     {
       title: 'Psychologist & Therapist',
       dropdown: [
-        { title: 'View Therapist', path: '/view-therapist' },
-        { title: 'Join As A Therapist', path: '/join-as-therapist' }
+        { title: 'View Positivtys Psychologists', path: '/view-positivty-psychologists' },
+        { title: 'Join Positivtys Psychologist Pool', path: '/join-positivty-psychologist-pool' },
+        { title: 'Positivtys Therapy Packages', path: '/positivty-therapy-packages' }
       ]
     },
     {
       title: 'Services For',
       dropdown: [
-        { title: 'Individuals', path: '/individuals' },
+        {
+          title: 'Individuals',
+          children: [
+            { title: '1*1 Online Therapy', path: '/online-therapy' },
+            { title: 'Gift a Session', path: '/gift-a-session' }
+          ]
+        },
         { title: 'Enterprises', path: '/enterprises' },
         { title: 'School And Universities', path: '/school-and-universities' }
       ]
@@ -110,7 +118,7 @@ export class HeaderComponent {
         { title: 'Leadership', path: '/leadership' },
         { title: 'Talent', path: '/talent' },
         { title: 'Terms & Conditions', path: '/terms-conditions' },
-        { title: 'Privacy', path: '/privacy' }
+        { title: 'Privacy', path: '/privacy-policy' }
       ]
     }
   ];
