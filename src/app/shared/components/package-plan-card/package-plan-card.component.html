@@ -1,0 +1,81 @@
+<div
+  class="bg-white rounded-3xl shadow-lg p-6 flex gap-6 max-w-4xl flex-col md:flex-row mx-auto items-center md:items-start"
+>
+  <!-- Left Image Section -->
+  <div class="bg-[#FBF3EA] rounded-2xl p-4 w-48 flex flex-col items-center">
+    <div class="relative">
+      <img
+        [src]="data.image"
+        alt="session"
+        class="w-30 h-30 object-cover rounded-xl"
+      />
+      <button class="absolute inset-0 flex top-24 justify-center">
+        <span
+          class="bg-[#8B5E4B] text-white w-10 h-10 rounded-full flex items-center justify-center text-lg border-4 border-[#49362f]"
+        >
+          ▶
+        </span>
+      </button>
+    </div>
+
+    <!-- Rating -->
+    <div class="flex gap-1 mt-3">
+      <ng-container *ngFor="let s of stars; let i = index">
+        <span
+          class="text-xl"
+          [ngClass]="i < data.rating ? 'text-yellow-400' : 'text-gray-300'"
+          >★</span
+        >
+      </ng-container>
+    </div>
+
+    <p class="mt-2 text-sm text-gray-700">
+      ₹ {{ data.price }}, {{ data.location }}
+    </p>
+    <p class="text-sm text-gray-500">
+      {{ data.languages }}
+    </p>
+  </div>
+
+  <!-- Right Content -->
+  <div class="flex-1 relative">
+    <!-- Heart -->
+    <button class="absolute top-0 right-0 text-red-500 text-2xl">♥</button>
+
+    <h2 class="text-2xl font-serif font-semibold text-gray-800 leading-snug">
+      {{ data.title }}
+    </h2>
+
+    <p class="mt-2 font-semibold text-gray-800">
+      {{ data.name }}
+    </p>
+    <p class="text-gray-500 text-sm">
+      {{ data.qualification }}
+    </p>
+
+    <div class="grid grid-cols-2 gap-y-3 mt-4 text-gray-700">
+      <p>Price</p>
+      <p class="font-semibold text-right">₹ {{ data.price }}</p>
+
+      <p>Total Sessions</p>
+      <p class="font-semibold text-right">{{ data.sessions }}</p>
+
+      <p>Mode Of Sessions</p>
+      <p class="font-semibold text-right">{{ data.mode }}</p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex justify-end gap-4 mt-6">
+      <button
+        class="border border-[#8B5E4B] text-[#8B5E4B] px-6 py-2 rounded-full hover:bg-[#8B5E4B] hover:text-white transition"
+      >
+        View Details
+      </button>
+      <button
+        class="bg-[#8B5E4B] text-white px-6 py-2 rounded-full hover:opacity-90"
+      >
+        Book Now
+      </button>
+    </div>
+  </div>
+</div>

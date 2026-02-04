@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import path from 'node:path';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +18,7 @@ export class HeaderComponent {
   isOpen = false;
   activeIndex: number | null = null;
   contactActive: boolean = false;
+  nestedMenuState: { [key: string]: boolean } = {};
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
@@ -30,11 +30,31 @@ export class HeaderComponent {
     } else {
       this.activeIndex = index;
     }
-
   }
 
   toggleContactMenu() {
     this.contactActive = !this.contactActive;
+  }
+
+  toggleNestedMenu(parentIndex: number, childIndex: number) {
+    const key = `${parentIndex}-${childIndex}`;
+    this.nestedMenuState[key] = !this.nestedMenuState[key];
+  }
+
+  isNestedOpen(parentIndex: number, childIndex: number): boolean {
+    const key = `${parentIndex}-${childIndex}`;
+    return this.nestedMenuState[key] || false;
+  }
+
+  getDropdownHeight(dropdown: any[]): string {
+    let height = 0;
+    dropdown.forEach((item, index) => {
+      height += 40; // Base height for each item
+      if (item.children && this.isNestedOpen(this.activeIndex!, index)) {
+        height += item.children.length * 40; // Add height for nested children
+      }
+    });
+    return height + 'px';
   }
 
   contactItems = [
@@ -44,22 +64,21 @@ export class HeaderComponent {
     },
     {
       title: "Raise An Issue",
-      path: "raise-an-issue"
+      path: "/raise-an-issue"
     },
     {
       title: "Feedback & Suggestions",
-      path: "feedback-suggestions"
-
+      path: "/feedback-suggestions"
     },
     {
       title: "FAQs",
-      path: "faqs"
+      path: "/faqs"
     }
   ]
 
   menuItems = [
     {
-      title: 'Psychologist & Therapist',
+      title: 'Psychologist',
       dropdown: [
         { title: 'View Positivtys Psychologists', path: '/view-positivty-psychologists' },
         { title: 'Join Positivtys Psychologist Pool', path: '/join-positivty-psychologist-pool' },
@@ -77,7 +96,7 @@ export class HeaderComponent {
           ]
         },
         { title: 'Enterprises', path: '/enterprises' },
-        { title: 'School And Universities', path: '/school-and-universities' }
+        { title: 'Education', path: '/education' }
       ]
     },
     {
@@ -97,9 +116,9 @@ export class HeaderComponent {
         { title: 'Depression', path: '/depression' },
         { title: 'Disruptive Behavior', path: '/disruptive-behavior' },
         { title: 'Schizophrenia', path: '/schizophrenia' },
-        { title: 'Aeneralized Anxiety', path: '/aeneralized-anxity' },
+        { title: 'Generalized Anxiety', path: '/generalized-anxiety' },
         { title: 'Adjustment Disorders', path: '/adjustment-disorders' },
-        { title: 'PTSD', path: 'ptsd' },
+        { title: 'PTSD', path: '/ptsd' },
         { title: 'Addictions', path: '/addictions' },
         { title: 'Eating Disorders', path: '/eating-disorders' },
       ]
@@ -107,7 +126,8 @@ export class HeaderComponent {
     {
       title: 'Resources',
       dropdown: [
-        { title: 'Resources', path: '/resources/resources' }
+        { title: 'How It Works', path: '/how-it-works' },
+        { title: 'FAQs', path: '/faqs' },
       ]
     },
     {
@@ -117,7 +137,13 @@ export class HeaderComponent {
         { title: 'About Us', path: '/about-us' },
         { title: 'Leadership', path: '/leadership' },
         { title: 'Talent', path: '/talent' },
-        { title: 'Terms & Conditions', path: '/terms-conditions' },
+        {
+          title: 'Terms & Conditions',
+          children: [
+            { title: 'User', path: '/user' },
+            { title: 'Therapist', path: '/therapist' }
+          ]
+        },
         { title: 'Privacy', path: '/privacy-policy' }
       ]
     }

@@ -102,16 +102,43 @@
           <!-- DROPDOWN -->
           <div
             *ngIf="item.dropdown"
-            class="absolute left-0 mt-3 w-60 bg-white dark:bg-gray-800 shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
+            class="absolute left-0 mt-3 w-60 bg-white dark:bg-gray-800 shadow-xl opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 rounded-lg overflow-hidden"
           >
-            <a
-              *ngFor="let d of item.dropdown"
-              [routerLink]="d.path"
-              routerLinkActive="bg-[#7b5a4a]/20 font-semibold"
-              class="block px-4 py-2 rounded-md hover:bg-[#7b5a4a]/10 text-sm"
-            >
-              {{ d.title }}
-            </a>
+            <div *ngFor="let d of item.dropdown">
+              <!-- Items with children -->
+              <div *ngIf="d.children" class="relative group/sub">
+                <div
+                  class="flex items-center justify-between px-4 py-2 rounded-md hover:bg-[#7b5a4a]/10 text-sm cursor-pointer"
+                >
+                  <span>{{ d.title }}</span>
+                  <i class="fa-solid fa-angle-right text-xs"></i>
+                </div>
+
+                <!-- Nested Dropdown -->
+                <div
+                  class="absolute left-full top-0 ml-1 w-56 bg-white dark:bg-gray-800 shadow-xl opacity-0 invisible translate-x-3 transition-all duration-300 group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 rounded-lg overflow-hidden"
+                >
+                  <a
+                    *ngFor="let child of d.children"
+                    [routerLink]="child.path"
+                    routerLinkActive="bg-[#7b5a4a]/20 font-semibold"
+                    class="block px-4 py-2 rounded-md hover:bg-[#7b5a4a]/10 text-sm"
+                  >
+                    {{ child.title }}
+                  </a>
+                </div>
+              </div>
+
+              <!-- Items without children -->
+              <a
+                *ngIf="!d.children"
+                [routerLink]="d.path"
+                routerLinkActive="bg-[#7b5a4a]/20 font-semibold"
+                class="block px-4 py-2 rounded-md hover:bg-[#7b5a4a]/10 text-sm"
+              >
+                {{ d.title }}
+              </a>
+            </div>
           </div>
         </div>
       </ng-container>
@@ -127,7 +154,7 @@
 
   <!-- MOBILE DRAWER -->
   <div
-    class="fixed top-0 left-0 h-full w-[280px] bg-white z-50 shadow-xl transform transition-transform duration-300 ease-in-out lg:hidden"
+    class="fixed top-0 left-0 h-full w-[280px] bg-white z-50 shadow-xl transform transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto"
     [class.translate-x-0]="isOpen"
     [class.-translate-x-full]="!isOpen"
   >
@@ -160,17 +187,53 @@
           *ngIf="item.dropdown"
           class="overflow-hidden transition-all duration-300"
           [style.maxHeight]="
-            activeIndex === i ? item.dropdown.length * 40 + 'px' : '0px'
+            activeIndex === i ? getDropdownHeight(item.dropdown) : '0px'
           "
         >
           <div class="flex flex-col ml-6 mt-2">
-            <a
-              *ngFor="let sub of item.dropdown"
-              [routerLink]="sub.path"
-              class="px-3 py-2 rounded-md text-sm transition-all hover:bg-[#7b5a4a]/10 hover:translate-x-1"
-            >
-              {{ sub.title }}
-            </a>
+            <div *ngFor="let sub of item.dropdown; let j = index">
+              <!-- Sub items with children -->
+              <div *ngIf="sub.children">
+                <div
+                  (click)="toggleNestedMenu(i, j)"
+                  class="flex items-center justify-between px-3 py-2 rounded-md text-sm transition-all hover:bg-[#7b5a4a]/10 cursor-pointer"
+                  [ngClass]="{ 'bg-[#7b5a4a]/10': isNestedOpen(i, j) }"
+                >
+                  <span>{{ sub.title }}</span>
+                  <i
+                    class="fa-solid fa-angle-down text-xs transition-all duration-300"
+                    [class.rotate-180]="isNestedOpen(i, j)"
+                  ></i>
+                </div>
+
+                <!-- Nested children -->
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  [style.maxHeight]="
+                    isNestedOpen(i, j) ? sub.children.length * 40 + 'px' : '0px'
+                  "
+                >
+                  <div class="flex flex-col ml-4 mt-1">
+                    <a
+                      *ngFor="let child of sub.children"
+                      [routerLink]="child.path"
+                      class="px-3 py-2 rounded-md text-sm transition-all hover:bg-[#7b5a4a]/10 hover:translate-x-1"
+                    >
+                      {{ child.title }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sub items without children -->
+              <a
+                *ngIf="!sub.children"
+                [routerLink]="sub.path"
+                class="block px-3 py-2 rounded-md text-sm transition-all hover:bg-[#7b5a4a]/10 hover:translate-x-1"
+              >
+                {{ sub.title }}
+              </a>
+            </div>
           </div>
         </div>
       </div>
