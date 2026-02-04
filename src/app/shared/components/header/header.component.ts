@@ -126,14 +126,14 @@ export class HeaderComponent {
     {
       title: 'Resources',
       dropdown: [
-        { title: 'How It Works', path: '/how-it-works' },
+        { title: 'How It Works', path: '/', fragment: 'how-it-works' },
         { title: 'FAQs', path: '/faqs' },
       ]
     },
     {
       title: 'Positivity',
       dropdown: [
-        { title: 'Why Us', path: '/why-us' },
+        { title: 'Why Us', path: '/', fragment: 'why-choose-us' },
         { title: 'About Us', path: '/about-us' },
         { title: 'Leadership', path: '/leadership' },
         { title: 'Talent', path: '/talent' },
@@ -149,8 +149,8 @@ export class HeaderComponent {
     }
   ];
 
-  goToAboutDetials() {
-    this.router.navigate(['/about']);
-  }
+  // goToAboutDetials() {
+  //   this.router.navigate(['/about']);
+  // }
 
 }

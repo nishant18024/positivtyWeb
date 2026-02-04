@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BannerComponent } from "../../shared/components/banner/banner.component";
 import { RouterModule } from "@angular/router";
 import { HowItWorksComponent } from "../../shared/components/how-it-works/how-it-works.component";
@@ -6,10 +7,10 @@ import { TherapyCardSectionComponent } from "../../shared/components/therapy-car
 import { LifeStageCardSectionComponent } from "../../shared/components/life-stage-card-section/life-stage-card-section.component";
 import { WhyChoosePositivtyComponent } from "../../shared/components/why-choose-positivty/why-choose-positivty.component";
 import { TherapistCardSectionComponent } from "../../shared/components/therapist-card-section/therapist-card-section.component";
-import { HeroSectionComponent } from "../../pages/hero-section/hero-section.component";
+import { HeroSectionComponent } from "../../shared/components/hero-section/hero-section.component";
 import { SessionPackageCardSectionComponent } from "../../shared/components/session-package-card-section/session-package-card-section.component";
 import { GiftSessionComponent } from "../../pages/gift-session/gift-session.component";
-import { BottomSectionComponent } from "../../pages/bottom-section/bottom-section.component";
+import { BottomSectionComponent } from "../../shared/components/bottom-section/bottom-section.component";
 
 @Component({
   selector: 'app-home',
@@ -18,4 +19,18 @@ import { BottomSectionComponent } from "../../pages/bottom-section/bottom-sectio
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngAfterViewInit() {
+    this.route.fragment.subscribe(fragment => {
+      if (fragment) {
+        setTimeout(() => {
+          document
+            .getElementById(fragment)
+            ?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    });
+  }
 }

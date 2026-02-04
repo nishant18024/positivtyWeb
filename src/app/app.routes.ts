@@ -33,4 +33,7 @@ export const routes: Routes = [
     { path: 'view-positivty-psychologists', component: ViewPositivtyPsychologistsComponent },
     { path: 'positivty-therapy-packages', component: PositivtyTherapyPackagesComponent },
     { path: 'join-positivty-psychologists-pool', component: JoinPositivtyPsychologistsPoolComponent },
+
+    
+
 ];

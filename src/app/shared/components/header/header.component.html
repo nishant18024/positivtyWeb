@@ -114,9 +114,12 @@
                   <i class="fa-solid fa-angle-right text-xs"></i>
                 </div>
 
+                <!-- Invisible bridge to prevent hover gap -->
+                <div class="absolute left-full top-0 w-2 h-full"></div>
+
                 <!-- Nested Dropdown -->
                 <div
-                  class="absolute left-full top-0 ml-1 w-56 bg-white dark:bg-gray-800 shadow-xl opacity-0 invisible translate-x-3 transition-all duration-300 group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 rounded-lg overflow-hidden"
+                  class="absolute left-full top-0 ml-2 w-56 bg-white dark:bg-gray-800 shadow-xl opacity-0 invisible translate-x-3 transition-all duration-300 group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 rounded-lg overflow-hidden z-50"
                 >
                   <a
                     *ngFor="let child of d.children"
@@ -133,6 +136,7 @@
               <a
                 *ngIf="!d.children"
                 [routerLink]="d.path"
+                [fragment]="d.fragment"
                 routerLinkActive="bg-[#7b5a4a]/20 font-semibold"
                 class="block px-4 py-2 rounded-md hover:bg-[#7b5a4a]/10 text-sm"
               >
@@ -229,6 +233,7 @@
               <a
                 *ngIf="!sub.children"
                 [routerLink]="sub.path"
+                [fragment]="sub.fragment"
                 class="block px-3 py-2 rounded-md text-sm transition-all hover:bg-[#7b5a4a]/10 hover:translate-x-1"
               >
                 {{ sub.title }}
