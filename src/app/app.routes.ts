@@ -15,9 +15,13 @@ import { PrivacyPolicyComponent } from './shared/components/privacy-policy/priva
 import { ViewPositivtyPsychologistsComponent } from './pages/psychologists/view-positivty-psychologists/view-positivty-psychologists.component';
 import { PositivtyTherapyPackagesComponent } from './pages/psychologists/positivty-therapy-packages/positivty-therapy-packages.component';
 import { JoinPositivtyPsychologistsPoolComponent } from './pages/psychologists/join-positivty-psychologists-pool/join-positivty-psychologists-pool.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'login', component: LoginComponent },
+
+
     { path: 'about-us', component: AboutUsComponent },
     { path: 'bipolar-disorder', component: BipolarDisorderComponent },
     { path: 'depression', component: DepressionComponent },
@@ -34,6 +38,6 @@ export const routes: Routes = [
     { path: 'positivty-therapy-packages', component: PositivtyTherapyPackagesComponent },
     { path: 'join-positivty-psychologists-pool', component: JoinPositivtyPsychologistsPoolComponent },
 
-    
+
 
 ];
