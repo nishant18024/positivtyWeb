@@ -1,0 +1,71 @@
+<!-- HERO / BREADCRUMB -->
+<section class="bg-[#f8d79c] dark:bg-[#3a2a1f] py-10 text-center">
+  <h1
+    class="text-xl md:text-2xl font-serif font-semibold text-[#3b2a1f] dark:text-white"
+  >
+    FAQ
+  </h1>
+  <p class="mt-2 text-sm text-[#7b5a4a] dark:text-gray-300">Home / FAQ</p>
+</section>
+
+<!-- CONTENT -->
+<section class="max-w-6xl mx-auto px-4 py-8">
+  <!-- Heading -->
+  <p class="text-sm uppercase font-semibold tracking-wide text-[#8B6A5A] mb-2">
+    Feel free to contact us
+  </p>
+
+  <h2 class="text-xl font-serif text-[#4e342e] mb-8">
+    Do You Have Any Questions?
+  </h2>
+
+  <!-- FAQ Cards -->
+  <div class="space-y-4">
+    <div
+      *ngFor="let faq of faqs; let i = index"
+      class="bg-[#f1f1f1] rounded-sm shadow-md p-6"
+    >
+      <!-- Question -->
+      <div class="flex items-start gap-3">
+        <span class="text-xl font-serif text-[#6b6b6b]"> {{ i + 1 }}. </span>
+
+        <h3 class="text-xl font-serif text-[#6b6b6b]">
+          {{ faq.question }}
+        </h3>
+      </div>
+
+      <!-- Answer -->
+      <div class="mt-2 text-[#7a7a7a] leading-relaxed pl-7">
+        {{ faq.answer }}
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQs list question/answer Cards -->
+  <div class="space-y-6 mt-8">
+    <div *ngFor="let faq of faqsList; let i = index" (click)="toggle(i)">
+      <!-- Question -->
+      <div
+        class="flex justify-between items-center bg-[#fff] shadow-md p-4 cursor-pointer"
+      >
+        <h3 class="text-xl font-serif text-[#6b6b6b]">
+          {{ faq.question }}
+        </h3>
+
+        <span
+          class="text-2xl text-[#8B6A5A] transition-transform duration-300"
+          [class.rotate-180]="openIndex === i"
+        >
+          ⌄
+        </span>
+      </div>
+      <!-- Answer -->
+      <div
+        *ngIf="openIndex === i"
+        class="mt-2 text-[#7a7a7a] leading-relaxed p-2 shadow-sm"
+      >
+        {{ faq.answer }}
+      </div>
+    </div>
+  </div>
+</section>

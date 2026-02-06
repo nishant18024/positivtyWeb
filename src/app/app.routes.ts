@@ -11,11 +11,12 @@ import { AdjustmentDisordersComponent } from './pages/mental-health-conditions/a
 import { AeneralizedAnxietyComponent } from './pages/mental-health-conditions/aeneralized-anxiety/aeneralized-anxiety.component';
 import { DisruptiveBehaviorComponent } from './pages/mental-health-conditions/disruptive-behavior/disruptive-behavior.component';
 import { GiftASessionComponent } from './pages/services-for/gift-a-session/gift-a-session.component';
-import { PrivacyPolicyComponent } from './shared/components/privacy-policy/privacy-policy.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { ViewPositivtyPsychologistsComponent } from './pages/psychologists/view-positivty-psychologists/view-positivty-psychologists.component';
 import { PositivtyTherapyPackagesComponent } from './pages/psychologists/positivty-therapy-packages/positivty-therapy-packages.component';
 import { JoinPositivtyPsychologistsPoolComponent } from './pages/psychologists/join-positivty-psychologists-pool/join-positivty-psychologists-pool.component';
 import { LoginComponent } from './pages/login/login.component';
+import { FaqsComponent } from './pages/faqs/faqs.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -37,7 +38,5 @@ export const routes: Routes = [
     { path: 'view-positivty-psychologists', component: ViewPositivtyPsychologistsComponent },
     { path: 'positivty-therapy-packages', component: PositivtyTherapyPackagesComponent },
     { path: 'join-positivty-psychologists-pool', component: JoinPositivtyPsychologistsPoolComponent },
-
-
-
+    { path: 'faqs', component: FaqsComponent },
 ];
