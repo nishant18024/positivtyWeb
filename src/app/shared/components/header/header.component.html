@@ -41,6 +41,21 @@
 
       <!-- RIGHT BUTTONS -->
       <div class="flex items-center gap-4">
+        <!-- Theme Toggle -->
+        <button
+          (click)="toggleTheme()"
+          aria-label="Toggle theme"
+          class="relative w-14 h-7 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
+        >
+          <!-- Sliding Circle -->
+          <span
+            class="absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center text-xs transition-transform duration-300"
+            [class.translate-x-7]="isDarkMode"
+          >
+            {{ isDarkMode ? "🌙" : "☀️" }}
+          </span>
+        </button>
+
         <!-- CONTACT BUTTON WITH DROPDOWN -->
         <div class="relative group">
           <button

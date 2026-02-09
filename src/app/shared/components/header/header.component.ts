@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { ThemeService } from '../../../../../theme.service';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +13,18 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  isDarkMode = false;
 
-  constructor(private router: Router) { }
+  constructor(public theme: ThemeService) {
+    // Subscribe to theme changes
+    this.theme.isDark$.subscribe(isDark => {
+      this.isDarkMode = isDark;
+    });
+  }
+
+  toggleTheme() {
+    this.theme.toggle();
+  }
 
   isOpen = false;
   activeIndex: number | null = null;

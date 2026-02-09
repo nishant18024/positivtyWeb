@@ -17,6 +17,7 @@ import { PositivtyTherapyPackagesComponent } from './pages/psychologists/positiv
 import { JoinPositivtyPsychologistsPoolComponent } from './pages/psychologists/join-positivty-psychologists-pool/join-positivty-psychologists-pool.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FaqsComponent } from './pages/faqs/faqs.component';
+import { LeadershipComponent } from './pages/leadership/leadership.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -39,4 +40,5 @@ export const routes: Routes = [
     { path: 'positivty-therapy-packages', component: PositivtyTherapyPackagesComponent },
     { path: 'join-positivty-psychologists-pool', component: JoinPositivtyPsychologistsPoolComponent },
     { path: 'faqs', component: FaqsComponent },
+    { path: 'leadership', component: LeadershipComponent },
 ];
