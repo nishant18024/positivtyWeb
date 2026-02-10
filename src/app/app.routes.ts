@@ -18,6 +18,7 @@ import { JoinPositivtyPsychologistsPoolComponent } from './pages/psychologists/j
 import { LoginComponent } from './pages/login/login.component';
 import { FaqsComponent } from './pages/faqs/faqs.component';
 import { LeadershipComponent } from './pages/leadership/leadership.component';
+import { CommunityComponent } from './pages/community/community.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -41,4 +42,5 @@ export const routes: Routes = [
     { path: 'join-positivty-psychologists-pool', component: JoinPositivtyPsychologistsPoolComponent },
     { path: 'faqs', component: FaqsComponent },
     { path: 'leadership', component: LeadershipComponent },
+    { path: 'community', component: CommunityComponent },
 ];

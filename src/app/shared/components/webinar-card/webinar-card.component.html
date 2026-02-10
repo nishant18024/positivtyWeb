@@ -1,0 +1,56 @@
+<div class="max-w-sm rounded-3xl overflow-hidden bg-[#FFF3E0] shadow-md">
+  <!-- Image -->
+  <div class="h-56 overflow-hidden rounded-t-3xl">
+    <img [src]="image" alt="Webinar" class="w-full h-full object-cover" />
+  </div>
+
+  <!-- Content -->
+  <div class="p-6 space-y-4">
+    <!-- Date & Badge -->
+    <div class="flex items-center gap-3 text-sm">
+      <span class="text-gray-700">
+        {{ date }}
+      </span>
+
+      <span
+        *ngIf="recorded"
+        class="px-3 py-1 rounded-full bg-[#8B5E3C] text-white text-xs font-medium"
+      >
+        Recorded
+      </span>
+      <span
+        *ngIf="upcoming"
+        class="px-3 py-1 rounded-full bg-[#8B5E3C] text-white text-xs font-medium"
+      >
+        Upcoming
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-lg font-semibold text-gray-900 leading-snug">
+      {{ title }}
+    </h3>
+
+    <!-- Description -->
+    <p class="text-sm text-gray-700">
+      {{ description }}
+    </p>
+
+    <div class="flex gap-6">
+      <!-- Button -->
+      <ng-container *ngIf="upcoming">
+        <button
+          class="mt-2 inline-flex items-center justify-center px-5 py-1 rounded-full border-2 border-[#8B5E3C] bg-[#8B5E3C] text-sm text-white hover:scale-105 transition"
+        >
+          Register Now
+        </button>
+      </ng-container>
+
+      <button
+        class="mt-2 inline-flex items-center justify-center px-5 py-1 rounded-full border-2 border-[#8B5E3C] text-sm text-[#8B5E3C] bg-white hover:bg-[#8B5E3C] hover:text-[#fff] transition"
+      >
+        {{ btnText }}
+      </button>
+    </div>
+  </div>
+</div>

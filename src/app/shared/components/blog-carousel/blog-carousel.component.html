@@ -1,0 +1,42 @@
+<section class="bg-[#fff3df] py-16 relative overflow-hidden">
+  <!-- LEFT ARROW -->
+  <button
+    type="button"
+    aria-label="Previous"
+    (click)="prev.emit()"
+    class="hidden md:flex absolute left-12 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border-2 border-[#8b5e4a] text-[#8b5e4a] items-center justify-center hover:bg-[#8b5e4a] hover:text-white transition"
+  >
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+
+  <!-- CONTENT -->
+  <div class="max-w-4xl mx-auto text-center">
+    <!-- TITLE -->
+    <div class="flex items-center justify-center gap-4 mb-12">
+      <span class="w-24 h-[2px] bg-[#8b5e4a]"></span>
+      <h2 class="text-2xl font-serif text-[#6b4a3b]">
+        {{ title }}
+      </h2>
+      <span class="w-24 h-[2px] bg-[#8b5e4a]"></span>
+    </div>
+
+    <!-- MAIN BUTTON (ROUTER NAVIGATION) -->
+    <a
+      [routerLink]="buttonLink"
+      class="mx-auto inline-flex items-center justify-center bg-white text-[#8b5e4a] rounded-full border-2 border-[#8b5e4a] py-2 px-8 text-sm font-medium transition hover:bg-[#8b5e4a] hover:text-white"
+    >
+      {{ buttonText }}
+    </a>
+  </div>
+
+  <!-- RIGHT ARROW -->
+  <button
+    type="button"
+    aria-label="Next"
+    (click)="next.emit()"
+    class="hidden md:flex absolute right-12 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border-2 border-[#8b5e4a] text-[#8b5e4a] items-center justify-center hover:bg-[#8b5e4a] hover:text-white transition"
+  >
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</section>
+

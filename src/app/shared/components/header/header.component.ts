@@ -102,7 +102,7 @@ export class HeaderComponent {
         {
           title: 'Individuals',
           children: [
-            { title: '1*1 Online Therapy', path: '/online-therapy' },
+            { title: '1*1 Online Therapy', path: '/view-positivty-psychologists' },
             { title: 'Gift a Session', path: '/gift-a-session' }
           ]
         },
@@ -113,11 +113,11 @@ export class HeaderComponent {
     {
       title: 'Join A Community',
       dropdown: [
-        { title: 'Community Home', path: '/community/community-home' },
-        { title: 'Webinars', path: '/community/webinars' },
-        { title: 'Blog & Articles', path: '/community/blog-articles' },
-        { title: 'Real At Positivty', path: '/community/real-at-positivity' },
-        { title: 'Resource Groups', path: '/community/resource-groups' }
+        { title: 'Community Home', path: '/community' },
+        { title: 'Webinars', path: 'webinars' },
+        { title: 'Blog & Articles', path: '/blog-articles' },
+        { title: 'Real At Positivty', path: '/real-at-positivity' },
+        { title: 'Resource Groups', path: '/resource-groups' }
       ]
     },
     {

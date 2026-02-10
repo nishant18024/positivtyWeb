@@ -1,0 +1,52 @@
+<div
+  [ngClass]="[maxWidth]"
+  [style.width]="width"
+  class="relative mx-auto aspect-video mb-12 rounded-xl overflow-hidden shadow-lg"
+>
+  <!-- Thumbnail with Play Button -->
+  <div
+    *ngIf="showThumbnail"
+    (click)="playVideo()"
+    class="absolute inset-0 cursor-pointer bg-black"
+  >
+    <img
+      [src]="thumbnailUrl"
+      alt="Video thumbnail"
+      class="w-full h-full object-cover"
+    />
+    <!-- Play Button Overlay -->
+    <div
+      class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 hover:bg-opacity-40 transition-all"
+    >
+      <div
+        class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-all hover:scale-110"
+      >
+        <svg
+          class="w-10 h-10 text-white ml-1"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube iframe -->
+  <iframe
+    *ngIf="!showThumbnail"
+    class="w-full h-full"
+    [src]="videoUrl"
+    frameborder="0"
+    allow="
+      accelerometer;
+      autoplay;
+      clipboard-write;
+      encrypted-media;
+      gyroscope;
+      picture-in-picture;
+    "
+    allowfullscreen
+  >
+  </iframe>
+</div>
