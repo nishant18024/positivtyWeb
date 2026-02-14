@@ -19,6 +19,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { FaqsComponent } from './pages/faqs/faqs.component';
 import { LeadershipComponent } from './pages/leadership/leadership.component';
 import { CommunityComponent } from './pages/community/community.component';
+import { TalentComponent } from './pages/talent/talent.component';
+import { JobDetailsComponent } from './pages/job-details/job-details.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -43,4 +45,6 @@ export const routes: Routes = [
     { path: 'faqs', component: FaqsComponent },
     { path: 'leadership', component: LeadershipComponent },
     { path: 'community', component: CommunityComponent },
+    { path: 'talent', component: TalentComponent },
+    { path: 'job-details', component: JobDetailsComponent },
 ];

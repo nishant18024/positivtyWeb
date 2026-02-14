@@ -1,0 +1,214 @@
+<section class="bg-white py-10 px-6 md:px-22">
+  <!-- Top Heading -->
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="text-[#8b6457] text-2xl font-medium mb-3">Full-Time Roles</p>
+
+    <h1 class="text-xl font-semibold text-[#8b6457] mb-6">
+      Build a Career That Changes Lives
+    </h1>
+
+    <p class="text-gray-600 text-lg mx-auto">
+      Join Positivity’s Full-Time Team: Innovate mental health solutions, grow
+      professionally, and empower millions worldwide.
+    </p>
+  </div>
+
+  <!-- Content Section -->
+  <div
+    class="max-w-7xl mx-auto mt-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
+  >
+    <!-- Left Content -->
+    <div>
+      <h2 class="text-xl font-semibold text-[#4a2f2a] mb-4">
+        Why Join Positivity’s Full-Time Team?
+      </h2>
+
+      <p class="text-gray-700 mb-2 leading-relaxed text-md">
+        We don’t just offer jobs – we build careers that transform lives,
+        including yours.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed text-md">
+        At Positivity, you will thrive in a mission-driven environment where
+        your growth, well-being, and impact are prioritized. Here’s what sets us
+        apart:
+      </p>
+    </div>
+
+    <!-- Right Pills -->
+    <div class="relative flex flex-col gap-6 items-center md:items-justify">
+      <ng-container *ngFor="let item of heroBtnList; let i = index">
+        <div
+          class="group relative"
+          (mouseenter)="activeIndex = i"
+          (mouseleave)="activeIndex = null"
+        >
+          <!-- Pill Button -->
+          <div
+            class="px-5 py-3 rounded-full border border-[#8b6457] text-[#8b6457] font-medium text-sm tracking-wide whitespace-nowrap cursor-pointer transition-all duration-300 hover:bg-[#8b6457] hover:text-white"
+          >
+            {{ truncateTitle(item.title) }}
+          </div>
+
+          <!-- Hover Card -->
+          <div
+            *ngIf="activeIndex === i"
+            class="absolute z-20 top-full mt-4 w-80 rounded-2xl border border-[#e6d5cc] bg-white shadow-xl p-5 animate-fadeSlide"
+          >
+            <h4 class="text-[#4a2f2a] font-semibold mb-2">
+              {{ item.title }}
+            </h4>
+
+            <p class="text-sm text-gray-600 leading-relaxed">
+              {{ item.desc }}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-10 px-6 md:px-22">
+  <!-- Heading -->
+  <h2 class="text-center text-[22px] font-semibold text-[#8b6457] mb-10">
+    Key Full-Time Roles We’re Hiring For
+  </h2>
+
+  <!-- Search Bar Row -->
+  <div class="max-w-[1280px] mx-auto flex flex-wrap gap-6 items-center">
+    <!-- Job Role Search -->
+    <div class="relative flex-1 min-w-[240px]">
+      <input
+        type="text"
+        placeholder="Search Job Role"
+        class="w-full rounded-lg border border-black px-6 py-2 pr-11 text-base outline-none"
+      />
+      <span class="absolute right-4 top-1/2 -translate-y-1/2"> 🔍 </span>
+    </div>
+
+    <!-- City Search -->
+    <div class="relative flex-1 min-w-[240px]">
+      <input
+        type="text"
+        placeholder="Search City"
+        class="w-full rounded-lg border border-black px-6 py-2 pr-11 text-base outline-none"
+      />
+      <span class="absolute right-4 top-1/2 -translate-y-1/2"> 🔍 </span>
+    </div>
+
+    <!-- Search Button -->
+    <button
+      class="w-40 rounded-xl bg-[#8b6457] text-white text-base font-medium px-4 py-2 hover:bg-[#755145] transition"
+    >
+      Search
+    </button>
+  </div>
+
+  <!-- Filters -->
+  <div class="max-w-[1280px] mx-auto mt-10 flex gap-2 relative">
+    <!-- ROLE TYPE -->
+    <div class="relative">
+      <button
+        (click)="toggleRole()"
+        class="px-4 py-2 rounded-md border border-gray-300 bg-white text-base flex items-center gap-2"
+      >
+        {{ selectedRole }} ▼
+      </button>
+
+      <!-- Dropdown -->
+      <div
+        *ngIf="roleTypeOpen"
+        class="absolute top-14 left-0 w-[260px] bg-white border border-gray-300 rounded-xl shadow-xl z-50"
+      >
+        <!-- Arrow -->
+        <div
+          class="absolute -top-2 left-10 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[8px] border-b-white"
+        ></div>
+
+        <ul class="py-2">
+          <li
+            *ngFor="let role of roleTypes"
+            (click)="selectRole(role)"
+            class="px-4 py-1 text-sm cursor-pointer hover:bg-gray-100 transition"
+          >
+            {{ role }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- LOCATION -->
+    <div class="relative">
+      <button
+        (click)="toggleLocation()"
+        class="px-4 py-2 rounded-md border border-gray-300 bg-white text-base flex items-center gap-2"
+      >
+        {{ selectedLocation }} ▼
+      </button>
+
+      <!-- Dropdown -->
+      <div
+        *ngIf="locationOpen"
+        class="absolute top-14 left-0 w-[260px] bg-white border border-gray-300 rounded-xl shadow-xl z-50"
+      >
+        <!-- Arrow -->
+        <div
+          class="absolute -top-2 left-10 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[8px] border-b-white"
+        ></div>
+
+        <ul class="py-2">
+          <li
+            *ngFor="let loc of locations"
+            (click)="selectLocation(loc)"
+            class="px-4 py-1 text-sm cursor-pointer hover:bg-gray-100 transition"
+          >
+            {{ loc }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- job cards  -->
+  <div class="max-w-7xl mx-auto px-6 py-4 space-y-6" *ngFor="let job of jobs">
+    <app-job-card
+      [title]="job.title"
+      [location]="job.location"
+      [description]="job.description"
+      [location2]="job.location2"
+      [subdetail]="job.subdetail"
+      [exp]="job.exp"
+    ></app-job-card>
+  </div>
+</section>
+
+<section class="bg-[#fff4df] py-10 px-5 text-center">
+  <!-- Heading -->
+  <h2 class="text-[42px] font-semibold text-[#8b6457] mb-4">
+    Explore Other Roles
+  </h2>
+
+  <p class="max-w-4xl mx-auto mb-12 text-lg text-[#6b5b52]">
+    Whether you’re seeking mental health internships, remote therapy roles, or
+    mental wellness volunteer opportunities, there’s a place for you.
+  </p>
+
+  <!-- Cards -->
+  <div class="flex flex-wrap justify-center gap-8">
+    <div
+      *ngFor="let role of roles"
+      class="bg-white w-[320px] px-4 py-6 rounded-[0_80px] shadow-[0_10px_25px_rgba(0,0,0,0.08)] text-center transition hover:scale-105"
+    >
+      <h3 class="mb-6 text-md font-medium text-black">
+        {{ role.title }}
+      </h3>
+
+      <button
+        class="bg-[#8b6457] text-white px-3 py-1 rounded-full text-base font-medium hover:bg-[#755145] transition"
+      >
+        Let’s Go
+      </button>
+    </div>
+  </div>
+</section>
