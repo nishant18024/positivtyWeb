@@ -21,11 +21,12 @@ import { LeadershipComponent } from './pages/leadership/leadership.component';
 import { CommunityComponent } from './pages/community/community.component';
 import { TalentComponent } from './pages/talent/talent.component';
 import { JobDetailsComponent } from './pages/job-details/job-details.component';
+import { TermsOfUseComponent } from './pages/terms-of-use/terms-of-use.component';
+import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-
 
     { path: 'about-us', component: AboutUsComponent },
     { path: 'bipolar-disorder', component: BipolarDisorderComponent },
@@ -47,4 +48,6 @@ export const routes: Routes = [
     { path: 'community', component: CommunityComponent },
     { path: 'talent', component: TalentComponent },
     { path: 'job-details', component: JobDetailsComponent },
+    { path: 'terms-of-use', component: TermsOfUseComponent },
+    { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
 ];

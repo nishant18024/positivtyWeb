@@ -151,8 +151,8 @@ export class HeaderComponent {
         {
           title: 'Terms & Conditions',
           children: [
-            { title: 'User', path: '/user' },
-            { title: 'Therapist', path: '/therapist' }
+            { title: 'User', path: '/terms-of-use' },
+            { title: 'Therapist', path: '/terms-and-conditions' }
           ]
         },
         { title: 'Privacy', path: '/privacy-policy' }
