@@ -1,0 +1,31 @@
+<div class="flex justify-center items-center">
+  <div
+    class="relative w-[340px] rounded-[36px] bg-gradient-to-b from-[#8a6556] to-[#4b342b] px-6 pt-6 pb-20 text-center border-2 border-dashed border-[#e7c8a0]"
+  >
+    <!-- Image -->
+    <div class="overflow-hidden rounded-2xl border border-[#f2d6b3] mb-6">
+      <img
+        [src]="image"
+        alt="Blog preview"
+        class="w-full h-[180px] object-cover"
+      />
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-xl font-semibold text-white mb-4">
+      {{ title }}
+    </h2>
+
+    <!-- Description -->
+    <p class="text-sm leading-relaxed text-[#f4e6db] px-2">
+      {{ description }}
+    </p>
+
+    <!-- Button -->
+    <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+      <button class="bg-white text-[#6b4a3e] px-6 py-2 rounded-full">
+        {{ buttonText }}
+      </button>
+    </div>
+  </div>
+</div>
