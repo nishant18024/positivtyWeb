@@ -1,0 +1,85 @@
+.webinar-landing-container {
+  background-color: #FAFAFA;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.banner-section {
+  background: linear-gradient(135deg, #74564c 0%, #4E342E 100%);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.active-card {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: #8B5E3C;
+    border-radius: 28px;
+    z-index: -1;
+    animation: pulse-border 2s infinite;
+  }
+}
+
+@keyframes pulse-border {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.02); opacity: 0.2; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.underline-draw {
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 60px;
+    height: 4px;
+    background: #FED591;
+    border-radius: 2px;
+  }
+}
+
+// Custom scroll behavior for the landing page
+:host {
+  scroll-behavior: smooth;
+}
+
+// Better Typography for prose
+.prose-brown {
+  color: #5D4037;
+  line-height: 1.8;
+}
+
+// Enhance standard webinar card within this page context
+::ng-deep {
+  .active-card app-webinar-card > div {
+    border: 2px solid #8B5E3C;
+    background-color: white !important;
+  }
+  
+  app-webinar-card {
+    transition: all 0.3s ease;
+    
+    &:hover > div {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  }
+}

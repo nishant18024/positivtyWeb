@@ -1,0 +1,171 @@
+<div class="webinar-landing-container pt-20"> <!-- Added pt-20 to account for fixed global header -->
+    <!-- Removed Banner Section as global header is now visible -->
+
+    <!-- Main Registration Section -->
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <div
+            class="flex flex-col-reverse md:flex-row gap-8 lg:gap-12 bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100">
+
+            <!-- Left: Webinar Details -->
+            <div class="flex-1 p-8 md:p-12 bg-gradient-to-br from-[#FFF3E0] to-white lg:border-r border-gray-100">
+                <div class="flex justify-between items-start mb-6">
+                    <div
+                        class="inline-block px-4 py-1.5 rounded-full bg-[#8B5E3C] text-white text-xs font-bold uppercase tracking-wider animate-pulse">
+                        Upcoming Webinar
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Zoom_Video_Communications_logo.svg"
+                            alt="Zoom" class="h-3">
+                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-tighter">{{
+                            selectedWebinar?.platform }}</span>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl md:text-5xl font-bold text-[#4E342E] mb-6 leading-tight">
+                    {{ selectedWebinar?.title }}
+                </h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 rounded-xl bg-white shadow-sm shrink-0 border border-gray-100 text-[#8B5E3C]">
+                            <i class="far fa-calendar-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Date & Time</p>
+                            <p class="text-sm font-semibold text-[#4E342E]">{{ selectedWebinar?.date }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Panelist Info -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl overflow-hidden shadow-sm border border-gray-100 shrink-0">
+                            <img [src]="selectedWebinar?.panelistImage" [alt]="selectedWebinar?.panelistName"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Presenter</p>
+                            <p class="text-sm font-semibold text-[#4E342E]">{{ selectedWebinar?.panelistName }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prose prose-brown mb-10">
+                    <p class="text-lg text-gray-600 leading-relaxed italic">
+                        "{{ selectedWebinar?.description }}"
+                    </p>
+                </div>
+
+                <!-- Agenda Section -->
+                <div class="p-8 bg-white/40 backdrop-blur-sm rounded-3xl border border-[#8B5E3C]/10 shadow-inner">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-1 bg-[#8B5E3C] rounded-full"></div>
+                        <h4 class="font-black text-[#8B5E3C] uppercase tracking-widest text-sm">Session Agenda</h4>
+                    </div>
+                    <ul class="space-y-4">
+                        <li *ngFor="let item of selectedWebinar?.agenda" class="flex items-center gap-4 group">
+                            <div
+                                class="w-6 h-6 rounded-full bg-[#8B5E3C]/10 flex items-center justify-center text-[#8B5E3C] text-[10px] shrink-0 group-hover:bg-[#8B5E3C] group-hover:text-white transition-colors duration-300">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="text-gray-700 font-medium">{{ item }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right: Registration Form -->
+            <div class="w-full md:w-[400px] lg:w-[480px] p-8 md:p-12 bg-white self-center">
+                <div class="mb-8">
+                    <span class="text-[10px] font-black text-[#8B5E3C] uppercase tracking-[0.2em]">Secure Your
+                        Spot</span>
+                    <h3 class="text-3xl font-bold text-[#4E342E] mt-1 mb-2">Join the Session</h3>
+                    <p class="text-gray-500 text-sm">Fill out the form below to receive your entry link.</p>
+                </div>
+
+                <!-- Registration Context Notification (Enhanced) -->
+                <div *ngIf="selectedCount > 0"
+                    class="mb-8 p-5 bg-gradient-to-r from-[#FFF3E0] to-[#FFF9F2] rounded-2xl border border-[#FED591]/50 flex items-center justify-between shadow-sm animate-fade-in">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm text-[#8B5E3C]">
+                            <i class="fas fa-check-double text-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black text-[#8B5E3C] uppercase tracking-wider">Multiple Selection</p>
+                            <p class="text-[10px] text-[#8B5E3C]/70">You're registering for <strong>{{ selectedCount }}
+                                    webinar(s)</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <form (ngSubmit)="onSubmit()" #regForm="ngForm" class="space-y-5">
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Full
+                            Name</label>
+                        <input type="text" name="name" [(ngModel)]="registrationData.name" required
+                            class="w-full px-5 py-4 rounded-2xl bg-gray-50/50 border border-gray-100 focus:bg-white focus:border-[#8B5E3C] focus:ring-4 focus:ring-[#8B5E3C]/5 outline-none transition-all duration-300"
+                            placeholder="John Doe">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Email
+                            Address</label>
+                        <input type="email" name="email" [(ngModel)]="registrationData.email" required
+                            class="w-full px-5 py-4 rounded-2xl bg-gray-50/50 border border-gray-100 focus:bg-white focus:border-[#8B5E3C] focus:ring-4 focus:ring-[#8B5E3C]/5 outline-none transition-all duration-300"
+                            placeholder="john@example.com">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Phone
+                            Number</label>
+                        <input type="tel" name="phone" [(ngModel)]="registrationData.phone" required
+                            class="w-full px-5 py-4 rounded-2xl bg-gray-50/50 border border-gray-100 focus:bg-white focus:border-[#8B5E3C] focus:ring-4 focus:ring-[#8B5E3C]/5 outline-none transition-all duration-300"
+                            placeholder="+91 98765 43210">
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" [disabled]="!regForm.form.valid || selectedCount === 0"
+                            class="w-full py-5 bg-[#8B5E3C] hover:bg-[#74564c] disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed text-white text-sm font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-[#8B5E3C]/20 transition-all duration-300 transform active:scale-[0.98]">
+                            Complete Registration
+                        </button>
+                    </div>
+
+                    <p class="text-center text-[10px] text-gray-400 px-10 leading-relaxed uppercase tracking-tighter">
+                        Securely processed. Instant confirmation via email.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Other Webinars Section -->
+    <section class="max-w-7xl mx-auto px-4 md:px-6 py-20 bg-gray-50/30 rounded-[3rem] my-12">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-6 text-center md:text-left">
+            <div>
+                <span class="text-[10px] font-black text-[#8B5E3C] uppercase tracking-[0.3em]">Knowledge Hub</span>
+                <h2 class="text-4xl font-bold text-[#4E342E] mt-2 mb-4">Choose Your Learning Path</h2>
+                <div class="w-20 h-1.5 bg-[#8B5E3C] rounded-full mx-auto md:mx-0"></div>
+                <p class="text-gray-500 mt-4 max-w-lg">Select one or more webinars to join. All sessions are interactive
+                    and led by experts.</p>
+            </div>
+
+            <button (click)="registerForAll()"
+                class="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-2xl bg-white border border-gray-200 text-[#8B5E3C] font-bold transition-all duration-300 hover:border-[#8B5E3C] hover:bg-[#8B5E3C] hover:text-white shadow-sm hover:shadow-lg">
+                <span class="relative z-10 text-sm uppercase tracking-widest">Select All Sessions</span>
+                <i class="fas fa-plus-circle relative z-10"></i>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div *ngFor="let webinar of upcomingWebinars" class="relative transition-all duration-500"
+                [class.scale-[1.02]]="selectedWebinar?.id === webinar.id"
+                [class.z-10]="selectedWebinar?.id === webinar.id" (click)="selectWebinar(webinar)">
+                <app-webinar-card [image]="webinar.image" [date]="webinar.date" [title]="webinar.title"
+                    [description]="webinar.description" [upcoming]="true" [btnText]="'View Details'"
+                    [selected]="webinar.selected" (selectionToggle)="toggleWebinarSelection(webinar)">
+                </app-webinar-card>
+            </div>
+        </div>
+    </section>
+</div>

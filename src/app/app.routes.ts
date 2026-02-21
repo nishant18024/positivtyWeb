@@ -24,6 +24,7 @@ import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { TermsOfUseComponent } from './pages/terms-of-use/terms-of-use.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { WebinarComponent } from './pages/webinar/webinar.component';
+import { WebinarRegistrationComponent } from './pages/webinar-registration/webinar-registration.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -52,4 +53,5 @@ export const routes: Routes = [
     { path: 'terms-of-use', component: TermsOfUseComponent },
     { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
     { path: 'webinars', component: WebinarComponent },
+    { path: 'webinar-registration', component: WebinarRegistrationComponent },
 ];

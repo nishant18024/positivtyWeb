@@ -1,0 +1,27 @@
+:host {
+    display: block;
+    height: 100%;
+}
+
+.border-primary {
+    border-color: #8B5E3C !important;
+}
+
+.bg-primary {
+    background-color: #8B5E3C !important;
+}
+
+.text-primary {
+    color: #8B5E3C !important;
+}
+
+.text-brown-900 {
+    color: #4E342E !important;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
