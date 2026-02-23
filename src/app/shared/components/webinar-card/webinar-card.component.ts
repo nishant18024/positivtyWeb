@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-webinar-card',
@@ -15,4 +15,11 @@ export class WebinarCardComponent {
   @Input() recorded: boolean = false;
   @Input() upcoming: boolean = false;
   @Input() btnText!: string;
+  @Input() selected: boolean = false;
+  @Output() selectionToggle = new EventEmitter<void>();
+
+  onToggle(event: Event) {
+    event.stopPropagation();
+    this.selectionToggle.emit();
+  }
 }
