@@ -1,0 +1,28 @@
+<div
+  class="relative bg-[#fed591] rounded-[10px_70px_10px_40px] px-8 py-3 border border-[#d4a45c] shadow-[6px_6px_0px_#8b6a5c] max-h-[320px]"
+>
+  <!-- Top Decoration -->
+  <div class="flex items-center mb-4 justify-center text-center">
+    <span class="w-2 h-2 bg-[#8b6a5c] rounded-full mr-3"></span>
+    <div class="h-[2px] w-20 bg-[#8b6a5c]"></div>
+  </div>
+
+  <!-- Title -->
+  <h3 class="text-2xl font-serif mb-2 text-[#2a2a2a]">
+    {{ title }}
+  </h3>
+
+  <!-- Items -->
+  <ul class="space-y-2 text-[#5c4033]">
+    <li *ngFor="let item of items" class="flex gap-3">
+      <span>✷</span>
+      <span>{{ item }}</span>
+    </li>
+  </ul>
+
+  <!-- Bottom Decoration -->
+  <div class="flex items-center mt-4 justify-center text-center">
+    <div class="h-[2px] w-16 bg-[#8b6a5c]"></div>
+    <span class="w-2 h-2 bg-[#8b6a5c] rounded-full ml-3"></span>
+  </div>
+</div>

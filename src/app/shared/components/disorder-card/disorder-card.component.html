@@ -1,0 +1,29 @@
+<div
+  class="flex md:flex-row items-center border border-dashed border-[#8b6a5c] rounded-3xl p-6 md:gap-10 gap-2 bg-[#fffdf9]"
+  [ngClass]="{
+    'flex-row-reverse md:flex-row-reverse': reverse,
+  }"
+>
+  <!-- Image -->
+  <div class="flex-shrink-0">
+    <div
+      class="md:w-20 md:h-26 w-14 h-20 rounded-b-full overflow-hidden shadow-lg border-t-4 border-[#d8a55a]"
+    >
+      <img [src]="image" [alt]="title" class="w-full h-full object-cover" />
+    </div>
+  </div>
+
+  <!-- Divider (Desktop only) -->
+  <div class="h-28 border-l border-dotted border-[#8b6a5c]"></div>
+
+  <!-- Text -->
+  <div class="flex-1 text-center md:text-left">
+    <h3 class="text-sm md:text-2xl font-semibold text-[#3f2d28] md:mb-4 mb-1">
+      {{ title }}
+    </h3>
+
+    <p class="text-[#5a423a] leading-relaxed text-[10px] md:text-base">
+      {{ description }}
+    </p>
+  </div>
+</div>

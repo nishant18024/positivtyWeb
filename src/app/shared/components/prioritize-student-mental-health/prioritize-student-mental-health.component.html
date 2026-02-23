@@ -1,0 +1,75 @@
+<section class="bg-[#fef3de] px-10 py-16">
+  <div class="max-w-[1100px] mx-auto flex flex-wrap items-center gap-14">
+
+    <!-- Left Content -->
+    <div class="flex-1 min-w-[280px]">
+      <h2
+        class="font-['Playfair_Display'] text-[#5a3825] text-[2.5rem] leading-[1.2] font-semibold mb-3"
+      >
+        Why Prioritize<br />Student Mental<br />Health?
+      </h2>
+      <h4 class="text-[1.05rem] font-bold text-[#333] mb-4">
+        A Necessity, Not an Option!
+      </h4>
+      <p class="text-[#555] leading-[1.75] text-[0.97rem] max-w-[460px]">
+        Mental health is a cornerstone of a child's overall development and
+        academic success. Ignoring it creates barriers that hinder growth,
+        learning, and thriving in new environments. The numbers speak
+        volumes – while some students navigate the challenges of education
+        seamlessly, many others grapple with anxiety, depression, and stress.
+      </p>
+    </div>
+
+    <!-- Right Carousel -->
+    <div class="flex-1 min-w-[300px] flex items-center gap-5 justify-center">
+
+      <!-- Prev Button -->
+      <button
+        (click)="manualPrev()"
+        class="w-10 h-10 rounded-full border-[1.5px] border-[#a0795a] bg-transparent text-[#a0795a] flex items-center justify-center text-xl cursor-pointer flex-shrink-0 hover:bg-[#f0dcc2] transition-colors duration-200"
+        aria-label="Previous card"
+      >
+        &#x2039;
+      </button>
+
+      <!-- Card + Dots wrapper -->
+      <div class="flex-1 max-w-[360px] flex flex-col gap-4">
+
+        <!-- Card with fade transition -->
+        <div
+          class="transition-opacity duration-300"
+          [class.opacity-0]="isTransitioning"
+          [class.opacity-100]="!isTransitioning"
+        >
+          <app-mental-health-card
+            [title]="currentCard.title"
+            [points]="currentCard.points"
+          />
+        </div>
+
+        <!-- Dot Indicators -->
+        <div class="flex justify-center gap-2 mt-1">
+          <button
+            *ngFor="let card of mentalHealthCards; let i = index"
+            (click)="goTo(i)"
+            [class]="i === currentIndex
+              ? 'w-2.5 h-2.5 rounded-full bg-[#8b6a5c] transition-colors duration-200'
+              : 'w-2.5 h-2.5 rounded-full bg-[#c9a98a] transition-colors duration-200 hover:bg-[#a0795a]'"
+            [attr.aria-label]="'Go to card ' + (i + 1)"
+          ></button>
+        </div>
+
+      </div>
+
+      <!-- Next Button -->
+      <button
+        (click)="manualNext()"
+        class="w-10 h-10 rounded-full border-[1.5px] border-[#a0795a] bg-transparent text-[#a0795a] flex items-center justify-center text-xl cursor-pointer flex-shrink-0 hover:bg-[#f0dcc2] transition-colors duration-200"
+        aria-label="Next card"
+      >
+        &#x203a;
+      </button>
+
+    </div>
+  </div>
+</section>

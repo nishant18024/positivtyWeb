@@ -105,31 +105,31 @@ export class GiftASessionComponent {
   faqs = [
     {
       q: 'How does Gift-a-Session work?',
-      a: 'Simply fill the invitation form, review the details and pay the amount to send an e-coupon to your receiver’s email alias. We will notify the receiver and send them a coupon for the exact amount you paid for. Your receiver will be able to book their mental health session online by registering on our platform, searching for a therapist, choosing therapy services, picking a time slot and booking a session. The recipient will not need to pay should your coupon cover the cost of the therapy session. If the cost of the therapy session exceeds the coupon value, the recipient, will need top up the difference.'
+      a: ['Simply fill the invitation form, review the details and pay the amount to send an e-coupon to your receiver’s email alias. We will notify the receiver and send them a coupon for the exact amount you paid for. Your receiver will be able to book their mental health session online by registering on our platform, searching for a therapist, choosing therapy services, picking a time slot and booking a session. The recipient will not need to pay should your coupon cover the cost of the therapy session. If the cost of the therapy session exceeds the coupon value, the recipient, will need top up the difference.']
     },
     {
       q: 'Can the recipient choose their own therapist?',
-      a: 'Yes! When you gift a session through Positivty, the recipient has the freedom to choose from our network of professional therapists, ensuring they find the right professional to address their specific needs. You can review therapist profiles and choose based on their specialization, gender, experience, and availability.'
+      a: ['Yes! When you gift a session through Positivty, the recipient has the freedom to choose from our network of professional therapists, ensuring they find the right professional to address their specific needs. You can review therapist profiles and choose based on their specialization, gender, experience, and availability.']
     },
     {
       q: 'How much does a Positivty gift-a-session cost?',
-      a: 'Yes, therapy sessions on Positivty are affordable and designed to be accessible to everyone. We offer competitive pricing, so you can gift mental health support without worrying about high costs, ensuring your loved one gets the help they need. Check each therapist’s pricing options to find the right therapist for you.'
+      a: ['Yes, therapy sessions on Positivty are affordable and designed to be accessible to everyone. We offer competitive pricing, so you can gift mental health support without worrying about high costs, ensuring your loved one gets the help they need. Check each therapist’s pricing options to find the right therapist for you.']
     },
     {
       q: 'Can the therapy session be rescheduled?',
-      a: 'Yes, the therapy sessions can be rescheduled by the recipient. However, it is subjected to conditions.'
+      a: ['Yes, the therapy sessions can be rescheduled by the recipient. However, it is subjected to conditions.']
     },
     {
       q: 'Is online therapy as effective as in-person therapy?',
-      a: 'Yes! Our licensed therapists offer high-quality, secure, and confidential online therapy sessions, delivering the same or higher level of care as face-to-face therapy.'
+      a: ['Yes! Our licensed therapists offer high-quality, secure, and confidential online therapy sessions, delivering the same or higher level of care as face-to-face therapy.']
     },
     {
       q: 'Will the recipient have to pay any amount after I make the payment?',
-      a: 'In case the recipient chooses a therapy session which is of higher value than the amount of the coupon, the recipient will be required to top up the amount to complete the transaction and successfully book a session. Alternatively, the recipient can choose a therapist or a session that is priced lower.'
+      a: ['In case the recipient chooses a therapy session which is of higher value than the amount of the coupon, the recipient will be required to top up the amount to complete the transaction and successfully book a session. Alternatively, the recipient can choose a therapist or a session that is priced lower.']
     },
     {
       q: 'What mental health concerns can therapy help with?',
-      a: 'Our therapists can help with a wide range of issues, including stress, anxiety, depression, relationship problems, trauma, emotional and behavioural changes, relationship challenges, and more.'
+      a: ['Our therapists can help with a wide range of issues, including stress, anxiety, depression, relationship problems, trauma, emotional and behavioural changes, relationship challenges, and more.']
     },
   ];
 

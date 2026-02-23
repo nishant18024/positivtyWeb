@@ -1,0 +1,58 @@
+<div class="relative w-full">
+  <!-- Offset shadow border -->
+  <div
+    class="absolute inset-0 border-2 border-[#8b6a5c] rounded-3xl translate-x-2 translate-y-2"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Main card -->
+  <div
+    class="relative bg-[#f3f3f3] border-2 border-[#8b6a5c] rounded-3xl p-8"
+    role="region"
+    [attr.aria-label]="title"
+  >
+    <h3 class="text-[1.05rem] font-bold text-left text-[#3f2d28] mb-7">
+      {{ title }}
+    </h3>
+
+    <ng-container *ngIf="hasPoints; else emptyState">
+      <ol class="space-y-6">
+        <li
+          *ngFor="let point of points; let i = index"
+          class="flex gap-4 items-start"
+        >
+          <!-- Circle number with offset shadow -->
+          <div class="relative flex-shrink-0 w-10 h-10 mt-0.5">
+            <div
+              class="absolute w-8 h-8 bg-[#e8dcc6] rounded-full right-[-5px] bottom-[-5px]"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="relative z-10 w-10 h-10 flex items-center justify-center border-[1.5px] border-[#8b6a5c] rounded-full text-[#6e4f43] font-semibold text-sm bg-[#f3f3f3]"
+              aria-hidden="true"
+            >
+              {{ i + 1 }}
+            </div>
+          </div>
+
+          <!-- Point text -->
+          <p class="text-[#4e3a33] text-[0.93rem] leading-relaxed pt-1.5">
+            {{ point.text }}
+            <span
+              *ngIf="point.source"
+              class="block text-[#8b6a5c] mt-1 text-xs"
+            >
+              (Source: {{ point.source }})
+            </span>
+          </p>
+        </li>
+      </ol>
+    </ng-container>
+
+    <ng-template #emptyState>
+      <p class="text-center text-[#8b6a5c] italic text-sm">
+        No information available.
+      </p>
+    </ng-template>
+  </div>
+</div>

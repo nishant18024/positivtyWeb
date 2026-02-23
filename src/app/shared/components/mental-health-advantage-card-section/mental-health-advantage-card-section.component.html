@@ -1,0 +1,62 @@
+<section
+  class="bg-[#e9dcc6] py-8 px-6 md:px-28 relative overflow-hidden"
+>
+  <div class="max-w-7xl mx-auto text-center">
+    <!-- Heading -->
+    <h2
+      class="text-2xl md:text-3xl font-serif text-[#7a5b50] mb-6 leading-snug"
+    >
+      The Mental Health Advantage for Schools<br />
+      & Universities
+    </h2>
+
+    <p
+      class="text-gray-700 max-w-4xl mx-auto leading-relaxed text-sm md:text-md mb-16"
+    >
+      When schools and universities prioritize the mental well-being of their
+      students, they cultivate an environment where academic, personal, and
+      community success flourishes. Good mental health isn’t just a benefit -
+      it’s the foundation of a growing institution. Here’s how focusing on
+      mental health benefits both students and the institutions that nurture
+      them
+    </p>
+
+    <!-- SLIDER CONTAINER -->
+    <div class="relative">
+      <!-- Left Button -->
+      <button
+        (click)="prev()"
+        class="absolute -left-4 md:-left-10 top-1/2 -translate-y-1/2 z-20 bg-white border border-[#7a5b50] text-[#7a5b50] w-10 h-10 rounded-full flex items-center justify-center shadow hover:bg-[#7a5b50] hover:text-white transition"
+      >
+        ‹
+      </button>
+
+      <!-- Slider Track -->
+      <div class="overflow-hidden">
+        <div
+          class="flex transition-transform duration-700 ease-in-out"
+          [style.transform]="'translateX(-' + currentTranslate + '%)'"
+        >
+          <div
+            *ngFor="let item of advantagesCards"
+            class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
+          >
+            <app-mental-health-advantage-card
+              [title]="item.title"
+              [description]="item.desc"
+            >
+            </app-mental-health-advantage-card>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Button -->
+      <button
+        (click)="next()"
+        class="absolute -right-4 md:-right-10 top-1/2 -translate-y-1/2 z-20 bg-white border border-[#7a5b50] text-[#7a5b50] w-10 h-10 rounded-full flex items-center justify-center shadow hover:bg-[#7a5b50] hover:text-white transition"
+      >
+        ›
+      </button>
+    </div>
+  </div>
+</section>

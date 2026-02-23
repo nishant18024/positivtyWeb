@@ -1,21 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 export interface FaqItem {
   q: string;
-  a: string;
+  a: string[];
 }
 
 @Component({
   selector: 'app-faqs',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './faqs.component.html',
-  styleUrl: './faqs.component.scss'
+  styleUrls: ['./faqs.component.scss']
 })
-
-export class FaqComponent {
-
-
+export class FaqComponent implements OnInit {
 
   @Input() faqs: FaqItem[] = [];
   @Input() defaultOpenIndex: number = -1;

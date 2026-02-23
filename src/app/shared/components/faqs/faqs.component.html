@@ -1,14 +1,16 @@
-<div class="space-y-4">
+<div class="space-y-4 mt-8">
   <div
     *ngFor="let item of faqs; let i = index"
-    class="rounded-lg overflow-hidden bg-white shadow-md mb-3"
+    class="rounded-lg overflow-hidden bg-white shadow-md"
   >
     <!-- Header -->
     <button
       (click)="toggle(i)"
-      class="w-full flex justify-between items-center px-6 py-3 text-left transition-all"
+      class="w-full flex justify-between items-center px-6 py-4 text-left transition-all duration-300"
       [ngClass]="
-        openIndex === i ? 'bg-[#8b6a5a] text-white' : 'bg-white text-[#3b2a23]'
+        openIndex === i
+          ? 'bg-[#8b6a5a] text-white'
+          : 'bg-white text-[#3b2a23]'
       "
     >
       <span class="font-semibold text-lg md:text-xl">
@@ -34,9 +36,13 @@
     <!-- Body -->
     <div
       *ngIf="openIndex === i"
-      class="bg-white px-6 py-6 text-gray-700 leading-relaxed"
+      class="bg-white px-6 py-6 text-gray-700"
     >
-      {{ item.a }}
+      <ul class="list-disc pl-5 space-y-2">
+        <li *ngFor="let desc of item.a">
+          {{ desc }}
+        </li>
+      </ul>
     </div>
   </div>
 </div>
