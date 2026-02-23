@@ -24,11 +24,8 @@ import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { TermsOfUseComponent } from './pages/terms-of-use/terms-of-use.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { WebinarComponent } from './pages/webinar/webinar.component';
-<<<<<<< HEAD
 import { EducationComponent } from './pages/education/education.component';
-=======
 import { WebinarRegistrationComponent } from './pages/webinar-registration/webinar-registration.component';
->>>>>>> 7e48a5df6fd1e1466e7461463169071bf3af0c9b
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -57,9 +54,6 @@ export const routes: Routes = [
     { path: 'terms-of-use', component: TermsOfUseComponent },
     { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
     { path: 'webinars', component: WebinarComponent },
-<<<<<<< HEAD
     { path: 'education', component: EducationComponent },
-=======
     { path: 'webinar-registration', component: WebinarRegistrationComponent },
->>>>>>> 7e48a5df6fd1e1466e7461463169071bf3af0c9b
 ];
