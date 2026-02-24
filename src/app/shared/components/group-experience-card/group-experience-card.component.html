@@ -1,0 +1,47 @@
+<div
+  class="bg-[#ffffff] rounded-2xl shadow-md p-6 border border-[#e6e0d6] hover:shadow-lg transition duration-300"
+>
+  <!-- Header -->
+  <div class="flex items-start gap-3 mb-3">
+    <div class="w-10 h-10 flex items-center justify-center overflow-hidden">
+      <img
+        src="https://www.positivty.com/assets/website/assets/images/support-group/Path%2016%20(1).png"
+        alt="Group Icon"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <div>
+      <h3 class="text-md font-semibold text-[#6b4c35]">
+        {{ group.title }}
+      </h3>
+      <p class="text-xs text-gray-500">{{ group.author }}</p>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <p class="text-sm text-gray-700 leading-relaxed mb-4">
+    {{ group.description }}
+  </p>
+
+  <!-- Members -->
+  <div class="flex items-center text-sm text-gray-600 mb-4">
+    <span class="mr-2">👤</span>
+    {{ group.members }} Members
+  </div>
+
+  <!-- Buttons -->
+  <div class="flex gap-3">
+    <button
+      class="bg-[#8b6457] text-white px-4 py-1.5 rounded-full text-sm hover:bg-[#755145] transition"
+    >
+      Join Group
+    </button>
+
+    <button
+      class="bg-[#8b6457] text-white px-4 py-1.5 rounded-full text-sm hover:bg-[#755145] transition"
+    >
+      View Details
+    </button>
+  </div>
+</div>

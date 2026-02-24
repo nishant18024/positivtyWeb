@@ -1,0 +1,172 @@
+<section
+  class="relative w-full min-h-[70vh] flex items-center justify-center text-center overflow-hidden"
+>
+  <!-- Background Image -->
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style="
+      background-image: url(&quot;https://positivtystaticassets.blob.core.windows.net/images/community/realatpositivty/real-at-banner.png&quot;);
+    "
+  ></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-5xl px-6 md:px-10 text-white py-16 md:py-24">
+    <h1
+      class="text-2xl sm:text-3xl md:text-5xl font-semibold mb-4 leading-tight"
+    >
+      Find Your Community in <br class="hidden md:block" />
+      Resource Groups
+    </h1>
+
+    <p
+      class="text-sm sm:text-base md:text-xl leading-relaxed max-w-2xl mx-auto"
+    >
+      Connect with people who understand. Join or
+      <br class="hidden md:block" />
+      create safe spaces to talk, share, and support one
+      <br class="hidden md:block" />
+      another.
+    </p>
+
+    <!-- Buttons -->
+    <div
+      class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 mt-8"
+    >
+      <button
+        routerLink="/create-group"
+        class="rounded-full bg-[#8b6457] px-6 py-2 text-white text-sm font-medium tracking-wide hover:bg-[#755145] transition duration-200"
+      >
+        Create Your Own Group
+      </button>
+
+      <button
+        routerLink="/browse-groups"
+        class="rounded-full bg-[#8b6457] px-6 py-2 text-white text-sm font-medium tracking-wide hover:bg-[#755145] transition duration-200"
+      >
+        Browse Groups
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#fef2dd] min-h-screen py-6">
+  <div class="max-w-7xl mx-auto px-6 md:px-24">
+    <!-- Heading -->
+    <div class="flex items-center justify-center mb-8 gap-4">
+      <div class="h-px bg-[#8b6457] w-20"></div>
+      <h2 class="text-2xl font-semibold text-[#6b4c35] text-center">
+        Explore your Group Experiences.
+      </h2>
+      <div class="h-px bg-[#8b6457] w-20"></div>
+    </div>
+
+    <!-- Search + Sort -->
+    <div
+      class="flex flex-col lg:flex-row gap-4 mb-6 justify-between items-center"
+    >
+      <!-- Search -->
+      <input
+        type="text"
+        placeholder="Search groups..."
+        [(ngModel)]="search"
+        class="w-full px-4 py-1.5 rounded-xl border border-[#8b6457] bg-white focus:outline-none focus:ring-2 focus:ring-[#8b6457]/40"
+      />
+
+      <!-- Sort -->
+      <div class="flex gap-4 w-full lg:w-auto">
+        <select
+          [(ngModel)]="sortByDate"
+          class="px-4 py-1.5 rounded-full border border-[#8b6457] bg-white"
+        >
+          <option value="">Sort by Date</option>
+          <option value="latest">Latest</option>
+          <option value="oldest">Oldest</option>
+        </select>
+
+        <select
+          [(ngModel)]="sortByMembers"
+          class="px-4 py-2 rounded-full border border-[#8b6457] bg-white"
+        >
+          <option value="">Sort by Members</option>
+          <option value="high">Highest</option>
+          <option value="low">Lowest</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <app-group-experience-card
+        *ngFor="let group of groups"
+        [group]="group"
+      ></app-group-experience-card>
+    </div>
+  </div>
+</section>
+
+<section
+  class="relative w-full overflow-hidden bg-gradient-to-r from-[#4b2e25] to-[#7b5a4e] py-10"
+>
+  <!-- Decorative Top Left Circle -->
+  <div
+    class="absolute -top-6 -left-8 w-38 h-38 bg-[#8b6457]/40 rounded-full flex items-center justify-center"
+  >
+    <img
+      src="https://www.positivty.com/assets/website/assets/images/support-group/Path%2016%20(1).png"
+      alt="Logo"
+      class="w-18 opacity-80"
+    />
+  </div>
+
+  <!-- Decorative Bottom Right Circle -->
+  <div
+    class="absolute -bottom-10 md:-right-10 -right-6 w-38 h-38 bg-[#8b6457]/40 rounded-full flex items-center justify-center"
+  >
+    <img
+      src="https://www.positivty.com/assets/website/assets/images/support-group/Path%2016%20(1).png"
+      alt="Logo"
+      class="w-18 opacity-80"
+    />
+  </div>
+
+  <!-- Center Content -->
+  <div class="relative z-10 max-w-5xl mx-auto text-center px-6">
+    <h2
+      class="text-white text-2xl md:text-3xl font-semibold tracking-wide mb-8"
+    >
+      Join a Circle of Support & Positivity!
+    </h2>
+
+    <button
+      class="px-6 py-1.5 rounded-full border border-white text-white text-sm md:text-base font-medium tracking-wider hover:bg-white hover:text-[#4b2e25] transition duration-300"
+    >
+      JOIN NOW
+    </button>
+  </div>
+</section>
+
+<section class="bg-[#fed591] py-12 overflow-hidden">
+  <h2 class="text-2xl font-semibold text-center mb-10">
+    Explore More from Our Community
+  </h2>
+
+  <!-- Wrapper -->
+  <div
+    class="flex gap-6 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:px-20"
+  >
+    <div
+      class="min-w-[85%] sm:min-w-[70%] md:min-w-[50%] lg:min-w-0"
+      *ngFor="let item of communitycards"
+    >
+      <app-explore-community-card
+        [imageSrc]="item.imageSrc"
+        [imageAlt]="item.imageAlt"
+        [title]="item.title"
+        [description]="item.description"
+        [buttonLabel]="item.buttonLabel"
+        [buttonLink]="item.buttonLink"
+      >
+      </app-explore-community-card>
+    </div>
+  </div>
+</section>
