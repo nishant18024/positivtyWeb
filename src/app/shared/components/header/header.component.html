@@ -31,7 +31,7 @@
         </button>
 
         <!-- Logo -->
-        <a href="/">
+        <a [routerLink]="['/']">
           <img
             src="/assets/Logo.png"
             class="h-10 md:h-14 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
@@ -180,7 +180,9 @@
   >
     <!-- Header -->
     <div class="flex items-center justify-between px-5 h-20 border-b">
-      <img src="/assets/Logo.png" class="h-10" />
+      <a [routerLink]="['/']" (click)="toggleMenu()">
+        <img src="/assets/Logo.png" class="h-10" />
+      </a>
       <button (click)="toggleMenu()" class="text-2xl text-[#7b5a4a]">×</button>
     </div>
 
@@ -205,7 +207,7 @@
         <!-- SUB MENU -->
         <div
           *ngIf="item.dropdown"
-          class="overflow-hidden transition-all duration-300"
+          class="overflow-hidden transition-all duration-300 mb-2"
           [style.maxHeight]="
             activeIndex === i ? getDropdownHeight(item.dropdown) : '0px'
           "
@@ -237,6 +239,7 @@
                     <a
                       *ngFor="let child of sub.children"
                       [routerLink]="child.path"
+                      (click)="toggleMenu()"
                       class="px-3 py-2 rounded-md text-sm transition-all hover:bg-[#7b5a4a]/10 hover:translate-x-1"
                     >
                       {{ child.title }}
@@ -250,6 +253,7 @@
                 *ngIf="!sub.children"
                 [routerLink]="sub.path"
                 [fragment]="sub.fragment"
+                (click)="toggleMenu()"
                 class="block px-3 py-2 rounded-md text-sm transition-all hover:bg-[#7b5a4a]/10 hover:translate-x-1"
               >
                 {{ sub.title }}

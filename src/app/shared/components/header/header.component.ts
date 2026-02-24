@@ -60,7 +60,7 @@ export class HeaderComponent {
   getDropdownHeight(dropdown: any[]): string {
     let height = 0;
     dropdown.forEach((item, index) => {
-      height += 40; // Base height for each item
+      height += 50; // Base height for each item
       if (item.children && this.isNestedOpen(this.activeIndex!, index)) {
         height += item.children.length * 40; // Add height for nested children
       }
@@ -71,7 +71,7 @@ export class HeaderComponent {
   contactItems = [
     {
       title: "Contact Us",
-      path: "/contact"
+      path: "/contact-us"
     },
     {
       title: "Raise An Issue",
@@ -159,9 +159,5 @@ export class HeaderComponent {
       ]
     }
   ];
-
-  // goToAboutDetials() {
-  //   this.router.navigate(['/about']);
-  // }
 
 }
