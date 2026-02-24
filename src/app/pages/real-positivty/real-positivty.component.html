@@ -1,0 +1,142 @@
+<section
+  class="relative w-full md:h-[300px] flex items-center justify-center text-center overflow-hidden"
+>
+  <!-- Background Image -->
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style="
+      background-image: url(&quot;https://positivtystaticassets.blob.core.windows.net/images/community/realatpositivty/real-at-banner.png&quot;);
+    "
+  ></div>
+
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black/20"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-5xl px-6 md:px-10 text-white py-10">
+    <h1 class="text-2xl md:text-3xl font-serif font-semibold mb-2">
+      Real At Positivity
+    </h1>
+
+    <p class="text-lg md:text-md leading-relaxed">
+      Positivty doesn’t mean avoiding tough times — it means finding light even
+      when things feel heavy. At Real At Positivty, we celebrate everyday
+      courage, quiet resilience, and the small wins that often go unnoticed.
+      Read real stories from people who’ve been there, and if you're ready,
+      share your own journey to uplift someone else who might need it.
+    </p>
+  </div>
+</section>
+
+<section class="relative w-full overflow-hidden">
+  <div class="bg-[#fed591] w-full h-3"></div>
+  <!-- Top Brown Section -->
+  <div class="relative bg-[#7b5a4f] py-6 text-center">
+    <!-- Decorative Wave Background -->
+    <div class="absolute inset-0 opacity-20">
+      <svg
+        class="absolute bottom-0 w-full h-40 md:h-56"
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+      >
+        <path
+          fill="#ffffff"
+          fill-opacity="0.2"
+          d="M0,160L120,149.3C240,139,480,117,720,117.3C960,117,1200,139,1320,149.3L1440,160V320H0Z"
+        ></path>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 py-10 text-white">
+      <h2 class="text-2xl md:text-3xl">
+        Everyone has a story. Yours matters more than you think.
+        <br />
+        Help someone feel less alone —
+        <br />
+        share your experience.
+      </h2>
+    </div>
+  </div>
+
+  <!-- Bottom Light Section with Button -->
+  <div class="py-6 flex justify-center">
+    <button
+      class="bg-[#7b5a4f] text-white px-4 py-1 rounded-full shadow-lg hover:scale-105 transition duration-300 font-medium tracking-wide"
+    >
+      SHARE NOW
+    </button>
+  </div>
+</section>
+
+<section class="bg-[#fef2dd] py-10">
+  <h2 class="text-2xl font-semibold text-center mb-8 px-4">
+    Change, Told by Those Who Lived It
+  </h2>
+
+  <div
+    class="relative max-w-6xl mx-auto flex items-center justify-center md:px-24 px-8"
+  >
+    <!-- LEFT BUTTON -->
+    <button
+      (click)="prev()"
+      class="absolute left-0 md:left-12 z-20 border-2 border-[#7b5a4f] text-[#7b5a4f] w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
+    >
+      ◀
+    </button>
+
+    <!-- Testimonial Card -->
+    <app-realatpositivty-testimonal-card
+      class="w-full"
+      [data]="testimonials[currentIndex]"
+    >
+    </app-realatpositivty-testimonal-card>
+
+    <!-- RIGHT BUTTON -->
+    <button
+      (click)="next()"
+      class="absolute right-0 md:right-12 z-20 border-2 border-[#7b5a4f] text-[#7b5a4f] w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
+    >
+      ▶
+    </button>
+  </div>
+</section>
+
+<div>
+  <app-story-form></app-story-form>
+</div>
+
+<section class="py-10 overflow-hidden">
+  <h2 class="text-2xl text-[#836054] font-semibold text-center mb-8 px-4">
+    Explore More from Our Community
+  </h2>
+
+  <!-- Mobile Auto Scroll -->
+  <div #scrollContainer class="md:hidden overflow-x-auto px-4 scroll-smooth">
+    <div class="flex gap-4 w-max">
+      <app-explore-blog-card
+        *ngFor="let blog of blogs"
+        class="min-w-[280px] flex-shrink-0"
+        [imageSrc]="blog.imageSrc"
+        [imageAlt]="blog.imageAlt"
+        [title]="blog.title"
+        [description]="blog.description"
+        [buttonLabel]="blog.buttonLabel"
+        [buttonLink]="blog.buttonLink"
+      ></app-explore-blog-card>
+    </div>
+  </div>
+
+  <!-- Desktop Grid -->
+  <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 px-6 md:px-34">
+    <app-explore-blog-card
+      *ngFor="let blog of blogs"
+      [imageSrc]="blog.imageSrc"
+      [imageAlt]="blog.imageAlt"
+      [title]="blog.title"
+      [description]="blog.description"
+      [buttonLabel]="blog.buttonLabel"
+      [buttonLink]="blog.buttonLink"
+    ></app-explore-blog-card>
+  </div>
+</section>

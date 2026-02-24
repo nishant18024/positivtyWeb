@@ -1,0 +1,110 @@
+<div
+  class="w-full max-w-lg bg-[#fdf9f4] rounded-2xl shadow-lg p-8 border border-[#e8dfd4] animate-fade-in"
+  style="font-family: &quot;Lora&quot;, Georgia, serif"
+>
+  <!-- ── Check icon ── -->
+  <div class="flex flex-col items-center text-center mb-7">
+    <div
+      class="w-16 h-16 rounded-full bg-[#5a3e2b] flex items-center justify-center mb-4 shadow-lg"
+    >
+      <svg
+        class="w-8 h-8 text-white"
+        fill="none"
+        stroke="white"
+        stroke-width="2.5"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5 13l4 4L19 7"
+        />
+      </svg>
+    </div>
+    <h2 class="text-2xl font-bold text-[#5a3e2b]">Story Submitted!</h2>
+    <p class="text-sm text-[#9a7c64] mt-2 max-w-sm leading-relaxed">
+      Thank you for sharing your story with Positivity. We appreciate your
+      contribution and the courage it takes to share your journey.
+    </p>
+  </div>
+
+  <!-- ── Info cards ── -->
+  <div class="grid grid-cols-2 gap-3 mb-4">
+    <div class="info-card">
+      <p class="info-label">Attendee</p>
+      <p class="info-value">{{ fullName || "N/A" }}</p>
+    </div>
+    <div class="info-card">
+      <p class="info-label">Story Title</p>
+      <p class="info-value">{{ formData.storyTitle || "none" }}</p>
+    </div>
+    <div class="info-card">
+      <p class="info-label">Email</p>
+      <p class="info-value break-all">{{ formData.email }}</p>
+    </div>
+    <div class="info-card">
+      <p class="info-label">Date &amp; Time</p>
+      <p class="info-value">{{ formData.submittedAt }}</p>
+    </div>
+  </div>
+
+  <!-- ── Status badge ── -->
+  <div class="flex justify-center mb-6">
+    <span
+      class="bg-[#5a3e2b] text-white text-xs font-semibold px-6 py-1.5 rounded-full tracking-widest shadow"
+    >
+      Status: Submitted
+    </span>
+  </div>
+
+  <!-- ── What happens next ── -->
+  <div class="bg-white border border-[#e8dfd4] rounded-xl p-5 mb-5">
+    <div
+      class="flex items-center gap-2 text-[#5a3e2b] font-semibold text-sm mb-4"
+    >
+      <span>⏰</span>
+      What Happens Next?
+    </div>
+    <ol class="space-y-4">
+      <li
+        *ngFor="let step of steps; let i = index"
+        class="flex items-start gap-3"
+      >
+        <span
+          class="flex-shrink-0 w-6 h-6 rounded-full bg-[#5a3e2b] text-white text-xs flex items-center justify-center font-bold mt-0.5"
+        >
+          {{ i + 1 }}
+        </span>
+        <div>
+          <p class="text-sm font-semibold text-[#5a3e2b]">{{ step.title }}</p>
+          <p class="text-xs text-[#9a7c64] mt-0.5 leading-relaxed">
+            {{ step.desc }}
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ── Footer note ── -->
+  <div
+    class="bg-[#fdf5ec] border border-[#e8dfd4] rounded-xl p-4 text-xs text-[#7a5c44] text-center leading-relaxed mb-6"
+  >
+    Thank you once again for your heartfelt contribution. Your story has the
+    power to inspire others. While we review your submission, feel free to
+    explore other stories, blogs, and resources on our platform.
+  </div>
+
+  <!-- ── Action buttons ── -->
+  <div class="flex gap-3 justify-center">
+    <button
+      class="flex items-center gap-2 border border-[#5a3e2b] text-[#5a3e2b] px-5 py-2 rounded-full text-xs font-semibold tracking-wide hover:bg-[#5a3e2b] hover:text-white transition-all duration-200"
+    >
+      VIEW OTHER STORIES
+    </button>
+    <button
+      class="flex items-center gap-2 bg-[#5a3e2b] text-white px-5 py-2 rounded-full text-xs font-semibold tracking-wide hover:bg-[#4a2e1b] transition-all duration-200"
+    >
+      HOMEPAGE
+    </button>
+  </div>
+</div>

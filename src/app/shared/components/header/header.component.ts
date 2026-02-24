@@ -116,7 +116,7 @@ export class HeaderComponent {
         { title: 'Community Home', path: '/community' },
         { title: 'Webinars', path: 'webinars' },
         { title: 'Blog & Articles', path: '/blog-articles' },
-        { title: 'Real At Positivty', path: '/real-at-positivity' },
+        { title: 'Real At Positivty', path: '/real-positivity' },
         { title: 'Resource Groups', path: '/resource-groups' }
       ]
     },

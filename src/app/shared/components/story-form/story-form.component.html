@@ -1,0 +1,386 @@
+<div
+  class="min-h-screen flex items-center justify-center p-4 sm:p-8"
+  style="font-family: &quot;Lora&quot;, Georgia, serif"
+>
+  @if (!submitted) {
+    <div
+      class="w-full max-w-xl bg-[#fdf9f4] rounded-2xl shadow-md p-8 border border-[#e8dfd4]"
+    >
+      <!-- Heading -->
+      <h2 class="text-lg font-bold text-[#5a3e2b] mb-6 flex items-center gap-2">
+        <span class="text-[#c0392b]">⊙</span>
+        Share Your Story
+      </h2>
+
+      <form
+        #storyForm="ngForm"
+        (ngSubmit)="onSubmit(storyForm)"
+        novalidate
+        class="space-y-4"
+      >
+        <!-- Row 1: Salutation | First Name | Last Name -->
+        <div class="grid grid-cols-[100px_1fr_1fr] gap-3">
+          <!-- Salutation -->
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-[#5a3e2b]">Salutation</label>
+            <select
+              name="salutation"
+              [(ngModel)]="formData.salutation"
+              class="w-full border border-[#d9ccc0] rounded-lg px-3 py-2 bg-white text-sm text-[#5a3e2b] focus:outline-none focus:ring-2 focus:ring-[#b07d5a]/30"
+            >
+              <option value="">Select</option>
+              <option>Mr.</option>
+              <option>Ms.</option>
+              <option>Mrs.</option>
+              <option>Dr.</option>
+            </select>
+          </div>
+
+          <!-- First Name -->
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-[#5a3e2b]"
+              >First Name <span class="text-red-500">*</span></label
+            >
+            <input
+              type="text"
+              name="firstName"
+              [(ngModel)]="formData.firstName"
+              required
+              placeholder="First Name"
+              #firstName="ngModel"
+              [class]="
+                'w-full border rounded-lg px-3 py-2 bg-white text-sm text-[#5a3e2b] placeholder-[#c8b8a8] focus:outline-none focus:ring-2 focus:ring-[#b07d5a]/30 ' +
+                (firstName.invalid && firstName.touched
+                  ? 'border-red-400'
+                  : 'border-[#d9ccc0]')
+              "
+            />
+            @if (firstName.invalid && firstName.touched) {
+              <p class="text-xs text-red-500">Required</p>
+            }
+          </div>
+
+          <!-- Last Name -->
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-[#5a3e2b]"
+              >Last Name <span class="text-red-500">*</span></label
+            >
+            <input
+              type="text"
+              name="lastName"
+              [(ngModel)]="formData.lastName"
+              required
+              placeholder="Last Name"
+              #lastName="ngModel"
+              [class]="
+                'w-full border rounded-lg px-3 py-2 bg-white text-sm text-[#5a3e2b] placeholder-[#c8b8a8] focus:outline-none focus:ring-2 focus:ring-[#b07d5a]/30 ' +
+                (lastName.invalid && lastName.touched
+                  ? 'border-red-400'
+                  : 'border-[#d9ccc0]')
+              "
+            />
+            @if (lastName.invalid && lastName.touched) {
+              <p class="text-xs text-red-500">Required</p>
+            }
+          </div>
+        </div>
+
+        <!-- Row 2: Contact Number | Email ID -->
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Contact -->
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-[#5a3e2b]"
+              >Contact Number <span class="text-red-500">*</span></label
+            >
+            <div
+              class="flex rounded-lg overflow-hidden border border-[#d9ccc0] bg-white focus-within:ring-2 focus-within:ring-[#b07d5a]/30"
+            >
+              <span
+                class="flex items-center gap-1 px-2 py-2 text-xs text-[#5a3e2b] bg-[#f5ede4] border-r border-[#d9ccc0] whitespace-nowrap select-none"
+              >
+                🇮🇳 +91
+              </span>
+              <input
+                type="tel"
+                name="contactNumber"
+                [(ngModel)]="formData.contactNumber"
+                required
+                placeholder="Contact Number"
+                #contactNumber="ngModel"
+                class="flex-1 px-3 py-2 text-sm text-[#5a3e2b] placeholder-[#c8b8a8] focus:outline-none bg-transparent"
+              />
+            </div>
+            @if (contactNumber.invalid && contactNumber.touched) {
+              <p class="text-xs text-red-500">Required</p>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="flex flex-col gap-1">
+            <label
+              class="text-xs font-medium text-[#5a3e2b] flex items-center gap-1"
+            >
+              Email ID <span class="text-red-500">*</span>
+              <span
+                class="w-4 h-4 rounded-full bg-[#b07d5a] text-white text-[9px] flex items-center justify-center font-bold cursor-help leading-none"
+                title="We'll send a confirmation to this email"
+                >?</span
+              >
+            </label>
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="formData.email"
+              required
+              email
+              placeholder="xyz@gmail.com"
+              #email="ngModel"
+              [class]="
+                'w-full border rounded-lg px-3 py-2 bg-white text-sm text-[#5a3e2b] placeholder-[#c8b8a8] focus:outline-none focus:ring-2 focus:ring-[#b07d5a]/30 ' +
+                (email.invalid && email.touched
+                  ? 'border-red-400'
+                  : 'border-[#d9ccc0]')
+              "
+            />
+            @if (email.invalid && email.touched) {
+              <p class="text-xs text-red-500">Valid email required</p>
+            }
+          </div>
+        </div>
+
+        <!-- Row 3: Upload File | Choose to Post Anonymous -->
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Upload File -->
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-[#5a3e2b]"
+              >Upload File <span class="text-red-500">*</span></label
+            >
+            <label
+              class="flex items-center justify-center gap-2 cursor-pointer border-2 border-dashed border-[#d9ccc0] rounded-lg px-4 py-2.5 bg-white text-sm text-[#9a7c64] hover:bg-[#fdf5ec] hover:border-[#b07d5a] transition duration-150"
+            >
+              <span class="opacity-60">☁</span>
+              <span class="truncate">{{
+                uploadFileName || "Upload File"
+              }}</span>
+              <input
+                type="file"
+                class="hidden"
+                (change)="onFileChange($event, 'upload')"
+              />
+            </label>
+          </div>
+
+          <!-- Anonymous -->
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-[#5a3e2b]"
+              >Choose In to Post Anonymous:
+              <span class="text-red-500">*</span></label
+            >
+            <select
+              name="anonymous"
+              [(ngModel)]="formData.anonymous"
+              required
+              #anonymous="ngModel"
+              [class]="
+                'w-full border rounded-lg px-3 py-2 bg-white text-sm text-[#5a3e2b] focus:outline-none focus:ring-2 focus:ring-[#b07d5a]/30 ' +
+                (anonymous.invalid && anonymous.touched
+                  ? 'border-red-400'
+                  : 'border-[#d9ccc0]')
+              "
+            >
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+            @if (anonymous.invalid && anonymous.touched) {
+              <p class="text-xs text-red-500">Required</p>
+            }
+          </div>
+        </div>
+
+        <!-- Row 4: Story Thumbnail (full width) -->
+        <div class="flex flex-col gap-1">
+          <label class="text-xs font-medium text-[#5a3e2b]"
+            >Story Thumbnail <span class="text-red-500">*</span></label
+          >
+          <label
+            class="flex items-center justify-center gap-2 cursor-pointer border-2 border-dashed border-[#d9ccc0] rounded-lg px-4 py-2.5 bg-white text-sm text-[#9a7c64] hover:bg-[#fdf5ec] hover:border-[#b07d5a] transition duration-150 w-full"
+          >
+            <span class="opacity-60">☁</span>
+            <span class="truncate">{{ thumbnailName || "Upload File" }}</span>
+            <input
+              type="file"
+              accept="image/*"
+              class="hidden"
+              (change)="onFileChange($event, 'thumbnail')"
+            />
+          </label>
+        </div>
+
+        <!-- Row 5: Story Title (full width) -->
+        <div class="flex flex-col gap-1">
+          <label class="text-xs font-medium text-[#5a3e2b]"
+            >Story Title <span class="text-red-500">*</span></label
+          >
+          <input
+            type="text"
+            name="storyTitle"
+            [(ngModel)]="formData.storyTitle"
+            required
+            placeholder="Story Title"
+            #storyTitle="ngModel"
+            [class]="
+              'w-full border rounded-lg px-3 py-2 bg-white text-sm text-[#5a3e2b] placeholder-[#c8b8a8] focus:outline-none focus:ring-2 focus:ring-[#b07d5a]/30 ' +
+              (storyTitle.invalid && storyTitle.touched
+                ? 'border-red-400'
+                : 'border-[#d9ccc0]')
+            "
+          />
+          @if (storyTitle.invalid && storyTitle.touched) {
+            <p class="text-xs text-red-500">Required</p>
+          }
+        </div>
+
+        <!-- Story Editor -->
+        <div class="flex flex-col gap-1">
+          <label class="text-xs font-medium text-[#5a3e2b]">Story:</label>
+          <div
+            class="rounded-lg overflow-hidden border border-[#d9ccc0] bg-white"
+          >
+            <!-- Menu bar -->
+            <div
+              class="flex gap-3 px-3 py-1.5 bg-[#fdf5ec] border-b border-[#e8dfd4] text-xs text-[#7a5c44]"
+            >
+              @for (item of menuItems; track item) {
+                <span
+                  class="hover:text-[#5a3e2b] cursor-pointer transition-colors"
+                  >{{ item }}</span
+                >
+              }
+            </div>
+            <!-- Toolbar -->
+            <div
+              class="flex items-center gap-0.5 px-2 py-1.5 bg-[#fdf5ec] border-b border-[#e8dfd4] flex-wrap"
+            >
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                ↩
+              </button>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                ↪
+              </button>
+              <span
+                class="mx-1 text-[10px] text-[#7a5c44] border border-[#d9ccc0] rounded px-1.5 py-0.5 cursor-pointer hover:bg-[#e8dfd4] transition"
+                >Paragraph ▾</span
+              >
+              <span class="w-px h-4 bg-[#d9ccc0] mx-1"></span>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-sm font-bold text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                B
+              </button>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-sm italic text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                I
+              </button>
+              <span class="w-px h-4 bg-[#d9ccc0] mx-1"></span>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                ⬛
+              </button>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                ≡
+              </button>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                ≣
+              </button>
+              <span class="w-px h-4 bg-[#d9ccc0] mx-1"></span>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                •
+              </button>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                1.
+              </button>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                ⬅
+              </button>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                ➡
+              </button>
+              <span class="w-px h-4 bg-[#d9ccc0] mx-1"></span>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                🔗
+              </button>
+              <button
+                type="button"
+                class="w-6 h-6 flex items-center justify-center rounded text-xs text-[#5a3e2b] hover:bg-[#e8dfd4] transition"
+              >
+                ⊞
+              </button>
+            </div>
+            <!-- Textarea -->
+            <textarea
+              name="story"
+              [(ngModel)]="formData.story"
+              rows="6"
+              class="w-full px-3 py-2 text-sm text-[#5a3e2b] placeholder-[#c8b8a8] focus:outline-none resize-none bg-white"
+            ></textarea>
+            <!-- Status bar -->
+            <div
+              class="flex items-center justify-between px-3 py-1 bg-[#fdf5ec] border-t border-[#e8dfd4] text-[10px] text-[#b0a090]"
+            >
+              <span>p</span>
+              <span>0 WORDS · POWERED BY TINY</span>
+              <span class="text-[#b07d5a] cursor-se-resize select-none">⇲</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="flex justify-center pt-2">
+          <button
+            type="submit"
+            class="bg-[#6b4c35] hover:bg-[#5a3e2b] active:scale-95 text-white font-semibold px-10 py-2.5 rounded-full text-sm tracking-widest shadow transition-all duration-200"
+          >
+            SUBMIT
+          </button>
+        </div>
+      </form>
+    </div>
+  }
+  @if (submitted) {
+    <h2>Thank you for sharing your story!</h2>
+    <app-story-success [formData]="formData" [fullName]="fullName" />
+  }
+</div>

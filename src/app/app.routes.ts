@@ -26,6 +26,7 @@ import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-
 import { WebinarComponent } from './pages/webinar/webinar.component';
 import { EducationComponent } from './pages/education/education.component';
 import { WebinarRegistrationComponent } from './pages/webinar-registration/webinar-registration.component';
+import { RealPositivtyComponent } from './pages/real-positivty/real-positivty.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -56,4 +57,5 @@ export const routes: Routes = [
     { path: 'webinars', component: WebinarComponent },
     { path: 'education', component: EducationComponent },
     { path: 'webinar-registration', component: WebinarRegistrationComponent },
+    { path: 'real-positivity', component: RealPositivtyComponent },
 ];

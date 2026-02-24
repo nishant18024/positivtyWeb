@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { MentalHealthAdvantageCardComponent } from "../mental-health-advantage-card/mental-health-advantage-card.component";
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +13,7 @@ export class MentalHealthAdvantageCardSectionComponent implements OnInit, OnDest
   advantagesCards = [
     {
       title: 'Holistic Personal Development',
-      desc: 'Mental health programs help students develop resilience, coping mechanisms, and emotional intelligence. These skills don’t just support them academically - they become lifelong assets for personal and professional growth.'
+      desc: "Mental health programs help students develop resilience, coping mechanisms, and emotional intelligence. These skills don't just support them academically - they become lifelong assets for personal and professional growth."
     },
     {
       title: 'Effective Crisis Prevention',
@@ -44,7 +45,7 @@ export class MentalHealthAdvantageCardSectionComponent implements OnInit, OnDest
     },
     {
       title: 'Holistic Personal Development',
-      desc: 'Mental health programs help students develop resilience, coping mechanisms, and emotional intelligence. These skills don’t just support them academically - they become lifelong assets for personal and professional growth.'
+      desc: "Mental health programs help students develop resilience, coping mechanisms, and emotional intelligence. These skills don't just support them academically - they become lifelong assets for personal and professional growth."
     },
     {
       title: 'Effective Crisis Prevention',
@@ -56,10 +57,11 @@ export class MentalHealthAdvantageCardSectionComponent implements OnInit, OnDest
     },
   ];
 
-
   currentIndex = 0;
   cardsToShow = 3;
   intervalId: any;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit() {
     this.updateCardsToShow();
@@ -72,14 +74,17 @@ export class MentalHealthAdvantageCardSectionComponent implements OnInit, OnDest
 
   @HostListener('window:resize')
   updateCardsToShow() {
+    // Guard against SSR - window doesn't exist on the server
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const width = window.innerWidth;
 
     if (width < 768) {
-      this.cardsToShow = 1; // mobile
+      this.cardsToShow = 1;
     } else if (width < 1024) {
-      this.cardsToShow = 2; // tablet
+      this.cardsToShow = 2;
     } else {
-      this.cardsToShow = 3; // desktop
+      this.cardsToShow = 3;
     }
   }
 
@@ -91,7 +96,7 @@ export class MentalHealthAdvantageCardSectionComponent implements OnInit, OnDest
     if (this.currentIndex < this.advantagesCards.length - this.cardsToShow) {
       this.currentIndex++;
     } else {
-      this.currentIndex = 0; // loop
+      this.currentIndex = 0;
     }
   }
 
@@ -108,7 +113,4 @@ export class MentalHealthAdvantageCardSectionComponent implements OnInit, OnDest
       this.next();
     }, 3000);
   }
-
-
 }
-
