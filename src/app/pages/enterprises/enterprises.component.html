@@ -1,0 +1,194 @@
+<section
+  class="relative bg-cover bg-center bg-no-repeat overflow-hidden"
+  [style.background-image]="
+    'url(https://positivtystaticassets.blob.core.windows.net/images/banner/EnterprisesBanner.jpeg)'
+  "
+>
+  <div class="container mx-auto px-6 py-4 md:py-10">
+    <div class="items-center">
+      <!-- Content -->
+      <div class="z-10 md:pl-10">
+        <h2
+          class="text-white text-xl md:text-3xl font-bold leading-relaxed mb-4"
+        >
+          Strong <br class="block md:hidden" />
+          Minds,<br />
+          Stronger <br class="block md:hidden" />
+          Workplaces
+        </h2>
+
+        <div class="space-y-1 text-[#D1D1D0] text-sm md:text-md">
+          <p>
+            Every employee has a story, <br />
+            a struggle, and a potential waiting to <br />
+            be nurtured. Some may be silently carrying <br />
+            burdens you don’t share, but you can make a difference. Positivty's
+            <br />
+            tailored mental wellness program provides your workforce with the
+            tools <br />
+            you need to grow, heal, and excel. Invest in their well-being today!
+          </p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex flex-wrap gap-4 mt-6">
+          <button
+            class="px-6 py-2 border border-white text-white rounded-full uppercase text-sm hover:bg-white hover:text-black transition hover:scale-110 duration-300"
+          >
+            Book Now
+          </button>
+
+          <button
+            routerLink="/contact-us"
+            class="px-6 py-2 bg-[#836054] text-white rounded-full uppercase text-sm shadow-md hover:opacity-90 transition hover:scale-110 duration-300"
+          >
+            Enquire Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-6 mx-auto px-6 max-w-6xl">
+  <div class="text-center md:px-20 justify-center">
+    <!-- Heading -->
+    <h3 class="text-2xl font-semibold text-[#705146] mb-4">
+      75% of employees face mental health challenges
+      <span class="block md:inline">but don’t seek help</span>
+    </h3>
+
+    <!-- Description -->
+    <p class="text-gray-700 mb-8 max-w-3xl">
+      Workplaces are becoming silent battlegrounds for mental health issues,
+      with employees facing challenges like stress, anxiety, and burnout. The
+      impact is clear from recent findings:
+    </p>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div
+      *ngFor="let item of workplaceCards; trackBy: trackByIndex"
+      class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-[#EADBC8] border-l-[#836054] hover:shadow-xl transition duration-300"
+    >
+      <h4 class="text-lg md:text-xl font-semibold text-[#705146] mb-2">
+        {{ item.title }}
+      </h4>
+
+      <p class="text-gray-600 text-sm leading-relaxed">
+        {{ item.description }}
+      </p>
+    </div>
+  </div>
+  <p class="text-md py-4 justify-center text-center">
+    Despite these alarming statistics, many employees hesitate to seek help due
+    to stigma or limited access to care. This highlights the urgent need for
+    organizations to create environments that prioritize mental health and
+    provide support systems for their workforce.
+  </p>
+</section>
+
+<section class="bg-[#fef2dd] py-10 px-6">
+  <div class="max-w-4xl mx-auto text-center justify-center">
+    <h2 class="text-2xl md:text-3xl font-semibold text-[#6b3f2b] mb-4">
+      Stigma Surrounding Mental Health
+    </h2>
+
+    <p class="text-gray-700 leading-relaxed text-base md:text-md">
+      The stigma associated with mental health remains one of the biggest
+      barriers preventing individuals from speaking up and seeking help. This
+      stigma, both external and internal, creates a culture of silence, leaving
+      many employees to struggle alone. Organizations often remain unaware of
+      the emotional struggles their workforce faces, further compounding the
+      issue.
+    </p>
+  </div>
+
+  <!-- card part -->>
+  <div class="px-4 md:px-6 py-10 overflow-hidden">
+    <div class="max-w-5xl mx-auto flex flex-col gap-10">
+      @for (card of cards; track card.id; let i = $index) {
+        <app-enterprises-info-card [card]="card" [index]="i" />
+      }
+    </div>
+  </div>
+
+  <!-- footer text -->
+  <div class="max-w-3xl mx-auto text-center justify-center">
+    <p class="text-gray-700 leading-relaxed text-base md:text-md mb-6">
+      These statistics emphasize a critical truth: there is no health without
+      mental health (WHO). Overcoming these stigmas and barriers requires a
+      collective effort, led by organizations that prioritize mental wellness
+      and foster a culture of understanding and support.
+    </p>
+    <p class="text-gray-700 leading-relaxed text-base md:text-md font-semibold">
+      <i class="fa-solid fa-star text-[#836054]"></i>
+      Source: AON 2023 Asia Mental Health Index Report.
+    </p>
+  </div>
+</section>
+
+<section class="py-6 mx-auto px-5 max-w-5xl flex flex-col md:flex-row gap-8">
+  <div>
+    <h3 class="text-3xl md:text-4xl mb-2 md:mb-4">
+      Understanding Mental Health
+    </h3>
+    <p class="text-md md:text-lg">
+      Mental health conditions affect millions globally, yet many remain unaware
+      of their prevalence and impact. It’s crucial to foster understanding to
+      build a supportive community. Here, we demystify some of the most common
+      mental health issues, promoting awareness and understanding.
+    </p>
+  </div>
+  <!-- RIGHT SIDE PILLS -->
+  <div class="relative flex flex-wrap gap-4 justify-center">
+    <ng-container *ngFor="let item of heroBtnList; let i = index">
+      <div
+        class="group relative"
+        (mouseenter)="activeIndex = i"
+        (mouseleave)="activeIndex = null"
+      >
+        <!-- Pill Button -->
+        <div
+          class="px-6 py-3 rounded-[20px] border border-[#8b6457] text-[#8b6457] font-medium text-sm tracking-wide whitespace-nowrap cursor-pointer transition-all duration-300 hover:bg-[#8b6457] hover:text-white"
+        >
+          {{ truncateTitle(item.title) }}
+        </div>
+
+        <!-- Hover Card -->
+        <div
+          *ngIf="activeIndex === i"
+          class="absolute z-20 top-full mt-4 w-80 rounded-2xl border border-[#e6d5cc] bg-white shadow-xl p-5 animate-fadeSlide"
+        >
+          <h4 class="text-[#4a2f2a] font-semibold mb-2">
+            {{ item.title }}
+          </h4>
+
+          <p class="text-sm text-gray-600 leading-relaxed">
+            {{ item.desc }}
+          </p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>
+
+<section class="px-6">
+  <h2>Comprehensive Care Tailored to Your Workforce’s Needs</h2>
+  <p>
+    At Positivty, we understand that every organization is unique, just like the
+    individuals within it. Our programs are designed to address the mental
+    wellness needs of diverse teams through professional expertise, personalized
+    care, and cultural sensitivity.
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 md:px-14 py-4 gap-4">
+    <app-enterprises-care-card
+      *ngFor="let item of careCards"
+      [title]="item.title"
+      [description]="item.desc"
+      [icon]="item.icon"
+    >
+    </app-enterprises-care-card>
+  </div>
+</section>

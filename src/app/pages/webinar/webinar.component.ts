@@ -29,6 +29,7 @@ export class WebinarComponent implements AfterViewInit {
       btnText: 'Watch Now',
       title: 'The Curse of the Digital Age: Decoding Anxiety and Depression',
       description: "Join Positivity's Webinar on Depression and Anxiety and hear from our experts!",
+
     },
     {
       image: 'https://positivtystaticassets.blob.core.windows.net/images/community/communityhome/webinars-img.jpg',

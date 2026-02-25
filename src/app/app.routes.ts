@@ -29,6 +29,7 @@ import { WebinarRegistrationComponent } from './pages/webinar-registration/webin
 import { RealPositivtyComponent } from './pages/real-positivty/real-positivty.component';
 import { ResourceGroupsComponent } from './pages/resource-groups/resource-groups.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { EnterprisesComponent } from './pages/enterprises/enterprises.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -58,8 +59,13 @@ export const routes: Routes = [
     { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
     { path: 'webinars', component: WebinarComponent },
     { path: 'education', component: EducationComponent },
-    { path: 'webinar-registration', component: WebinarRegistrationComponent },
+    {
+        path: 'webinar-registration',
+        component: WebinarRegistrationComponent,
+        data: { hideLayout: true }
+    },
     { path: 'real-positivity', component: RealPositivtyComponent },
     { path: 'resource-groups', component: ResourceGroupsComponent },
     { path: 'contact-us', component: ContactUsComponent },
+    { path: 'enterprises', component: EnterprisesComponent },
 ];

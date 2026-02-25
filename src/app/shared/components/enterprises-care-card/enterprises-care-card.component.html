@@ -1,0 +1,48 @@
+<section class="relative py-12 px-6">
+  <div class="max-w-4xl mx-auto relative">
+    <!-- Left Decorative Line -->
+    <div class="absolute -left-8 top-10 hidden md:flex flex-col items-center">
+      <div class="w-1 h-45 bg-[#e7b86a] rounded-full relative">
+        <div
+          class="absolute top-10 -left-1.5 w-4 h-12 bg-[#7b5647] rounded-full"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Main Card -->
+    <div
+      class="relative bg-[#e9e9e9] border-2 border-[#7b5647] rounded-3xl px-8 py-12 shadow-[8px_8px_0px_#e7b86a]"
+    >
+      <!-- Icon Circle -->
+      <div class="absolute -top-18 left-8 rounded-full  bg-[#fef2dd] p-4 border-b-2 border-[#7b5647]">
+        <div class="relative w-24 h-24">
+          <!-- Back Circle -->
+          <div class="absolute inset-0 top-4 left-8 bg-[#000] rounded-full"></div>
+
+          <!-- Front Circle -->
+          <div
+            class="absolute inset-0 bg-[#7b5647] rounded-full flex items-center justify-center shadow-md"
+          >
+            <img
+              *ngIf="icon"
+              [src]="icon"
+              alt="feature icon"
+              class="w-10 h-10 object-contain"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="">
+        <h2 class="text-end text-2xl font-semibold text-[#2d1b14] mb-6 flex-wrap">
+          {{ title }}
+        </h2>
+
+        <p class="text-md text-[#3b2a22] leading-relaxed max-w-2xl mx-auto">
+          {{ description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

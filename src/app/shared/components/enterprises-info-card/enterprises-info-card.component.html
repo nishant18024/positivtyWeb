@@ -1,0 +1,93 @@
+<div class="relative w-full">
+  <div class="relative flex items-center">
+    <!-- IMAGE RIGHT -->
+
+    <div
+      *ngIf="isEven"
+      class="absolute md:-right-8 right-4 md:-top-10 -top-4 z-10"
+    >
+      <div
+        class="md:w-36 md:h-36 w-24 h-24 rounded-full overflow-hidden border-2 border-[#836054] shadow-xl"
+      >
+        <img
+          [src]="card.image"
+          [alt]="card.title"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- IMAGE LEFT -->
+    <div
+      *ngIf="!isEven"
+      class="absolute md:-left-8 left-4 md:-top-10 -top-4 z-10"
+    >
+      <div
+        class="md:w-36 md:h-36 w-24 h-24 rounded-full overflow-hidden border-2 border-[#836054] shadow-xl"
+      >
+        <img
+          [src]="card.image"
+          [alt]="card.title"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- bottom ICON -->
+    <div
+      class="absolute bottom-4 z-10"
+      [class.left-4]="!isEven"
+      [class.right-4]="isEven"
+    >
+      <img
+        src="https://www.positivty.com/assets/website/assets/images/Path21.svg"
+        alt="logo image"
+        class="w-10 opacity-40"
+      />
+    </div>
+
+    <!-- top ICON -->
+    <div
+      class="absolute top-4 z-10"
+      [class.right-4]="!isEven"
+      [class.left-4]="isEven"
+    >
+      <img
+        src="https://www.positivty.com/assets/website/assets/images/Path21.svg"
+        alt="logo image"
+        class="w-10 opacity-40"
+      />
+    </div>
+
+    <!-- CARD -->
+    <div
+      class="relative w-full bg-[#FFFDF7] border-2 border-[#836054] px-8 md:px-14 py-22 md:py-10 md:pl-32 shadow-[0_4px_28px_rgba(139,94,60,0.08)]"
+      [class.rounded-[0_180px_0_180px]]="isEven"
+      [class.rounded-[180px_0_180px_0]]="!isEven"
+    >
+      <!-- Title -->
+      <h2 class="text-[#2C1A0E] md:text-2xl font-bold mb-3">
+        {{ card.title }}
+      </h2>
+
+      <!-- Description -->
+      <p class="text-[#5A3F2B] text-sm leading-relaxed mb-4 max-w-3xl">
+        {{ card.description }}
+      </p>
+
+      <!-- Stats -->
+      <ul class="flex flex-col gap-3 list-none p-0">
+        @for (stat of card.stats; track stat) {
+          <li class="flex items-start gap-2 text-[#4A3020] text-sm">
+            <img
+              src="https://www.positivty.com/assets/website/assets/images/arrow1-removebg-preview.png"
+              alt="arrow icon image"
+              class="w-4 h-6"
+            />
+            <span>{{ stat }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>
