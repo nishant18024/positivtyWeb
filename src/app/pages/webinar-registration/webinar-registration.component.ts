@@ -59,25 +59,71 @@ function phoneValidator(control: AbstractControl): ValidationErrors | null {
     templateUrl: './webinar-registration.component.html',
     styles: [`
         :host ::ng-deep {
-            .p-select {
-                border-radius: 12px 0 0 12px;
-                border: 1px solid rgba(123, 90, 74, 0.25);
-                border-right: none;
-                height: 100%;
-                background: white;
-                width: 100px;
-                &:not(.p-disabled).p-focus {
-                    box-shadow: none;
-                    border-color: #7b5a4a;
+            .country-selector {
+                .p-select {
+                    border-radius: 12px 0 0 12px;
+                    border: 1px solid rgba(123, 90, 74, 0.25);
+                    border-right: none;
+                    background: white;
+                    width: 90px;
+                    transition: all 0.2s;
+                    &:not(.p-disabled).p-focus {
+                        box-shadow: none;
+                        border-color: #7b5a4a;
+                        z-index: 10;
+                    }
+                }
+                .p-select-label {
+                    padding: 0 0.5rem 0 1rem;
+                    font-size: 15px;
+                    color: #7b5a4a;
+                    display: flex;
+                    align-items: center;
+                    height: 54px;
+                    background: transparent;
+                }
+                .p-select-dropdown {
+                    width: 1.5rem;
+                    color: #7b5a4a;
                 }
             }
-            .p-select-label {
-                padding: 0.875rem 0.5rem 0.875rem 1.125rem;
-                font-size: 15px;
-                color: #1e2a22;
+        }
+
+        /* Dark mode overrides for PrimeNG components */
+        :host-context(.dark) ::ng-deep {
+            .country-selector {
+                .p-select {
+                    background: #1f2937; /* gray-800 */
+                    border-color: rgba(255, 255, 255, 0.1);
+                    &:not(.p-disabled).p-focus {
+                        border-color: #c4a090;
+                    }
+                }
+                .p-select-label {
+                    color: #c4a090;
+                }
+                .p-select-dropdown {
+                    color: #c4a090;
+                }
             }
-            .p-select-dropdown {
-                width: 2rem;
+        }
+
+        /* Essential dark mode styles for dropdown overlays */
+        ::ng-deep .p-select-overlay.p-dark {
+            background: #111827 !important; /* gray-900 */
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            
+            .p-select-list-container {
+                .p-select-option {
+                    color: #e5e7eb !important; /* gray-200 */
+                    &:hover {
+                        background: #374151 !important; /* gray-700 */
+                    }
+                    &.p-highlight {
+                        background: rgba(123, 90, 74, 0.2) !important;
+                        color: #c4a090 !important;
+                    }
+                }
             }
         }
     `]
