@@ -1,5 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
 @use "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant p-dark (&:where(.p-dark, .p-dark *));
 
 body {
     font-family: "Playfair Display", serif;

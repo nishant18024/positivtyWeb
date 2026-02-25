@@ -15,14 +15,10 @@ export class ThemeService {
     if (!this.isBrowser) return;
 
     const saved = localStorage.getItem('theme');
-
     if (saved === 'dark') {
       this.enableDark();
-    } else if (saved === 'light') {
-      this.enableLight();
     } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      prefersDark ? this.enableDark() : this.enableLight();
+      this.enableLight();
     }
   }
 
@@ -33,14 +29,18 @@ export class ThemeService {
 
   enableDark() {
     if (!this.isBrowser) return;
-    document.documentElement.classList.add('dark');
+    document.documentElement.classList.add('dark', 'p-dark');
+    document.body.classList.add('dark', 'p-dark');
+    document.documentElement.style.colorScheme = 'dark';
     localStorage.setItem('theme', 'dark');
     this.darkMode$.next(true);
   }
 
   enableLight() {
     if (!this.isBrowser) return;
-    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.remove('dark', 'p-dark');
+    document.body.classList.remove('dark', 'p-dark');
+    document.documentElement.style.colorScheme = 'light';
     localStorage.setItem('theme', 'light');
     this.darkMode$.next(false);
   }

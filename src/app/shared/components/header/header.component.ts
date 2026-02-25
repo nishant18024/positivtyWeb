@@ -23,6 +23,7 @@ export class HeaderComponent {
   }
 
   toggleTheme() {
+    console.log('HeaderComponent: toggleTheme clicked, current isDarkMode:', this.isDarkMode);
     this.theme.toggle();
   }
 
