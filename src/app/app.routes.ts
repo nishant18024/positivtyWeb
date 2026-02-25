@@ -64,7 +64,7 @@ export const routes: Routes = [
         component: WebinarRegistrationComponent,
         data: { hideLayout: true }
     },
-    { path: 'real-positivity', component: RealPositivtyComponent },
+    { path: 'real-positivty', component: RealPositivtyComponent },
     { path: 'resource-groups', component: ResourceGroupsComponent },
     { path: 'contact-us', component: ContactUsComponent },
     { path: 'enterprises', component: EnterprisesComponent },

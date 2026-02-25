@@ -8,6 +8,8 @@ import { PrioritizeStudentMentalHealthComponent } from "../../shared/components/
 import { MentalHealthAdvantageCardSectionComponent } from "../../shared/components/mental-health-advantage-card-section/mental-health-advantage-card-section.component";
 import { AdvancedFunctionalitiesSectionComponent } from "../../shared/components/advanced-functionalities-section/advanced-functionalities-section.component";
 import { FaqComponent, FaqItem } from "../../shared/components/faqs/faqs.component";
+import { Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-education',
@@ -27,6 +29,7 @@ import { FaqComponent, FaqItem } from "../../shared/components/faqs/faqs.compone
 })
 export class EducationComponent implements OnInit, OnDestroy {
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
   // ===============================
   // Silent Struggles Data
   // ===============================
@@ -134,7 +137,9 @@ export class EducationComponent implements OnInit, OnDestroy {
   // ===============================
 
   ngOnInit() {
-    this.startStruggleAutoSlide();
+    if (isPlatformBrowser(this.platformId)) {
+      this.startStruggleAutoSlide();
+    }
   }
 
   ngOnDestroy() {

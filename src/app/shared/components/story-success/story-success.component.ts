@@ -25,7 +25,7 @@ export class StorySuccessComponent {
     },
     {
       title: 'Story Review',
-      desc: 'Our team at Positivity will carefully review your submission to ensure it aligns with our content guidelines.',
+      desc: 'Our team at Positivty will carefully review your submission to ensure it aligns with our content guidelines.',
     },
     {
       title: 'Review Update',
@@ -33,7 +33,7 @@ export class StorySuccessComponent {
     },
     {
       title: 'Story Publication',
-      desc: 'If approved, your story will be published on Positivity.com and shared with our community.',
+      desc: 'If approved, your story will be published on Positivty.com and shared with our community.',
     },
   ];
 }

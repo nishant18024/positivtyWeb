@@ -1,7 +1,5 @@
 <!-- Background texture -->
-<div
-  class="fixed inset-0 pointer-events-none z-0"
-  style="
+<div class="fixed inset-0 pointer-events-none z-0" style="
     background:
       radial-gradient(
         ellipse 80% 60% at 20% 10%,
@@ -18,67 +16,52 @@
         rgba(201, 169, 110, 0.06) 0%,
         transparent 70%
       );
-  "
-></div>
+  "></div>
 
-<div
-  class="relative z-10 bg-[#faf7f2] min-h-screen overflow-x-hidden font-sans"
->
+<div class="relative z-10 bg-[#faf7f2] min-h-screen overflow-x-hidden font-sans">
   <!-- ── HERO ───────────────────────────────────────────────────────────── -->
   <section class="pt-16 pb-12 text-center">
     <div class="max-w-[680px] mx-auto px-6">
       <!-- Live badge -->
       <div
-        class="inline-flex items-center gap-2 bg-[rgba(123,90,74,0.1)] border border-[rgba(123,90,74,0.25)] rounded-full px-4 py-1.5 text-[11px] font-medium text-[#7b5a4a] tracking-[0.08em] uppercase mb-7 animate-[fadeUp_0.6s_ease_both]"
-      >
-        <span
-          class="w-1.5 h-1.5 bg-[#7b5a4a] rounded-full animate-[pulse_2s_ease_infinite]"
-        ></span>
+        class="inline-flex items-center gap-2 bg-[rgba(123,90,74,0.1)] border border-[rgba(123,90,74,0.25)] rounded-full px-4 py-1.5 text-[11px] font-medium text-[#7b5a4a] tracking-[0.08em] uppercase mb-7 animate-[fadeUp_0.6s_ease_both]">
+        <span class="w-1.5 h-1.5 bg-[#7b5a4a] rounded-full animate-[pulse_2s_ease_infinite]"></span>
         Free Monthly Sessions
       </div>
 
       <!-- Eyebrow -->
       <p
-        class="text-[13px] font-medium text-[#7b5a4a] tracking-[0.12em] uppercase mb-4 animate-[fadeUp_0.6s_0.1s_ease_both]"
-      >
-        Positivity Platform
+        class="text-[13px] font-medium text-[#7b5a4a] tracking-[0.12em] uppercase mb-4 animate-[fadeUp_0.6s_0.1s_ease_both]">
+        Positivtylatform
       </p>
 
       <!-- Title -->
       <h1
-        class="font-serif text-[clamp(36px,7vw,58px)] font-normal leading-[1.12] tracking-tight text-[#1e2a22] mb-5 animate-[fadeUp_0.7s_0.15s_ease_both]"
-      >
+        class="font-serif text-[clamp(36px,7vw,58px)] font-normal leading-[1.12] tracking-tight text-[#1e2a22] mb-5 animate-[fadeUp_0.7s_0.15s_ease_both]">
         Join Our Monthly<br />
         <em class="text-[#7b5a4a]">Mental Health</em> Webinars
       </h1>
 
       <!-- Subtitle -->
       <p
-        class="text-[17px] leading-relaxed text-[#7b5a4a] font-light max-w-[480px] mx-auto mb-8 animate-[fadeUp_0.7s_0.25s_ease_both]"
-      >
+        class="text-[17px] leading-relaxed text-[#7b5a4a] font-light max-w-[480px] mx-auto mb-8 animate-[fadeUp_0.7s_0.25s_ease_both]">
         Free. Expert-led. Practical sessions designed to build emotional
         resilience and lasting wellbeing.
       </p>
 
       <!-- Date chip -->
       <div
-        class="inline-block bg-[#e8d5c4] text-[#1e2a22] text-sm font-medium px-5 py-2 rounded-full mb-9 animate-[fadeUp_0.7s_0.3s_ease_both]"
-      >
+        class="inline-block bg-[#e8d5c4] text-[#1e2a22] text-sm font-medium px-5 py-2 rounded-full mb-9 animate-[fadeUp_0.7s_0.3s_ease_both]">
         📅 February 2026 Sessions
       </div>
 
       <!-- CTA -->
       <div class="animate-[fadeUp_0.7s_0.4s_ease_both]">
-        <a
-          href="#register"
-          (click)="scrollToRegister($event)"
-          class="inline-flex items-center gap-2.5 bg-[#7b5a4a] text-white text-base font-medium px-9 py-4 rounded-full transition-all duration-200 no-underline hover:bg-[#9a7060] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(123,90,74,0.35)] active:translate-y-0"
-        >
+        <a href="#register" (click)="scrollToRegister($event)"
+          class="inline-flex items-center gap-2.5 bg-[#7b5a4a] text-white text-base font-medium px-9 py-4 rounded-full transition-all duration-200 no-underline hover:bg-[#9a7060] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(123,90,74,0.35)] active:translate-y-0">
           Reserve My Spot
           <span
-            class="w-5 h-5 inline-flex items-center justify-center bg-white/20 rounded-full text-xs transition-transform duration-200"
-            >→</span
-          >
+            class="w-5 h-5 inline-flex items-center justify-center bg-white/20 rounded-full text-xs transition-transform duration-200">→</span>
         </a>
       </div>
     </div>
@@ -88,211 +71,169 @@
   <section id="register" class="pb-16">
     <div class="max-w-[680px] mx-auto px-6">
       <div
-        class="bg-[#fff9f4] border border-[rgba(123,90,74,0.2)] rounded-3xl p-10 shadow-[0_8px_48px_rgba(123,90,74,0.1)] animate-[fadeUp_0.8s_0.5s_ease_both] max-sm:p-5"
-      >
+        class="bg-[#fff9f4] border border-[rgba(123,90,74,0.2)] rounded-3xl p-10 shadow-[0_8px_48px_rgba(123,90,74,0.1)] animate-[fadeUp_0.8s_0.5s_ease_both] max-sm:p-5">
         <!-- ── FORM VIEW ── -->
         @if (
-          formState === "idle" ||
-          formState === "loading" ||
-          formState === "error"
+        formState === "idle" ||
+        formState === "loading" ||
+        formState === "error"
         ) {
-          <div>
-            <div class="text-center mb-8">
-              <h2
-                class="font-serif text-[26px] font-normal text-[#1e2a22] mb-2"
-              >
-                Register for This Month
-              </h2>
-              <p class="text-sm text-[#7b5a4a] leading-relaxed">
-                Fill in your details to secure your spot across all upcoming
-                webinars.
-              </p>
-            </div>
+        <div>
+          <div class="text-center mb-8">
+            <h2 class="font-serif text-[26px] font-normal text-[#1e2a22] mb-2">
+              Register for This Month
+            </h2>
+            <p class="text-sm text-[#7b5a4a] leading-relaxed">
+              Fill in your details to secure your spot across all upcoming
+              webinars.
+            </p>
+          </div>
 
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-              <div class="flex flex-col gap-4 mb-6">
-                <!-- Full Name -->
-                <div class="flex flex-col gap-1.5">
-                  <label
-                    class="text-[13px] font-medium text-[#7b5a4a] tracking-wide"
-                  >
-                    Full Name <span class="text-[#ff2400]">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    formControlName="fullName"
-                    placeholder="Your full name"
-                    autocomplete="name"
-                    class="w-full px-[18px] py-3.5 border rounded-xl text-[15px] text-[#1e2a22] bg-white outline-none transition-all duration-200 placeholder:text-[#bbb] focus:border-[#7b5a4a] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)]"
-                    [class.border-[rgba(123,90,74,0.25)]]="
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+            <div class="flex flex-col gap-4 mb-6">
+              <!-- Full Name -->
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[13px] font-medium text-[#7b5a4a] tracking-wide">
+                  Full Name <span class="text-[#ff2400]">*</span>
+                </label>
+                <input type="text" formControlName="fullName" placeholder="Your full name" autocomplete="name"
+                  class="w-full px-[18px] py-3.5 border rounded-xl text-[15px] text-[#1e2a22] bg-white outline-none transition-all duration-200 placeholder:text-[#bbb] focus:border-[#7b5a4a] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)]"
+                  [class.border-[rgba(123,90,74,0.25)]]="
                       !isInvalid('fullName')
-                    "
-                    [class.border-red-400]="isInvalid('fullName')"
-                  />
-                  @if (isInvalid("fullName")) {
-                    <span class="text-xs text-red-500"
-                      >Please enter your full name.</span
-                    >
-                  }
-                </div>
-
-                <!-- Email -->
-                <div class="flex flex-col gap-1.5">
-                  <label
-                    class="text-[13px] font-medium text-[#7b5a4a] tracking-wide"
-                  >
-                    Email Address <span class="text-[#ff2400]">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    formControlName="email"
-                    placeholder="you@example.com"
-                    autocomplete="email"
-                    class="w-full px-[18px] py-3.5 border rounded-xl text-[15px] text-[#1e2a22] bg-white outline-none transition-all duration-200 placeholder:text-[#bbb] focus:border-[#7b5a4a] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)]"
-                    [class.border-[rgba(123,90,74,0.25)]]="!isInvalid('email')"
-                    [class.border-red-400]="isInvalid('email')"
-                  />
-                  @if (isInvalid("email")) {
-                    <span class="text-xs text-red-500"
-                      >Please enter a valid email address.</span
-                    >
-                  }
-                </div>
-
-                <!-- Mobile -->
-                <div class="flex flex-col gap-1.5">
-                  <label
-                    class="text-[13px] font-medium text-[#7b5a4a] tracking-wide"
-                  >
-                    Mobile Number <span class="text-[#ff2400]">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    formControlName="mobile"
-                    placeholder="+91 00000 00000"
-                    autocomplete="tel"
-                    class="w-full px-[18px] py-3.5 border rounded-xl text-[15px] text-[#1e2a22] bg-white outline-none transition-all duration-200 placeholder:text-[#bbb] focus:border-[#7b5a4a] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)]"
-                    [class.border-[rgba(123,90,74,0.25)]]="!isInvalid('mobile')"
-                    [class.border-red-400]="isInvalid('mobile')"
-                  />
-                  @if (isInvalid("mobile")) {
-                    <span class="text-xs text-red-500"
-                      >Please enter a valid mobile number.</span
-                    >
-                  }
-                </div>
-
-                <!-- Organization (optional) -->
-                <div class="flex flex-col gap-1.5">
-                  <label
-                    class="text-[13px] font-medium text-[#7b5a4a] tracking-wide"
-                  >
-                    Organization Name
-                    <span class="text-[#7b5a4a] font-normal opacity-70"
-                      >(Optional)</span
-                    >
-                  </label>
-                  <input
-                    type="text"
-                    formControlName="organization"
-                    placeholder="Where do you work?"
-                    class="w-full px-[18px] py-3.5 border border-[rgba(123,90,74,0.25)] rounded-xl text-[15px] text-[#1e2a22] bg-white outline-none transition-all duration-200 placeholder:text-[#bbb] focus:border-[#7b5a4a] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)]"
-                  />
-                </div>
+                    " [class.border-red-400]="isInvalid('fullName')" />
+                @if (isInvalid("fullName")) {
+                <span class="text-xs text-red-500">Please enter your full name.</span>
+                }
               </div>
 
-              <!-- Submit button -->
-              <button
-                type="submit"
-                [disabled]="formState === 'loading'"
-                class="w-full bg-[#7b5a4a] text-white text-base font-medium py-[18px] rounded-xl border-0 cursor-pointer transition-all duration-200 relative overflow-hidden hover:enabled:bg-[#9a7060] hover:enabled:-translate-y-px hover:enabled:shadow-[0_8px_24px_rgba(123,90,74,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                @if (formState === "loading") {
-                  <span
-                    class="block w-[18px] h-[18px] border-2 border-white/40 border-t-white rounded-full animate-spin mx-auto"
-                  ></span>
-                } @else {
-                  Reserve My Spot for This Month's Webinars
+              <!-- Email -->
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[13px] font-medium text-[#7b5a4a] tracking-wide">
+                  Email Address <span class="text-[#ff2400]">*</span>
+                </label>
+                <input type="email" formControlName="email" placeholder="you@example.com" autocomplete="email"
+                  class="w-full px-[18px] py-3.5 border rounded-xl text-[15px] text-[#1e2a22] bg-white outline-none transition-all duration-200 placeholder:text-[#bbb] focus:border-[#7b5a4a] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)]"
+                  [class.border-[rgba(123,90,74,0.25)]]="!isInvalid('email')"
+                  [class.border-red-400]="isInvalid('email')" />
+                @if (isInvalid("email")) {
+                <span class="text-xs text-red-500">Please enter a valid email address.</span>
                 }
-              </button>
+              </div>
 
-              <p
-                class="text-center text-[13px] text-[#7b5a4a] opacity-80 mt-3.5 leading-relaxed"
-              >
-                Register once and get access to all upcoming webinars this
-                month.
-              </p>
+              <!-- Mobile -->
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[13px] font-medium text-[#7b5a4a] tracking-wide">
+                  Mobile Number <span class="text-[#ff2400]">*</span>
+                </label>
+                <div class="flex" *ngIf="countryCodeControl as ctrl">
+                  <p-select formControlName="countryCode" [options]="countries" optionLabel="code" placeholder="Code"
+                    class="shrink-0">
+                    <ng-template pTemplate="selectedItem">
+                      <div class="flex items-center gap-2" *ngIf="ctrl.value">
+                        <span>{{ ctrl.value.flag }}</span>
+                        <span>{{ ctrl.value.code }}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template let-country pTemplate="item">
+                      <div class="flex items-center gap-2">
+                        <span>{{ country.flag }}</span>
+                        <span>{{ country.name }} ({{ country.code }})</span>
+                      </div>
+                    </ng-template>
+                  </p-select>
 
-              @if (formState === "error") {
-                <div
-                  class="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-xl mt-4"
-                >
-                  Something went wrong. Please try again.
+                  <input type="tel" formControlName="mobile" placeholder="00000 00000" autocomplete="tel"
+                    class="flex-1 px-[18px] py-3.5 border rounded-r-xl text-[15px] text-[#1e2a22] bg-white outline-none transition-all duration-200 placeholder:text-[#bbb] focus:border-[#7b5a4a] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)]"
+                    [class.border-[rgba(123,90,74,0.25)]]="!isInvalid('mobile')"
+                    [class.border-red-400]="isInvalid('mobile')" />
                 </div>
+                @if (isInvalid("mobile")) {
+                <span class="text-xs text-red-500">Please enter a valid mobile number.</span>
+                }
+              </div>
+
+              <!-- Organization (optional) -->
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[13px] font-medium text-[#7b5a4a] tracking-wide">
+                  Organization Name
+                  <span class="text-[#7b5a4a] font-normal opacity-70">(Optional)</span>
+                </label>
+                <input type="text" formControlName="organization" placeholder="Where do you work?"
+                  class="w-full px-[18px] py-3.5 border border-[rgba(123,90,74,0.25)] rounded-xl text-[15px] text-[#1e2a22] bg-white outline-none transition-all duration-200 placeholder:text-[#bbb] focus:border-[#7b5a4a] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)]" />
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" [disabled]="formState === 'loading'"
+              class="w-full bg-[#7b5a4a] text-white text-base font-medium py-[18px] rounded-xl border-0 cursor-pointer transition-all duration-200 relative overflow-hidden hover:enabled:bg-[#9a7060] hover:enabled:-translate-y-px hover:enabled:shadow-[0_8px_24px_rgba(123,90,74,0.4)] disabled:opacity-60 disabled:cursor-not-allowed">
+              @if (formState === "loading") {
+              <span
+                class="block w-[18px] h-[18px] border-2 border-white/40 border-t-white rounded-full animate-spin mx-auto"></span>
+              } @else {
+              Reserve My Spot for This Month's Webinars
               }
-            </form>
-          </div>
+            </button>
+
+            <p class="text-center text-[13px] text-[#7b5a4a] opacity-80 mt-3.5 leading-relaxed">
+              Register once and get access to all upcoming webinars this
+              month.
+            </p>
+
+            @if (formState === "error") {
+            <div class="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-xl mt-4">
+              Something went wrong. Please try again.
+            </div>
+            }
+          </form>
+        </div>
         }
 
         <!-- ── SUCCESS VIEW ── -->
         @if (formState === "success") {
-          <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
-            <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
-              🎉
-            </div>
-            <h2 class="font-serif text-[30px] font-normal text-[#1e2a22] mb-3">
-              You're Registered!
-            </h2>
-            <p
-              class="text-base text-[#7b5a4a] leading-relaxed mb-6 max-w-[380px] mx-auto"
-            >
-              You are now enrolled in all upcoming Positivity webinars this
-              month.
-            </p>
-            <div
-              class="inline-block bg-[rgba(123,90,74,0.08)] border border-[rgba(123,90,74,0.2)] rounded-xl px-5 py-4 text-sm text-[#7b5a4a] mb-6"
-            >
-              📩 Check your email for calendar invites
-            </div>
-            <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
-              Redirecting in 3 seconds…
-            </p>
-            <div
-              class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] rounded-full mx-auto mt-3 overflow-hidden"
-            >
-              <div
-                class="h-full bg-[#7b5a4a] rounded-full animate-[redirectProgress_3s_linear_forwards]"
-              ></div>
-            </div>
+        <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
+          <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
+            🎉
           </div>
+          <h2 class="font-serif text-[30px] font-normal text-[#1e2a22] mb-3">
+            You're Registered!
+          </h2>
+          <p class="text-base text-[#7b5a4a] leading-relaxed mb-6 max-w-[380px] mx-auto">
+            You are now enrolled in all upcoming Positivty webinars this
+            month.
+          </p>
+          <div
+            class="inline-block bg-[rgba(123,90,74,0.08)] border border-[rgba(123,90,74,0.2)] rounded-xl px-5 py-4 text-sm text-[#7b5a4a] mb-6">
+            📩 Check your email for calendar invites
+          </div>
+          <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
+            Redirecting in 3 seconds…
+          </p>
+          <div class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] rounded-full mx-auto mt-3 overflow-hidden">
+            <div class="h-full bg-[#7b5a4a] rounded-full animate-[redirectProgress_3s_linear_forwards]"></div>
+          </div>
+        </div>
         }
 
         <!-- ── ALREADY REGISTERED VIEW ── -->
         @if (formState === "already_registered") {
-          <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
-            <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
-              ✅
-            </div>
-            <h2 class="font-serif text-[30px] font-normal text-[#1e2a22] mb-3">
-              Already Registered
-            </h2>
-            <p
-              class="text-base text-[#7b5a4a] leading-relaxed mb-6 max-w-[380px] mx-auto"
-            >
-              You are already registered for this month's webinars. See you
-              there!
-            </p>
-            <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
-              Redirecting in 3 seconds…
-            </p>
-            <div
-              class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] rounded-full mx-auto mt-3 overflow-hidden"
-            >
-              <div
-                class="h-full bg-[#7b5a4a] rounded-full animate-[redirectProgress_3s_linear_forwards]"
-              ></div>
-            </div>
+        <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
+          <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
+            ✅
           </div>
+          <h2 class="font-serif text-[30px] font-normal text-[#1e2a22] mb-3">
+            Already Registered
+          </h2>
+          <p class="text-base text-[#7b5a4a] leading-relaxed mb-6 max-w-[380px] mx-auto">
+            You are already registered for this month's webinars. See you
+            there!
+          </p>
+          <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
+            Redirecting in 3 seconds…
+          </p>
+          <div class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] rounded-full mx-auto mt-3 overflow-hidden">
+            <div class="h-full bg-[#7b5a4a] rounded-full animate-[redirectProgress_3s_linear_forwards]"></div>
+          </div>
+        </div>
         }
       </div>
     </div>
@@ -300,115 +241,90 @@
 
   <!-- ── DIVIDER ─────────────────────────────────────────────────────────── -->
   <div class="max-w-[680px] mx-auto px-6">
-    <div
-      class="w-12 h-0.5 mx-auto rounded-full my-12"
-      style="background: linear-gradient(to right, #c4a090, transparent)"
-    ></div>
+    <div class="w-12 h-0.5 mx-auto rounded-full my-12"
+      style="background: linear-gradient(to right, #c4a090, transparent)"></div>
   </div>
 
   <!-- ── UPCOMING WEBINARS ───────────────────────────────────────────────── -->
   <section class="py-12">
     <div class="max-w-[680px] mx-auto px-6">
-      <p
-        class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] mb-2"
-      >
+      <p class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] mb-2">
         Upcoming Sessions
       </p>
-      <h2
-        class="font-serif text-[28px] font-normal text-[#1e2a22] mb-8 leading-tight"
-      >
+      <h2 class="font-serif text-[28px] font-normal text-[#1e2a22] mb-8 leading-tight">
         What's on this month
       </h2>
 
       @if (loading) {
-        <div class="text-center py-10 text-[#7b5a4a] opacity-70">
-          Loading sessions…
-        </div>
+      <div class="text-center py-10 text-[#7b5a4a] opacity-70">
+        Loading sessions…
+      </div>
       } @else if (upcomingWebinars.length === 0) {
-        <div
-          class="text-center py-10 bg-[#fff9f4] border border-[rgba(123,90,74,0.2)] rounded-2xl text-[#7b5a4a] text-[15px]"
-        >
-          There are currently no scheduled webinars. Please check back soon.
-        </div>
+      <div
+        class="text-center py-10 bg-[#fff9f4] border border-[rgba(123,90,74,0.2)] rounded-2xl text-[#7b5a4a] text-[15px]">
+        There are currently no scheduled webinars. Please check back soon.
+      </div>
       } @else {
-        <div class="flex flex-col gap-4">
-          @for (webinar of upcomingWebinars; track webinar.id; let i = $index) {
-            <div
-              class="bg-[#fff9f4] border border-[rgba(123,90,74,0.2)] rounded-2xl p-6 grid grid-cols-[64px_1fr] gap-5 transition-all duration-200 hover:border-[#7b5a4a] hover:shadow-[0_4px_20px_rgba(123,90,74,0.15)] hover:-translate-y-px animate-[fadeUp_0.6s_ease_both]"
-              [style.animation-delay]="i * 80 + 'ms'"
-            >
-              <!-- Date block -->
-              <div
-                class="flex flex-col items-center justify-center bg-[rgba(123,90,74,0.08)] rounded-xl px-2 py-2.5 text-center"
-              >
-                <span
-                  class="font-serif text-2xl font-normal text-[#7b5a4a] leading-none"
-                >
-                  {{ getDay(webinar.webinar_date) }}
-                </span>
-                <span
-                  class="text-[11px] font-medium text-[#7b5a4a] tracking-widest uppercase mt-0.5 opacity-70"
-                >
-                  {{ getMonth(webinar.webinar_date) }}
-                </span>
-              </div>
+      <div class="flex flex-col gap-4">
+        @for (webinar of upcomingWebinars; track webinar.id; let i = $index) {
+        <div
+          class="bg-[#fff9f4] border border-[rgba(123,90,74,0.2)] rounded-2xl p-6 grid grid-cols-[64px_1fr] gap-5 transition-all duration-200 hover:border-[#7b5a4a] hover:shadow-[0_4px_20px_rgba(123,90,74,0.15)] hover:-translate-y-px animate-[fadeUp_0.6s_ease_both]"
+          [style.animation-delay]="i * 80 + 'ms'">
+          <!-- Date block -->
+          <div
+            class="flex flex-col items-center justify-center bg-[rgba(123,90,74,0.08)] rounded-xl px-2 py-2.5 text-center">
+            <span class="font-serif text-2xl font-normal text-[#7b5a4a] leading-none">
+              {{ getDay(webinar.webinar_date) }}
+            </span>
+            <span class="text-[11px] font-medium text-[#7b5a4a] tracking-widest uppercase mt-0.5 opacity-70">
+              {{ getMonth(webinar.webinar_date) }}
+            </span>
+          </div>
 
-              <!-- Info -->
-              <div>
-                <p class="text-xs font-medium text-[#7b5a4a] opacity-60 mb-1">
-                  ⏰ {{ webinar.time }}
-                </p>
-                <p
-                  class="font-serif text-[17px] font-normal text-[#1e2a22] leading-tight mb-1.5"
-                >
-                  {{ webinar.title }}
-                </p>
-                <p
-                  class="text-[13px] text-[#7b5a4a] opacity-70 leading-relaxed"
-                >
-                  {{ webinar.description }}
-                </p>
-              </div>
-            </div>
-          }
+          <!-- Info -->
+          <div>
+            <p class="text-xs font-medium text-[#7b5a4a] opacity-60 mb-1">
+              ⏰ {{ webinar.time }}
+            </p>
+            <p class="font-serif text-[17px] font-normal text-[#1e2a22] leading-tight mb-1.5">
+              {{ webinar.title }}
+            </p>
+            <p class="text-[13px] text-[#7b5a4a] opacity-70 leading-relaxed">
+              {{ webinar.description }}
+            </p>
+          </div>
         </div>
+        }
+      </div>
       }
     </div>
   </section>
 
   <!-- ── DIVIDER ─────────────────────────────────────────────────────────── -->
   <div class="max-w-[680px] mx-auto px-6">
-    <div
-      class="w-12 h-0.5 mx-auto rounded-full my-12"
-      style="background: linear-gradient(to right, #c4a090, transparent)"
-    ></div>
+    <div class="w-12 h-0.5 mx-auto rounded-full my-12"
+      style="background: linear-gradient(to right, #c4a090, transparent)"></div>
   </div>
 
   <!-- ── WHAT YOU'LL LEARN ───────────────────────────────────────────────── -->
   <section class="py-12">
     <div class="max-w-[680px] mx-auto px-6">
-      <p
-        class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] mb-2"
-      >
+      <p class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] mb-2">
         Curriculum
       </p>
-      <h2
-        class="font-serif text-[28px] font-normal text-[#1e2a22] mb-8 leading-tight"
-      >
+      <h2 class="font-serif text-[28px] font-normal text-[#1e2a22] mb-8 leading-tight">
         What you'll take away
       </h2>
       <div class="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
         @for (item of curriculum; track item.text) {
+        <div
+          class="bg-[#fff9f4] border border-[rgba(123,90,74,0.2)] rounded-2xl p-5 flex items-start gap-3 transition-all duration-200 hover:border-[#7b5a4a] hover:shadow-[0_4px_16px_rgba(123,90,74,0.12)] hover:-translate-y-px">
           <div
-            class="bg-[#fff9f4] border border-[rgba(123,90,74,0.2)] rounded-2xl p-5 flex items-start gap-3 transition-all duration-200 hover:border-[#7b5a4a] hover:shadow-[0_4px_16px_rgba(123,90,74,0.12)] hover:-translate-y-px"
-          >
-            <div
-              class="w-8 h-8 bg-[rgba(123,90,74,0.1)] rounded-lg flex items-center justify-center text-[15px] shrink-0"
-            >
-              {{ item.icon }}
-            </div>
-            <p class="text-sm text-[#1e2a22] leading-[1.4]">{{ item.text }}</p>
+            class="w-8 h-8 bg-[rgba(123,90,74,0.1)] rounded-lg flex items-center justify-center text-[15px] shrink-0">
+            {{ item.icon }}
           </div>
+          <p class="text-sm text-[#1e2a22] leading-[1.4]">{{ item.text }}</p>
+        </div>
         }
       </div>
     </div>
@@ -416,51 +332,38 @@
 
   <!-- ── DIVIDER ─────────────────────────────────────────────────────────── -->
   <div class="max-w-[680px] mx-auto px-6">
-    <div
-      class="w-12 h-0.5 mx-auto rounded-full my-12"
-      style="background: linear-gradient(to right, #c4a090, transparent)"
-    ></div>
+    <div class="w-12 h-0.5 mx-auto rounded-full my-12"
+      style="background: linear-gradient(to right, #c4a090, transparent)"></div>
   </div>
 
   <!-- ── ABOUT ──────────────────────────────────────────────────────────── -->
   <section class="py-12">
     <div class="max-w-[680px] mx-auto px-6">
-      <div
-        class="rounded-[20px] p-9 text-center border border-[rgba(123,90,74,0.2)]"
-        style="
+      <div class="rounded-[20px] p-9 text-center border border-[rgba(123,90,74,0.2)]" style="
           background: linear-gradient(
             135deg,
             rgba(123, 90, 74, 0.06) 0%,
             rgba(232, 213, 196, 0.2) 100%
           );
-        "
-      >
-        <p
-          class="font-serif text-[22px] font-normal text-[#7b5a4a] mb-4 tracking-tight"
-        >
-          positivity<span class="text-[#c9a96e]">.</span>
+        ">
+        <p class="font-serif text-[22px] font-normal text-[#7b5a4a] mb-4 tracking-tight">
+          positivty<span class="text-[#c9a96e]">.</span>
         </p>
-        <p
-          class="text-[15px] text-[#1e2a22] leading-[1.7] max-w-[480px] mx-auto mb-6 opacity-80"
-        >
-          Positivity is a mental health platform helping individuals and
+        <p class="text-[15px] text-[#1e2a22] leading-[1.7] max-w-[480px] mx-auto mb-6 opacity-80">
+          Positivty is a mental health platform helping individuals and
           organizations build emotional resilience through therapy, workshops,
           and community programs.
         </p>
         <div class="flex justify-center gap-10 max-sm:gap-6">
           @for (stat of stats; track stat.label) {
-            <div class="text-center">
-              <div
-                class="font-serif text-[28px] font-normal text-[#7b5a4a] leading-none mb-1"
-              >
-                {{ stat.num }}
-              </div>
-              <div
-                class="text-xs text-[#7b5a4a] uppercase tracking-widest font-medium opacity-60"
-              >
-                {{ stat.label }}
-              </div>
+          <div class="text-center">
+            <div class="font-serif text-[28px] font-normal text-[#7b5a4a] leading-none mb-1">
+              {{ stat.num }}
             </div>
+            <div class="text-xs text-[#7b5a4a] uppercase tracking-widest font-medium opacity-60">
+              {{ stat.label }}
+            </div>
+          </div>
           }
         </div>
       </div>
@@ -468,28 +371,18 @@
   </section>
 
   <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
-  <footer
-    class="py-8 pb-12 text-center text-xs text-[#7b5a4a] opacity-60 max-w-[680px] mx-auto px-6"
-  >
-    © 2026 Positivity. All rights reserved.
+  <footer class="py-8 pb-12 text-center text-xs text-[#7b5a4a] opacity-60 max-w-[680px] mx-auto px-6">
+    © 2026 Positivty. All rights reserved.
   </footer>
 </div>
 
 <!-- ── STICKY MOBILE CTA ───────────────────────────────────────────────── -->
 <div
   class="fixed bottom-0 left-0 right-0 z-50 bg-[rgba(250,247,242,0.95)] backdrop-blur-xl border-t border-[rgba(123,90,74,0.2)] p-4 transition-transform duration-300 sm:hidden"
-  [class.translate-y-0]="showStickyCta"
-  [class.translate-y-full]="!showStickyCta"
->
-  <a
-    href="#register"
-    (click)="scrollToRegister($event)"
-    class="w-full flex items-center justify-center gap-2.5 bg-[#7b5a4a] text-white text-base font-medium py-[15px] rounded-full no-underline transition-all duration-200 hover:bg-[#9a7060] hover:shadow-[0_8px_24px_rgba(123,90,74,0.35)]"
-  >
+  [class.translate-y-0]="showStickyCta" [class.translate-y-full]="!showStickyCta">
+  <a href="#register" (click)="scrollToRegister($event)"
+    class="w-full flex items-center justify-center gap-2.5 bg-[#7b5a4a] text-white text-base font-medium py-[15px] rounded-full no-underline transition-all duration-200 hover:bg-[#9a7060] hover:shadow-[0_8px_24px_rgba(123,90,74,0.35)]">
     Reserve My Spot
-    <span
-      class="w-5 h-5 inline-flex items-center justify-center bg-white/20 rounded-full text-xs"
-      >→</span
-    >
+    <span class="w-5 h-5 inline-flex items-center justify-center bg-white/20 rounded-full text-xs">→</span>
   </a>
 </div>

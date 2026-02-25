@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { MentalHealthCardComponent, MentalHealthCard } from '../mental-health-card/mental-health-card.component';
 
 @Component({
@@ -10,6 +11,7 @@ import { MentalHealthCardComponent, MentalHealthCard } from '../mental-health-ca
   styleUrl: './prioritize-student-mental-health.component.scss'
 })
 export class PrioritizeStudentMentalHealthComponent implements OnInit, OnDestroy {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   currentIndex = 0;
   isTransitioning = false;
@@ -57,8 +59,10 @@ export class PrioritizeStudentMentalHealthComponent implements OnInit, OnDestroy
   // ------------------------
 
   ngOnInit(): void {
-    if (this.mentalHealthCards.length > 1) {
-      this.startAutoScroll();
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.mentalHealthCards.length > 1) {
+        this.startAutoScroll();
+      }
     }
   }
 

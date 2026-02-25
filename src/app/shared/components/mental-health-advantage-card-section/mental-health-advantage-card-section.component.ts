@@ -65,7 +65,9 @@ export class MentalHealthAdvantageCardSectionComponent implements OnInit, OnDest
 
   ngOnInit() {
     this.updateCardsToShow();
-    this.startAutoScroll();
+    if (isPlatformBrowser(this.platformId)) {
+      this.startAutoScroll();
+    }
   }
 
   ngOnDestroy() {

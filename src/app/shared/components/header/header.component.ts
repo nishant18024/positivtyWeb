@@ -116,7 +116,7 @@ export class HeaderComponent {
         { title: 'Community Home', path: '/community' },
         { title: 'Webinars', path: 'webinars' },
         { title: 'Blog & Articles', path: '/blog-articles' },
-        { title: 'Real At Positivty', path: '/real-positivity' },
+        { title: 'Real At Positivty', path: '/real-positivty' },
         { title: 'Resource Groups', path: '/resource-groups' }
       ]
     },
@@ -142,7 +142,7 @@ export class HeaderComponent {
       ]
     },
     {
-      title: 'Positivity',
+      title: 'Positivty',
       dropdown: [
         { title: 'Why Us', path: '/', fragment: 'why-choose-us' },
         { title: 'About Us', path: '/about-us' },

@@ -48,7 +48,7 @@ export class TalentComponent {
   values = [
     {
       title: 'Empathy in Every Interaction',
-      desc: `At Positivity, we lead with compassion. Whether working with clients, teammates, or partners, we approach every interaction with genuine care, ensuring every individual feels heard, valued, and supported.`,
+      desc: `At Positivty, we lead with compassion. Whether working with clients, teammates, or partners, we approach every interaction with genuine care, ensuring every individual feels heard, valued, and supported.`,
     },
     {
       title: 'Innovation with Purpose',
@@ -82,7 +82,7 @@ export class TalentComponent {
   items = [
     {
       title: 'A Mission That Matters',
-      desc: 'At Positivity, every task contributes to a greater purpose — helping people live healthier, happier lives through accessible mental wellness support.',
+      desc: 'At Positivty, every task contributes to a greater purpose — helping people live healthier, happier lives through accessible mental wellness support.',
       icon: '🎯',
       bg: 'bg-[#ffd996]',
     },

@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { Select } from 'primeng/select';
 
 // ── Models ────────────────────────────────────────────────────────────────────
 
@@ -34,6 +35,12 @@ export interface RegistrationResponse {
     redirect_url?: string;
 }
 
+export interface SelectedCountry {
+    name: string;
+    code: string;
+    flag: string;
+}
+
 export type FormState = 'idle' | 'loading' | 'success' | 'already_registered' | 'error';
 
 // ── Validators ────────────────────────────────────────────────────────────────
@@ -48,8 +55,32 @@ function phoneValidator(control: AbstractControl): ValidationErrors | null {
 @Component({
     selector: 'app-webinar-registration',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, Select],
     templateUrl: './webinar-registration.component.html',
+    styles: [`
+        :host ::ng-deep {
+            .p-select {
+                border-radius: 12px 0 0 12px;
+                border: 1px solid rgba(123, 90, 74, 0.25);
+                border-right: none;
+                height: 100%;
+                background: white;
+                width: 100px;
+                &:not(.p-disabled).p-focus {
+                    box-shadow: none;
+                    border-color: #7b5a4a;
+                }
+            }
+            .p-select-label {
+                padding: 0.875rem 0.5rem 0.875rem 1.125rem;
+                font-size: 15px;
+                color: #1e2a22;
+            }
+            .p-select-dropdown {
+                width: 2rem;
+            }
+        }
+    `]
 })
 export class WebinarRegistrationComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -75,11 +106,24 @@ export class WebinarRegistrationComponent implements OnInit, AfterViewInit, OnDe
         { num: '200+', label: 'Organizations' },
     ];
 
+    countries: SelectedCountry[] = [
+        { name: 'India', code: '+91', flag: '🇮🇳' },
+        { name: 'USA', code: '+1', flag: '🇺🇸' },
+        { name: 'UK', code: '+44', flag: '🇬🇧' },
+        { name: 'Australia', code: '+61', flag: '🇦🇺' },
+        { name: 'Canada', code: '+1', flag: '🇨🇦' },
+        { name: 'Germany', code: '+49', flag: '🇩🇪' },
+        { name: 'France', code: '+33', flag: '🇫🇷' },
+        { name: 'UAE', code: '+971', flag: '🇦🇪' },
+        { name: 'Singapore', code: '+65', flag: '🇸🇬' },
+    ];
+
     // ── Reactive form ──────────────────────────────────────────────────────────
     form = this.fb.group({
         fullName: ['', [Validators.required, Validators.minLength(2)]],
         email: ['', [Validators.required, Validators.email]],
-        mobile: ['', [Validators.required, phoneValidator]],
+        countryCode: [this.countries[0], [Validators.required]],
+        mobile: ['', [Validators.required, Validators.pattern(/^[0-9]{7,12}$/)]],
         organization: [''],
     });
 
@@ -129,6 +173,10 @@ export class WebinarRegistrationComponent implements OnInit, AfterViewInit, OnDe
         return new Date(dateStr)
             .toLocaleString('default', { month: 'short' })
             .toUpperCase();
+    }
+
+    get countryCodeControl(): AbstractControl | null {
+        return this.form.get('countryCode');
     }
 
     isInvalid(field: string): boolean {
@@ -193,7 +241,7 @@ export class WebinarRegistrationComponent implements OnInit, AfterViewInit, OnDe
         const payload: RegistrationPayload = {
             fullName: this.form.value.fullName!.trim(),
             email: this.form.value.email!.trim(),
-            mobile: this.form.value.mobile!.trim(),
+            mobile: `${(this.form.value.countryCode as any).code} ${this.form.value.mobile!.trim()}`,
             organization: (this.form.value.organization ?? '').trim(),
         };
 
