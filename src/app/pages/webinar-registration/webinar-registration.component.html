@@ -1,5 +1,7 @@
 <!-- Background texture -->
-<div class="fixed inset-0 pointer-events-none z-0" style="
+<div
+  class="fixed inset-0 pointer-events-none z-0"
+  style="
     background:
       radial-gradient(
         ellipse 80% 60% at 20% 10%,
@@ -16,54 +18,57 @@
         rgba(201, 169, 110, 0.06) 0%,
         transparent 70%
       );
-  "></div>
+  "
+></div>
 
 <div
-  class="relative z-10 bg-[#faf7f2] dark:bg-gray-950 min-h-screen overflow-x-hidden font-sans transition-colors duration-300">
+  class="relative z-10 bg-[#faf7f2] dark:bg-gray-950 min-h-screen overflow-x-hidden font-sans transition-colors duration-300"
+>
   <!-- ── HERO ───────────────────────────────────────────────────────────── -->
-  <section class="pt-6 pb-2 text-center">
-    <div class="max-w-[680px] mx-auto px-6">
-      <!-- Live badge -->
-      <div
-        class="inline-flex items-center gap-2 bg-[rgba(123,90,74,0.1)] dark:bg-[#7b5a4a]/20 border border-[rgba(123,90,74,0.25)] dark:border-[#7b5a4a]/40 rounded-full px-4 py-1.5 text-[11px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-[0.08em] uppercase mb-7 animate-[fadeUp_0.6s_ease_both]">
-        <span class="w-1.5 h-1.5 bg-[#7b5a4a] dark:bg-[#c4a090] rounded-full animate-[pulse_2s_ease_infinite]"></span>
-        Free Monthly Sessions
-      </div>
+  <section class="max-w-[680px] mx-auto mb-4">
+    <div
+      class="flex items-center justify-between gap-4 px-6 py-5 bg-[#faf7f2] border-b border-[rgba(107,66,38,0.16)] shadow-[0_4px_20px_rgba(107,66,38,0.1)] backdrop-blur-md rounded-[16px]"
+    >
+      <!-- Logo -->
+      <a routerLink="/" class="flex items-center gap-2 shrink-0 no-underline">
+        <!-- Logo Mark -->
+        <div class="flex items-center">
+          <img
+            src="https://www.positivty.com/assets/website/assets/images/Path21.svg"
+            alt="logo"
+            class="w-8 h-8"
+          />
+        </div>
 
-      <!-- Eyebrow -->
-      <p
-        class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-[0.12em] uppercase mb-4 animate-[fadeUp_0.6s_0.1s_ease_both]">
-        Positivty Platform
-      </p>
+        <!-- Logo Name -->
+        <span
+          class="font-serif text-[17px] font-normal tracking-[-0.01em] text-[#1a110a]"
+        >
+          Positivty
+        </span>
+      </a>
 
-      <!-- Title -->
-      <h1
-        class="font-serif text-[clamp(36px,7vw,58px)] font-normal leading-[1.12] tracking-tight text-[#1e2a22] dark:text-gray-100 mb-3 animate-[fadeUp_0.7s_0.15s_ease_both]">
-        Join Our Monthly<br />
-        <em class="text-[#7b5a4a] dark:text-[#c4a090] not-italic">Mental Health</em> Webinars
-      </h1>
+      <!-- Right Section -->
+      <div class="text-right">
+        <!-- Title -->
+        <p
+          class="font-serif font-semibold leading-tight tracking-[-0.022em] text-[clamp(18px,3.5vw,24px)] text-[#1a110a]"
+        >
+          Webinar Registration
+        </p>
 
-      <!-- Subtitle -->
-      <p
-        class="text-[17px] leading-relaxed text-[#7b5a4a] dark:text-[#a08070] font-light max-w-[480px] mx-auto mb-5 animate-[fadeUp_0.7s_0.25s_ease_both]">
-        Free. Expert-led. Practical sessions designed to build emotional
-        resilience and lasting wellbeing.
-      </p>
+        <!-- Tagline -->
+        <p
+          class="mt-1 text-xs text-[#8a7060] flex items-center justify-end gap-2"
+        >
+          Register, Attend & Engage to receive rewards
 
-      <!-- Date chip -->
-      <div
-        class="inline-block bg-[#e8d5c4] dark:bg-[#7b5a4a]/40 text-[#1e2a22] dark:text-gray-200 text-sm font-medium px-5 py-2 rounded-full mb-6 animate-[fadeUp_0.7s_0.3s_ease_both]">
-        📅 February 2026 Sessions
-      </div>
-
-      <!-- CTA -->
-      <div class="animate-[fadeUp_0.7s_0.4s_ease_both]">
-        <a href="#register" (click)="scrollToRegister($event)"
-          class="inline-flex items-center gap-2.5 bg-[#7b5a4a] text-white text-base font-medium px-9 py-4 rounded-full transition-all duration-200 no-underline hover:bg-[#9a7060] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(123,90,74,0.35)] active:translate-y-0">
-          Reserve My Spot
           <span
-            class="w-5 h-5 inline-flex items-center justify-center bg-white/20 rounded-full text-xs transition-transform duration-200">→</span>
-        </a>
+            class="inline-flex items-center gap-1 text-[10.5px] font-medium px-3 py-[2px] rounded-full bg-[rgba(107,66,38,0.07)] border border-[rgba(107,66,38,0.28)] text-[#8a5c3a]"
+          >
+            🏆 Rewards
+          </span>
+        </p>
       </div>
     </div>
   </section>
@@ -72,174 +77,250 @@
   <section id="register" class="pb-4">
     <div class="max-w-[680px] mx-auto px-6">
       <div
-        class="bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-[#7b5a4a]/30 rounded-3xl p-8 shadow-[0_8px_48px_rgba(123,90,74,0.1)] dark:shadow-none animate-[fadeUp_0.8s_0.5s_ease_both] max-sm:px-5 max-sm:py-6">
+        class="bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-[#7b5a4a]/30 rounded-3xl px-4 py-2 shadow-[0_8px_48px_rgba(123,90,74,0.1)] dark:shadow-none animate-[fadeUp_0.8s_0.5s_ease_both] max-sm:px-5 max-sm:py-6"
+      >
         <!-- ── FORM VIEW ── -->
         @if (
-        formState === "idle" ||
-        formState === "loading" ||
-        formState === "error"
+          formState === "idle" ||
+          formState === "loading" ||
+          formState === "error"
         ) {
-        <div>
-          <div class="text-center mb-6">
-            <h2 class="font-serif text-[26px] font-normal text-[#1e2a22] dark:text-gray-100 mb-2">
-              Register for This Month
-            </h2>
-            <p class="text-sm text-[#7b5a4a] dark:text-[#a08070] leading-relaxed">
-              Fill in your details to secure your spot across all upcoming
-              webinars.
-            </p>
-          </div>
+          <div>
+            <div class="text-center mb-6">
+              <h2
+                class="font-serif text-[26px] font-normal text-[#1e2a22] dark:text-gray-100 mb-2"
+              >
+                Register for This Month
+              </h2>
+              <p
+                class="text-sm text-[#7b5a4a] dark:text-[#a08070] leading-relaxed"
+              >
+                Fill in your details to secure your spot across all upcoming
+                webinars.
+              </p>
+            </div>
 
-          <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-            <div class="flex flex-col gap-3 mb-6">
-              <!-- Full Name -->
-              <div class="flex flex-col gap-1.5">
-                <label class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide">
-                  Full Name <span class="text-[#ff2400]">*</span>
-                </label>
-                <input type="text" formControlName="fullName" placeholder="Your full name" autocomplete="name"
-                  class="w-full px-[18px] py-3.5 border rounded-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
-                  [class.border-[rgba(123,90,74,0.25)]]="!isInvalid('fullName')"
-                  [class.border-red-400]="isInvalid('fullName')" />
-                @if (isInvalid("fullName")) {
-                <span class="text-xs text-red-500">Please enter your full name.</span>
-                }
-              </div>
-
-              <!-- Email -->
-              <div class="flex flex-col gap-1.5">
-                <label class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide">
-                  Email Address <span class="text-[#ff2400]">*</span>
-                </label>
-                <input type="email" formControlName="email" placeholder="you@example.com" autocomplete="email"
-                  class="w-full px-[18px] py-3.5 border rounded-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
-                  [class.border-[rgba(123,90,74,0.25)]]="!isInvalid('email')"
-                  [class.border-red-400]="isInvalid('email')" />
-                @if (isInvalid("email")) {
-                <span class="text-xs text-red-500">Please enter a valid email address.</span>
-                }
-              </div>
-
-              <!-- Mobile -->
-              <div class="flex flex-col gap-1.5">
-                <label class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide">
-                  Mobile Number <span class="text-[#ff2400]">*</span>
-                </label>
-                <div class="flex items-stretch" *ngIf="countryCodeControl as ctrl">
-                  <p-select formControlName="countryCode" [options]="countries" optionLabel="code" placeholder="Code"
-                    class="country-selector">
-                    <ng-template pTemplate="selectedItem">
-                      <div class="flex items-center gap-2 text-[#7b5a4a] dark:text-[#c4a090]" *ngIf="ctrl.value">
-                        <span>{{ ctrl.value.flag }}</span>
-                        <span>{{ ctrl.value.code }}</span>
-                      </div>
-                    </ng-template>
-                    <ng-template let-country pTemplate="item">
-                      <div class="flex items-center gap-2 dark:text-gray-200">
-                        <span>{{ country.flag }}</span>
-                        <span>{{ country.name }} ({{ country.code }})</span>
-                      </div>
-                    </ng-template>
-                  </p-select>
-
-                  <input type="tel" formControlName="mobile" placeholder="00000 00000" autocomplete="tel"
-                    class="flex-1 px-[18px] py-3.5 border border-l-0 rounded-r-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
-                    [class.border-[rgba(123,90,74,0.25)]]="!isInvalid('mobile')"
-                    [class.border-red-400]="isInvalid('mobile')" />
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+              <div class="grid grid-cols-1 grid-cols-2 gap-3 mb-6">
+                <!-- Full Name -->
+                <div class="flex flex-col gap-1.5">
+                  <label
+                    class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide"
+                  >
+                    Full Name <span class="text-[#ff2400]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    formControlName="fullName"
+                    placeholder="Your full name"
+                    autocomplete="name"
+                    class="w-full px-[18px] py-2 border rounded-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
+                    [class.border-[rgba(123,90,74,0.25)]]="
+                      !isInvalid('fullName')
+                    "
+                    [class.border-red-400]="isInvalid('fullName')"
+                  />
+                  @if (isInvalid("fullName")) {
+                    <span class="text-xs text-red-500"
+                      >Please enter your full name.</span
+                    >
+                  }
                 </div>
-                @if (isInvalid("mobile")) {
-                <span class="text-xs text-red-500">Please enter a valid mobile number.</span>
-                }
+
+                <!-- Email -->
+                <div class="flex flex-col gap-1.5">
+                  <label
+                    class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide"
+                  >
+                    Email Address <span class="text-[#ff2400]">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    class="w-full px-[18px] py-2 border rounded-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
+                    [class.border-[rgba(123,90,74,0.25)]]="!isInvalid('email')"
+                    [class.border-red-400]="isInvalid('email')"
+                  />
+                  @if (isInvalid("email")) {
+                    <span class="text-xs text-red-500"
+                      >Please enter a valid email address.</span
+                    >
+                  }
+                </div>
+
+                <!-- Mobile -->
+                <div class="flex flex-col gap-1.5">
+                  <label
+                    class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide"
+                  >
+                    Mobile Number <span class="text-[#ff2400]">*</span>
+                  </label>
+                  <div
+                    class="flex items-stretch"
+                    *ngIf="countryCodeControl as ctrl"
+                  >
+                    <p-select
+                      formControlName="countryCode"
+                      [options]="countries"
+                      optionLabel="code"
+                      placeholder="Code"
+                      class="country-selector h-10"
+                    >
+                      <ng-template pTemplate="selectedItem">
+                        <div
+                          class="flex items-center gap-2 text-[#7b5a4a] dark:text-[#c4a090]"
+                          *ngIf="ctrl.value"
+                        >
+                          <span>{{ ctrl.value.flag }}</span>
+                          <span>{{ ctrl.value.code }}</span>
+                        </div>
+                      </ng-template>
+                      <ng-template let-country pTemplate="item">
+                        <div class="flex items-center gap-2 dark:text-gray-200">
+                          <span>{{ country.flag }}</span>
+                          <span>{{ country.name }} ({{ country.code }})</span>
+                        </div>
+                      </ng-template>
+                    </p-select>
+
+                    <input
+                      type="tel"
+                      formControlName="mobile"
+                      placeholder="00000 00000"
+                      autocomplete="tel"
+                      class="flex-1 px-[18px] py-2 border border-l-0 rounded-r-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
+                      [class.border-[rgba(123,90,74,0.25)]]="
+                        !isInvalid('mobile')
+                      "
+                      [class.border-red-400]="isInvalid('mobile')"
+                    />
+                  </div>
+                  @if (isInvalid("mobile")) {
+                    <span class="text-xs text-red-500"
+                      >Please enter a valid mobile number.</span
+                    >
+                  }
+                </div>
+
+                <!-- Organization (optional) -->
+                <div class="flex flex-col gap-1.5">
+                  <label
+                    class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide"
+                  >
+                    Organization Name
+                    <span
+                      class="text-[#7b5a4a] dark:text-[#a08070] font-normal opacity-70"
+                      >(Optional)</span
+                    >
+                  </label>
+                  <input
+                    type="text"
+                    formControlName="organization"
+                    placeholder="Where do you work?"
+                    class="w-full px-[18px] py-2 border border-[rgba(123,90,74,0.25)] dark:border-white/20 rounded-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
+                  />
+                </div>
               </div>
 
-              <!-- Organization (optional) -->
-              <div class="flex flex-col gap-1.5">
-                <label class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide">
-                  Organization Name
-                  <span class="text-[#7b5a4a] dark:text-[#a08070] font-normal opacity-70">(Optional)</span>
-                </label>
-                <input type="text" formControlName="organization" placeholder="Where do you work?"
-                  class="w-full px-[18px] py-3.5 border border-[rgba(123,90,74,0.25)] dark:border-white/20 rounded-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]" />
+              <div class="flex justify-center">
+                <button
+                  type="submit"
+                  [disabled]="formState === 'loading'"
+                  class="inline-flex items-center justify-center bg-[#7b5a4a] text-white text-base font-medium py-2.5 px-6 rounded-xl transition-all duration-200 ease-out hover:enabled:bg-[#9a7060] hover:enabled:-translate-y-[2px] hover:enabled:shadow-[0_10px_28px_rgba(123,90,74,0.35)] active:enabled:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7b5a4a] focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  @if (formState === "loading") {
+                    <span
+                      class="w-[18px] h-[18px] border-2 border-white/40 border-t-white rounded-full animate-spin"
+                    ></span>
+                  } @else {
+                    Reserve My Spot for This Month's Webinars
+                  }
+                </button>
               </div>
-            </div>
 
-            <!-- Submit button -->
-            <button type="submit" [disabled]="formState === 'loading'"
-              class="w-full bg-[#7b5a4a] text-white text-base font-medium py-[18px] rounded-xl border-0 cursor-pointer transition-all duration-200 relative overflow-hidden hover:enabled:bg-[#9a7060] hover:enabled:-translate-y-px hover:enabled:shadow-[0_8px_24px_rgba(123,90,74,0.4)] disabled:opacity-60 disabled:cursor-not-allowed">
-              @if (formState === "loading") {
-              <span
-                class="block w-[18px] h-[18px] border-2 border-white/40 border-t-white rounded-full animate-spin mx-auto"></span>
-              } @else {
-              Reserve My Spot for This Month's Webinars
+              <p
+                class="text-center text-[13px] text-[#7b5a4a] dark:text-[#a08070] opacity-80 mt-3 leading-relaxed"
+              >
+                Register once and get access to all upcoming webinars this
+                month.
+              </p>
+
+              @if (formState === "error") {
+                <div
+                  class="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-2 rounded-xl mt-4"
+                >
+                  Something went wrong. Please try again.
+                </div>
               }
-            </button>
-
-            <p class="text-center text-[13px] text-[#7b5a4a] dark:text-[#a08070] opacity-80 mt-3.5 leading-relaxed">
-              Register once and get access to all upcoming webinars this
-              month.
-            </p>
-
-            @if (formState === "error") {
-            <div class="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-xl mt-4">
-              Something went wrong. Please try again.
-            </div>
-            }
-          </form>
-        </div>
+            </form>
+          </div>
         }
 
         <!-- ── SUCCESS VIEW ── -->
         @if (formState === "success") {
-        <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
-          <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
-            🎉
-          </div>
-          <h2 class="font-serif text-[30px] font-normal text-[#1e2a22] dark:text-gray-100 mb-3">
-            You're Registered!
-          </h2>
-          <p class="text-base text-[#7b5a4a] dark:text-[#a08070] leading-relaxed mb-6 max-w-[380px] mx-auto">
-            You are now enrolled in all upcoming Positivty webinars this
-            month.
-          </p>
-          <div
-            class="inline-block bg-[rgba(123,90,74,0.08)] dark:bg-[#7b5a4a]/20 border border-[rgba(123,90,74,0.2)] dark:border-[#7b5a4a]/40 rounded-xl px-5 py-4 text-sm text-[#7b5a4a] dark:text-[#c4a090] mb-6">
-            📩 Check your email for calendar invites
-          </div>
-          <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
-            Redirecting in 3 seconds…
-          </p>
-          <div
-            class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] dark:bg-white/10 rounded-full mx-auto mt-3 overflow-hidden">
+          <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
+            <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
+              🎉
+            </div>
+            <h2
+              class="font-serif text-[30px] font-normal text-[#1e2a22] dark:text-gray-100 mb-3"
+            >
+              You're Registered!
+            </h2>
+            <p
+              class="text-base text-[#7b5a4a] dark:text-[#a08070] leading-relaxed mb-6 max-w-[380px] mx-auto"
+            >
+              You are now enrolled in all upcoming Positivty webinars this
+              month.
+            </p>
             <div
-              class="h-full bg-[#7b5a4a] dark:bg-[#c4a090] rounded-full animate-[redirectProgress_3s_linear_forwards]">
+              class="inline-block bg-[rgba(123,90,74,0.08)] dark:bg-[#7b5a4a]/20 border border-[rgba(123,90,74,0.2)] dark:border-[#7b5a4a]/40 rounded-xl px-5 py-4 text-sm text-[#7b5a4a] dark:text-[#c4a090] mb-6"
+            >
+              📩 Check your email for calendar invites
+            </div>
+            <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
+              Redirecting in 3 seconds…
+            </p>
+            <div
+              class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] dark:bg-white/10 rounded-full mx-auto mt-3 overflow-hidden"
+            >
+              <div
+                class="h-full bg-[#7b5a4a] dark:bg-[#c4a090] rounded-full animate-[redirectProgress_3s_linear_forwards]"
+              ></div>
             </div>
           </div>
-        </div>
         }
 
         <!-- ── ALREADY REGISTERED VIEW ── -->
         @if (formState === "already_registered") {
-        <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
-          <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
-            ✅
-          </div>
-          <h2 class="font-serif text-[30px] font-normal text-[#1e2a22] dark:text-gray-100 mb-3">
-            Already Registered
-          </h2>
-          <p class="text-base text-[#7b5a4a] dark:text-[#a08070] leading-relaxed mb-6 max-w-[380px] mx-auto">
-            You are already registered for this month's webinars. See you
-            there!
-          </p>
-          <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
-            Redirecting in 3 seconds…
-          </p>
-          <div
-            class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] dark:bg-white/10 rounded-full mx-auto mt-3 overflow-hidden">
+          <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
+            <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
+              ✅
+            </div>
+            <h2
+              class="font-serif text-[30px] font-normal text-[#1e2a22] dark:text-gray-100 mb-3"
+            >
+              Already Registered
+            </h2>
+            <p
+              class="text-base text-[#7b5a4a] dark:text-[#a08070] leading-relaxed mb-6 max-w-[380px] mx-auto"
+            >
+              You are already registered for this month's webinars. See you
+              there!
+            </p>
+            <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
+              Redirecting in 3 seconds…
+            </p>
             <div
-              class="h-full bg-[#7b5a4a] dark:bg-[#c4a090] rounded-full animate-[redirectProgress_3s_linear_forwards]">
+              class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] dark:bg-white/10 rounded-full mx-auto mt-3 overflow-hidden"
+            >
+              <div
+                class="h-full bg-[#7b5a4a] dark:bg-[#c4a090] rounded-full animate-[redirectProgress_3s_linear_forwards]"
+              ></div>
             </div>
           </div>
-        </div>
         }
       </div>
     </div>
@@ -248,62 +329,78 @@
   <!-- ── DIVIDER ─────────────────────────────────────────────────────────── -->
   <div class="max-w-[680px] mx-auto px-6">
     <div
-      class="w-12 h-0.5 mx-auto rounded-full my-4 bg-gradient-to-r from-[#c4a090] to-transparent dark:from-[#7b5a4a] dark:to-transparent">
-    </div>
+      class="w-12 h-0.5 mx-auto rounded-full my-2 bg-gradient-to-r from-[#c4a090] to-transparent dark:from-[#7b5a4a] dark:to-transparent"
+    ></div>
   </div>
 
   <!-- ── UPCOMING WEBINARS ───────────────────────────────────────────────── -->
   <section class="py-6">
     <div class="max-w-[680px] mx-auto px-6">
-      <p class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] dark:text-[#c4a090] mb-2">
+      <p
+        class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] dark:text-[#c4a090] mb-2"
+      >
         Upcoming Sessions
       </p>
-      <h2 class="font-serif text-[28px] font-normal text-[#1e2a22] dark:text-gray-100 mb-8 leading-tight">
+      <h2
+        class="font-serif text-[28px] font-normal text-[#1e2a22] dark:text-gray-100 mb-8 leading-tight"
+      >
         What's on this month
       </h2>
 
       @if (loading) {
-      <div class="text-center py-10 text-[#7b5a4a] opacity-70">
-        Loading sessions…
-      </div>
-      } @else if (upcomingWebinars.length === 0) {
-      <div
-        class="text-center py-10 bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-[#7b5a4a]/30 rounded-2xl text-[#7b5a4a] dark:text-[#c4a090] text-[15px]">
-        There are currently no scheduled webinars. Please check back soon.
-      </div>
-      } @else {
-      <div class="flex flex-col gap-4">
-        @for (webinar of upcomingWebinars; track webinar.id; let i = $index) {
-        <div
-          class="bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-white/10 rounded-2xl p-6 grid grid-cols-[64px_1fr] gap-5 transition-all duration-200 hover:border-[#7b5a4a] dark:hover:border-[#c4a090] hover:shadow-[0_4px_20px_rgba(123,90,74,0.15)] dark:hover:shadow-none hover:-translate-y-px animate-[fadeUp_0.6s_ease_both]"
-          [style.animation-delay]="i * 80 + 'ms'">
-          <!-- Date block -->
-          <div
-            class="flex flex-col items-center justify-center bg-[rgba(123,90,74,0.08)] dark:bg-[#7b5a4a]/20 rounded-xl px-2 py-2.5 text-center">
-            <span class="font-serif text-2xl font-normal text-[#7b5a4a] dark:text-[#c4a090] leading-none">
-              {{ getDay(webinar.webinar_date) }}
-            </span>
-            <span
-              class="text-[11px] font-medium text-[#7b5a4a] dark:text-[#c4a090]/80 tracking-widest uppercase mt-0.5 opacity-70">
-              {{ getMonth(webinar.webinar_date) }}
-            </span>
-          </div>
-
-          <!-- Info -->
-          <div>
-            <p class="text-xs font-medium text-[#7b5a4a] dark:text-[#a08070] opacity-60 mb-1">
-              ⏰ {{ webinar.time }}
-            </p>
-            <p class="font-serif text-[17px] font-normal text-[#1e2a22] dark:text-gray-100 leading-tight mb-1.5">
-              {{ webinar.title }}
-            </p>
-            <p class="text-[13px] text-[#7b5a4a] dark:text-[#a08070] opacity-70 leading-relaxed">
-              {{ webinar.description }}
-            </p>
-          </div>
+        <div class="text-center py-10 text-[#7b5a4a] opacity-70">
+          Loading sessions…
         </div>
-        }
-      </div>
+      } @else if (upcomingWebinars.length === 0) {
+        <div
+          class="text-center py-10 bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-[#7b5a4a]/30 rounded-2xl text-[#7b5a4a] dark:text-[#c4a090] text-[15px]"
+        >
+          There are currently no scheduled webinars. Please check back soon.
+        </div>
+      } @else {
+        <div class="flex flex-col gap-4">
+          @for (webinar of upcomingWebinars; track webinar.id; let i = $index) {
+            <div
+              class="bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-white/10 rounded-2xl p-6 grid grid-cols-[64px_1fr] gap-5 transition-all duration-200 hover:border-[#7b5a4a] dark:hover:border-[#c4a090] hover:shadow-[0_4px_20px_rgba(123,90,74,0.15)] dark:hover:shadow-none hover:-translate-y-px animate-[fadeUp_0.6s_ease_both]"
+              [style.animation-delay]="i * 80 + 'ms'"
+            >
+              <!-- Date block -->
+              <div
+                class="flex flex-col items-center justify-center bg-[rgba(123,90,74,0.08)] dark:bg-[#7b5a4a]/20 rounded-xl px-2 py-2.5 text-center"
+              >
+                <span
+                  class="font-serif text-2xl font-normal text-[#7b5a4a] dark:text-[#c4a090] leading-none"
+                >
+                  {{ getDay(webinar.webinar_date) }}
+                </span>
+                <span
+                  class="text-[11px] font-medium text-[#7b5a4a] dark:text-[#c4a090]/80 tracking-widest uppercase mt-0.5 opacity-70"
+                >
+                  {{ getMonth(webinar.webinar_date) }}
+                </span>
+              </div>
+
+              <!-- Info -->
+              <div>
+                <p
+                  class="text-xs font-medium text-[#7b5a4a] dark:text-[#a08070] opacity-60 mb-1"
+                >
+                  ⏰ {{ webinar.time }}
+                </p>
+                <p
+                  class="font-serif text-[17px] font-normal text-[#1e2a22] dark:text-gray-100 leading-tight mb-1.5"
+                >
+                  {{ webinar.title }}
+                </p>
+                <p
+                  class="text-[13px] text-[#7b5a4a] dark:text-[#a08070] opacity-70 leading-relaxed"
+                >
+                  {{ webinar.description }}
+                </p>
+              </div>
+            </div>
+          }
+        </div>
       }
     </div>
   </section>
@@ -311,29 +408,37 @@
   <!-- ── DIVIDER ─────────────────────────────────────────────────────────── -->
   <div class="max-w-[680px] mx-auto px-6">
     <div
-      class="w-12 h-0.5 mx-auto rounded-full my-4 bg-gradient-to-r from-[#c4a090] to-transparent dark:from-[#7b5a4a] dark:to-transparent">
-    </div>
+      class="w-12 h-0.5 mx-auto rounded-full my-4 bg-gradient-to-r from-[#c4a090] to-transparent dark:from-[#7b5a4a] dark:to-transparent"
+    ></div>
   </div>
 
   <!-- ── WHAT YOU'LL LEARN ───────────────────────────────────────────────── -->
   <section class="py-6">
     <div class="max-w-[680px] mx-auto px-6">
-      <p class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] dark:text-[#c4a090] mb-2">
+      <p
+        class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] dark:text-[#c4a090] mb-2"
+      >
         Curriculum
       </p>
-      <h2 class="font-serif text-[28px] font-normal text-[#1e2a22] dark:text-gray-100 mb-8 leading-tight">
+      <h2
+        class="font-serif text-[28px] font-normal text-[#1e2a22] dark:text-gray-100 mb-8 leading-tight"
+      >
         What you'll take away
       </h2>
       <div class="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
         @for (item of curriculum; track item.text) {
-        <div
-          class="bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-white/10 rounded-2xl p-5 flex items-start gap-3 transition-all duration-200 hover:border-[#7b5a4a] dark:hover:border-[#c4a090] hover:shadow-[0_4px_16px_rgba(123,90,74,0.12)] dark:hover:shadow-none hover:-translate-y-px">
           <div
-            class="w-8 h-8 bg-[rgba(123,90,74,0.1)] dark:bg-[#7b5a4a]/20 rounded-lg flex items-center justify-center text-[15px] shrink-0">
-            {{ item.icon }}
+            class="bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-white/10 rounded-2xl p-5 flex items-start gap-3 transition-all duration-200 hover:border-[#7b5a4a] dark:hover:border-[#c4a090] hover:shadow-[0_4px_16px_rgba(123,90,74,0.12)] dark:hover:shadow-none hover:-translate-y-px"
+          >
+            <div
+              class="w-8 h-8 bg-[rgba(123,90,74,0.1)] dark:bg-[#7b5a4a]/20 rounded-lg flex items-center justify-center text-[15px] shrink-0"
+            >
+              {{ item.icon }}
+            </div>
+            <p class="text-sm text-[#1e2a22] dark:text-gray-200 leading-[1.4]">
+              {{ item.text }}
+            </p>
           </div>
-          <p class="text-sm text-[#1e2a22] dark:text-gray-200 leading-[1.4]">{{ item.text }}</p>
-        </div>
         }
       </div>
     </div>
@@ -342,38 +447,50 @@
   <!-- ── DIVIDER ─────────────────────────────────────────────────────────── -->
   <div class="max-w-[680px] mx-auto px-6">
     <div
-      class="w-12 h-0.5 mx-auto rounded-full my-4 bg-gradient-to-r from-[#c4a090] to-transparent dark:from-[#7b5a4a] dark:to-transparent">
-    </div>
+      class="w-12 h-0.5 mx-auto rounded-full my-4 bg-gradient-to-r from-[#c4a090] to-transparent dark:from-[#7b5a4a] dark:to-transparent"
+    ></div>
   </div>
 
   <!-- ── ABOUT ──────────────────────────────────────────────────────────── -->
   <section class="py-6">
     <div class="max-w-[680px] mx-auto px-6">
-      <div class="rounded-[20px] p-9 text-center border border-[rgba(123,90,74,0.2)] dark:border-white/10" style="
+      <div
+        class="rounded-[20px] p-9 text-center border border-[rgba(123,90,74,0.2)] dark:border-white/10"
+        style="
           background: linear-gradient(
             135deg,
             rgba(123, 90, 74, 0.06) 0%,
             rgba(232, 213, 196, 0.2) 100%
           );
-        " class="dark:bg-gray-900/50 dark:!bg-none">
-        <p class="font-serif text-[22px] font-normal text-[#7b5a4a] dark:text-[#c4a090] mb-4 tracking-tight">
+        "
+        class="dark:bg-gray-900/50 dark:!bg-none"
+      >
+        <p
+          class="font-serif text-[22px] font-normal text-[#7b5a4a] dark:text-[#c4a090] mb-4 tracking-tight"
+        >
           Positivty<span class="text-[#c9a96e]">.</span>
         </p>
-        <p class="text-[15px] text-[#1e2a22] dark:text-gray-200 leading-[1.7] max-w-[480px] mx-auto mb-6 opacity-80">
+        <p
+          class="text-[15px] text-[#1e2a22] dark:text-gray-200 leading-[1.7] max-w-[480px] mx-auto mb-6 opacity-80"
+        >
           Positivty is a mental health platform helping individuals and
           organizations build emotional resilience through therapy, workshops,
           and community programs.
         </p>
         <div class="flex justify-center gap-10 max-sm:gap-6">
           @for (stat of stats; track stat.label) {
-          <div class="text-center">
-            <div class="font-serif text-[28px] font-normal text-[#7b5a4a] dark:text-[#c4a090] leading-none mb-1">
-              {{ stat.num }}
+            <div class="text-center">
+              <div
+                class="font-serif text-[28px] font-normal text-[#7b5a4a] dark:text-[#c4a090] leading-none mb-1"
+              >
+                {{ stat.num }}
+              </div>
+              <div
+                class="text-xs text-[#7b5a4a] dark:text-[#a08070] uppercase tracking-widest font-medium opacity-60"
+              >
+                {{ stat.label }}
+              </div>
             </div>
-            <div class="text-xs text-[#7b5a4a] dark:text-[#a08070] uppercase tracking-widest font-medium opacity-60">
-              {{ stat.label }}
-            </div>
-          </div>
           }
         </div>
       </div>
@@ -382,7 +499,8 @@
 
   <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
   <footer
-    class="py-6 pb-10 text-center text-xs text-[#7b5a4a] dark:text-[#a08070] opacity-60 max-w-[680px] mx-auto px-6">
+    class="py-6 pb-10 text-center text-xs text-[#7b5a4a] dark:text-[#a08070] opacity-60 max-w-[680px] mx-auto px-6"
+  >
     © 2026 Positivty. All rights reserved.
   </footer>
 </div>
@@ -390,10 +508,18 @@
 <!-- ── STICKY MOBILE CTA ───────────────────────────────────────────────── -->
 <div
   class="fixed bottom-0 left-0 right-0 z-50 bg-[rgba(250,247,242,0.95)] dark:bg-gray-950/95 backdrop-blur-xl border-t border-[rgba(123,90,74,0.2)] dark:border-white/10 p-4 transition-transform duration-300 sm:hidden"
-  [class.translate-y-0]="showStickyCta" [class.translate-y-full]="!showStickyCta">
-  <a href="#register" (click)="scrollToRegister($event)"
-    class="w-full flex items-center justify-center gap-2.5 bg-[#7b5a4a] text-white text-base font-medium py-[15px] rounded-full no-underline transition-all duration-200 hover:bg-[#9a7060] hover:shadow-[0_8px_24px_rgba(123,90,74,0.35)]">
+  [class.translate-y-0]="showStickyCta"
+  [class.translate-y-full]="!showStickyCta"
+>
+  <a
+    href="#register"
+    (click)="scrollToRegister($event)"
+    class="w-full flex items-center justify-center gap-2.5 bg-[#7b5a4a] text-white text-base font-medium py-[15px] rounded-full no-underline transition-all duration-200 hover:bg-[#9a7060] hover:shadow-[0_8px_24px_rgba(123,90,74,0.35)]"
+  >
     Reserve My Spot
-    <span class="w-5 h-5 inline-flex items-center justify-center bg-white/20 rounded-full text-xs">→</span>
+    <span
+      class="w-5 h-5 inline-flex items-center justify-center bg-white/20 rounded-full text-xs"
+      >→</span
+    >
   </a>
 </div>

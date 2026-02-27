@@ -10,6 +10,7 @@ import {
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Select } from 'primeng/select';
+import { RouterLink } from "@angular/router";
 
 // ── Models ────────────────────────────────────────────────────────────────────
 
@@ -55,7 +56,7 @@ function phoneValidator(control: AbstractControl): ValidationErrors | null {
 @Component({
     selector: 'app-webinar-registration',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, Select],
+    imports: [CommonModule, ReactiveFormsModule, Select, RouterLink],
     templateUrl: './webinar-registration.component.html',
     styles: [`
         :host ::ng-deep {
