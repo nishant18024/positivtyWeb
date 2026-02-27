@@ -1,0 +1,549 @@
+<!-- POSITIVTY WEBINAR REGISTRATION PAGE — Warm Terracotta Palette #7b5a4a -->
+<div class="min-h-screen font-body" style="background: #fdf8f5">
+  <!-- ── NAV ── -->
+  <nav
+    class="sticky top-0 z-50 border-b px-6 py-4"
+    style="
+      background: rgba(253, 248, 245, 0.92);
+      backdrop-filter: blur(12px);
+      border-color: #ecddd6;
+    "
+  >
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <span
+        class="font-display text-2xl font-semibold tracking-tight"
+        style="color: #7b5a4a"
+      >
+        Positivty<span style="color: #d4b8ae">.</span>
+      </span>
+      <div
+        class="hidden sm:flex items-center gap-6 text-sm"
+        style="color: #a07868"
+      >
+        <span class="flex items-center gap-1.5">
+          <span
+            class="w-2 h-2 rounded-full animate-pulse"
+            style="background: #b87c6a"
+          ></span>
+          Free · Expert-led · Evidence-Based
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <main
+    class="max-w-6xl mx-auto px-4 py-10 lg:py-16 grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-start"
+  >
+    <!-- LEFT COLUMN -->
+    <div>
+      <!-- Hero -->
+      <div class="mb-10">
+        <div
+          class="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full mb-4 border"
+          style="background: #fef0ea; color: #7b5a4a; border-color: #e8c9bd"
+        >
+          🏆 Register, Attend &amp; Engage to receive rewards
+        </div>
+        <h1
+          class="font-display text-4xl lg:text-5xl font-semibold leading-tight mb-3"
+          style="color: #3d2318"
+        >
+          Webinar<br />
+          <span style="color: #7b5a4a">Registration</span>
+        </h1>
+        <p class="text-base leading-relaxed max-w-md" style="color: #9a7060">
+          Expert-led sessions on mental health, resilience, and wellbeing —
+          trusted by professionals worldwide.
+        </p>
+        <p class="mt-3 text-xs" style="color: #c4a090">
+          Takes less than 30 seconds · Register once → Attend all your selected
+          sessions
+        </p>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div
+        *ngIf="registrationState === 'success'"
+        class="rounded-2xl shadow-sm p-8 text-center animate-fadeIn border"
+        style="background: #fff; border-color: #e8c9bd"
+      >
+        <div
+          class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"
+          style="background: #fef0ea"
+        >
+          🎉
+        </div>
+        <h2
+          class="font-display text-2xl font-semibold mb-2"
+          style="color: #3d2318"
+        >
+          You're Registered!
+        </h2>
+        <p class="text-sm mb-6" style="color: #9a7060">
+          You've been enrolled in the sessions you selected. We're looking
+          forward to seeing you!
+        </p>
+        <div class="space-y-2 text-sm mb-6" style="color: #7b5a4a">
+          <div class="flex items-center justify-center gap-2">
+            <span>✅</span>
+            <span
+              >{{ selectedCount }} session{{
+                selectedCount !== 1 ? "s" : ""
+              }}
+              confirmed</span
+            >
+          </div>
+          <div class="flex items-center justify-center gap-2">
+            <span>📩</span>
+            <span>Calendar invites are on their way to your inbox</span>
+          </div>
+        </div>
+        <p class="text-xs" style="color: #c4a090">
+          Redirecting in {{ redirectCountdown }} second{{
+            redirectCountdown !== 1 ? "s" : ""
+          }}…
+        </p>
+      </div>
+
+      <!-- ALREADY REGISTERED STATE -->
+      <div
+        *ngIf="registrationState === 'already-registered'"
+        class="rounded-2xl shadow-sm p-8 text-center animate-fadeIn border"
+        style="background: #fff; border-color: #f0d9c8"
+      >
+        <div
+          class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"
+          style="background: #fef5ee"
+        >
+          ✅
+        </div>
+        <h2
+          class="font-display text-2xl font-semibold mb-2"
+          style="color: #3d2318"
+        >
+          Already Registered
+        </h2>
+        <p class="text-sm mb-4" style="color: #9a7060">
+          You're already signed up for these sessions. We'll see you there!
+        </p>
+        <p class="text-xs" style="color: #c4a090">
+          Redirecting in {{ redirectCountdown }} second{{
+            redirectCountdown !== 1 ? "s" : ""
+          }}…
+        </p>
+      </div>
+
+      <!-- FORM STATE -->
+      <form
+        *ngIf="registrationState === 'form'"
+        (ngSubmit)="onSubmit()"
+        novalidate
+        class="space-y-5"
+      >
+        <!-- Full Name -->
+        <div>
+          <label
+            class="block text-sm font-medium mb-1.5"
+            style="color: #5c3d30"
+          >
+            Full Name <span style="color: #c0614a">*</span>
+          </label>
+          <input
+            type="text"
+            [(ngModel)]="fullName"
+            name="fullName"
+            (blur)="touch('fullName')"
+            placeholder="Jane Doe"
+            class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
+            style="color: #3d2318; background: #fff"
+            [style.borderColor]="
+              touched.fullName && fullName.trim().length <= 1
+                ? '#c0614a'
+                : '#ddc8be'
+            "
+            [style.background]="
+              touched.fullName && fullName.trim().length <= 1
+                ? '#fff5f3'
+                : '#fff'
+            "
+          />
+          <p
+            *ngIf="touched.fullName && fullName.trim().length <= 1"
+            class="mt-1 text-xs"
+            style="color: #c0614a"
+          >
+            Please enter your full name.
+          </p>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label
+            class="block text-sm font-medium mb-1.5"
+            style="color: #5c3d30"
+          >
+            Email Address <span style="color: #c0614a">*</span>
+          </label>
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            (blur)="touch('email')"
+            placeholder="jane@example.com"
+            class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
+            style="color: #3d2318"
+            [style.borderColor]="
+              touched.email && !isEmailValid ? '#c0614a' : '#ddc8be'
+            "
+            [style.background]="
+              touched.email && !isEmailValid ? '#fff5f3' : '#fff'
+            "
+          />
+          <p
+            *ngIf="touched.email && !isEmailValid"
+            class="mt-1 text-xs"
+            style="color: #c0614a"
+          >
+            Enter a valid email address.
+          </p>
+        </div>
+
+        <!-- Mobile -->
+        <div>
+          <label
+            class="block text-sm font-medium mb-1.5"
+            style="color: #5c3d30"
+          >
+            Mobile Number <span style="color: #c0614a">*</span>
+          </label>
+          <input
+            type="tel"
+            [(ngModel)]="mobile"
+            name="mobile"
+            (blur)="touch('mobile')"
+            placeholder="+44 7700 900000"
+            class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
+            style="color: #3d2318"
+            [style.borderColor]="
+              touched.mobile && !isMobileValid ? '#c0614a' : '#ddc8be'
+            "
+            [style.background]="
+              touched.mobile && !isMobileValid ? '#fff5f3' : '#fff'
+            "
+          />
+          <p
+            *ngIf="touched.mobile && !isMobileValid"
+            class="mt-1 text-xs"
+            style="color: #c0614a"
+          >
+            Enter a valid mobile number.
+          </p>
+        </div>
+
+        <!-- Organisation -->
+        <div>
+          <label
+            class="block text-sm font-medium mb-1.5"
+            style="color: #5c3d30"
+          >
+            Organisation
+            <span class="font-normal text-xs" style="color: #c4a090"
+              >(optional)</span
+            >
+          </label>
+          <input
+            type="text"
+            [(ngModel)]="organisation"
+            name="organisation"
+            placeholder="Your company or school"
+            class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
+            style="color: #3d2318; background: #fff; border-color: #ddc8be"
+          />
+        </div>
+
+        <!-- Sessions Picker -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <label class="text-sm font-medium" style="color: #5c3d30">
+              Choose Sessions <span style="color: #c0614a">*</span>
+            </label>
+            <div class="flex items-center gap-3">
+              <span class="text-xs" style="color: #c4a090"
+                >{{ selectedCount }} selected</span
+              >
+              <button
+                *ngIf="selectedCount > 0"
+                type="button"
+                (click)="deselectAll()"
+                class="text-xs transition-colors"
+                style="color: #7b5a4a"
+              >
+                Deselect All
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <button
+              *ngFor="let session of visibleSessions"
+              type="button"
+              (click)="toggleSession(session)"
+              class="w-full text-left px-4 py-3.5 rounded-xl border-2 transition-all duration-200"
+              [style.borderColor]="session.selected ? '#7b5a4a' : '#e8d5cc'"
+              [style.background]="session.selected ? '#fef0ea' : '#fff'"
+            >
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-5 h-5 rounded-full border-2 flex-shrink-0 mt-0.5 flex items-center justify-center transition-all"
+                  [style.borderColor]="session.selected ? '#7b5a4a' : '#c4a090'"
+                  [style.background]="
+                    session.selected ? '#7b5a4a' : 'transparent'
+                  "
+                >
+                  <svg
+                    *ngIf="session.selected"
+                    class="w-3 h-3"
+                    style="color: #fff"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="3"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-start justify-between gap-2">
+                    <p
+                      class="text-sm font-medium leading-snug"
+                      style="color: #3d2318"
+                    >
+                      {{ session.title }}
+                    </p>
+                    <span
+                      class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0"
+                      style="background: #f5e8e2; color: #9a7060"
+                    >
+                      {{ session.tag }}
+                    </span>
+                  </div>
+                  <p class="text-xs mt-0.5" style="color: #c4a090">
+                    {{ session.speaker }}
+                  </p>
+                  <p class="text-xs font-medium mt-1" style="color: #7b5a4a">
+                    {{ session.date }} · {{ session.time }}
+                  </p>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <!-- View more -->
+          <button
+            *ngIf="!showMoreSessions && sessions.length > 3"
+            type="button"
+            (click)="showMoreSessions = true"
+            class="mt-3 w-full text-sm transition-colors py-2 flex items-center justify-center gap-1"
+            style="color: #9a7060"
+          >
+            <span>View more sessions</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <p
+            *ngIf="!selectedCount && registrationState === 'form'"
+            class="mt-2 text-xs"
+            style="color: #c4a090"
+          >
+            Please select at least one session to register.
+          </p>
+        </div>
+
+        <!-- Error -->
+        <div
+          *ngIf="showError"
+          class="border text-sm px-4 py-3 rounded-xl"
+          style="background: #fff5f3; border-color: #e8b8ad; color: #c0614a"
+        >
+          Something went wrong. Please try again.
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          [disabled]="isLoading"
+          class="w-full py-4 rounded-xl font-semibold text-white text-sm tracking-wide transition-all duration-200"
+          [style.background]="isLoading ? '#b89088' : '#7b5a4a'"
+          [class.cursor-not-allowed]="isLoading"
+        >
+          <span
+            *ngIf="!isLoading"
+            class="flex items-center justify-center gap-2"
+          >
+            Register Now
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </span>
+          <span
+            *ngIf="isLoading"
+            class="flex items-center justify-center gap-2"
+          >
+            <svg class="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v8H4z"
+              />
+            </svg>
+            Registering…
+          </span>
+        </button>
+
+        <!-- Trust badges -->
+        <div
+          class="flex items-center justify-center gap-4 text-xs pt-1"
+          style="color: #c4a090"
+        >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Free</span
+          >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Expert-led</span
+          >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Evidence-Based</span
+          >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Trusted by
+            Professionals</span
+          >
+        </div>
+      </form>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <aside class="lg:sticky lg:top-24 space-y-5">
+      <!-- Coming Up Next -->
+      <div
+        class="rounded-2xl border shadow-sm p-6"
+        style="background: #fff; border-color: #e8d5cc"
+      >
+        <h3
+          class="font-display text-lg font-semibold mb-4 flex items-center gap-2"
+          style="color: #3d2318"
+        >
+          <span
+            class="w-2 h-2 rounded-full animate-pulse"
+            style="background: #b87c6a"
+          ></span>
+          Coming Up Next
+        </h3>
+        <div
+          *ngIf="selectedCount === 0"
+          class="text-sm text-center py-6"
+          style="color: #c4a090"
+        >
+          Select sessions above to see them listed here.
+        </div>
+        <div *ngIf="selectedCount > 0" class="space-y-3">
+          <div
+            *ngFor="let s of selectedSessions; let i = index"
+            class="flex gap-3 items-start animate-fadeIn"
+          >
+            <div
+              class="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center text-xs font-bold"
+              style="background: #fef0ea; color: #7b5a4a"
+            >
+              {{ i + 1 }}
+            </div>
+            <div>
+              <p
+                class="text-sm font-medium leading-snug"
+                style="color: #3d2318"
+              >
+                {{ s.title }}
+              </p>
+              <p class="text-xs mt-0.5" style="color: #c4a090">
+                {{ s.date }} · {{ s.time }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="rounded-2xl p-6 text-white" style="background: #7b5a4a">
+        <p
+          class="text-xs font-medium uppercase tracking-wider mb-4"
+          style="color: #d4b8ae"
+        >
+          Our Community
+        </p>
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <p class="font-display text-2xl font-bold">12k+</p>
+            <p class="text-xs mt-0.5" style="color: #d4b8ae">Participants</p>
+          </div>
+          <div class="border-x" style="border-color: #9a7060">
+            <p class="font-display text-2xl font-bold">48+</p>
+            <p class="text-xs mt-0.5" style="color: #d4b8ae">Webinars</p>
+          </div>
+          <div>
+            <p class="font-display text-2xl font-bold">200+</p>
+            <p class="text-xs mt-0.5" style="color: #d4b8ae">Organisations</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-16 border-t py-8 text-center" style="border-color: #ecddd6">
+    <p class="font-display text-lg font-semibold mb-1" style="color: #7b5a4a">
+      Positivty<span style="color: #d4b8ae">.</span>
+    </p>
+    <p class="text-xs max-w-md mx-auto mb-4" style="color: #c4a090">
+      A mental health platform helping individuals and organisations build
+      emotional resilience through expert-led therapy, workshops, and community
+      programmes.
+    </p>
+    <p class="text-xs" style="color: #ddc8be">
+      © 2026 Positivty. All rights reserved.
+    </p>
+  </footer>
+</div>
