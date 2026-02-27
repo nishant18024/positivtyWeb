@@ -22,49 +22,55 @@
 ></div>
 
 <div
-  class="relative z-10 bg-[#faf7f2] dark:bg-gray-950 min-h-screen overflow-x-hidden font-sans transition-colors duration-300"
+  class="relative z-10 min-h-screen overflow-x-hidden font-sans transition-colors duration-300"
+  style="background-color: #faf7f2"
 >
-  <!-- ── HERO ───────────────────────────────────────────────────────────── -->
+  <!-- ── HERO ── -->
   <section class="max-w-[680px] mx-auto mb-4">
     <div
-      class="flex items-center justify-between gap-4 px-6 py-5 bg-[#faf7f2] border-b border-[rgba(107,66,38,0.16)] shadow-[0_4px_20px_rgba(107,66,38,0.1)] backdrop-blur-md rounded-[16px]"
+      class="flex items-center justify-between gap-3 px-4 sm:px-6 py-4 sm:py-5 border-b backdrop-blur-md rounded-[16px] flex-wrap sm:flex-nowrap"
+      style="
+        background-color: #faf7f2;
+        border-color: rgba(107, 66, 38, 0.16);
+        box-shadow: 0 4px 20px rgba(107, 66, 38, 0.1);
+      "
     >
       <!-- Logo -->
       <a routerLink="/" class="flex items-center gap-2 shrink-0 no-underline">
-        <!-- Logo Mark -->
-        <div class="flex items-center">
-          <img
-            src="https://www.positivty.com/assets/website/assets/images/Path21.svg"
-            alt="logo"
-            class="w-8 h-8"
-          />
-        </div>
-
-        <!-- Logo Name -->
+        <img
+          src="https://www.positivty.com/assets/website/assets/images/Path21.svg"
+          alt="logo"
+          class="w-8 h-8"
+        />
         <span
-          class="font-serif text-[17px] font-normal tracking-[-0.01em] text-[#1a110a]"
+          class="font-serif text-[17px] font-normal tracking-[-0.01em]"
+          style="color: #1a110a"
+          >Positivty</span
         >
-          Positivty
-        </span>
       </a>
 
       <!-- Right Section -->
-      <div class="text-right">
-        <!-- Title -->
+      <div class="text-right min-w-0">
         <p
-          class="font-serif font-semibold leading-tight tracking-[-0.022em] text-[clamp(18px,3.5vw,24px)] text-[#1a110a]"
+          class="font-serif font-semibold leading-tight tracking-[-0.022em] text-[clamp(16px,3.5vw,24px)]"
+          style="color: #1a110a"
         >
           Webinar Registration
         </p>
-
-        <!-- Tagline -->
         <p
-          class="mt-1 text-xs text-[#8a7060] flex items-center justify-end gap-2"
+          class="mt-1 text-xs flex items-center justify-end gap-2 flex-wrap"
+          style="color: #8a7060"
         >
-          Register, Attend & Engage to receive rewards
-
+          <span class="hidden sm:inline"
+            >Register, Attend &amp; Engage to receive rewards</span
+          >
           <span
-            class="inline-flex items-center gap-1 text-[10.5px] font-medium px-3 py-[2px] rounded-full bg-[rgba(107,66,38,0.07)] border border-[rgba(107,66,38,0.28)] text-[#8a5c3a]"
+            class="inline-flex items-center gap-1 text-[10.5px] font-medium px-3 py-[2px] rounded-full whitespace-nowrap"
+            style="
+              background: rgba(107, 66, 38, 0.07);
+              border: 1px solid rgba(107, 66, 38, 0.28);
+              color: #8a5c3a;
+            "
           >
             🏆 Rewards
           </span>
@@ -73,13 +79,18 @@
     </div>
   </section>
 
-  <!-- ── REGISTRATION FORM ───────────────────────────────────────────────── -->
-  <section id="register" class="pb-4">
-    <div class="max-w-[680px] mx-auto px-6">
+  <!-- ── REGISTRATION FORM ── -->
+  <section id="register" #registerSection class="pb-4">
+    <div class="max-w-[680px] mx-auto px-4 sm:px-6">
       <div
-        class="bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-[#7b5a4a]/30 rounded-3xl px-4 py-2 shadow-[0_8px_48px_rgba(123,90,74,0.1)] dark:shadow-none animate-[fadeUp_0.8s_0.5s_ease_both] max-sm:px-5 max-sm:py-6"
+        class="rounded-3xl px-4 sm:px-6 py-5 sm:py-6"
+        style="
+          background: #fff9f4;
+          border: 1px solid rgba(123, 90, 74, 0.2);
+          box-shadow: 0 8px 48px rgba(123, 90, 74, 0.1);
+        "
       >
-        <!-- ── FORM VIEW ── -->
+        <!-- FORM VIEW -->
         @if (
           formState === "idle" ||
           formState === "loading" ||
@@ -88,40 +99,46 @@
           <div>
             <div class="text-center mb-6">
               <h2
-                class="font-serif text-[26px] font-normal text-[#1e2a22] dark:text-gray-100 mb-2"
+                class="font-serif text-[24px] sm:text-[26px] font-normal mb-2"
+                style="color: #1e2a22"
               >
                 Register for This Month
               </h2>
-              <p
-                class="text-sm text-[#7b5a4a] dark:text-[#a08070] leading-relaxed"
-              >
+              <p class="text-sm leading-relaxed" style="color: #7b5a4a">
                 Fill in your details to secure your spot across all upcoming
                 webinars.
               </p>
             </div>
 
             <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-              <div class="grid grid-cols-1 grid-cols-2 gap-3 mb-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                 <!-- Full Name -->
                 <div class="flex flex-col gap-1.5">
                   <label
-                    class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide"
+                    class="text-[13px] font-medium tracking-wide"
+                    style="color: #7b5a4a"
                   >
-                    Full Name <span class="text-[#ff2400]">*</span>
+                    Full Name <span style="color: #ff2400">*</span>
                   </label>
                   <input
                     type="text"
                     formControlName="fullName"
                     placeholder="Your full name"
                     autocomplete="name"
-                    class="w-full px-[18px] py-2 border rounded-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
-                    [class.border-[rgba(123,90,74,0.25)]]="
-                      !isInvalid('fullName')
+                    class="w-full px-[18px] py-2 rounded-xl text-[15px] outline-none transition-all duration-200"
+                    style="
+                      border: 1px solid rgba(123, 90, 74, 0.25);
+                      background: white;
+                      color: #1e2a22;
                     "
-                    [class.border-red-400]="isInvalid('fullName')"
+                    [style.border-color]="
+                      isInvalid('fullName') ? '#f87171' : ''
+                    "
+                    (focus)="onInputFocus($event)"
+                    (blur)="onInputBlur($event)"
                   />
                   @if (isInvalid("fullName")) {
-                    <span class="text-xs text-red-500"
+                    <span class="text-xs" style="color: #ef4444"
                       >Please enter your full name.</span
                     >
                   }
@@ -130,88 +147,248 @@
                 <!-- Email -->
                 <div class="flex flex-col gap-1.5">
                   <label
-                    class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide"
+                    class="text-[13px] font-medium tracking-wide"
+                    style="color: #7b5a4a"
                   >
-                    Email Address <span class="text-[#ff2400]">*</span>
+                    Email Address <span style="color: #ff2400">*</span>
                   </label>
                   <input
                     type="email"
                     formControlName="email"
                     placeholder="you@example.com"
                     autocomplete="email"
-                    class="w-full px-[18px] py-2 border rounded-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
-                    [class.border-[rgba(123,90,74,0.25)]]="!isInvalid('email')"
-                    [class.border-red-400]="isInvalid('email')"
+                    class="w-full px-[18px] py-2 rounded-xl text-[15px] outline-none transition-all duration-200"
+                    style="
+                      border: 1px solid rgba(123, 90, 74, 0.25);
+                      background: white;
+                      color: #1e2a22;
+                    "
+                    [style.border-color]="isInvalid('email') ? '#f87171' : ''"
+                    (focus)="onInputFocus($event)"
+                    (blur)="onInputBlur($event)"
                   />
                   @if (isInvalid("email")) {
-                    <span class="text-xs text-red-500"
+                    <span class="text-xs" style="color: #ef4444"
                       >Please enter a valid email address.</span
                     >
                   }
                 </div>
 
-                <!-- Mobile -->
+                <!-- Mobile with Custom Country Dropdown -->
                 <div class="flex flex-col gap-1.5">
                   <label
-                    class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide"
+                    class="text-[13px] font-medium tracking-wide"
+                    style="color: #7b5a4a"
                   >
-                    Mobile Number <span class="text-[#ff2400]">*</span>
+                    Mobile Number <span style="color: #ff2400">*</span>
                   </label>
-                  <div
-                    class="flex items-stretch"
-                    *ngIf="countryCodeControl as ctrl"
-                  >
-                    <p-select
-                      formControlName="countryCode"
-                      [options]="countries"
-                      optionLabel="code"
-                      placeholder="Code"
-                      class="country-selector h-10"
-                    >
-                      <ng-template pTemplate="selectedItem">
-                        <div
-                          class="flex items-center gap-2 text-[#7b5a4a] dark:text-[#c4a090]"
-                          *ngIf="ctrl.value"
-                        >
-                          <span>{{ ctrl.value.flag }}</span>
-                          <span>{{ ctrl.value.code }}</span>
-                        </div>
-                      </ng-template>
-                      <ng-template let-country pTemplate="item">
-                        <div class="flex items-center gap-2 dark:text-gray-200">
-                          <span>{{ country.flag }}</span>
-                          <span>{{ country.name }} ({{ country.code }})</span>
-                        </div>
-                      </ng-template>
-                    </p-select>
 
+                  <div
+                    class="flex items-stretch relative"
+                    style="height: 40px"
+                    (focusout)="onCountryFocusOut($event)"
+                  >
+                    <!-- Country Trigger Button -->
+                    <button
+                      type="button"
+                      (click)="toggleCountryDropdown()"
+                      class="flex items-center gap-1.5 px-3 shrink-0 rounded-l-xl transition-all duration-200 outline-none cursor-pointer"
+                      style="
+                        background: white;
+                        border: 1px solid rgba(123, 90, 74, 0.25);
+                        border-right: none;
+                        color: #7b5a4a;
+                        font-size: 14px;
+                        white-space: nowrap;
+                        min-width: 80px;
+                        height: 40px;
+                      "
+                      [style.border-color]="
+                        countryDropdownOpen
+                          ? '#7b5a4a'
+                          : isInvalid('mobile')
+                            ? '#f87171'
+                            : ''
+                      "
+                      [style.box-shadow]="
+                        countryDropdownOpen
+                          ? '0 0 0 3px rgba(123,90,74,0.15)'
+                          : 'none'
+                      "
+                    >
+                      <span style="font-size: 17px; line-height: 1">{{
+                        selectedCountry.flag
+                      }}</span>
+                      <span
+                        style="
+                          font-size: 13px;
+                          font-weight: 500;
+                          color: #7b5a4a;
+                        "
+                        >{{ selectedCountry.code }}</span
+                      >
+                      <span
+                        style="
+                          font-size: 9px;
+                          opacity: 0.5;
+                          margin-left: 2px;
+                          transition: transform 0.2s;
+                        "
+                        [style.transform]="
+                          countryDropdownOpen
+                            ? 'rotate(180deg)'
+                            : 'rotate(0deg)'
+                        "
+                        >▼</span
+                      >
+                    </button>
+
+                    <!-- Dropdown Panel -->
+                    @if (countryDropdownOpen) {
+                      <div
+                        tabindex="-1"
+                        class="absolute top-[calc(100%+6px)] left-0 z-50 rounded-[14px] overflow-hidden"
+                        style="
+                          min-width: 260px;
+                          background: #fff9f4;
+                          border: 1px solid rgba(123, 90, 74, 0.2);
+                          box-shadow:
+                            0 8px 32px rgba(123, 90, 74, 0.18),
+                            0 2px 8px rgba(0, 0, 0, 0.06);
+                          animation: dropdownIn 0.15s ease both;
+                          outline: none;
+                        "
+                      >
+                        <!-- Search -->
+                        <div
+                          style="
+                            padding: 10px 10px 6px;
+                            border-bottom: 1px solid rgba(123, 90, 74, 0.12);
+                          "
+                        >
+                          <input
+                            #countrySearch
+                            type="text"
+                            [(ngModel)]="countrySearchQuery"
+                            [ngModelOptions]="{ standalone: true }"
+                            placeholder="Search country…"
+                            class="w-full outline-none rounded-lg text-[13px] transition-all duration-200"
+                            style="
+                              padding: 7px 12px;
+                              border: 1px solid rgba(123, 90, 74, 0.25);
+                              background: white;
+                              color: #1e2a22;
+                            "
+                            (focus)="onSearchFocus($event)"
+                            (blur)="onSearchBlur($event)"
+                            (click)="$event.stopPropagation()"
+                          />
+                        </div>
+
+                        <!-- Country List -->
+                        <div
+                          style="
+                            max-height: 220px;
+                            overflow-y: auto;
+                            padding: 6px 0;
+                          "
+                          class="scrollbar-thin"
+                        >
+                          @for (
+                            country of filteredCountries;
+                            track country.code + country.name
+                          ) {
+                            <div
+                              class="flex items-center gap-2.5 cursor-pointer transition-colors duration-100"
+                              style="
+                                padding: 8px 14px;
+                                font-size: 13.5px;
+                                color: #1e2a22;
+                              "
+                              [style.background]="
+                                selectedCountry.name === country.name
+                                  ? 'rgba(123,90,74,0.1)'
+                                  : ''
+                              "
+                              (mousedown)="selectCountry(country)"
+                              (mouseenter)="onCountryHover($event, true)"
+                              (mouseleave)="onCountryHover($event, false)"
+                            >
+                              <span
+                                style="
+                                  font-size: 18px;
+                                  line-height: 1;
+                                  flex-shrink: 0;
+                                "
+                                >{{ country.flag }}</span
+                              >
+                              <span style="flex: 1; color: #1e2a22">{{
+                                country.name
+                              }}</span>
+                              <span
+                                style="
+                                  color: #7b5a4a;
+                                  font-size: 12.5px;
+                                  font-weight: 500;
+                                "
+                                >{{ country.code }}</span
+                              >
+                            </div>
+                          }
+                          @if (filteredCountries.length === 0) {
+                            <div
+                              style="
+                                padding: 16px 14px;
+                                text-align: center;
+                                font-size: 13px;
+                                color: #7b5a4a;
+                                opacity: 0.6;
+                              "
+                            >
+                              No countries found
+                            </div>
+                          }
+                        </div>
+                      </div>
+                    }
+
+                    <!-- Phone Input -->
                     <input
                       type="tel"
                       formControlName="mobile"
                       placeholder="00000 00000"
                       autocomplete="tel"
-                      class="flex-1 px-[18px] py-2 border border-l-0 rounded-r-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
-                      [class.border-[rgba(123,90,74,0.25)]]="
-                        !isInvalid('mobile')
+                      class="flex-1 min-w-0 px-[18px] rounded-r-xl text-[15px] outline-none transition-all duration-200"
+                      style="
+                        border: 1px solid rgba(123, 90, 74, 0.25);
+                        border-left: none;
+                        background: white;
+                        color: #1e2a22;
+                        height: 40px;
                       "
-                      [class.border-red-400]="isInvalid('mobile')"
+                      [style.border-color]="
+                        isInvalid('mobile') ? '#f87171' : ''
+                      "
+                      (focus)="onInputFocus($event)"
+                      (blur)="onInputBlur($event)"
                     />
                   </div>
+
                   @if (isInvalid("mobile")) {
-                    <span class="text-xs text-red-500"
+                    <span class="text-xs" style="color: #ef4444"
                       >Please enter a valid mobile number.</span
                     >
                   }
                 </div>
 
-                <!-- Organization (optional) -->
+                <!-- Organization -->
                 <div class="flex flex-col gap-1.5">
                   <label
-                    class="text-[13px] font-medium text-[#7b5a4a] dark:text-[#c4a090] tracking-wide"
+                    class="text-[13px] font-medium tracking-wide"
+                    style="color: #7b5a4a"
                   >
                     Organization Name
-                    <span
-                      class="text-[#7b5a4a] dark:text-[#a08070] font-normal opacity-70"
+                    <span style="color: #7b5a4a; font-weight: 400; opacity: 0.7"
                       >(Optional)</span
                     >
                   </label>
@@ -219,20 +396,42 @@
                     type="text"
                     formControlName="organization"
                     placeholder="Where do you work?"
-                    class="w-full px-[18px] py-2 border border-[rgba(123,90,74,0.25)] dark:border-white/20 rounded-xl text-[15px] text-[#1e2a22] dark:text-gray-200 bg-white dark:bg-gray-800 outline-none transition-all duration-200 placeholder:text-[#bbb] dark:placeholder:text-gray-500 focus:border-[#7b5a4a] dark:focus:border-[#c4a090] focus:shadow-[0_0_0_3px_rgba(123,90,74,0.15)] dark:focus:shadow-[0_0_0_3px_rgba(196,160,144,0.1)]"
+                    class="w-full px-[18px] py-2 rounded-xl text-[15px] outline-none transition-all duration-200"
+                    style="
+                      border: 1px solid rgba(123, 90, 74, 0.25);
+                      background: white;
+                      color: #1e2a22;
+                      height: 40px;
+                    "
+                    (focus)="onInputFocus($event)"
+                    (blur)="onInputBlur($event)"
                   />
                 </div>
               </div>
+              <!-- /grid -->
 
+              <!-- Submit -->
               <div class="flex justify-center">
                 <button
                   type="submit"
                   [disabled]="formState === 'loading'"
-                  class="inline-flex items-center justify-center bg-[#7b5a4a] text-white text-base font-medium py-2.5 px-6 rounded-xl transition-all duration-200 ease-out hover:enabled:bg-[#9a7060] hover:enabled:-translate-y-[2px] hover:enabled:shadow-[0_10px_28px_rgba(123,90,74,0.35)] active:enabled:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7b5a4a] focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  class="inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 ease-out focus:outline-none"
+                  style="
+                    background: #7b5a4a;
+                    color: white;
+                    padding: 10px 24px;
+                    font-size: 15px;
+                  "
+                  (mouseenter)="onBtnHover($event, true)"
+                  (mouseleave)="onBtnHover($event, false)"
                 >
                   @if (formState === "loading") {
                     <span
-                      class="w-[18px] h-[18px] border-2 border-white/40 border-t-white rounded-full animate-spin"
+                      class="w-[18px] h-[18px] rounded-full animate-spin inline-block"
+                      style="
+                        border: 2px solid rgba(255, 255, 255, 0.4);
+                        border-top-color: white;
+                      "
                     ></span>
                   } @else {
                     Reserve My Spot for This Month's Webinars
@@ -241,7 +440,8 @@
               </div>
 
               <p
-                class="text-center text-[13px] text-[#7b5a4a] dark:text-[#a08070] opacity-80 mt-3 leading-relaxed"
+                class="text-center text-[13px] mt-3 leading-relaxed"
+                style="color: #7b5a4a; opacity: 0.8"
               >
                 Register once and get access to all upcoming webinars this
                 month.
@@ -249,7 +449,12 @@
 
               @if (formState === "error") {
                 <div
-                  class="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-2 rounded-xl mt-4"
+                  class="text-sm px-4 py-2 rounded-xl mt-4"
+                  style="
+                    background: #fef2f2;
+                    border: 1px solid #fecaca;
+                    color: #dc2626;
+                  "
                 >
                   Something went wrong. Please try again.
                 </div>
@@ -258,66 +463,75 @@
           </div>
         }
 
-        <!-- ── SUCCESS VIEW ── -->
+        <!-- SUCCESS VIEW -->
         @if (formState === "success") {
-          <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
-            <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
-              🎉
-            </div>
+          <div class="text-center py-12 px-6">
+            <div class="text-[52px] mb-5">🎉</div>
             <h2
-              class="font-serif text-[30px] font-normal text-[#1e2a22] dark:text-gray-100 mb-3"
+              class="font-serif text-[30px] font-normal mb-3"
+              style="color: #1e2a22"
             >
               You're Registered!
             </h2>
             <p
-              class="text-base text-[#7b5a4a] dark:text-[#a08070] leading-relaxed mb-6 max-w-[380px] mx-auto"
+              class="text-base leading-relaxed mb-6 max-w-[380px] mx-auto"
+              style="color: #7b5a4a"
             >
               You are now enrolled in all upcoming Positivty webinars this
               month.
             </p>
             <div
-              class="inline-block bg-[rgba(123,90,74,0.08)] dark:bg-[#7b5a4a]/20 border border-[rgba(123,90,74,0.2)] dark:border-[#7b5a4a]/40 rounded-xl px-5 py-4 text-sm text-[#7b5a4a] dark:text-[#c4a090] mb-6"
+              class="inline-block rounded-xl px-5 py-4 text-sm mb-6"
+              style="
+                background: rgba(123, 90, 74, 0.08);
+                border: 1px solid rgba(123, 90, 74, 0.2);
+                color: #7b5a4a;
+              "
             >
               📩 Check your email for calendar invites
             </div>
-            <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
+            <p class="text-[13px] italic" style="color: #7b5a4a; opacity: 0.7">
               Redirecting in 3 seconds…
             </p>
             <div
-              class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] dark:bg-white/10 rounded-full mx-auto mt-3 overflow-hidden"
+              class="w-[200px] h-[3px] rounded-full mx-auto mt-3 overflow-hidden"
+              style="background: rgba(123, 90, 74, 0.15)"
             >
               <div
-                class="h-full bg-[#7b5a4a] dark:bg-[#c4a090] rounded-full animate-[redirectProgress_3s_linear_forwards]"
+                class="h-full rounded-full animate-[redirectProgress_3s_linear_forwards]"
+                style="background: #7b5a4a"
               ></div>
             </div>
           </div>
         }
 
-        <!-- ── ALREADY REGISTERED VIEW ── -->
+        <!-- ALREADY REGISTERED VIEW -->
         @if (formState === "already_registered") {
-          <div class="text-center py-12 px-6 animate-[fadeUp_0.5s_ease_both]">
-            <div class="text-[52px] mb-5 animate-[bounceIn_0.5s_ease_both]">
-              ✅
-            </div>
+          <div class="text-center py-12 px-6">
+            <div class="text-[52px] mb-5">✅</div>
             <h2
-              class="font-serif text-[30px] font-normal text-[#1e2a22] dark:text-gray-100 mb-3"
+              class="font-serif text-[30px] font-normal mb-3"
+              style="color: #1e2a22"
             >
               Already Registered
             </h2>
             <p
-              class="text-base text-[#7b5a4a] dark:text-[#a08070] leading-relaxed mb-6 max-w-[380px] mx-auto"
+              class="text-base leading-relaxed mb-6 max-w-[380px] mx-auto"
+              style="color: #7b5a4a"
             >
               You are already registered for this month's webinars. See you
               there!
             </p>
-            <p class="text-[13px] text-[#7b5a4a] italic opacity-70">
+            <p class="text-[13px] italic" style="color: #7b5a4a; opacity: 0.7">
               Redirecting in 3 seconds…
             </p>
             <div
-              class="w-[200px] h-[3px] bg-[rgba(123,90,74,0.15)] dark:bg-white/10 rounded-full mx-auto mt-3 overflow-hidden"
+              class="w-[200px] h-[3px] rounded-full mx-auto mt-3 overflow-hidden"
+              style="background: rgba(123, 90, 74, 0.15)"
             >
               <div
-                class="h-full bg-[#7b5a4a] dark:bg-[#c4a090] rounded-full animate-[redirectProgress_3s_linear_forwards]"
+                class="h-full rounded-full animate-[redirectProgress_3s_linear_forwards]"
+                style="background: #7b5a4a"
               ></div>
             </div>
           </div>
@@ -326,34 +540,42 @@
     </div>
   </section>
 
-  <!-- ── DIVIDER ─────────────────────────────────────────────────────────── -->
-  <div class="max-w-[680px] mx-auto px-6">
+  <!-- ── DIVIDER ── -->
+  <div class="max-w-[680px] mx-auto px-4 sm:px-6">
     <div
-      class="w-12 h-0.5 mx-auto rounded-full my-2 bg-gradient-to-r from-[#c4a090] to-transparent dark:from-[#7b5a4a] dark:to-transparent"
+      class="w-12 h-0.5 mx-auto rounded-full my-2"
+      style="background: linear-gradient(to right, #c4a090, transparent)"
     ></div>
   </div>
 
-  <!-- ── UPCOMING WEBINARS ───────────────────────────────────────────────── -->
+  <!-- ── UPCOMING WEBINARS ── -->
   <section class="py-6">
-    <div class="max-w-[680px] mx-auto px-6">
+    <div class="max-w-[680px] mx-auto px-4 sm:px-6">
       <p
-        class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] dark:text-[#c4a090] mb-2"
+        class="text-[11px] font-medium tracking-[0.14em] uppercase mb-2"
+        style="color: #7b5a4a"
       >
         Upcoming Sessions
       </p>
       <h2
-        class="font-serif text-[28px] font-normal text-[#1e2a22] dark:text-gray-100 mb-8 leading-tight"
+        class="font-serif text-[26px] sm:text-[28px] font-normal mb-8 leading-tight"
+        style="color: #1e2a22"
       >
         What's on this month
       </h2>
 
       @if (loading) {
-        <div class="text-center py-10 text-[#7b5a4a] opacity-70">
+        <div class="text-center py-10" style="color: #7b5a4a; opacity: 0.7">
           Loading sessions…
         </div>
       } @else if (upcomingWebinars.length === 0) {
         <div
-          class="text-center py-10 bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-[#7b5a4a]/30 rounded-2xl text-[#7b5a4a] dark:text-[#c4a090] text-[15px]"
+          class="text-center py-10 rounded-2xl text-[15px]"
+          style="
+            background: #fff9f4;
+            border: 1px solid rgba(123, 90, 74, 0.2);
+            color: #7b5a4a;
+          "
         >
           There are currently no scheduled webinars. Please check back soon.
         </div>
@@ -361,39 +583,50 @@
         <div class="flex flex-col gap-4">
           @for (webinar of upcomingWebinars; track webinar.id; let i = $index) {
             <div
-              class="bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-white/10 rounded-2xl p-6 grid grid-cols-[64px_1fr] gap-5 transition-all duration-200 hover:border-[#7b5a4a] dark:hover:border-[#c4a090] hover:shadow-[0_4px_20px_rgba(123,90,74,0.15)] dark:hover:shadow-none hover:-translate-y-px animate-[fadeUp_0.6s_ease_both]"
+              class="rounded-2xl p-4 sm:p-6 grid grid-cols-[56px_1fr] sm:grid-cols-[64px_1fr] gap-3 sm:gap-5 transition-all duration-200 hover:-translate-y-px"
+              style="
+                background: #fff9f4;
+                border: 1px solid rgba(123, 90, 74, 0.2);
+              "
               [style.animation-delay]="i * 80 + 'ms'"
+              (mouseenter)="onCardHover($event, true)"
+              (mouseleave)="onCardHover($event, false)"
             >
               <!-- Date block -->
               <div
-                class="flex flex-col items-center justify-center bg-[rgba(123,90,74,0.08)] dark:bg-[#7b5a4a]/20 rounded-xl px-2 py-2.5 text-center"
+                class="flex flex-col items-center justify-center rounded-xl px-1 sm:px-2 py-2 sm:py-2.5 text-center"
+                style="background: rgba(123, 90, 74, 0.08)"
               >
                 <span
-                  class="font-serif text-2xl font-normal text-[#7b5a4a] dark:text-[#c4a090] leading-none"
+                  class="font-serif text-xl sm:text-2xl font-normal leading-none"
+                  style="color: #7b5a4a"
                 >
                   {{ getDay(webinar.webinar_date) }}
                 </span>
                 <span
-                  class="text-[11px] font-medium text-[#7b5a4a] dark:text-[#c4a090]/80 tracking-widest uppercase mt-0.5 opacity-70"
+                  class="text-[10px] sm:text-[11px] font-medium tracking-widest uppercase mt-0.5"
+                  style="color: #7b5a4a; opacity: 0.7"
                 >
                   {{ getMonth(webinar.webinar_date) }}
                 </span>
               </div>
-
               <!-- Info -->
               <div>
                 <p
-                  class="text-xs font-medium text-[#7b5a4a] dark:text-[#a08070] opacity-60 mb-1"
+                  class="text-xs font-medium mb-1"
+                  style="color: #7b5a4a; opacity: 0.6"
                 >
                   ⏰ {{ webinar.time }}
                 </p>
                 <p
-                  class="font-serif text-[17px] font-normal text-[#1e2a22] dark:text-gray-100 leading-tight mb-1.5"
+                  class="font-serif text-[15px] sm:text-[17px] font-normal leading-tight mb-1.5"
+                  style="color: #1e2a22"
                 >
                   {{ webinar.title }}
                 </p>
                 <p
-                  class="text-[13px] text-[#7b5a4a] dark:text-[#a08070] opacity-70 leading-relaxed"
+                  class="text-[12px] sm:text-[13px] leading-relaxed"
+                  style="color: #7b5a4a; opacity: 0.7"
                 >
                   {{ webinar.description }}
                 </p>
@@ -405,37 +638,47 @@
     </div>
   </section>
 
-  <!-- ── DIVIDER ─────────────────────────────────────────────────────────── -->
-  <div class="max-w-[680px] mx-auto px-6">
+  <!-- ── DIVIDER ── -->
+  <div class="max-w-[680px] mx-auto px-4 sm:px-6">
     <div
-      class="w-12 h-0.5 mx-auto rounded-full my-4 bg-gradient-to-r from-[#c4a090] to-transparent dark:from-[#7b5a4a] dark:to-transparent"
+      class="w-12 h-0.5 mx-auto rounded-full my-4"
+      style="background: linear-gradient(to right, #c4a090, transparent)"
     ></div>
   </div>
 
-  <!-- ── WHAT YOU'LL LEARN ───────────────────────────────────────────────── -->
+  <!-- ── CURRICULUM ── -->
   <section class="py-6">
-    <div class="max-w-[680px] mx-auto px-6">
+    <div class="max-w-[680px] mx-auto px-4 sm:px-6">
       <p
-        class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#7b5a4a] dark:text-[#c4a090] mb-2"
+        class="text-[11px] font-medium tracking-[0.14em] uppercase mb-2"
+        style="color: #7b5a4a"
       >
         Curriculum
       </p>
       <h2
-        class="font-serif text-[28px] font-normal text-[#1e2a22] dark:text-gray-100 mb-8 leading-tight"
+        class="font-serif text-[26px] sm:text-[28px] font-normal mb-8 leading-tight"
+        style="color: #1e2a22"
       >
         What you'll take away
       </h2>
-      <div class="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         @for (item of curriculum; track item.text) {
           <div
-            class="bg-[#fff9f4] dark:bg-gray-900 border border-[rgba(123,90,74,0.2)] dark:border-white/10 rounded-2xl p-5 flex items-start gap-3 transition-all duration-200 hover:border-[#7b5a4a] dark:hover:border-[#c4a090] hover:shadow-[0_4px_16px_rgba(123,90,74,0.12)] dark:hover:shadow-none hover:-translate-y-px"
+            class="rounded-2xl p-5 flex items-start gap-3 transition-all duration-200 hover:-translate-y-px"
+            style="
+              background: #fff9f4;
+              border: 1px solid rgba(123, 90, 74, 0.2);
+            "
+            (mouseenter)="onCardHover($event, true)"
+            (mouseleave)="onCardHover($event, false)"
           >
             <div
-              class="w-8 h-8 bg-[rgba(123,90,74,0.1)] dark:bg-[#7b5a4a]/20 rounded-lg flex items-center justify-center text-[15px] shrink-0"
+              class="w-8 h-8 rounded-lg flex items-center justify-center text-[15px] shrink-0"
+              style="background: rgba(123, 90, 74, 0.1)"
             >
               {{ item.icon }}
             </div>
-            <p class="text-sm text-[#1e2a22] dark:text-gray-200 leading-[1.4]">
+            <p class="text-sm leading-[1.4]" style="color: #1e2a22">
               {{ item.text }}
             </p>
           </div>
@@ -444,49 +687,54 @@
     </div>
   </section>
 
-  <!-- ── DIVIDER ─────────────────────────────────────────────────────────── -->
-  <div class="max-w-[680px] mx-auto px-6">
+  <!-- ── DIVIDER ── -->
+  <div class="max-w-[680px] mx-auto px-4 sm:px-6">
     <div
-      class="w-12 h-0.5 mx-auto rounded-full my-4 bg-gradient-to-r from-[#c4a090] to-transparent dark:from-[#7b5a4a] dark:to-transparent"
+      class="w-12 h-0.5 mx-auto rounded-full my-4"
+      style="background: linear-gradient(to right, #c4a090, transparent)"
     ></div>
   </div>
 
-  <!-- ── ABOUT ──────────────────────────────────────────────────────────── -->
+  <!-- ── ABOUT ── -->
   <section class="py-6">
-    <div class="max-w-[680px] mx-auto px-6">
+    <div class="max-w-[680px] mx-auto px-4 sm:px-6">
       <div
-        class="rounded-[20px] p-9 text-center border border-[rgba(123,90,74,0.2)] dark:border-white/10"
+        class="rounded-[20px] p-6 sm:p-9 text-center"
         style="
           background: linear-gradient(
             135deg,
             rgba(123, 90, 74, 0.06) 0%,
             rgba(232, 213, 196, 0.2) 100%
           );
+          border: 1px solid rgba(123, 90, 74, 0.2);
         "
-        class="dark:bg-gray-900/50 dark:!bg-none"
       >
         <p
-          class="font-serif text-[22px] font-normal text-[#7b5a4a] dark:text-[#c4a090] mb-4 tracking-tight"
+          class="font-serif text-[22px] font-normal mb-4 tracking-tight"
+          style="color: #7b5a4a"
         >
-          Positivty<span class="text-[#c9a96e]">.</span>
+          Positivty<span style="color: #c9a96e">.</span>
         </p>
         <p
-          class="text-[15px] text-[#1e2a22] dark:text-gray-200 leading-[1.7] max-w-[480px] mx-auto mb-6 opacity-80"
+          class="text-[14px] sm:text-[15px] leading-[1.7] max-w-[480px] mx-auto mb-6"
+          style="color: #1e2a22; opacity: 0.8"
         >
           Positivty is a mental health platform helping individuals and
           organizations build emotional resilience through therapy, workshops,
           and community programs.
         </p>
-        <div class="flex justify-center gap-10 max-sm:gap-6">
+        <div class="flex justify-center flex-wrap gap-6 sm:gap-10">
           @for (stat of stats; track stat.label) {
             <div class="text-center">
               <div
-                class="font-serif text-[28px] font-normal text-[#7b5a4a] dark:text-[#c4a090] leading-none mb-1"
+                class="font-serif text-[26px] sm:text-[28px] font-normal leading-none mb-1"
+                style="color: #7b5a4a"
               >
                 {{ stat.num }}
               </div>
               <div
-                class="text-xs text-[#7b5a4a] dark:text-[#a08070] uppercase tracking-widest font-medium opacity-60"
+                class="text-xs uppercase tracking-widest font-medium"
+                style="color: #7b5a4a; opacity: 0.6"
               >
                 {{ stat.label }}
               </div>
@@ -497,29 +745,36 @@
     </div>
   </section>
 
-  <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
+  <!-- ── FOOTER ── -->
   <footer
-    class="py-6 pb-10 text-center text-xs text-[#7b5a4a] dark:text-[#a08070] opacity-60 max-w-[680px] mx-auto px-6"
+    class="py-6 pb-10 text-center text-xs max-w-[680px] mx-auto px-4 sm:px-6"
+    style="color: #7b5a4a; opacity: 0.6"
   >
     © 2026 Positivty. All rights reserved.
   </footer>
 </div>
 
-<!-- ── STICKY MOBILE CTA ───────────────────────────────────────────────── -->
-<div
-  class="fixed bottom-0 left-0 right-0 z-50 bg-[rgba(250,247,242,0.95)] dark:bg-gray-950/95 backdrop-blur-xl border-t border-[rgba(123,90,74,0.2)] dark:border-white/10 p-4 transition-transform duration-300 sm:hidden"
+<!-- ── STICKY MOBILE CTA ── -->
+<!-- <div
+  class="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-xl border-t p-4 transition-transform duration-300 sm:hidden"
+  style="
+    background: rgba(250, 247, 242, 0.95);
+    border-color: rgba(123, 90, 74, 0.2);
+  "
   [class.translate-y-0]="showStickyCta"
   [class.translate-y-full]="!showStickyCta"
 >
   <a
     href="#register"
     (click)="scrollToRegister($event)"
-    class="w-full flex items-center justify-center gap-2.5 bg-[#7b5a4a] text-white text-base font-medium py-[15px] rounded-full no-underline transition-all duration-200 hover:bg-[#9a7060] hover:shadow-[0_8px_24px_rgba(123,90,74,0.35)]"
+    class="w-full flex items-center justify-center gap-2.5 font-medium py-[15px] rounded-full no-underline transition-all duration-200"
+    style="background: #7b5a4a; color: white; font-size: 16px"
   >
     Reserve My Spot
     <span
-      class="w-5 h-5 inline-flex items-center justify-center bg-white/20 rounded-full text-xs"
+      class="w-5 h-5 inline-flex items-center justify-center rounded-full text-xs"
+      style="background: rgba(255, 255, 255, 0.2)"
       >→</span
     >
   </a>
-</div>
+</div> -->
