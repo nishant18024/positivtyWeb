@@ -3,10 +3,12 @@ import { Component } from '@angular/core';
 import { AboutUsComponent } from "../about-us/about-us.component";
 import { EnterprisesInfoCardComponent, InfoCard } from "../../shared/components/enterprises-info-card/enterprises-info-card.component";
 import { EnterprisesCareCardComponent } from "../../shared/components/enterprises-care-card/enterprises-care-card.component";
+import { EnterprisesStepsCardComponent } from "../../shared/components/enterprises-steps-card/enterprises-steps-card.component";
+import { EmployeesStepsCardComponent } from "../../shared/components/employees-steps-card/employees-steps-card.component";
 
 @Component({
   selector: 'app-enterprises',
-  imports: [CommonModule, EnterprisesInfoCardComponent, EnterprisesCareCardComponent],
+  imports: [CommonModule, EnterprisesInfoCardComponent, EnterprisesCareCardComponent, EnterprisesStepsCardComponent, EmployeesStepsCardComponent],
   templateUrl: './enterprises.component.html',
   styleUrl: './enterprises.component.scss'
 })
@@ -129,24 +131,71 @@ export class EnterprisesComponent {
     {
       title: 'Tailored Programs by Experts',
       desc: 'Our clinical psychologists design programs specific to employees’ mental health needs, blending expertise with personalized, science-backed care for meaningful impact.',
-      icon: 'assets/icons/expert.svg'
+      icon: 'https://positivtystaticassets.blob.core.windows.net/images/enterprises/icons/tailored.png'
     },
     {
       title: 'Tailored Programs by Experts',
       desc: 'Our clinical psychologists design programs specific to employees’ mental health needs, blending expertise with personalized, science-backed care for meaningful impact.',
-      icon: 'assets/icons/expert.svg'
+      icon: 'https://positivtystaticassets.blob.core.windows.net/images/enterprises/icons/Support.svg'
     },
     {
       title: 'Tailored Programs by Experts',
       desc: 'Our clinical psychologists design programs specific to employees’ mental health needs, blending expertise with personalized, science-backed care for meaningful impact.',
-      icon: 'assets/icons/expert.svg'
+      icon: 'https://positivtystaticassets.blob.core.windows.net/images/enterprises/icons/Insightful.svg'
     },
     {
       title: 'Tailored Programs by Experts',
       desc: 'Our clinical psychologists design programs specific to employees’ mental health needs, blending expertise with personalized, science-backed care for meaningful impact.',
-      icon: 'assets/icons/expert.svg'
+      icon: 'https://positivtystaticassets.blob.core.windows.net/images/enterprises/icons/Personalized.svg'
     },
   ]
+
+
+  steps = [
+    {
+      number: 1,
+      title: 'Complete the Invitation Form',
+      description: 'Provide your enterprise’s and contact person’s details, choose a product/package, and customize offerings to match employee needs'
+    },
+    {
+      number: 2,
+      title: 'Pick Coupons of your Choice',
+      description: 'Choose from multiple coupon options with different counts and values per coupon, and upload your employee email list'
+    },
+    {
+      number: 3,
+      title: 'Review & Finalize the Information',
+      description: 'Verify the details for accuracy, change if required by clicking Modify, or confirm your booking by clicking on Confirm & Pay to proceed'
+    },
+    {
+      number: 4,
+      title: 'Distribute E-Coupons',
+      description: 'Employees receive e-coupons with your personalized message via email from Positivty on your behalf while you get notified'
+    }
+  ];
+
+  employesteps = [
+    {
+      number: 1,
+      title: 'Complete the Invitation Form',
+      description: 'Provide your enterprise’s and contact person’s details, choose a product/package, and customize offerings to match employee needs'
+    },
+    {
+      number: 2,
+      title: 'Pick Coupons of your Choice',
+      description: 'Choose from multiple coupon options with different counts and values per coupon, and upload your employee email list'
+    },
+    {
+      number: 3,
+      title: 'Review & Finalize the Information',
+      description: 'Verify the details for accuracy, change if required by clicking Modify, or confirm your booking by clicking on Confirm & Pay to proceed'
+    },
+    {
+      number: 4,
+      title: 'Distribute E-Coupons',
+      description: 'Employees receive e-coupons with your personalized message via email from Positivty on your behalf while you get notified'
+    }
+  ];
 
 
 }

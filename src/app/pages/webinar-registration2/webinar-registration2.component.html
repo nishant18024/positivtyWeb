@@ -10,12 +10,18 @@
     "
   >
     <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <span
-        class="font-display text-2xl font-semibold tracking-tight"
-        style="color: #7b5a4a"
-      >
-        Positivty<span style="color: #d4b8ae">.</span>
-      </span>
+      <a routerLink="/" class="flex items-center gap-2 shrink-0 no-underline">
+        <img
+          src="https://www.positivty.com/assets/website/assets/images/Path21.svg"
+          alt="logo"
+          class="w-8 h-8"
+        />
+        <span
+          class="font-serif text-[17px] font-normal tracking-[-0.01em]"
+          style="color: #1a110a"
+          >Positivty</span
+        >
+      </a>
       <div
         class="hidden sm:flex items-center gap-6 text-sm"
         style="color: #a07868"
@@ -32,7 +38,7 @@
   </nav>
 
   <main
-    class="max-w-6xl mx-auto px-4 py-10 lg:py-16 grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-start"
+    class="max-w-6xl mx-auto px-4 py-4 grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-start"
   >
     <!-- LEFT COLUMN -->
     <div>
@@ -45,13 +51,12 @@
           🏆 Register, Attend &amp; Engage to receive rewards
         </div>
         <h1
-          class="font-display text-4xl lg:text-5xl font-semibold leading-tight mb-3"
+          class="font-display text-2xl lg:text-3xl font-semibold leading-tight mb-3"
           style="color: #3d2318"
         >
-          Webinar<br />
-          <span style="color: #7b5a4a">Registration</span>
+          Webinar <span style="color: #7b5a4a">Registration</span>
         </h1>
-        <p class="text-base leading-relaxed max-w-md" style="color: #9a7060">
+        <p class="text-md leading-relaxed max-w-md" style="color: #9a7060">
           Expert-led sessions on mental health, resilience, and wellbeing —
           trusted by professionals worldwide.
         </p>
@@ -94,8 +99,8 @@
             >
           </div>
           <div class="flex items-center justify-center gap-2">
-            <span>📩</span>
-            <span>Calendar invites are on their way to your inbox</span>
+            <span>📩</span
+            ><span>Calendar invites are on their way to your inbox</span>
           </div>
         </div>
         <p class="text-xs" style="color: #c4a090">
@@ -138,7 +143,7 @@
         *ngIf="registrationState === 'form'"
         (ngSubmit)="onSubmit()"
         novalidate
-        class="space-y-5"
+        class="space-y-3"
       >
         <!-- Full Name -->
         <div>
@@ -155,7 +160,6 @@
             (blur)="touch('fullName')"
             placeholder="Jane Doe"
             class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
-            style="color: #3d2318; background: #fff"
             [style.borderColor]="
               touched.fullName && fullName.trim().length <= 1
                 ? '#c0614a'
@@ -166,6 +170,7 @@
                 ? '#fff5f3'
                 : '#fff'
             "
+            style="color: #3d2318"
           />
           <p
             *ngIf="touched.fullName && fullName.trim().length <= 1"
@@ -191,13 +196,13 @@
             (blur)="touch('email')"
             placeholder="jane@example.com"
             class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
-            style="color: #3d2318"
             [style.borderColor]="
               touched.email && !isEmailValid ? '#c0614a' : '#ddc8be'
             "
             [style.background]="
               touched.email && !isEmailValid ? '#fff5f3' : '#fff'
             "
+            style="color: #3d2318"
           />
           <p
             *ngIf="touched.email && !isEmailValid"
@@ -223,13 +228,13 @@
             (blur)="touch('mobile')"
             placeholder="+44 7700 900000"
             class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
-            style="color: #3d2318"
             [style.borderColor]="
               touched.mobile && !isMobileValid ? '#c0614a' : '#ddc8be'
             "
             [style.background]="
               touched.mobile && !isMobileValid ? '#fff5f3' : '#fff'
             "
+            style="color: #3d2318"
           />
           <p
             *ngIf="touched.mobile && !isMobileValid"
@@ -327,9 +332,8 @@
                     <span
                       class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0"
                       style="background: #f5e8e2; color: #9a7060"
+                      >{{ session.tag }}</span
                     >
-                      {{ session.tag }}
-                    </span>
                   </div>
                   <p class="text-xs mt-0.5" style="color: #c4a090">
                     {{ session.speaker }}
@@ -342,7 +346,6 @@
             </button>
           </div>
 
-          <!-- View more -->
           <button
             *ngIf="!showMoreSessions && sessions.length > 3"
             type="button"
@@ -458,53 +461,108 @@
 
     <!-- RIGHT COLUMN -->
     <aside class="lg:sticky lg:top-24 space-y-5">
-      <!-- Coming Up Next -->
-      <div
-        class="rounded-2xl border shadow-sm p-6"
-        style="background: #fff; border-color: #e8d5cc"
-      >
-        <h3
-          class="font-display text-lg font-semibold mb-4 flex items-center gap-2"
-          style="color: #3d2318"
-        >
-          <span
-            class="w-2 h-2 rounded-full animate-pulse"
-            style="background: #b87c6a"
-          ></span>
-          Coming Up Next
-        </h3>
-        <div
-          *ngIf="selectedCount === 0"
-          class="text-sm text-center py-6"
-          style="color: #c4a090"
-        >
-          Select sessions above to see them listed here.
-        </div>
-        <div *ngIf="selectedCount > 0" class="space-y-3">
+      <!-- ── Coming Up Next ── -->
+      <!-- FIX: use ng-container so *ngIf has no layout side-effects;
+           the section is always rendered but its contents are conditional -->
+      <ng-container *ngIf="nextWebinar">
+        <section class="py-6 px-6 rounded-2xl" style="background: #f8f6f3">
+          <!-- Label -->
           <div
-            *ngFor="let s of selectedSessions; let i = index"
-            class="flex gap-3 items-start animate-fadeIn"
+            class="flex items-center gap-2 mb-6 text-sm font-medium"
+            style="color: #7b5647"
           >
+            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+            Coming Up Next
+          </div>
+
+          <!-- Card -->
+          <div
+            class="bg-white rounded-3xl shadow-xl border border-[#e5ded6] overflow-hidden"
+          >
+            <!-- Header -->
             <div
-              class="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center text-xs font-bold"
-              style="background: #fef0ea; color: #7b5a4a"
+              class="flex flex-col md:flex-row md:items-center md:justify-between px-6 py-5"
+              style="background: #f3ebe4"
             >
-              {{ i + 1 }}
-            </div>
-            <div>
-              <p
-                class="text-sm font-medium leading-snug"
-                style="color: #3d2318"
+              <div>
+                <div class="text-lg font-semibold" style="color: #7b5647">
+                  {{ daysLabel }}
+                </div>
+                <div class="text-sm" style="color: #5a463d">{{ dateStr }}</div>
+                <div class="text-sm mt-1" style="color: #5a463d">
+                  ⏰ {{ nextWebinar!.time }}
+                </div>
+              </div>
+              <span
+                class="mt-3 md:mt-0 inline-block text-white text-xs px-4 py-1 rounded-full"
+                style="background: #7b5647"
+                >Next Session</span
               >
-                {{ s.title }}
+            </div>
+
+            <!-- Body -->
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold mb-4" style="color: #2d1b14">
+                {{ nextWebinar!.title }}
+              </h3>
+              <p class="leading-relaxed mb-5" style="color: #4a3a33">
+                {{ nextWebinar!.description }}
               </p>
-              <p class="text-xs mt-0.5" style="color: #c4a090">
-                {{ s.date }} · {{ s.time }}
-              </p>
+
+              <!-- Tags -->
+              <div
+                *ngIf="nextWebinar!.tags?.length"
+                class="flex flex-wrap gap-2 mb-6"
+              >
+                <span
+                  *ngFor="let tag of nextWebinar!.tags"
+                  class="text-xs px-3 py-1 rounded-full"
+                  style="background: #efe3d4; color: #7b5647"
+                  >{{ tag }}</span
+                >
+              </div>
+
+              <!-- Footer -->
+              <div class="flex items-center justify-between flex-wrap gap-4">
+                <div *ngIf="nextWebinar!.host" class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full text-white flex items-center justify-center font-semibold"
+                    style="background: #7b5647"
+                  >
+                    {{ initials }}
+                  </div>
+                  <div>
+                    <div class="text-sm font-medium" style="color: #2d1b14">
+                      {{ nextWebinar!.host!.name }}
+                    </div>
+                    <div class="text-xs" style="color: #7a6a61">
+                      {{ nextWebinar!.host!.role }}
+                    </div>
+                  </div>
+                </div>
+                <a
+                  [href]="nextWebinar!.detailUrl || '#'"
+                  class="flex items-center gap-2 font-medium hover:underline"
+                  style="color: #7b5647"
+                >
+                  View Details
+                  <svg
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-4 h-4"
+                  >
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </ng-container>
 
       <!-- Stats -->
       <div class="rounded-2xl p-6 text-white" style="background: #7b5a4a">
@@ -533,9 +591,9 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="mt-16 border-t py-8 text-center" style="border-color: #ecddd6">
+  <footer class="mt-2 border-t py-4 text-center" style="border-color: #ecddd6">
     <p class="font-display text-lg font-semibold mb-1" style="color: #7b5a4a">
-      Positivty<span style="color: #d4b8ae">.</span>
+      Positivty
     </p>
     <p class="text-xs max-w-md mx-auto mb-4" style="color: #c4a090">
       A mental health platform helping individuals and organisations build
