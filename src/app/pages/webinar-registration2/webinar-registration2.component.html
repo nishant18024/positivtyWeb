@@ -43,7 +43,7 @@
     <!-- LEFT COLUMN -->
     <div>
       <!-- Hero -->
-      <div class="mb-10">
+      <div class="mb-10  text-center">
         <div
           class="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full mb-4 border"
           style="background: #fef0ea; color: #7b5a4a; border-color: #e8c9bd"
@@ -51,12 +51,11 @@
           🏆 Register, Attend &amp; Engage to receive rewards
         </div>
         <h1
-          class="font-display text-2xl lg:text-3xl font-semibold leading-tight mb-3"
-          style="color: #3d2318"
+          class="font-display text-3xl lg:text-4xl font-semibold leading-tight mb-3 text-[#3d2318]"
         >
-          Webinar <span style="color: #7b5a4a">Registration</span>
+          Registration
         </h1>
-        <p class="text-md leading-relaxed max-w-md" style="color: #9a7060">
+        <p class="text-md leading-relaxed" style="color: #9a7060">
           Expert-led sessions on mental health, resilience, and wellbeing —
           trusted by professionals worldwide.
         </p>
@@ -266,6 +265,76 @@
           />
         </div>
 
+        <!-- Submit -->
+        <button
+          type="submit"
+          [disabled]="isLoading"
+          class="w-full py-4 rounded-xl font-semibold text-white text-sm tracking-wide transition-all duration-200"
+          [style.background]="isLoading ? '#b89088' : '#7b5a4a'"
+          [class.cursor-not-allowed]="isLoading"
+        >
+          <span
+            *ngIf="!isLoading"
+            class="flex items-center justify-center gap-2"
+          >
+            Register Now
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </span>
+          <span
+            *ngIf="isLoading"
+            class="flex items-center justify-center gap-2"
+          >
+            <svg class="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v8H4z"
+              />
+            </svg>
+            Registering…
+          </span>
+        </button>
+
+        <!-- Trust badges -->
+        <div
+          class="flex items-center justify-center gap-4 text-xs pt-1"
+          style="color: #c4a090"
+        >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Free</span
+          >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Expert-led</span
+          >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Evidence-Based</span
+          >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Trusted by
+            Professionals</span
+          >
+        </div>
+
         <!-- Sessions Picker -->
         <div>
           <div class="flex items-center justify-between mb-3">
@@ -385,76 +454,6 @@
           style="background: #fff5f3; border-color: #e8b8ad; color: #c0614a"
         >
           Something went wrong. Please try again.
-        </div>
-
-        <!-- Submit -->
-        <button
-          type="submit"
-          [disabled]="isLoading"
-          class="w-full py-4 rounded-xl font-semibold text-white text-sm tracking-wide transition-all duration-200"
-          [style.background]="isLoading ? '#b89088' : '#7b5a4a'"
-          [class.cursor-not-allowed]="isLoading"
-        >
-          <span
-            *ngIf="!isLoading"
-            class="flex items-center justify-center gap-2"
-          >
-            Register Now
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </span>
-          <span
-            *ngIf="isLoading"
-            class="flex items-center justify-center gap-2"
-          >
-            <svg class="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-              <circle
-                class="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="4"
-              />
-              <path
-                class="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v8H4z"
-              />
-            </svg>
-            Registering…
-          </span>
-        </button>
-
-        <!-- Trust badges -->
-        <div
-          class="flex items-center justify-center gap-4 text-xs pt-1"
-          style="color: #c4a090"
-        >
-          <span class="flex items-center gap-1"
-            ><span style="color: #7b5a4a">✔</span> Free</span
-          >
-          <span class="flex items-center gap-1"
-            ><span style="color: #7b5a4a">✔</span> Expert-led</span
-          >
-          <span class="flex items-center gap-1"
-            ><span style="color: #7b5a4a">✔</span> Evidence-Based</span
-          >
-          <span class="flex items-center gap-1"
-            ><span style="color: #7b5a4a">✔</span> Trusted by
-            Professionals</span
-          >
         </div>
       </form>
     </div>

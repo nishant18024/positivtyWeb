@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from "@angular/router";
 
 interface Session {
   id: string;
@@ -156,7 +157,7 @@ function localTodayStr(): string {
 
 @Component({
   selector: 'app-webinar-registration2',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   standalone: true,
   templateUrl: './webinar-registration2.component.html',
   styleUrl: './webinar-registration2.component.scss',

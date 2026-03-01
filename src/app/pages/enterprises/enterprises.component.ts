@@ -1,10 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AboutUsComponent } from "../about-us/about-us.component";
 import { EnterprisesInfoCardComponent, InfoCard } from "../../shared/components/enterprises-info-card/enterprises-info-card.component";
 import { EnterprisesCareCardComponent } from "../../shared/components/enterprises-care-card/enterprises-care-card.component";
 import { EnterprisesStepsCardComponent } from "../../shared/components/enterprises-steps-card/enterprises-steps-card.component";
 import { EmployeesStepsCardComponent } from "../../shared/components/employees-steps-card/employees-steps-card.component";
+
+interface ImpactItem {
+  percentage: string;
+  text: string;
+}
 
 @Component({
   selector: 'app-enterprises',
@@ -12,7 +17,7 @@ import { EmployeesStepsCardComponent } from "../../shared/components/employees-s
   templateUrl: './enterprises.component.html',
   styleUrl: './enterprises.component.scss'
 })
-export class EnterprisesComponent {
+export class EnterprisesComponent implements OnInit, OnDestroy {
 
   workplaceCards = [
     {
@@ -197,5 +202,38 @@ export class EnterprisesComponent {
     }
   ];
 
+
+  impacts: ImpactItem[] = [
+    {
+      percentage: '46%',
+      text: 'noticed enhanced productivity and focus at work'
+    },
+    {
+      percentage: '38%',
+      text: 'reported reduced workplace stress levels'
+    },
+    {
+      percentage: '52%',
+      text: 'felt improved emotional wellbeing'
+    }
+  ];
+
+  currentIndex = 0;
+  intervalId: any;
+
+  ngOnInit(): void {
+    this.startAutoChange();
+  }
+
+  startAutoChange(): void {
+    this.intervalId = setInterval(() => {
+      this.currentIndex =
+        (this.currentIndex + 1) % this.impacts.length;
+    }, 1000); // 1000ms
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
+  }
 
 }
