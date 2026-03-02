@@ -1,12 +1,13 @@
-<nav class="w-full bg-white dark:bg-black shadow-sm relative top-0 z-50">
-  <div class="mx-auto lg:px-10 md:px-5 px-2">
-    <!-- TOP BAR -->
-    <div class="flex items-center justify-between md:h-24 h-20">
-      <!-- LEFT -->
-      <div class="flex items-center gap-4">
+<nav class=" w-full bg-white dark:bg-black shadow-sm relative px-[15px] md:px-[24px] z-50">
+
+  <div class="md:mx-[15px] py-[15px] flex items-center justify-between flex-row md:flex-row gap-[5px] lg:px-[175px]">
+
+    <div class="">
+
+       <div class="flex items-center gap-[10px] md:gap-[15px]">
         <!-- Mobile Button -->
-        <button class="lg:hidden text-[#7b5a4a]" (click)="toggleMenu()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 transition-all duration-300" fill="none"
+        <button class=" pt-[12px] lg:hidden text-[#7b5a4a] justify-center items-center"  (click)="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg"  class=" h-8 w-7 transition-all duration-300" fill="none"
             viewBox="0 0 24 24" stroke="currentColor">
             <path *ngIf="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16" />
@@ -18,13 +19,14 @@
         <!-- Logo -->
         <a [routerLink]="['/']">
           <img src="/assets/Logo.png"
-            class="h-10 md:h-14 transition-all duration-300 hover:scale-110 hover:-translate-y-1" />
+            class="h-11 md:h-14 transition-all duration-300 hover:scale-110 hover:-translate-y-1" />
         </a>
       </div>
+    </div>
 
-      <!-- RIGHT BUTTONS -->
-      <div class="flex items-center gap-4">
-        <!-- Theme Toggle -->
+    <div class="flex flex-row gap-[5px] md:gap-[15px] items-center">
+
+      <!-- Theme Toggle -->
         <button (click)="toggleTheme()" aria-label="Toggle theme"
           class="relative w-14 h-7 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600">
           <!-- Sliding Circle -->
@@ -36,10 +38,10 @@
         </button>
 
         <!-- CONTACT BUTTON WITH DROPDOWN -->
-        <div class="relative group">
+        <div class="relative group ">
           <button
-            class="hidden md:flex items-center gap-2 border border-[#7b5a4a] text-[#7b5a4a] dark:text-white dark:border-white px-5 py-2 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
-            <i class="fa-solid fa-phone"></i>
+            class="hidden lg:flex items-center gap-2 border border-[#7b5a4a] text-[#7b5a4a] dark:text-white dark:border-white px-6 py-2 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <!-- <i class="fa-solid fa-phone"></i> -->
             CONTACT
             <i class="fa-solid fa-angle-down ml-1 transition-transform duration-300 group-hover:rotate-180"></i>
           </button>
@@ -56,15 +58,20 @@
 
         <!-- SIGN IN BUTTON -->
         <button [routerLink]="'/login'"
-          class="flex items-center gap-2 bg-[#7b5a4a] text-white px-6 py-2 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
-          <i class="fa-solid fa-right-to-bracket"></i>
+          class="flex items-center gap-2 bg-[#7b5a4a] text-white md:px-7 md:py-3 px-5 py-2 rounded-full transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
           SIGN IN
+          <i class="fa-solid fa-solid fa-user"></i>
+          <div class="lg:hidden">
+            <i class=" lg:hidden fa-solid fa-chevron-down text-sm ml-1"></i>
+          </div>
         </button>
-      </div>
     </div>
+  </div>
 
-    <!-- DESKTOP MENU -->
-    <div class="hidden lg:flex items-center gap-4 text-[#7b5a4a] dark:text-white font-medium pb-6">
+  <div class="  md:mx-[15px] lg:block:py-[10px] flex items-center justify-between flex-row md:flex-row gap-[5px] lg:px-[150px]">
+
+      <!-- DESKTOP MENU -->
+    <div class="hidden lg:flex items-center gap-4 text-[#7b5a4a] dark:text-white font-medium pt-[7.5px] px-[15px] pb-[16px] lg">
       <ng-container *ngFor="let item of menuItems">
         <div class="relative group">
           <!-- BUTTON -->
@@ -116,9 +123,8 @@
         </div>
       </ng-container>
     </div>
-  </div>
 
-  <!-- OVERLAY -->
+    <!-- OVERLAY -->
   <div *ngIf="isOpen" class="fixed inset-0 bg-black/40 z-40 lg:hidden" (click)="toggleMenu()"></div>
 
   <!-- MOBILE DRAWER -->
@@ -206,5 +212,22 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
+
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
