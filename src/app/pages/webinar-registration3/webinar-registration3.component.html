@@ -17,27 +17,29 @@
         <div class="form-area">
             <div class="r2">
                 <div class="fi">
-                    <label>First Name <span class="rq">*</span></label>
-                    <input type="text" placeholder="e.g. Jane" [(ngModel)]="registrationData.firstName" name="firstName"
-                        #firstName="ngModel" required
-                        [class.er]="firstName.invalid && (firstName.dirty || firstName.touched)">
+                    <label>Full Name <span class="rq">*</span></label>
+                    <input type="text" placeholder="e.g. Jane Doe" [(ngModel)]="registrationData.fullName"
+                        name="fullName" #fullName="ngModel" required
+                        [class.er]="fullName.invalid && (fullName.dirty || fullName.touched)">
                 </div>
                 <div class="fi">
-                    <label>Last Name <span class="rq">*</span></label>
-                    <input type="text" placeholder="e.g. Doe" [(ngModel)]="registrationData.lastName" name="lastName"
-                        #lastName="ngModel" required
-                        [class.er]="lastName.invalid && (lastName.dirty || lastName.touched)">
+                    <label>Email Address <span class="rq">*</span></label>
+                    <input type="email" placeholder="jane@example.com" [(ngModel)]="registrationData.email" name="email"
+                        #email="ngModel" required email [class.er]="email.invalid && (email.dirty || email.touched)">
                 </div>
             </div>
-            <div class="fi">
-                <label>Email Address <span class="rq">*</span></label>
-                <input type="email" placeholder="jane@example.com" [(ngModel)]="registrationData.email" name="email"
-                    #email="ngModel" required email [class.er]="email.invalid && (email.dirty || email.touched)">
-            </div>
-            <div class="fi">
-                <label>Phone Number <span class="rq">*</span></label>
-                <input type="tel" placeholder="+1 (555) 000-0000" [(ngModel)]="registrationData.phone" name="phone"
-                    #phone="ngModel" required [class.er]="phone.invalid && (phone.dirty || phone.touched)">
+            <div class="r2">
+                <div class="fi">
+                    <label>Mobile Number <span class="rq">*</span></label>
+                    <input type="tel" placeholder="+1 (555) 000-0000" [(ngModel)]="registrationData.phone" name="phone"
+                        #phone="ngModel" required [class.er]="phone.invalid && (phone.dirty || phone.touched)">
+                </div>
+                <div class="fi">
+                    <label>Organisation <span class="rq"
+                            style="font-weight: 300; opacity: 0.6;">(Optional)</span></label>
+                    <input type="text" placeholder="Your company or school" [(ngModel)]="registrationData.organisation"
+                        name="organisation">
+                </div>
             </div>
 
             <div class="nudge">
@@ -72,7 +74,7 @@
             </div>
 
             <div class="pk-blk">
-                <div class="pc" *ngFor="let webinar of webinars" (click)="toggleSession(webinar)"
+                <div class="pc" *ngFor="let webinar of visibleWebinars" (click)="toggleSession(webinar)"
                     [class.sl]="isSelected(webinar)">
                     <div class="chk"></div>
                     <div class="pdt">
@@ -86,6 +88,13 @@
                     <span class="soon" *ngIf="webinar.isSoon">SOON</span>
                 </div>
             </div>
+
+            <button *ngIf="!showMoreSessions && webinars.length > 3" (click)="showMoreSessions = true" class="vm-btn">
+                <span>View More Sessions ({{webinars.length - 3}} more)</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
         </section>
 
         <!-- NEXT UP / DETAIL PANEL (Dynamic) -->
@@ -123,12 +132,11 @@
                     </div>
 
                     <div class="nx-acts">
-                        <button class="btn-pri" (click)="toggleSession(activeWebinar)">
-                            <svg *ngIf="!isSelected(activeWebinar)" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2.5">
-                                <path d="M5 13l4 4L19 7" />
+                        <button class="btn-pri" (click)="scrollToForm()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
                             </svg>
-                            {{isSelected(activeWebinar) ? 'Remove Session' : 'Add to My Schedule'}}
+                            Back to registration
                         </button>
                     </div>
                 </div>

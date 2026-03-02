@@ -247,17 +247,18 @@ function localTodayStr(): string {
 })
 export class WebinarRegistration3Component implements OnInit, OnDestroy {
   registrationData = {
-    firstName: '',
-    lastName: '',
+    fullName: '',
     email: '',
-    phone: ''
+    phone: '',
+    organisation: ''
   };
 
   isRegistered = false;
   loading = false;
   errorMessage = '';
-  showDetails = false;
   redirectCountdown = 3;
+  showDetails = false;
+  showMoreSessions = false;
   private countdownInterval?: any;
 
   webinars: any[] = [];
@@ -300,6 +301,10 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
     return this.webinars.filter((s) => s.selected);
   }
 
+  get visibleWebinars(): any[] {
+    return this.showMoreSessions ? this.webinars : this.webinars.slice(0, 3);
+  }
+
   get allSelected(): boolean {
     return this.webinars.length > 0 && this.webinars.every(s => s.selected);
   }
@@ -320,6 +325,10 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
     return this.webinars.find(w => w.id === webinar.id)?.selected || false;
   }
 
+  scrollToForm(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   setActiveWebinar(webinar: any): void {
     this.activeWebinar = webinar;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -327,8 +336,7 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
 
   isFormValid(): boolean {
     return (
-      this.registrationData.firstName.trim().length > 0 &&
-      this.registrationData.lastName.trim().length > 0 &&
+      this.registrationData.fullName.trim().length > 0 &&
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.registrationData.email) &&
       this.registrationData.phone.trim().length > 5 &&
       this.selectedSessions.length > 0
@@ -378,7 +386,7 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
         clearInterval(this.countdownInterval);
         // Refresh or navigate away
         this.isRegistered = false;
-        this.registrationData = { firstName: '', lastName: '', email: '', phone: '' };
+        this.registrationData = { fullName: '', email: '', phone: '', organisation: '' };
       }
     }, 1000);
   }
