@@ -1,0 +1,278 @@
+<div class="s1 font-body">
+    <!-- top bar -->
+    <header class="tbar">
+        <a href="/" class="logo">
+            <img src="assets/Logo.png" alt="Positivty Logo" class="h-8 w-auto">
+        </a>
+        <div class="tbar-r">
+            <h1 class="pg-ti">Registration</h1>
+            <div class="pg-tg">
+                <span class="rw-pl">Register, Attend & Engage to receive rewards (T&C Apply)</span>
+            </div>
+        </div>
+    </header>
+
+    <ng-container *ngIf="!isRegistered; else successState">
+        <!-- form area -->
+        <div class="form-area">
+            <div class="r2">
+                <div class="fi">
+                    <label>Full Name <span class="rq">*</span></label>
+                    <input type="text" placeholder="e.g. Jane Doe" [(ngModel)]="registrationData.fullName"
+                        name="fullName" #fullName="ngModel" required
+                        [class.er]="fullName.invalid && (fullName.dirty || fullName.touched)">
+                </div>
+                <div class="fi">
+                    <label>Email Address <span class="rq">*</span></label>
+                    <input type="email" placeholder="jane@example.com" [(ngModel)]="registrationData.email" name="email"
+                        #email="ngModel" required email [class.er]="email.invalid && (email.dirty || email.touched)">
+                </div>
+            </div>
+            <div class="r2">
+                <div class="fi">
+                    <label>Mobile Number <span class="rq">*</span></label>
+                    <input type="tel" placeholder="+1 (555) 000-0000" [(ngModel)]="registrationData.phone" name="phone"
+                        #phone="ngModel" required [class.er]="phone.invalid && (phone.dirty || phone.touched)">
+                </div>
+                <div class="fi">
+                    <label>Organisation <span class="rq"
+                            style="font-weight: 300; opacity: 0.6;">(Optional)</span></label>
+                    <input type="text" placeholder="Your company or school" [(ngModel)]="registrationData.organisation"
+                        name="organisation">
+                </div>
+            </div>
+
+            <div class="nudge">
+                <span class="ti"><span class="ck">✓</span> Takes less than
+                    <strong>30 seconds</strong>
+                    · Register once → Attend all selected sessions</span>
+            </div>
+        </div>
+
+        <!-- CTA bar -->
+        <div class="cta-bar">
+            <button class="sub-btn" [disabled]="loading || !isFormValid()" (click)="register()" [class.ld]="loading">
+                <span class="bt">Register Now - {{selectedSessions.length}} Sessions</span>
+                <div class="spin"></div>
+            </button>
+            <!-- <div class="trust">
+                <div class="ti"><span class="ck">✓</span> Secure Connection</div>
+                <div class="ti"><span class="ck">✓</span> Instant Confirmation</div>
+            </div> -->
+            <div class="ierr" [class.on]="errorMessage">{{errorMessage}}</div>
+        </div>
+
+        <!-- PICKER -->
+        <section class="pk-sec">
+            <div class="pk-hd">
+                <h2 class="pk-ti">Choose your sessions <span class="rq">*</span></h2>
+                <div class="pk-ctrl">
+                    <span class="sb-badge"><strong>{{selectedSessions.length}}</strong> selected</span>
+                    <button class="ta-btn" (click)="toggleAll()">{{allSelected ? 'Deselect All' : 'Select
+                        All'}}</button>
+                </div>
+            </div>
+
+            <div class="pk-blk">
+                <div class="pc" *ngFor="let webinar of visibleWebinars" (click)="toggleSession(webinar)"
+                    [class.sl]="isSelected(webinar)">
+                    <div class="chk"></div>
+                    <div class="pdt">
+                        <span class="pd">{{webinar.date | date:'dd'}}</span>
+                        <span class="pm">{{webinar.date | date:'MMM'}}</span>
+                    </div>
+                    <div class="pi">
+                        <div class="ptm">⏰{{webinar.startTime}}</div>
+                        <div class="ptl">{{webinar.title}}</div>
+                    </div>
+                    <span class="soon" *ngIf="webinar.isSoon">SOON</span>
+                </div>
+            </div>
+
+            <button *ngIf="webinars.length > 3" (click)="showMoreSessions = !showMoreSessions" class="vm-btn"
+                [class.exp]="showMoreSessions">
+                <span *ngIf="!showMoreSessions">View More Sessions ({{webinars.length - 3}} more)</span>
+                <span *ngIf="showMoreSessions">View Less</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+        </section>
+
+        <!-- NEXT UP / DETAIL PANEL (Dynamic) -->
+        <section class="nx-sec" *ngIf="activeWebinar">
+            <div class="eyb">
+                <div class="ldot"></div>
+                Comming Up Next
+            </div>
+
+            <div class="nx-card animate-fadeIn">
+                <img [src]="activeWebinar.image || 'https://images.unsplash.com/photo-1591115765373-520b7a217217?auto=format&fit=crop&q=80&w=800'"
+                    class="nx-img" alt="Webinar Image">
+                <div class="nx-body">
+                    <div class="nx-meta">
+                        <span class="nx-date">{{activeWebinar.date | date:'EEEE, MMMM d, y h:mm a'}}</span>
+                        <span class="nx-upc" *ngIf="activeWebinar.isSoon">Upcoming</span>
+                        <span class="nx-daw" *ngIf="!activeWebinar.isSoon">Webinar</span>
+                        <span class="nx-daw" *ngIf="daysLeft">
+                            In {{ daysLeft }} day{{ daysLeft > 1 ? 's' : '' }}
+                        </span>
+                    </div>
+                    <h3 class="nx-ttl">{{activeWebinar.title}}</h3>
+                    <p class="nx-dsc">{{activeWebinar.description | slice:0:160}}...</p>
+                    <a href="javascript:void(0)" class="rm" (click)="showDetails = !showDetails">{{showDetails ? 'Show
+                        Less' :
+                        'View Full Details'}}</a>
+
+                    <div class="nx-tags" *ngIf="activeWebinar.tags">
+                        <span class="nx-tag" *ngFor="let tag of activeWebinar.tags">{{tag}}</span>
+                    </div>
+
+                    <div class="nx-host">
+                        <div class="nx-av">{{activeWebinar.hostInitials || 'PW'}}</div>
+                        <div>
+                            <div class="nx-hn">{{activeWebinar.hostName || 'Positivty Team'}}</div>
+                            <div class="nx-hr">{{activeWebinar.hostRole || 'Webinar Host'}}</div>
+                        </div>
+                    </div>
+
+                    <div class="nx-acts">
+                        <button class="btn-pri" (click)="showDetails = !showDetails">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                            </svg>
+                            {{ showDetails ? 'Close Details' : 'View Full Details' }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETAIL PANEL (Slide down) -->
+        <div class="dt-panel" [class.on]="showDetails" *ngIf="activeWebinar">
+            <div class="dt-inner">
+                <div class="dt-sec">
+                    <div class="dt-lbl">About This Session</div>
+                    <div class="dt-body">
+                        {{activeWebinar.fullDescription || activeWebinar.description}}
+                    </div>
+                </div>
+
+                <div class="dt-sec">
+                    <div class="dt-lbl">Your Host</div>
+                    <div class="dt-bio">
+                        <div class="dt-bio-av">{{activeWebinar.hostInitials || 'PW'}}</div>
+                        <div class="dt-bio-info">
+                            <div class="dt-bio-name">{{activeWebinar.hostName || 'Positivty Team'}}</div>
+                            <div class="dt-bio-role">{{activeWebinar.hostRole || 'Webinar Host'}}</div>
+                            <div class="dt-bio-txt">
+                                {{activeWebinar.hostBio || 'Expert in professional development and mental wellness with
+                                over 10 years of experience in the field.'}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dt-sec" *ngIf="activeWebinar.agenda">
+                    <div class="dt-lbl">Session Outline</div>
+                    <div class="dt-agenda">
+                        <div class="dt-ag-item" *ngFor="let item of activeWebinar.agenda; let i = index">
+                            <div class="dt-ag-n">{{i + 1}}</div>
+                            <div class="dt-ag-t">
+                                <strong>{{item.title}}</strong>
+                                {{item.description}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dt-close">
+                <button class="dt-bk-btn" (click)="showDetails = false; scrollToForm()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        style="width: 14px; height: 14px;">
+                        <path d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to Registration
+                </button>
+            </div>
+        </div>
+
+        <!-- YOUR SESSIONS SUMMARY -->
+        <section class="s3">
+            <div class="sec-lb">Registration Summary</div>
+            <h2 class="sec-ti">Sessions you're signing up for
+            </h2>
+            <p class="sec-su">You're registering for {{selectedSessions.length}} sessions.</p>
+
+            <div class="s3-list" *ngIf="selectedSessions.length > 0; else emptySessions">
+                <div class="s3c" *ngFor="let session of selectedSessions" (click)="setActiveWebinar(session)">
+                    <div class="s3l">
+                        <span class="s3d">{{session.date | date:'dd'}}</span>
+                        <span class="s3m">{{session.date | date:'MMM'}}</span>
+                        <span class="s3m">{{session.date | date:'YYYY'}}</span>
+                    </div>
+                    <div class="s3r">
+                        <div class="s3tm">⏰ {{session.startTime}}</div>
+                        <div class="s3tt">{{session.title}}</div>
+                        <div class="s3ds">{{session.description | slice:0:80}}...</div>
+                    </div>
+                    <div class="s3ar">→</div>
+                </div>
+            </div>
+            <ng-template #emptySessions>
+                <div class="s3-empty">
+                    No sessions selected yet. Please pick at least one session from the list above to register.
+                </div>
+            </ng-template>
+        </section>
+
+        <!-- about -->
+        <section class="abt">
+            <img src="assets/Logo.png" alt="Positivty Logo" class="h-10 w-auto">
+            <div class="abt-dv"></div>
+            <div class="abt-tx">
+                A mental health platform helping individuals and organizations build emotional resilience through
+                expert-led therapy, workshops, and community programmes.
+            </div>
+            <div class="abt-st">
+                <div>
+                    <div class="stn">12k+</div>
+                    <div class="stl">Participants</div>
+                </div>
+                <div>
+                    <div class="stn">48+</div>
+                    <div class="stl">Webinars</div>
+                </div>
+                <div>
+                    <div class="stn">200++</div>
+                    <div class="stl">Orgs</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="ftr">
+            &copy; 2026 Positivty Platform. All rights reserved.
+        </footer>
+    </ng-container>
+
+    <!-- success state -->
+    <ng-template #successState>
+        <div class="sw on">
+            <div class="si">🎉</div>
+            <h2 class="st">Registration Complete!</h2>
+            <p class="ss">You've successfully registered for {{selectedSessions.length}} sessions. Check your email for
+                calendar invites and Zoom links.</p>
+
+            <div class="sb" *ngFor="let s of selectedSessions">
+                <span class="ck">✓</span> {{s.title}}
+            </div>
+
+            <p class="se">Hang tight, we're taking you to your dashboard...</p>
+
+            <div class="rt">Redirecting in 3 seconds</div>
+            <div class="rb">
+                <div class="rf"></div>
+            </div>
+        </div>
+    </ng-template>
+</div>
