@@ -7,8 +7,7 @@
         <div class="tbar-r">
             <h1 class="pg-ti">Webinar Registration</h1>
             <div class="pg-tg">
-                <span class="rw-pl">Live Session</span>
-                <span>Hosted on Zoom</span>
+                <span class="rw-pl">Register, Attend & Engage to receive rewards (T&C Apply)</span>
             </div>
         </div>
     </header>
@@ -42,7 +41,9 @@
             </div>
 
             <div class="nudge">
-                <span class="ti"><span class="ck">✓</span> Join <strong>2,400+</strong> others in this cohort</span>
+                <span class="ti"><span class="ck">✓</span> Takes less than
+                    <strong>30 seconds</strong>
+                    · Register once → Attend all selected sessions</span>
             </div>
         </div>
 
@@ -52,17 +53,17 @@
                 <span class="bt">Complete Registration</span>
                 <div class="spin"></div>
             </button>
-            <div class="trust">
+            <!-- <div class="trust">
                 <div class="ti"><span class="ck">✓</span> Secure Connection</div>
                 <div class="ti"><span class="ck">✓</span> Instant Confirmation</div>
-            </div>
+            </div> -->
             <div class="ierr" [class.on]="errorMessage">{{errorMessage}}</div>
         </div>
 
         <!-- PICKER -->
         <section class="pk-sec">
             <div class="pk-hd">
-                <h2 class="pk-ti">Pick your sessions <span class="rq">*</span></h2>
+                <h2 class="pk-ti">Choose your sessions <span class="rq">*</span></h2>
                 <div class="pk-ctrl">
                     <span class="sb-badge"><strong>{{selectedSessions.length}}</strong> selected</span>
                     <button class="ta-btn" (click)="toggleAll()">{{allSelected ? 'Deselect All' : 'Select
@@ -91,7 +92,7 @@
         <section class="nx-sec" *ngIf="activeWebinar">
             <div class="eyb">
                 <div class="ldot"></div>
-                Currently Viewing
+                Comming Up Next
             </div>
 
             <div class="nx-card animate-fadeIn">
@@ -110,7 +111,7 @@
                         'Read Full Details'}}</a>
 
                     <div class="nx-tags" *ngIf="activeWebinar.tags">
-                        <span class="nx-tag" *ngFor="let tag of activeWebinar.tags">#{{tag}}</span>
+                        <span class="nx-tag" *ngFor="let tag of activeWebinar.tags">{{tag}}</span>
                     </div>
 
                     <div class="nx-host">
