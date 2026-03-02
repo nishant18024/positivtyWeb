@@ -52,7 +52,7 @@
         <!-- CTA bar -->
         <div class="cta-bar">
             <button class="sub-btn" [disabled]="loading || !isFormValid()" (click)="register()" [class.ld]="loading">
-                <span class="bt">Complete Registration</span>
+                <span class="bt">Register Now - {{selectedSessions.length}} Sessions</span>
                 <div class="spin"></div>
             </button>
             <!-- <div class="trust">
@@ -122,7 +122,7 @@
                     <p class="nx-dsc">{{activeWebinar.description | slice:0:160}}...</p>
                     <a href="javascript:void(0)" class="rm" (click)="showDetails = !showDetails">{{showDetails ? 'Show
                         Less' :
-                        'Read Full Details'}}</a>
+                        'View Full Details'}}</a>
 
                     <div class="nx-tags" *ngIf="activeWebinar.tags">
                         <span class="nx-tag" *ngFor="let tag of activeWebinar.tags">{{tag}}</span>
@@ -137,11 +137,11 @@
                     </div>
 
                     <div class="nx-acts">
-                        <button class="btn-pri" (click)="scrollToForm()">
+                        <button class="btn-pri" (click)="showDetails = !showDetails">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
                             </svg>
-                            Back to Registration
+                            {{ showDetails ? 'Close Details' : 'View Full Details' }}
                         </button>
                     </div>
                 </div>
@@ -152,29 +152,29 @@
         <div class="dt-panel" [class.on]="showDetails" *ngIf="activeWebinar">
             <div class="dt-inner">
                 <div class="dt-sec">
-                    <div class="dt-lbl">What you'll learn</div>
+                    <div class="dt-lbl">About This Session</div>
                     <div class="dt-body">
                         {{activeWebinar.fullDescription || activeWebinar.description}}
                     </div>
                 </div>
 
                 <div class="dt-sec">
-                    <div class="dt-lbl">The Speaker</div>
+                    <div class="dt-lbl">Your Host</div>
                     <div class="dt-bio">
                         <div class="dt-bio-av">{{activeWebinar.hostInitials || 'PW'}}</div>
                         <div class="dt-bio-info">
                             <div class="dt-bio-name">{{activeWebinar.hostName || 'Positivty Team'}}</div>
                             <div class="dt-bio-role">{{activeWebinar.hostRole || 'Webinar Host'}}</div>
                             <div class="dt-bio-txt">
-                                Expert in professional development and mental wellness with over 10 years of experience
-                                in the field.
+                                {{activeWebinar.hostBio || 'Expert in professional development and mental wellness with
+                                over 10 years of experience in the field.'}}
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="dt-sec" *ngIf="activeWebinar.agenda">
-                    <div class="dt-lbl">Sessions Agenda</div>
+                    <div class="dt-lbl">Session Outline</div>
                     <div class="dt-agenda">
                         <div class="dt-ag-item" *ngFor="let item of activeWebinar.agenda; let i = index">
                             <div class="dt-ag-n">{{i + 1}}</div>
@@ -187,7 +187,13 @@
                 </div>
             </div>
             <div class="dt-close">
-                <button class="dt-bk-btn" (click)="showDetails = false">Close Details</button>
+                <button class="dt-bk-btn" (click)="showDetails = false; scrollToForm()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        style="width: 14px; height: 14px;">
+                        <path d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to Registration
+                </button>
             </div>
         </div>
 
@@ -203,6 +209,7 @@
                     <div class="s3l">
                         <span class="s3d">{{session.date | date:'dd'}}</span>
                         <span class="s3m">{{session.date | date:'MMM'}}</span>
+                        <span class="s3m">{{session.date | date:'YYYY'}}</span>
                     </div>
                     <div class="s3r">
                         <div class="s3tm">⏰ {{session.startTime}}</div>
@@ -224,7 +231,7 @@
             <img src="assets/Logo.png" alt="Positivty Logo" class="h-10 w-auto">
             <div class="abt-dv"></div>
             <div class="abt-tx">
-                A mental health platform helping individuals and organisations build emotional resilience through
+                A mental health platform helping individuals and organizations build emotional resilience through
                 expert-led therapy, workshops, and community programmes.
             </div>
             <div class="abt-st">

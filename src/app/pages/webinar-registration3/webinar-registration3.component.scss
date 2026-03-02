@@ -1010,18 +1010,18 @@
 .dt-lbl {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: .1em;
+    letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--br-md);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 
     &::before {
         content: "";
         display: inline-block;
-        width: 5px;
-        height: 5px;
+        width: 6px;
+        height: 6px;
         border-radius: 50%;
         background: var(--br);
         flex-shrink: 0;
@@ -1041,18 +1041,18 @@
 }
 
 .dt-bio-av {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: var(--br);
+    background: #735349;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
+    font-size: 16px;
     font-style: italic;
+    font-weight: 500;
     flex-shrink: 0;
-    box-shadow: 0 3px 10px rgba(131, 96, 84, .22);
 }
 
 .dt-bio-info {
@@ -1092,31 +1092,32 @@
 }
 
 .dt-ag-n {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: rgba(131, 96, 84, .1);
-    border: 1.5px solid var(--br-bo);
-    color: var(--br);
-    font-size: 11px;
+    background: rgba(131, 96, 84, .06);
+    border: 1.2px solid var(--br-bo);
+    color: var(--br-md);
+    font-size: 12px;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
 }
 
 .dt-ag-t {
-    font-size: 13.5px;
+    font-size: 14px;
     color: var(--tx-md);
-    line-height: 1.55;
+    line-height: 1.6;
 
     strong {
         font-weight: 600;
         color: var(--tx);
         display: block;
-        margin-bottom: 1px;
+        margin-bottom: 2px;
+        font-size: 15px;
     }
 }
 
@@ -1131,22 +1132,26 @@
 .dt-bk-btn {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 11px 22px;
+    gap: 8px;
+    padding: 12px 32px;
     background: transparent;
-    color: var(--br-md);
-    font-family: "DM Sans", sans-serif;
-    font-size: 13.5px;
+    color: var(--tx-md);
+    font-family: inherit;
+    font-size: 14px;
     font-weight: 500;
-    border-radius: var(--r5);
-    border: 1.5px solid var(--br-bm);
-    text-decoration: none;
+    border-radius: 100px;
+    border: 1.5px solid var(--br-bo);
     cursor: pointer;
-    transition: all .18s;
+    transition: all .2s;
 
     &:hover {
-        background: rgba(131, 96, 84, .07);
-        border-color: var(--br);
+        background: var(--bg-card);
+        border-color: var(--br-bm);
+        color: var(--br);
+    }
+
+    svg {
+        opacity: 0.7;
     }
 }
 
@@ -1390,16 +1395,17 @@
 
     .tbar {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+        align-items: center;
+        gap: 12px;
+        padding-top: 24px;
     }
 
     .tbar-r {
-        text-align: left;
+        text-align: center;
     }
 
     .pg-tg {
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     .r2 {
