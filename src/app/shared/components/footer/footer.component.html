@@ -2,7 +2,10 @@
   <div class="max-w-7xl mx-auto px-6 pt-14 pb-8">
     <!-- LOGO -->
     <div class="flex justify-center lg:justify-start mb-12">
-      <img src="/assets/Logo.png" class="h-14" />
+      <img
+        src="https://www.positivty.com/assets/website/assets/images/Logo-footer.png"
+        class="h-14"
+      />
     </div>
 
     <!-- ================= DESKTOP ================= -->
@@ -11,7 +14,7 @@
         *ngFor="let section of footerSections; trackBy: trackByTitle"
         class="col-span-3"
       >
-        <h4 class="text-lg font-semibold mb-5">
+        <h4 class="text-lg font-semibold mb-5 text-white dark:text-white/90">
           {{ section.title }}
         </h4>
 
@@ -68,7 +71,7 @@
             *ngFor="let social of socialLinks"
             href="#"
             [attr.aria-label]="social.label"
-            class="bg-[#f6e6cf] text-[#8b6a5c] w-9 h-9 rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300"
+            class="bg-[#f6e6cf] text-[#8b6a5c] md:w-9 md:h-9 w-4 h-4 rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300"
           >
             <i class="fa-brands" [ngClass]="social.icon"></i>
           </a>
