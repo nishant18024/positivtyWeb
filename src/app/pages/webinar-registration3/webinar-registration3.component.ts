@@ -4,12 +4,10 @@ import {
   OnDestroy,
   ViewChild,
   ElementRef,
-  HostListener,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
 
 interface WebinarHost {
   name: string;
@@ -241,261 +239,147 @@ function localTodayStr(): string {
 }
 
 @Component({
-  selector: 'app-webinar-registration2',
+  selector: 'app-webinar-registration3',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, FooterComponent],
-  templateUrl: './webinar-registration2.component.html',
-  styleUrls: ['./webinar-registration2.component.scss'],
+  imports: [CommonModule, FormsModule, RouterModule],
+  templateUrl: './webinar-registration3.component.html',
+  styleUrls: ['./webinar-registration3.component.scss'],
 })
-export class WebinarRegistration2Component implements OnInit, OnDestroy {
-  @ViewChild('leftScrollArea') leftScrollArea!: ElementRef<HTMLElement>;
-  @ViewChild('rightScrollArea') rightScrollArea!: ElementRef<HTMLElement>;
+export class WebinarRegistration3Component implements OnInit, OnDestroy {
+  registrationData = {
+    fullName: '',
+    email: '',
+    phone: '',
+    organisation: ''
+  };
 
-  fullName = '';
-  email = '';
-  mobile = '';
-  organisation = '';
-
-  registrationView: RegistrationView = 'registration';
-  isLoading = false;
-  showError = false;
-  showMoreSessions = false;
+  isRegistered = false;
+  loading = false;
+  errorMessage = '';
   redirectCountdown = 3;
+  showDetails = false;
+  showMoreSessions = false;
   private countdownInterval?: any;
 
-  touched = { fullName: false, email: false, mobile: false };
-
-  sessions: Session[] = [];
-  nextWebinar: Webinar | null = null;
-  selectedDetailWebinar: Webinar | null = null;
-
-  isLeftAtBottom = false;
-  isRightAtBottom = false;
-
-  get showFooter(): boolean {
-    return this.isLeftAtBottom && this.isRightAtBottom;
-  }
-
-  private isMouseOverLeft = false;
-
-  onMouseMove(event: MouseEvent): void {
-    if (!this.leftScrollArea) return;
-    const rect = this.leftScrollArea.nativeElement.getBoundingClientRect();
-    this.isMouseOverLeft =
-      event.clientX >= rect.left &&
-      event.clientX <= rect.right &&
-      event.clientY >= rect.top &&
-      event.clientY <= rect.bottom;
-  }
-
-  onScroll(area: 'left' | 'right'): void {
-    const el = area === 'left' ? this.leftScrollArea?.nativeElement : this.rightScrollArea?.nativeElement;
-    if (!el) return;
-
-    const atBottom = el.scrollHeight - el.scrollTop <= el.clientHeight + 10; // 10px buffer
-    if (area === 'left') {
-      this.isLeftAtBottom = atBottom;
-    } else {
-      this.isRightAtBottom = atBottom;
-    }
-  }
-
-  @HostListener('window:wheel', ['$event'])
-  onWindowScroll(event: WheelEvent): void {
-    if (window.innerWidth < 1024) return;
-
-    if (this.isMouseOverLeft) {
-      // Native scroll behavior for the left column
-      return;
-    } else {
-      // Default: scroll the right column
-      if (this.rightScrollArea) {
-        this.rightScrollArea.nativeElement.scrollTop += event.deltaY;
-        event.preventDefault();
-      }
-    }
-  }
-
-  setView(view: RegistrationView): void {
-    this.registrationView = view;
-    this.scrollToTop();
-  }
-
-  scrollToDetails(): void {
-    if (this.leftScrollArea) {
-      const el = document.getElementById('webinar-details');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  }
-
-  scrollToSummary(): void {
-    if (this.leftScrollArea) {
-      const el = document.getElementById('registration-summary');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  }
-
-  scrollToTop(): void {
-    if (this.leftScrollArea) {
-      this.leftScrollArea.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    if (this.rightScrollArea) {
-      this.rightScrollArea.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    // Also scroll global just in case (mobile)
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  selectWebinarForDetails(id: string | number): void {
-    const webinarId = typeof id === 'string' ? parseInt(id, 10) : id;
-    const found = ALL_WEBINARS.find(w => w.id === webinarId);
-    if (found) {
-      this.selectedDetailWebinar = found;
-    }
-  }
-
-  get daysLabel(): string {
-    if (!this.nextWebinar) return '';
-    const diff = this.daysUntil(this.nextWebinar.webinar_date);
-    if (diff === 0) return 'Today';
-    if (diff === 1) return 'Tomorrow';
-    if (diff > 0) return `In ${diff} day${diff !== 1 ? 's' : ''}`;
-    return 'Upcoming';
-  }
-
-  get dateStr(): string {
-    if (!this.nextWebinar) return '';
-    const [y, m, d] = this.nextWebinar.webinar_date.split('-').map(Number);
-    const date = new Date(y, m - 1, d);
-    return date.toLocaleDateString('en-GB', {
-      weekday: 'long',
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    });
-  }
-
-  get detailInitials(): string {
-    const name = this.selectedDetailWebinar?.host?.name ?? '';
-    return name
-      .replace(/^(Dr|Mr|Ms|Mrs|Prof)\.?\s*/i, '')
-      .split(' ')
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((p) => p[0].toUpperCase())
-      .join('');
-  }
-
-  get sidebarInitials(): string {
-    const name = this.nextWebinar?.host?.name ?? '';
-    return name
-      .replace(/^(Dr|Mr|Ms|Mrs|Prof)\.?\s*/i, '')
-      .split(' ')
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((p) => p[0].toUpperCase())
-      .join('');
-  }
+  webinars: any[] = [];
+  activeWebinar: any = null;
 
   ngOnInit(): void {
-    this.sessions = ALL_WEBINARS
+    // Transform ALL_WEBINARS to our local format
+    this.webinars = ALL_WEBINARS
       .filter((w) => w.status === 'Active')
       .map((w) => {
         const [y, m, d] = w.webinar_date.split('-').map(Number);
         const dateObj = new Date(y, m - 1, d);
         return {
-          id: String(w.id),
+          id: w.id,
           title: w.title,
           description: w.description,
-          speaker: w.host?.name ?? 'TBC',
-          date: this.formatShortDate(w.webinar_date),
-          day: String(dateObj.getDate()),
-          month: dateObj.toLocaleString('en-GB', { month: 'short' }).toUpperCase(),
-          time: w.time,
-          tag: w.tags?.[0] ?? 'General',
+          fullDescription: w.about || w.description,
+          date: dateObj,
+          startTime: w.time,
+          duration: '60 min',
+          hostName: w.host?.name ?? 'Positivty Team',
+          hostRole: w.host?.role ?? 'Webinar Host',
+          hostInitials: this.getInitials(w.host?.name ?? 'PW'),
+          image: w.imageUrl,
+          tags: w.tags,
+          agenda: w.outline?.map(o => ({ title: o.title, description: o.content })),
           selected: true,
+          isSoon: this.daysUntil(w.webinar_date) <= 3
         };
       });
 
-    this.nextWebinar = this.findNextWebinar();
-    this.selectedDetailWebinar = this.nextWebinar;
+    this.activeWebinar = this.webinars[0];
   }
 
   ngOnDestroy(): void {
     if (this.countdownInterval) clearInterval(this.countdownInterval);
   }
 
-  get visibleSessions(): Session[] {
-    return this.showMoreSessions ? this.sessions : this.sessions.slice(0, 3);
+  get selectedSessions(): any[] {
+    return this.webinars.filter((s) => s.selected);
   }
 
-  get selectedSessions(): Session[] {
-    return this.sessions.filter((s) => s.selected);
+  get visibleWebinars(): any[] {
+    return this.showMoreSessions ? this.webinars : this.webinars.slice(0, 3);
   }
 
-  get selectedCount(): number {
-    return this.selectedSessions.length;
+  get allSelected(): boolean {
+    return this.webinars.length > 0 && this.webinars.every(s => s.selected);
   }
 
-  get isEmailValid(): boolean {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
+  get daysLeft(): number | null {
+    if (!this.activeWebinar?.date) return null;
+
+    const today = new Date();
+    const webinarDate = new Date(this.activeWebinar.date);
+
+    const diffTime = webinarDate.getTime() - today.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return diffDays > 0 ? diffDays : null;
   }
 
-  get isMobileValid(): boolean {
-    return /^\+?[\d\s\-()]{7,15}$/.test(this.mobile);
+  toggleAll(): void {
+    const target = !this.allSelected;
+    this.webinars.forEach(s => s.selected = target);
   }
 
-  get isFormValid(): boolean {
-    return (
-      this.fullName.trim().length > 1 &&
-      this.isEmailValid &&
-      this.isMobileValid &&
-      this.selectedCount > 0
-    );
-  }
-
-  toggleSession(session: Session): void {
-    session.selected = !session.selected;
-  }
-
-  deselectAll(): void {
-    this.sessions.forEach((s) => (s.selected = false));
-  }
-
-  touch(field: keyof typeof this.touched): void {
-    this.touched[field] = true;
-  }
-
-  async onSubmit(): Promise<void> {
-    this.touched = { fullName: true, email: true, mobile: true };
-    if (!this.isFormValid) return;
-
-    this.isLoading = true;
-    this.showError = false;
-
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      const alreadyRegistered = Math.random() < 0.1;
-      this.registrationView = alreadyRegistered ? 'already-registered' : 'success';
-      this.startRedirectCountdown();
-    } catch {
-      this.showError = true;
-    } finally {
-      this.isLoading = false;
+  toggleSession(webinar: any): void {
+    const found = this.webinars.find(w => w.id === webinar.id);
+    if (found) {
+      found.selected = !found.selected;
     }
   }
 
-  private findNextWebinar(): Webinar | null {
-    const todayStr = localTodayStr();
+  isSelected(webinar: any): boolean {
+    return this.webinars.find(w => w.id === webinar.id)?.selected || false;
+  }
+
+  scrollToForm(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  setActiveWebinar(webinar: any): void {
+    this.activeWebinar = webinar;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  isFormValid(): boolean {
     return (
-      ALL_WEBINARS
-        .filter((w) => w.status === 'Active' && w.webinar_date >= todayStr)
-        .sort((a, b) => a.webinar_date.localeCompare(b.webinar_date))[0] ?? null
+      this.registrationData.fullName.trim().length > 0 &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.registrationData.email) &&
+      this.registrationData.phone.trim().length > 5 &&
+      this.selectedSessions.length > 0
     );
+  }
+
+  async register(): Promise<void> {
+    if (!this.isFormValid()) return;
+
+    this.loading = true;
+    this.errorMessage = '';
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      this.isRegistered = true;
+      this.startRedirectCountdown();
+    } catch {
+      this.errorMessage = 'Failed to register. Please try again.';
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  private getInitials(name: string): string {
+    return name
+      .replace(/^(Dr|Mr|Ms|Mrs|Prof)\.?\s*/i, '')
+      .split(' ')
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((p) => p[0].toUpperCase())
+      .join('');
   }
 
   private daysUntil(webinarDate: string): number {
@@ -506,23 +390,15 @@ export class WebinarRegistration2Component implements OnInit, OnDestroy {
     return Math.round((webinarUtc - todayUtc) / 86_400_000);
   }
 
-  private formatShortDate(dateStr: string): string {
-    const [y, m, d] = dateStr.split('-').map(Number);
-    return new Date(y, m - 1, d).toLocaleDateString('en-GB', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-    });
-  }
-
   private startRedirectCountdown(): void {
     this.redirectCountdown = 3;
     this.countdownInterval = setInterval(() => {
       this.redirectCountdown--;
       if (this.redirectCountdown <= 0) {
         clearInterval(this.countdownInterval);
-        this.registrationView = 'registration';
-        this.redirectCountdown = 3;
+        // Refresh or navigate away
+        this.isRegistered = false;
+        this.registrationData = { fullName: '', email: '', phone: '', organisation: '' };
       }
     }, 1000);
   }

@@ -10,6 +10,7 @@ import { AdvancedFunctionalitiesSectionComponent } from "../../shared/components
 import { FaqComponent, FaqItem } from "../../shared/components/faqs/faqs.component";
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { FeatureCardComponent } from '../../shared/components/feature-card/feature-card.component';
 
 @Component({
   selector: 'app-education',
@@ -22,7 +23,9 @@ import { isPlatformBrowser } from '@angular/common';
     PrioritizeStudentMentalHealthComponent,
     MentalHealthAdvantageCardSectionComponent,
     AdvancedFunctionalitiesSectionComponent,
-    FaqComponent
+    FaqComponent,
+    FeatureCardComponent
+
   ],
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss']
@@ -224,7 +227,7 @@ export class EducationComponent implements OnInit, OnDestroy {
     this.showAll = !this.showAll;
   }
 
-  // mental health cards list 
+  // mental health cards list
   mentalHealthCards: MentalHealthCard[] = [
     {
       title: 'The Prevalence of Mental Health Challenges',
@@ -333,5 +336,55 @@ export class EducationComponent implements OnInit, OnDestroy {
     },
 
   ];
+
+  // ===============================
+
+  features = [
+  {
+    title: "Early in School Support",
+    subtitle: "Guiding Students Through Crucial Transition Periods",
+    description: "The first 90–180 days in a new school environment are vital for a student’s emotional and academic growth. Our programs offer targeted support to help students adjust to new peers, teachers, and surroundings, ensuring they feel confident and included."
+  },
+  {
+    title: "Institution-Wide Mental Health Assessment",
+    subtitle: "Holistic Insights for a Growing Campus",
+    description: "Conduct annual comprehensive evaluations to analyze the mental health dynamics across your institution. This proactive assessment helps identify challenges and create data-driven strategies to improve student well-being."
+  },
+  {
+    title: "Mental Health Awareness Workshops",
+    subtitle: "Building a Culture of Understanding and Empathy",
+    description: "Interactive workshops educate students and faculty on recognizing mental health symptoms, understanding therapy, and exploring treatment options. Topics include:"
+  },
+  {
+    title: "1-on-1 Online Therapy",
+    subtitle: "Safe, Private, and On-Demand Support",
+    description: "Connect students with qualified and certified therapists for confidential one-on-one online sessions. These sessions are tailored to individual needs and are conducted in a secure environment, ensuring complete privacy."
+  },
+  {
+    title: "Gift a Session (School/Universities)",
+    subtitle: "Support When It’s Needed Most",
+    description: "Empower students to uplift their peers by gifting therapy sessions during challenging times. Whether it's due to personal loss, financial difficulties, or other stressors, this unique offering fosters community support and resilience."
+  },
+  {
+    title: "Group Therapy Sessions",
+    subtitle: "Shared Healing Through Collective Growth",
+    description: "Small groups of students with shared concerns, such as academic underperformance or social challenges like bullying, work together in a supportive setting to overcome obstacles and build coping mechanisms."
+  },
+  {
+    title: "Therapy @ School",
+    subtitle: "Therapy Accessible On-Campus",
+    description: "Offer in-person therapy sessions within your school or university premises. Whether scheduled weekly or monthly, these face-to-face interactions create a convenient and approachable support system for students."
+  },
+  {
+    title: "Therapy @ Home",
+    subtitle: "Support Delivered to Your Doorstep",
+    description: "For students experiencing severe mental health issues or those unable to attend sessions on-campus or online, we provide face-to-face therapy sessions at home. This personalized care ensures no one is left behind."
+  },
+  {
+    title: "24x7 Helpline",
+    subtitle: "Round-the-Clock Support",
+    description: "Our emergency helpline is available 24/7, 365 days a year, connecting students to qualified therapists in times of urgent need. Help is always just a call away."
+  },
+];
 
 }
