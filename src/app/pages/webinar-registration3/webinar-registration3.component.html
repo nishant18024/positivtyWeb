@@ -89,8 +89,10 @@
                 </div>
             </div>
 
-            <button *ngIf="!showMoreSessions && webinars.length > 3" (click)="showMoreSessions = true" class="vm-btn">
-                <span>View More Sessions ({{webinars.length - 3}} more)</span>
+            <button *ngIf="webinars.length > 3" (click)="showMoreSessions = !showMoreSessions" class="vm-btn"
+                [class.exp]="showMoreSessions">
+                <span *ngIf="!showMoreSessions">View More Sessions ({{webinars.length - 3}} more)</span>
+                <span *ngIf="showMoreSessions">View Less</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M19 9l-7 7-7-7" />
                 </svg>
