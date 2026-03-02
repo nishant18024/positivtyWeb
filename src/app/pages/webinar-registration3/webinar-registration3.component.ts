@@ -309,6 +309,18 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
     return this.webinars.length > 0 && this.webinars.every(s => s.selected);
   }
 
+  get daysLeft(): number | null {
+    if (!this.activeWebinar?.date) return null;
+
+    const today = new Date();
+    const webinarDate = new Date(this.activeWebinar.date);
+
+    const diffTime = webinarDate.getTime() - today.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return diffDays > 0 ? diffDays : null;
+  }
+
   toggleAll(): void {
     const target = !this.allSelected;
     this.webinars.forEach(s => s.selected = target);

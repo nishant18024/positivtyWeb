@@ -5,7 +5,7 @@
             <img src="assets/Logo.png" alt="Positivty Logo" class="h-8 w-auto">
         </a>
         <div class="tbar-r">
-            <h1 class="pg-ti">Webinar Registration</h1>
+            <h1 class="pg-ti">Registration</h1>
             <div class="pg-tg">
                 <span class="rw-pl">Register, Attend & Engage to receive rewards (T&C Apply)</span>
             </div>
@@ -82,7 +82,7 @@
                         <span class="pm">{{webinar.date | date:'MMM'}}</span>
                     </div>
                     <div class="pi">
-                        <div class="ptm">{{webinar.startTime}} • {{webinar.duration || '60 min'}}</div>
+                        <div class="ptm">⏰{{webinar.startTime}}</div>
                         <div class="ptl">{{webinar.title}}</div>
                     </div>
                     <span class="soon" *ngIf="webinar.isSoon">SOON</span>
@@ -111,9 +111,12 @@
                     class="nx-img" alt="Webinar Image">
                 <div class="nx-body">
                     <div class="nx-meta">
-                        <span class="nx-date">{{activeWebinar.date | date:'EEEE, MMMM d, y'}}</span>
+                        <span class="nx-date">{{activeWebinar.date | date:'EEEE, MMMM d, y h:mm a'}}</span>
                         <span class="nx-upc" *ngIf="activeWebinar.isSoon">Upcoming</span>
                         <span class="nx-daw" *ngIf="!activeWebinar.isSoon">Webinar</span>
+                        <span class="nx-daw" *ngIf="daysLeft">
+                            In {{ daysLeft }} day{{ daysLeft > 1 ? 's' : '' }}
+                        </span>
                     </div>
                     <h3 class="nx-ttl">{{activeWebinar.title}}</h3>
                     <p class="nx-dsc">{{activeWebinar.description | slice:0:160}}...</p>
@@ -138,7 +141,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
                             </svg>
-                            Back to registration
+                            Back to Registration
                         </button>
                     </div>
                 </div>
@@ -191,8 +194,9 @@
         <!-- YOUR SESSIONS SUMMARY -->
         <section class="s3">
             <div class="sec-lb">Registration Summary</div>
-            <h2 class="sec-ti">Your Selected Sessions</h2>
-            <p class="sec-su">You've selected {{selectedSessions.length}} of {{webinars.length}} available sessions.</p>
+            <h2 class="sec-ti">Sessions you're signing up for
+            </h2>
+            <p class="sec-su">You're registering for {{selectedSessions.length}} sessions.</p>
 
             <div class="s3-list" *ngIf="selectedSessions.length > 0; else emptySessions">
                 <div class="s3c" *ngFor="let session of selectedSessions" (click)="setActiveWebinar(session)">
@@ -201,7 +205,7 @@
                         <span class="s3m">{{session.date | date:'MMM'}}</span>
                     </div>
                     <div class="s3r">
-                        <div class="s3tm">{{session.startTime}} • {{session.duration || '60 min'}}</div>
+                        <div class="s3tm">⏰ {{session.startTime}}</div>
                         <div class="s3tt">{{session.title}}</div>
                         <div class="s3ds">{{session.description | slice:0:80}}...</div>
                     </div>
@@ -220,18 +224,21 @@
             <img src="assets/Logo.png" alt="Positivty Logo" class="h-10 w-auto">
             <div class="abt-dv"></div>
             <div class="abt-tx">
-                Empowering professional growth through live, interactive wellness and productivity workshops led by
-                industry
-                experts.
+                A mental health platform helping individuals and organisations build emotional resilience through
+                expert-led therapy, workshops, and community programmes.
             </div>
             <div class="abt-st">
                 <div>
-                    <div class="stn">4.9/5</div>
-                    <div class="stl">User Rating</div>
+                    <div class="stn">12k+</div>
+                    <div class="stl">Participants</div>
                 </div>
                 <div>
-                    <div class="stn">12k+</div>
-                    <div class="stl">Graduates</div>
+                    <div class="stn">48+</div>
+                    <div class="stl">Webinars</div>
+                </div>
+                <div>
+                    <div class="stn">200++</div>
+                    <div class="stl">Orgs</div>
                 </div>
             </div>
         </section>

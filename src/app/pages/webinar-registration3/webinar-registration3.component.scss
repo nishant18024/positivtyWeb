@@ -93,7 +93,7 @@
 }
 
 .pg-ti {
-    font-size: clamp(16px, 3vw, 21px);
+    font-size: clamp(20px, 3vw, 25px);
     font-weight: 600;
     color: var(--tx);
     letter-spacing: -.02em;
@@ -1307,6 +1307,7 @@
     align-items: center;
     gap: 22px;
     flex-wrap: wrap;
+    border-radius: 10px;
 }
 
 .abt-lg {
