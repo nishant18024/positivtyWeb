@@ -13,11 +13,12 @@
     </div>
   </nav>
 
-  <main class="max-w-6xl mx-auto px-4 py-4 grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-start">
+  <main (mouseenter)="onMouseMove($event)" (mousemove)="onMouseMove($event)"
+    class="max-w-6xl mx-auto px-4 py-4 scroll-container-main">
     <!-- LEFT COLUMN -->
-    <div>
+    <div #leftScrollArea class="scroll-column left-column custom-scroll">
       <!-- Hero -->
-      <div class="mb-10  text-center">
+      <div *ngIf="registrationView === 'registration'" class="mb-10 text-center">
         <div class="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full mb-4 border"
           style="background: #fef0ea; color: #7b5a4a; border-color: #e8c9bd">
           🏆 Register, Attend &amp; Engage to receive rewards (T&C apply)
@@ -36,7 +37,7 @@
       </div>
 
       <!-- SUCCESS STATE -->
-      <div *ngIf="registrationState === 'success'" class="rounded-2xl shadow-sm p-8 text-center animate-fadeIn border"
+      <div *ngIf="registrationView === 'success'" class="rounded-2xl shadow-sm p-8 text-center animate-fadeIn border"
         style="background: #fff; border-color: #e8c9bd">
         <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"
           style="background: #fef0ea">
@@ -69,7 +70,7 @@
       </div>
 
       <!-- ALREADY REGISTERED STATE -->
-      <div *ngIf="registrationState === 'already-registered'"
+      <div *ngIf="registrationView === 'already-registered'"
         class="rounded-2xl shadow-sm p-8 text-center animate-fadeIn border"
         style="background: #fff; border-color: #f0d9c8">
         <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"
@@ -90,7 +91,7 @@
       </div>
 
       <!-- FORM STATE -->
-      <form *ngIf="registrationState === 'form'" (ngSubmit)="onSubmit()" novalidate class="space-y-3">
+      <form *ngIf="registrationView === 'registration'" (ngSubmit)="onSubmit()" novalidate class="space-y-3">
         <!-- Name & Email Row -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <!-- Full Name -->
@@ -247,7 +248,7 @@
             </svg>
           </button>
 
-          <p *ngIf="!selectedCount && registrationState === 'form'" class="mt-2 text-xs" style="color: #836054">
+          <p *ngIf="!selectedCount && registrationView === 'registration'" class="mt-2 text-xs" style="color: #836054">
             Please select at least one session to register.
           </p>
         </div>
@@ -258,80 +259,226 @@
           Something went wrong. Please try again.
         </div>
       </form>
+
+      <!-- WEBINAR DETAILS SECTION (Moved below form) -->
+      <div id="webinar-details" *ngIf="registrationView === 'registration' && selectedDetailWebinar"
+        class="mt-10 animate-fadeIn">
+        <div class="bg-white rounded-3xl shadow-sm border p-8" style="background: #fffafa; border-color: #f0e2d0;">
+          <!-- About -->
+          <div class="mb-10">
+            <div class="flex items-center gap-2 mb-4 text-[10px] font-bold uppercase tracking-widest"
+              style="color: #7b5a4a">
+              <span class="w-1.5 h-1.5 rounded-full" style="background: #7b5a4a"></span>
+              About This Session
+            </div>
+            <p class="text-base leading-relaxed" style="color: #5c3d30">
+              {{ selectedDetailWebinar.about }}
+            </p>
+          </div>
+
+          <!-- Host -->
+          <div class="mb-10">
+            <div class="flex items-center gap-2 mb-6 text-[10px] font-bold uppercase tracking-widest"
+              style="color: #7b5a4a">
+              <span class="w-1.5 h-1.5 rounded-full" style="background: #7b5a4a"></span>
+              Your Host
+            </div>
+            <div class="flex items-start gap-5">
+              <div
+                class="w-20 h-20 rounded-full text-white flex items-center justify-center font-semibold text-2xl flex-shrink-0 shadow-md"
+                style="background: #7b5a4a">
+                {{ detailInitials }}
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-1" style="color: #3d2318">{{ selectedDetailWebinar.host?.name }}</h4>
+                <p class="text-sm font-medium mb-3" style="color: #7b5a4a">{{ selectedDetailWebinar.host?.role }}</p>
+                <p class="text-sm leading-relaxed" style="color: #5c3d30">{{ selectedDetailWebinar.host?.bio }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outline -->
+          <div *ngIf="selectedDetailWebinar.outline?.length">
+            <div class="flex items-center gap-2 mb-6 text-[10px] font-bold uppercase tracking-widest"
+              style="color: #7b5a4a">
+              <span class="w-1.5 h-1.5 rounded-full" style="background: #7b5a4a"></span>
+              Session Outline
+            </div>
+            <div class="space-y-6">
+              <div *ngFor="let item of selectedDetailWebinar.outline; let i = index" class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-full border flex items-center justify-center text-xs font-bold flex-shrink-0"
+                  style="background: #f7ede8; border-color: #dbc4bd; color: #7b5a4a;">
+                  {{ i + 1 }}
+                </div>
+                <div>
+                  <h5 class="text-base font-bold mb-1" style="color: #3d2318">{{ item.title }}</h5>
+                  <p class="text-sm leading-relaxed" style="color: #5c3d30">{{ item.content }}</p>
+                </div>
+              </div>
+              <!-- Back Button (Scrolls up) -->
+              <div class="pt-10 border-t flex justify-center" style="border-color: #f0e2d0;">
+                <button (click)="scrollToTop()"
+                  class="flex items-center gap-2 px-8 py-3 rounded-full border-2 transition-all hover:bg-[#f7ede8]"
+                  style="border-color: #f0e2d0; color: #7b5a4a; font-weight: 500; font-size: 14px;">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg>
+                  Scroll to Registration
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- REGISTRATION SUMMARY SECTION -->
+      <div id="registration-summary" *ngIf="registrationView === 'registration' && selectedCount > 0"
+        class="mt-16 animate-fadeIn">
+        <div class="mb-8">
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#9a7060] mb-2 block">Your Registration
+            Summary</span>
+          <h2 class="font-display text-3xl font-bold text-[#3d2318] mb-2">Sessions you're signing up for</h2>
+          <p class="text-sm text-[#836054]">You're registering for {{ selectedCount }} session{{ selectedCount !== 1
+            ?
+            's' : '' }}.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div *ngFor="let session of selectedSessions" (click)="selectWebinarForDetails(session.id); scrollToDetails()"
+            class="bg-white rounded-2xl border border-[#f0e2d0] p-6 flex items-center gap-6 transition-all hover:shadow-md hover:border-[#7b5a4a]/30 group cursor-pointer hover:bg-[#fffafa]">
+            <!-- Date Column -->
+            <div class="w-16 flex-shrink-0 text-center border-r border-[#f0e2d0] pr-6">
+              <span class="block text-2xl font-bold text-[#3d2318] leading-none mb-1">{{ session.day }}</span>
+              <span class="block text-[10px] font-bold uppercase tracking-wider text-[#9a7060]">{{ session.month
+                }}</span>
+            </div>
+
+            <!-- Content Column -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#fef0ea] text-[#7b5a4a] text-[10px] font-bold uppercase tracking-wider border border-[#e8c9bd]">
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {{ session.time }}
+                </span>
+              </div>
+              <h3
+                class="text-lg font-bold text-[#3d2318] mb-1 leading-tight group-hover:text-[#7b5a4a] transition-colors">
+                {{ session.title }}</h3>
+              <p class="text-sm text-[#5c3d30] line-clamp-2 leading-relaxed opacity-80">{{ session.description }}
+              </p>
+            </div>
+
+            <!-- Arrow -->
+            <div class="text-[#f0e2d0] group-hover:text-[#7b5a4a] transition-colors">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll to Top Action -->
+        <div class="mt-12 flex justify-center">
+          <button (click)="scrollToTop()"
+            class="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#7b5a4a] text-white font-bold text-sm shadow-lg hover:shadow-xl transition-all active:scale-[0.98]">
+            Complete Registration
+            <svg class="w-4 h-4 transition-transform group-hover:-translate-y-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- RIGHT COLUMN -->
-    <aside class="lg:sticky lg:top-24 space-y-10">
+    <aside #rightScrollArea class="scroll-column right-column custom-scroll">
       <!-- ── Coming Up Next ── -->
       <ng-container *ngIf="nextWebinar">
-        <section class="py-6 px-6 rounded-2xl" style="background: #f8f6f3">
-          <!-- Label -->
-          <div class="flex items-center gap-2 mb-6 text-sm font-medium" style="color: #7b5647">
-            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-            Coming Up Next
-          </div>
-
-          <!-- Card -->
-          <div class="bg-white rounded-3xl shadow-xl border border-[#e5ded6] overflow-hidden">
-            <!-- Header -->
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between px-6 py-5"
-              style="background: #f3ebe4">
-              <div>
-                <div class="text-lg font-semibold" style="color: #7b5647">
-                  {{ daysLabel }}
-                </div>
-                <div class="text-sm" style="color: #5a463d">{{ dateStr }}</div>
-                <div class="text-sm mt-1" style="color: #5a463d">
-                  ⏰ {{ nextWebinar!.time }}
-                </div>
-              </div>
-              <span class="mt-3 md:mt-0 inline-block text-white text-xs px-4 py-1 rounded-full"
-                style="background: #7b5647">Next Session</span>
-            </div>
-
-            <!-- Body -->
-            <div class="p-6">
-              <h3 class="text-2xl font-semibold mb-4" style="color: #2d1b14">
-                {{ nextWebinar!.title }}
-              </h3>
-              <p class="leading-relaxed mb-5" style="color: #4a3a33">
-                {{ nextWebinar!.description }}
-              </p>
-
-              <!-- Tags -->
-              <div *ngIf="nextWebinar!.tags?.length" class="flex flex-wrap gap-2 mb-6">
-                <span *ngFor="let tag of nextWebinar!.tags" class="text-xs px-3 py-1 rounded-full"
-                  style="background: #efe3d4; color: #7b5647">{{ tag }}</span>
-              </div>
-
-              <!-- Footer -->
-              <div class="flex items-center justify-between flex-wrap gap-4">
-                <div *ngIf="nextWebinar!.host" class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full text-white flex items-center justify-center font-semibold"
-                    style="background: #7b5647">
-                    {{ initials }}
-                  </div>
-                  <div>
-                    <div class="text-sm font-medium" style="color: #2d1b14">
-                      {{ nextWebinar!.host!.name }}
-                    </div>
-                    <div class="text-xs" style="color: #7a6a61">
-                      {{ nextWebinar!.host!.role }}
-                    </div>
-                  </div>
-                </div>
-                <a [href]="nextWebinar!.detailUrl || '#'" class="flex items-center gap-2 font-medium hover:underline"
-                  style="color: #7b5647">
-                  View Details
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round" class="w-4 h-4">
-                    <path d="M3 8h10M9 4l4 4-4 4" />
-                  </svg>
-                </a>
-              </div>
+        <div class="bg-white rounded-[2.5rem] shadow-2xl border border-[#e5ded6] overflow-hidden flex flex-col"
+          style="background: #fffafa;">
+          <!-- Image Header -->
+          <div class="h-56 overflow-hidden relative group">
+            <img [src]="nextWebinar.imageUrl" [alt]="nextWebinar.title"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-black/5"></div>
+            <!-- Slide Control Mockup -->
+            <div
+              class="absolute left-0 top-1/2 -translate-y-1/2 h-20 w-8 bg-white/90 backdrop-blur rounded-r-2xl flex items-center justify-center shadow-lg cursor-pointer">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M15 19l-7-7 7-7" />
+              </svg>
             </div>
           </div>
-        </section>
+
+          <!-- Content -->
+          <div class="p-8">
+            <!-- Badges -->
+            <div class="flex flex-wrap items-center gap-3 mb-5">
+              <span class="text-[11px] font-bold text-[#836054]/80 uppercase tracking-widest">{{ dateStr }}, {{
+                nextWebinar.time }}</span>
+              <span
+                class="px-3 py-1 bg-[#7b5a4a] text-white text-[10px] font-bold rounded-full uppercase tracking-tighter shadow-sm">Upcoming</span>
+              <span
+                class="px-3 py-1 bg-[#fbf3db] text-[#8b6e3d] text-[10px] font-bold rounded-full border border-[#f0e4b8] uppercase tracking-tighter"
+                *ngIf="daysLabel.includes('day') || daysLabel === 'Today' || daysLabel === 'Tomorrow'">
+                {{ daysLabel }}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-display text-2xl font-bold leading-tight mb-4 tracking-tight"
+              style="color: #3d2318; font-family: 'Playfair Display', serif;">
+              {{ nextWebinar.title }}
+            </h3>
+
+            <!-- Description -->
+            <p class="text-[15px] leading-relaxed mb-6 line-clamp-3" style="color: #5c3d30">
+              {{ nextWebinar.description }}
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span *ngFor="let tag of nextWebinar.tags" class="text-[11px] font-medium px-4 py-1.5 rounded-full border"
+                style="background: #fff; color: #7b5a4a; border-color: #f0e2d0">
+                {{ tag }}
+              </span>
+            </div>
+
+            <!-- Divider -->
+            <div class="h-px w-full mb-6" style="background: #f0e2d0;"></div>
+
+            <!-- Host Info -->
+            <div class="flex items-center gap-4 mb-8">
+              <div
+                class="w-12 h-12 rounded-full text-white flex items-center justify-center font-bold text-sm shadow-inner"
+                style="background: #7b5a4a">
+                {{ sidebarInitials }}
+              </div>
+              <div class="flex-1">
+                <p class="text-sm font-bold m-0" style="color: #3d2318">{{ nextWebinar.host?.name }}</p>
+                <p class="text-[11px] font-medium uppercase tracking-wider" style="color: #7b5a4a">{{
+                  nextWebinar.host?.role }}</p>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <button (click)="selectWebinarForDetails(nextWebinar.id); scrollToDetails()"
+              class="w-full py-5 rounded-2xl font-bold text-white text-[15px] tracking-wide shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group"
+              style="background: #7b5a4a">
+              View Full Details
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2.5">
+                <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
+        </div>
       </ng-container>
 
       <!-- Stats -->
