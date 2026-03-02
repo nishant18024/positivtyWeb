@@ -9,6 +9,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
 
 interface WebinarHost {
   name: string;
@@ -242,7 +243,7 @@ function localTodayStr(): string {
 @Component({
   selector: 'app-webinar-registration2',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, FooterComponent],
   templateUrl: './webinar-registration2.component.html',
   styleUrls: ['./webinar-registration2.component.scss'],
 })
@@ -268,6 +269,13 @@ export class WebinarRegistration2Component implements OnInit, OnDestroy {
   nextWebinar: Webinar | null = null;
   selectedDetailWebinar: Webinar | null = null;
 
+  isLeftAtBottom = false;
+  isRightAtBottom = false;
+
+  get showFooter(): boolean {
+    return this.isLeftAtBottom && this.isRightAtBottom;
+  }
+
   private isMouseOverLeft = false;
 
   onMouseMove(event: MouseEvent): void {
@@ -278,6 +286,18 @@ export class WebinarRegistration2Component implements OnInit, OnDestroy {
       event.clientX <= rect.right &&
       event.clientY >= rect.top &&
       event.clientY <= rect.bottom;
+  }
+
+  onScroll(area: 'left' | 'right'): void {
+    const el = area === 'left' ? this.leftScrollArea?.nativeElement : this.rightScrollArea?.nativeElement;
+    if (!el) return;
+
+    const atBottom = el.scrollHeight - el.scrollTop <= el.clientHeight + 10; // 10px buffer
+    if (area === 'left') {
+      this.isLeftAtBottom = atBottom;
+    } else {
+      this.isRightAtBottom = atBottom;
+    }
   }
 
   @HostListener('window:wheel', ['$event'])

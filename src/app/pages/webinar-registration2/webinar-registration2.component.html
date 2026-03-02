@@ -1,5 +1,5 @@
 <!-- POSITIVTY WEBINAR REGISTRATION PAGE — Warm Terracotta Palette #7b5a4a -->
-<div class="min-h-screen font-body" style="background: #fff7e9">
+<div class="page-wrapper min-h-screen font-body" style="background: #fff7e9">
   <!-- ── NAV ── -->
   <nav class="sticky top-0 z-50 border-b px-6 py-4" style="
       background: rgba(255, 247, 233, 0.92);
@@ -16,7 +16,7 @@
   <main (mouseenter)="onMouseMove($event)" (mousemove)="onMouseMove($event)"
     class="max-w-6xl mx-auto px-4 py-4 scroll-container-main">
     <!-- LEFT COLUMN -->
-    <div #leftScrollArea class="scroll-column left-column custom-scroll">
+    <div #leftScrollArea class="scroll-column left-column custom-scroll" (scroll)="onScroll('left')">
       <!-- Hero -->
       <div *ngIf="registrationView === 'registration'" class="mb-10 text-center">
         <div class="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full mb-4 border"
@@ -142,7 +142,8 @@
               class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none" [style.borderColor]="
                 touched.mobile && !isMobileValid ? '#c0614a' : '#ddc8be'
               " [style.background]="
-                touched.mobile && !isMobileValid ? '#fff5f3' : '#fff'
+                touched.mobile && !isMobileValid ? '#fff5f3'
+                  : '#fff'
               " style="color: #3d2318" />
             <p *ngIf="touched.mobile && !isMobileValid" class="mt-1 text-xs" style="color: #c0614a">
               Enter a valid mobile number.
@@ -397,7 +398,7 @@
     </div>
 
     <!-- RIGHT COLUMN -->
-    <aside #rightScrollArea class="scroll-column right-column custom-scroll">
+    <aside #rightScrollArea class="scroll-column right-column custom-scroll" (scroll)="onScroll('right')">
       <!-- ── Coming Up Next ── -->
       <ng-container *ngIf="nextWebinar">
         <div class="bg-white rounded-[2.5rem] shadow-2xl border border-[#e5ded6] overflow-hidden flex flex-col"
@@ -482,7 +483,7 @@
       </ng-container>
 
       <!-- Stats -->
-      <div class="rounded-2xl p-6 text-white" style="background: #7b5a4a">
+      <div class="rounded-2xl p-6 text-white mt-5" style="background: #7b5a4a">
         <p class="text-xs font-medium uppercase tracking-wider mb-4" style="color: #ffffff">
           Our Community
         </p>

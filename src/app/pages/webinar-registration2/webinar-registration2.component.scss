@@ -64,26 +64,76 @@
     }
   }
 
-  scrollbar-width: thin;
+  scrollbar-width: none;
   scrollbar-color: #ddc8be transparent;
 }
 
 /* ── Layout for Independent Scrolling ── */
-@media (min-width: 1024px) {
+.scroll-container-main {
+  height: calc(100vh - 73px);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  padding-bottom: 2rem;
+}
+
+.scroll-column {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding-bottom: 4rem;
+}
+
+/* ── Footer Reveal System ── */
+.footer-reveal-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  background: white;
+  border-top: 1px solid #f0e6e1;
+
+  &.visible {
+    max-height: 2000px;
+    /* Allow footer to expand */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure the wrapper allows scrolling to reveal the footer */
+.page-wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  /* Hide main scrollbar to keep it clean */
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
   .scroll-container-main {
-    height: calc(100vh - 73px);
-    /* Subtracting nav height */
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 420px;
-    gap: 4rem;
+    height: auto;
+    display: block;
+    overflow: visible;
   }
 
   .scroll-column {
-    height: 100%;
-    overflow-y: auto;
-    overscroll-behavior-y: contain;
-    padding-bottom: 4rem;
+    height: auto;
+    overflow: visible;
+  }
+
+  .footer-reveal-container {
+    max-height: none;
+    opacity: 1;
+    transform: none;
+    display: block;
   }
 }
 
