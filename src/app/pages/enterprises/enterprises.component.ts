@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AboutUsComponent } from "../about-us/about-us.component";
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { EnterprisesInfoCardComponent, InfoCard } from "../../shared/components/enterprises-info-card/enterprises-info-card.component";
 import { EnterprisesCareCardComponent } from "../../shared/components/enterprises-care-card/enterprises-care-card.component";
 import { EnterprisesStepsCardComponent } from "../../shared/components/enterprises-steps-card/enterprises-steps-card.component";
@@ -18,6 +17,8 @@ interface ImpactItem {
   styleUrl: './enterprises.component.scss'
 })
 export class EnterprisesComponent implements OnInit, OnDestroy {
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   workplaceCards = [
     {
@@ -221,15 +222,21 @@ export class EnterprisesComponent implements OnInit, OnDestroy {
   currentIndex = 0;
   intervalId: any;
 
+  // ngOnInit(): void {
+  //   this.startAutoChange();
+  // }
+
   ngOnInit(): void {
-    this.startAutoChange();
+    if (isPlatformBrowser(this.platformId)) {
+      this.startAutoChange();
+    }
   }
 
   startAutoChange(): void {
     this.intervalId = setInterval(() => {
       this.currentIndex =
         (this.currentIndex + 1) % this.impacts.length;
-    }, 1000); // 1000ms
+    }, 1000);
   }
 
   ngOnDestroy(): void {
