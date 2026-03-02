@@ -115,7 +115,7 @@ export class HeaderComponent {
       title: 'Join A Community',
       dropdown: [
         { title: 'Community Home', path: '/community' },
-        { title: 'Webinars', path: 'webinars' },
+        { title: 'Webinars', path: '/webinars' },
         { title: 'Blog & Articles', path: '/blog-articles' },
         { title: 'Real At Positivty', path: '/real-positivty' },
         { title: 'Resource Groups', path: '/resource-groups' }
