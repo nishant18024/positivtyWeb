@@ -34,7 +34,7 @@ import { WebinarRegistration2Component } from './pages/webinar-registration2/web
 import { WebinarRegistration3Component } from './pages/webinar-registration3/webinar-registration3.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: WebinarRegistration3Component, data: { hideLayout: true } },
     { path: 'login', component: LoginComponent },
 
     { path: 'about-us', component: AboutUsComponent },
