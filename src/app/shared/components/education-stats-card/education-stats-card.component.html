@@ -1,24 +1,24 @@
 <section>
   <div
-    class="max-w-6xl mx-auto border-2 border-[#e2a95b] overflow-hidden flex md:h-[200px] h-[150px] bg-gradient-to-b from-[#fffdfb] to-[#fef3e1]"
+    class="max-w-6xl mx-auto border-[1px] border-[#e2a95b] overflow-hidden flex md:h-[200px] h-[150px] bg-gradient-to-b from-[#fffdfb] to-[#fef3e1]"
   >
     <!-- LEFT CONTENT -->
-    <div class="p-6 flex flex-col justify-center">
-      <h2 class="text-2xl md:text-4xl font-serif text-black mb-3">
+    <div class="px-4 flex flex-col justify-center">
+      <h2 class="text-xl md:text-4xl font-serif text-black mb-1">
         {{ percentage }}
       </h2>
 
-      <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+      <p class="text-[12px] md:text-base text-gray-700 leading-relaxed">
         {{ description }}
       </p>
     </div>
 
     <!-- RIGHT IMAGE SIDE -->
-    <div class="relative bg-[#836054] md:rounded-l-[80px] rounded-l-[50px]">
+    <div class="relative bg-[#836054] rounded-l-[30px] overflow-hidden">
       <img
         [src]="imageUrl"
         alt="Stats Image"
-        class="w-full h-full object-cover md:rounded-l-[80px] rounded-l-[50px] pl-2"
+        class="w-[200px] h-full object-cover rounded-l-[30px] pl-2"
       />
     </div>
   </div>
