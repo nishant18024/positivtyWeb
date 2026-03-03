@@ -1,11 +1,37 @@
+<!-- Background texture -->
+<div
+  class="fixed inset-0 pointer-events-none z-0"
+  style="
+    background:
+      radial-gradient(
+        ellipse 80% 60% at 20% 10%,
+        rgba(123, 90, 74, 0.12) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 80% at 85% 80%,
+        rgba(232, 213, 196, 0.22) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 40% 40% at 50% 50%,
+        rgba(201, 169, 110, 0.06) 0%,
+        transparent 70%
+      );
+  "
+></div>
+
 <!-- POSITIVTY WEBINAR REGISTRATION PAGE — Warm Terracotta Palette #7b5a4a -->
-<div class="page-wrapper min-h-screen font-body" style="background: #fff7e9">
+<div class="page-wrapper min-h-screen font-body">
   <!-- ── NAV ── -->
-  <nav class="sticky top-0 z-50 border-b px-6 py-4" style="
-      background: rgba(255, 247, 233, 0.92);
+  <nav
+    class="sticky top-0 z-50 border-b px-6 py-4"
+    style="
+      background: #fcf8f6;
       backdrop-filter: blur(12px);
       border-color: #f0e2d0;
-    ">
+    "
+  >
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <a routerLink="/" class="flex items-center gap-2 shrink-0 no-underline">
         <img src="assets/Logo.png" alt="Positivty Logo" class="h-8 w-auto" />
@@ -13,17 +39,31 @@
     </div>
   </nav>
 
-  <main (mouseenter)="onMouseMove($event)" (mousemove)="onMouseMove($event)"
-    class="max-w-6xl mx-auto px-4 py-4 scroll-container-main">
+  <main
+    (mouseenter)="onMouseMove($event)"
+    (mousemove)="onMouseMove($event)"
+    class="max-w-6xl mx-auto px-4 py-4 scroll-container-main"
+  >
     <!-- LEFT COLUMN -->
-    <div #leftScrollArea class="scroll-column left-column custom-scroll" (scroll)="onScroll('left')">
+    <div
+      #leftScrollArea
+      class="scroll-column left-column custom-scroll"
+      (scroll)="onScroll('left')"
+    >
       <!-- Hero -->
-      <div *ngIf="registrationView === 'registration'" class="mb-10 text-center">
-        <div class="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full mb-4 border"
-          style="background: #fef0ea; color: #7b5a4a; border-color: #e8c9bd">
+      <div
+        *ngIf="registrationView === 'registration'"
+        class="mb-10 text-center"
+      >
+        <div
+          class="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full mb-4 border"
+          style="background: #fef0ea; color: #7b5a4a; border-color: #e8c9bd"
+        >
           🏆 Register, Attend &amp; Engage to receive rewards (T&C apply)
         </div>
-        <h1 class="font-display text-3xl lg:text-4xl font-semibold leading-tight mb-3 text-[#3d2318]">
+        <h1
+          class="font-display text-3xl lg:text-4xl font-semibold leading-tight mb-3 text-[#3d2318]"
+        >
           Registration
         </h1>
         <p class="text-md leading-relaxed" style="color: #836054">
@@ -37,13 +77,21 @@
       </div>
 
       <!-- SUCCESS STATE -->
-      <div *ngIf="registrationView === 'success'" class="rounded-2xl shadow-sm p-8 text-center animate-fadeIn border"
-        style="background: #fff; border-color: #e8c9bd">
-        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"
-          style="background: #fef0ea">
+      <div
+        *ngIf="registrationView === 'success'"
+        class="rounded-2xl shadow-sm p-8 text-center animate-fadeIn border"
+        style="background: #fff; border-color: #e8c9bd"
+      >
+        <div
+          class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"
+          style="background: #fef0ea"
+        >
           🎉
         </div>
-        <h2 class="font-display text-2xl font-semibold mb-2" style="color: #3d2318">
+        <h2
+          class="font-display text-2xl font-semibold mb-2"
+          style="color: #3d2318"
+        >
           You're Registered!
         </h2>
         <p class="text-sm mb-6" style="color: #9a7060">
@@ -53,31 +101,41 @@
         <div class="space-y-2 text-sm mb-6" style="color: #7b5a4a">
           <div class="flex items-center justify-center gap-2">
             <span>✅</span>
-            <span>{{ selectedCount }} session{{
-              selectedCount !== 1 ? "s" : ""
+            <span
+              >{{ selectedCount }} session{{
+                selectedCount !== 1 ? "s" : ""
               }}
-              confirmed</span>
+              confirmed</span
+            >
           </div>
           <div class="flex items-center justify-center gap-2">
-            <span>📩</span><span>Calendar invites are on their way to your inbox</span>
+            <span>📩</span
+            ><span>Calendar invites are on their way to your inbox</span>
           </div>
         </div>
         <p class="text-xs" style="color: #836054">
           Redirecting in {{ redirectCountdown }} second{{
-          redirectCountdown !== 1 ? "s" : ""
+            redirectCountdown !== 1 ? "s" : ""
           }}…
         </p>
       </div>
 
       <!-- ALREADY REGISTERED STATE -->
-      <div *ngIf="registrationView === 'already-registered'"
+      <div
+        *ngIf="registrationView === 'already-registered'"
         class="rounded-2xl shadow-sm p-8 text-center animate-fadeIn border"
-        style="background: #fff; border-color: #f0d9c8">
-        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"
-          style="background: #fef5ee">
+        style="background: #fff; border-color: #f0d9c8"
+      >
+        <div
+          class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"
+          style="background: #fef5ee"
+        >
           ✅
         </div>
-        <h2 class="font-display text-2xl font-semibold mb-2" style="color: #3d2318">
+        <h2
+          class="font-display text-2xl font-semibold mb-2"
+          style="color: #3d2318"
+        >
           Already Registered
         </h2>
         <p class="text-sm mb-4" style="color: #9a7060">
@@ -85,47 +143,84 @@
         </p>
         <p class="text-xs" style="color: #836054">
           Redirecting in {{ redirectCountdown }} second{{
-          redirectCountdown !== 1 ? "s" : ""
+            redirectCountdown !== 1 ? "s" : ""
           }}…
         </p>
       </div>
 
       <!-- FORM STATE -->
-      <form *ngIf="registrationView === 'registration'" (ngSubmit)="onSubmit()" novalidate class="space-y-4">
+      <form
+        *ngIf="registrationView === 'registration'"
+        (ngSubmit)="onSubmit()"
+        novalidate
+        class="space-y-4"
+      >
         <!-- Name & Email Row -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <!-- Full Name -->
           <div>
-            <label class="block text-sm font-medium mb-1.5" style="color: #5c3d30">
+            <label
+              class="block text-sm font-medium mb-1.5"
+              style="color: #5c3d30"
+            >
               Full Name <span style="color: #c0614a">*</span>
             </label>
-            <input type="text" [(ngModel)]="fullName" name="fullName" (blur)="touch('fullName')" placeholder="Jane Doe"
-              class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none" [style.borderColor]="
+            <input
+              type="text"
+              [(ngModel)]="fullName"
+              name="fullName"
+              (blur)="touch('fullName')"
+              placeholder="Jane Doe"
+              class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
+              [style.borderColor]="
                 touched.fullName && fullName.trim().length <= 1
                   ? '#c0614a'
                   : '#ddc8be'
-              " [style.background]="
+              "
+              [style.background]="
                 touched.fullName && fullName.trim().length <= 1
                   ? '#fff5f3'
                   : '#fff'
-              " style="color: #3d2318" />
-            <p *ngIf="touched.fullName && fullName.trim().length <= 1" class="mt-1 text-xs" style="color: #c0614a">
+              "
+              style="color: #3d2318"
+            />
+            <p
+              *ngIf="touched.fullName && fullName.trim().length <= 1"
+              class="mt-1 text-xs"
+              style="color: #c0614a"
+            >
               Please enter your full name.
             </p>
           </div>
 
           <!-- Email -->
           <div>
-            <label class="block text-sm font-medium mb-1.5" style="color: #5c3d30">
+            <label
+              class="block text-sm font-medium mb-1.5"
+              style="color: #5c3d30"
+            >
               Email Address <span style="color: #c0614a">*</span>
             </label>
-            <input type="email" [(ngModel)]="email" name="email" (blur)="touch('email')" placeholder="jane@example.com"
-              class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none" [style.borderColor]="
+            <input
+              type="email"
+              [(ngModel)]="email"
+              name="email"
+              (blur)="touch('email')"
+              placeholder="jane@example.com"
+              class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
+              [style.borderColor]="
                 touched.email && !isEmailValid ? '#c0614a' : '#ddc8be'
-              " [style.background]="
+              "
+              [style.background]="
                 touched.email && !isEmailValid ? '#fff5f3' : '#fff'
-              " style="color: #3d2318" />
-            <p *ngIf="touched.email && !isEmailValid" class="mt-1 text-xs" style="color: #c0614a">
+              "
+              style="color: #3d2318"
+            />
+            <p
+              *ngIf="touched.email && !isEmailValid"
+              class="mt-1 text-xs"
+              style="color: #c0614a"
+            >
               Enter a valid email address.
             </p>
           </div>
@@ -135,59 +230,126 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <!-- Mobile -->
           <div>
-            <label class="block text-sm font-medium mb-1.5" style="color: #5c3d30">
+            <label
+              class="block text-sm font-medium mb-1.5"
+              style="color: #5c3d30"
+            >
               Mobile Number <span style="color: #c0614a">*</span>
             </label>
-            <input type="tel" [(ngModel)]="mobile" name="mobile" (blur)="touch('mobile')" placeholder="+44 7700 900000"
-              class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none" [style.borderColor]="
+            <input
+              type="tel"
+              [(ngModel)]="mobile"
+              name="mobile"
+              (blur)="touch('mobile')"
+              placeholder="+44 7700 900000"
+              class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
+              [style.borderColor]="
                 touched.mobile && !isMobileValid ? '#c0614a' : '#ddc8be'
-              " [style.background]="
-                touched.mobile && !isMobileValid ? '#fff5f3'
-                  : '#fff'
-              " style="color: #3d2318" />
-            <p *ngIf="touched.mobile && !isMobileValid" class="mt-1 text-xs" style="color: #c0614a">
+              "
+              [style.background]="
+                touched.mobile && !isMobileValid ? '#fff5f3' : '#fff'
+              "
+              style="color: #3d2318"
+            />
+            <p
+              *ngIf="touched.mobile && !isMobileValid"
+              class="mt-1 text-xs"
+              style="color: #c0614a"
+            >
               Enter a valid mobile number.
             </p>
           </div>
 
           <!-- Organisation -->
           <div>
-            <label class="block text-sm font-medium mb-1.5" style="color: #5c3d30">
+            <label
+              class="block text-sm font-medium mb-1.5"
+              style="color: #5c3d30"
+            >
               Organisation
-              <span class="font-normal text-xs" style="color: #836054">(optional)</span>
+              <span class="font-normal text-xs" style="color: #836054"
+                >(optional)</span
+              >
             </label>
-            <input type="text" [(ngModel)]="organisation" name="organisation" placeholder="Your company or school"
+            <input
+              type="text"
+              [(ngModel)]="organisation"
+              name="organisation"
+              placeholder="Your company or school"
               class="w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none"
-              style="color: #3d2318; background: #fff; border-color: #ddc8be" />
+              style="color: #3d2318; background: #fff; border-color: #ddc8be"
+            />
           </div>
         </div>
 
         <!-- Submit -->
-        <button type="submit" [disabled]="isLoading"
+        <button
+          type="submit"
+          [disabled]="isLoading"
           class="w-full py-4 rounded-xl font-semibold text-white text-sm tracking-wide transition-all duration-200"
-          [style.background]="isLoading ? '#b89088' : '#7b5a4a'" [class.cursor-not-allowed]="isLoading">
-          <span *ngIf="!isLoading" class="flex items-center justify-center gap-2">
+          [style.background]="isLoading ? '#b89088' : '#7b5a4a'"
+          [class.cursor-not-allowed]="isLoading"
+        >
+          <span
+            *ngIf="!isLoading"
+            class="flex items-center justify-center gap-2"
+          >
             Register Now
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
             </svg>
           </span>
-          <span *ngIf="isLoading" class="flex items-center justify-center gap-2">
+          <span
+            *ngIf="isLoading"
+            class="flex items-center justify-center gap-2"
+          >
             <svg class="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v8H4z"
+              />
             </svg>
             Registering…
           </span>
         </button>
 
         <!-- Trust badges -->
-        <div class="flex items-center justify-center gap-4 text-xs pt-1" style="color: #836054">
-          <span class="flex items-center gap-1"><span style="color: #7b5a4a">✔</span> Free</span>
-          <span class="flex items-center gap-1"><span style="color: #7b5a4a">✔</span> Expert-led</span>
-          <span class="flex items-center gap-1"><span style="color: #7b5a4a">✔</span> Evidence-Based</span>
-          <span class="flex items-center gap-1"><span style="color: #7b5a4a">✔</span> Trusted by
-            Professionals</span>
+        <div
+          class="flex items-center justify-center gap-4 text-xs pt-1"
+          style="color: #836054"
+        >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Free</span
+          >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Expert-led</span
+          >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Evidence-Based</span
+          >
+          <span class="flex items-center gap-1"
+            ><span style="color: #7b5a4a">✔</span> Trusted by
+            Professionals</span
+          >
         </div>
 
         <!-- Sessions Picker -->
@@ -197,37 +359,67 @@
               Choose Sessions
             </label>
             <div class="flex items-center gap-3">
-              <span class="text-xs" style="color: #836054">{{ selectedCount }} selected</span>
-              <button *ngIf="selectedCount > 0" type="button" (click)="deselectAll()" class="text-xs transition-colors"
-                style="color: #7b5a4a">
+              <span class="text-xs" style="color: #836054"
+                >{{ selectedCount }} selected</span
+              >
+              <button
+                *ngIf="selectedCount > 0"
+                type="button"
+                (click)="deselectAll()"
+                class="text-xs transition-colors"
+                style="color: #7b5a4a"
+              >
                 Deselect All
               </button>
             </div>
           </div>
 
           <div class="space-y-2">
-            <button *ngFor="let session of visibleSessions" type="button" (click)="toggleSession(session)"
+            <button
+              *ngFor="let session of visibleSessions"
+              type="button"
+              (click)="toggleSession(session)"
               class="w-full text-left px-4 py-3.5 rounded-xl border-2 transition-all duration-200"
               [style.borderColor]="session.selected ? '#7b5a4a' : '#e8d5cc'"
-              [style.background]="session.selected ? '#fef0ea' : '#fff'">
+              [style.background]="session.selected ? '#fef0ea' : '#fff'"
+            >
               <div class="flex items-start gap-3">
                 <div
                   class="w-5 h-5 rounded-full border-2 flex-shrink-0 mt-0.5 flex items-center justify-center transition-all"
-                  [style.borderColor]="session.selected ? '#7b5a4a' : '#836054'" [style.background]="
+                  [style.borderColor]="session.selected ? '#7b5a4a' : '#836054'"
+                  [style.background]="
                     session.selected ? '#7b5a4a' : 'transparent'
-                  ">
-                  <svg *ngIf="session.selected" class="w-3 h-3" style="color: #fff" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                  "
+                >
+                  <svg
+                    *ngIf="session.selected"
+                    class="w-3 h-3"
+                    style="color: #fff"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="3"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </div>
                 <div class="flex-1 min-w-0">
                   <div class="flex items-start justify-between gap-2">
-                    <p class="text-sm font-medium leading-snug" style="color: #3d2318">
+                    <p
+                      class="text-sm font-medium leading-snug"
+                      style="color: #3d2318"
+                    >
                       {{ session.title }}
                     </p>
-                    <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0"
-                      style="background: #f5e8e2; color: #9a7060">{{ session.tag }}</span>
+                    <span
+                      class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0"
+                      style="background: #f5e8e2; color: #9a7060"
+                      >{{ session.tag }}</span
+                    >
                   </div>
                   <p class="text-xs mt-0.5" style="color: #836054">
                     {{ session.speaker }}
@@ -240,36 +432,68 @@
             </button>
           </div>
 
-          <button *ngIf="!showMoreSessions && sessions.length > 3" type="button" (click)="showMoreSessions = true"
+          <button
+            *ngIf="!showMoreSessions && sessions.length > 3"
+            type="button"
+            (click)="showMoreSessions = true"
             class="mt-3 w-full text-sm transition-colors py-2 flex items-center justify-center gap-1"
-            style="color: #9a7060">
+            style="color: #9a7060"
+          >
             <span>View more sessions</span>
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
             </svg>
           </button>
 
-          <p *ngIf="!selectedCount && registrationView === 'registration'" class="mt-2 text-xs" style="color: #836054">
+          <p
+            *ngIf="!selectedCount && registrationView === 'registration'"
+            class="mt-2 text-xs"
+            style="color: #836054"
+          >
             Please select at least one session to register.
           </p>
         </div>
 
         <!-- Error -->
-        <div *ngIf="showError" class="border text-sm px-4 py-3 rounded-xl"
-          style="background: #fff5f3; border-color: #e8b8ad; color: #c0614a">
+        <div
+          *ngIf="showError"
+          class="border text-sm px-4 py-3 rounded-xl"
+          style="background: #fff5f3; border-color: #e8b8ad; color: #c0614a"
+        >
           Something went wrong. Please try again.
         </div>
       </form>
 
       <!-- WEBINAR DETAILS SECTION (Moved below form) -->
-      <div id="webinar-details" *ngIf="registrationView === 'registration' && selectedDetailWebinar"
-        class="mt-10 animate-fadeIn">
-        <div class="bg-white rounded-3xl shadow-sm border p-8" style="background: #fffafa; border-color: #f0e2d0;">
+      <div
+        id="webinar-details"
+        *ngIf="registrationView === 'registration' && selectedDetailWebinar"
+        class="mt-10 animate-fadeIn"
+      >
+        <div
+          class="bg-white rounded-3xl shadow-sm border p-8"
+          style="background: #fffafa; border-color: #f0e2d0"
+        >
           <!-- About -->
           <div class="mb-10">
-            <div class="flex items-center gap-2 mb-4 text-[10px] font-bold uppercase tracking-widest"
-              style="color: #7b5a4a">
-              <span class="w-1.5 h-1.5 rounded-full" style="background: #7b5a4a"></span>
+            <div
+              class="flex items-center gap-2 mb-4 text-[10px] font-bold uppercase tracking-widest"
+              style="color: #7b5a4a"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full"
+                style="background: #7b5a4a"
+              ></span>
               About This Session
             </div>
             <p class="text-base leading-relaxed" style="color: #5c3d30">
@@ -279,52 +503,103 @@
 
           <!-- Host -->
           <div class="mb-10">
-            <div class="flex items-center gap-2 mb-6 text-[10px] font-bold uppercase tracking-widest"
-              style="color: #7b5a4a">
-              <span class="w-1.5 h-1.5 rounded-full" style="background: #7b5a4a"></span>
+            <div
+              class="flex items-center gap-2 mb-6 text-[10px] font-bold uppercase tracking-widest"
+              style="color: #7b5a4a"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full"
+                style="background: #7b5a4a"
+              ></span>
               Your Host
             </div>
             <div class="flex items-start gap-5">
               <div
                 class="w-20 h-20 rounded-full text-white flex items-center justify-center font-semibold text-2xl flex-shrink-0 shadow-md"
-                style="background: #7b5a4a">
+                style="background: #7b5a4a"
+              >
                 {{ detailInitials }}
               </div>
               <div>
-                <h4 class="text-xl font-bold mb-1" style="color: #3d2318">{{ selectedDetailWebinar.host?.name }}</h4>
-                <p class="text-sm font-medium mb-3" style="color: #7b5a4a">{{ selectedDetailWebinar.host?.role }}</p>
-                <p class="text-sm leading-relaxed" style="color: #5c3d30">{{ selectedDetailWebinar.host?.bio }}</p>
+                <h4 class="text-xl font-bold mb-1" style="color: #3d2318">
+                  {{ selectedDetailWebinar.host?.name }}
+                </h4>
+                <p class="text-sm font-medium mb-3" style="color: #7b5a4a">
+                  {{ selectedDetailWebinar.host?.role }}
+                </p>
+                <p class="text-sm leading-relaxed" style="color: #5c3d30">
+                  {{ selectedDetailWebinar.host?.bio }}
+                </p>
               </div>
             </div>
           </div>
 
           <!-- Outline -->
           <div *ngIf="selectedDetailWebinar.outline?.length">
-            <div class="flex items-center gap-2 mb-6 text-[10px] font-bold uppercase tracking-widest"
-              style="color: #7b5a4a">
-              <span class="w-1.5 h-1.5 rounded-full" style="background: #7b5a4a"></span>
+            <div
+              class="flex items-center gap-2 mb-6 text-[10px] font-bold uppercase tracking-widest"
+              style="color: #7b5a4a"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full"
+                style="background: #7b5a4a"
+              ></span>
               Session Outline
             </div>
             <div class="space-y-6">
-              <div *ngFor="let item of selectedDetailWebinar.outline; let i = index" class="flex gap-4">
+              <div
+                *ngFor="
+                  let item of selectedDetailWebinar.outline;
+                  let i = index
+                "
+                class="flex gap-4"
+              >
                 <div
                   class="w-8 h-8 rounded-full border flex items-center justify-center text-xs font-bold flex-shrink-0"
-                  style="background: #f7ede8; border-color: #dbc4bd; color: #7b5a4a;">
+                  style="
+                    background: #f7ede8;
+                    border-color: #dbc4bd;
+                    color: #7b5a4a;
+                  "
+                >
                   {{ i + 1 }}
                 </div>
                 <div>
-                  <h5 class="text-base font-bold mb-1" style="color: #3d2318">{{ item.title }}</h5>
-                  <p class="text-sm leading-relaxed" style="color: #5c3d30">{{ item.content }}</p>
+                  <h5 class="text-base font-bold mb-1" style="color: #3d2318">
+                    {{ item.title }}
+                  </h5>
+                  <p class="text-sm leading-relaxed" style="color: #5c3d30">
+                    {{ item.content }}
+                  </p>
                 </div>
               </div>
               <!-- Back Button (Scrolls up) -->
-              <div class="pt-10 border-t flex justify-center" style="border-color: #f0e2d0;">
-                <button (click)="scrollToTop()"
+              <div
+                class="pt-10 border-t flex justify-center"
+                style="border-color: #f0e2d0"
+              >
+                <button
+                  (click)="scrollToTop()"
                   class="flex items-center gap-2 px-8 py-3 rounded-full border-2 transition-all hover:bg-[#f7ede8]"
-                  style="border-color: #f0e2d0; color: #7b5a4a; font-weight: 500; font-size: 14px;">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  style="
+                    border-color: #f0e2d0;
+                    color: #7b5a4a;
+                    font-weight: 500;
+                    font-size: 14px;
+                  "
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 10l7-7m0 0l7 7m-7-7v18"
+                    />
                   </svg>
                   Scroll to Registration
                 </button>
@@ -334,50 +609,97 @@
         </div>
       </div>
       <!-- REGISTRATION SUMMARY SECTION -->
-      <div id="registration-summary" *ngIf="registrationView === 'registration' && selectedCount > 0"
-        class="mt-16 animate-fadeIn">
+      <div
+        id="registration-summary"
+        *ngIf="registrationView === 'registration' && selectedCount > 0"
+        class="mt-16 animate-fadeIn"
+      >
         <div class="mb-8">
-          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#9a7060] mb-2 block">Your Registration
-            Summary</span>
-          <h2 class="font-display text-3xl font-bold text-[#3d2318] mb-2">Sessions you're signing up for</h2>
-          <p class="text-sm text-[#836054]">You're registering for {{ selectedCount }} session{{ selectedCount !== 1
-            ?
-            's' : '' }}.</p>
+          <span
+            class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#9a7060] mb-2 block"
+            >Your Registration Summary</span
+          >
+          <h2 class="font-display text-3xl font-bold text-[#3d2318] mb-2">
+            Sessions you're signing up for
+          </h2>
+          <p class="text-sm text-[#836054]">
+            You're registering for {{ selectedCount }} session{{
+              selectedCount !== 1 ? "s" : ""
+            }}.
+          </p>
         </div>
 
         <div class="space-y-4">
-          <div *ngFor="let session of selectedSessions" (click)="selectWebinarForDetails(session.id); scrollToDetails()"
-            class="bg-white rounded-2xl border border-[#f0e2d0] p-6 flex items-center gap-6 transition-all hover:shadow-md hover:border-[#7b5a4a]/30 group cursor-pointer hover:bg-[#fffafa]">
+          <div
+            *ngFor="let session of selectedSessions"
+            (click)="selectWebinarForDetails(session.id); scrollToDetails()"
+            class="bg-white rounded-2xl border border-[#f0e2d0] p-6 flex items-center gap-6 transition-all hover:shadow-md hover:border-[#7b5a4a]/30 group cursor-pointer hover:bg-[#fffafa]"
+          >
             <!-- Date Column -->
-            <div class="w-16 flex-shrink-0 text-center border-r border-[#f0e2d0] pr-6">
-              <span class="block text-2xl font-bold text-[#3d2318] leading-none mb-1">{{ session.day }}</span>
-              <span class="block text-[10px] font-bold uppercase tracking-wider text-[#9a7060]">{{ session.month
-                }}</span>
+            <div
+              class="w-16 flex-shrink-0 text-center border-r border-[#f0e2d0] pr-6"
+            >
+              <span
+                class="block text-2xl font-bold text-[#3d2318] leading-none mb-1"
+                >{{ session.day }}</span
+              >
+              <span
+                class="block text-[10px] font-bold uppercase tracking-wider text-[#9a7060]"
+                >{{ session.month }}</span
+              >
             </div>
 
             <!-- Content Column -->
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-2 mb-2">
                 <span
-                  class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#fef0ea] text-[#7b5a4a] text-[10px] font-bold uppercase tracking-wider border border-[#e8c9bd]">
-                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#fef0ea] text-[#7b5a4a] text-[10px] font-bold uppercase tracking-wider border border-[#e8c9bd]"
+                >
+                  <svg
+                    class="w-3 h-3"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                   {{ session.time }}
                 </span>
               </div>
               <h3
-                class="text-lg font-bold text-[#3d2318] mb-1 leading-tight group-hover:text-[#7b5a4a] transition-colors">
-                {{ session.title }}</h3>
-              <p class="text-sm text-[#5c3d30] line-clamp-2 leading-relaxed opacity-80">{{ session.description }}
+                class="text-lg font-bold text-[#3d2318] mb-1 leading-tight group-hover:text-[#7b5a4a] transition-colors"
+              >
+                {{ session.title }}
+              </h3>
+              <p
+                class="text-sm text-[#5c3d30] line-clamp-2 leading-relaxed opacity-80"
+              >
+                {{ session.description }}
               </p>
             </div>
 
             <!-- Arrow -->
-            <div class="text-[#f0e2d0] group-hover:text-[#7b5a4a] transition-colors">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            <div
+              class="text-[#f0e2d0] group-hover:text-[#7b5a4a] transition-colors"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </div>
           </div>
@@ -385,12 +707,23 @@
 
         <!-- Scroll to Top Action -->
         <div class="mt-12 flex justify-center">
-          <button (click)="scrollToTop()"
-            class="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#7b5a4a] text-white font-bold text-sm shadow-lg hover:shadow-xl transition-all active:scale-[0.98]">
+          <button
+            (click)="scrollToTop()"
+            class="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#7b5a4a] text-white font-bold text-sm shadow-lg hover:shadow-xl transition-all active:scale-[0.98]"
+          >
             Complete Registration
-            <svg class="w-4 h-4 transition-transform group-hover:-translate-y-1" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            <svg
+              class="w-4 h-4 transition-transform group-hover:-translate-y-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 10l7-7m0 0l7 7m-7-7v18"
+              />
             </svg>
           </button>
         </div>
@@ -398,20 +731,36 @@
     </div>
 
     <!-- RIGHT COLUMN -->
-    <aside #rightScrollArea class="scroll-column right-column custom-scroll" (scroll)="onScroll('right')">
+    <aside
+      #rightScrollArea
+      class="scroll-column right-column custom-scroll"
+      (scroll)="onScroll('right')"
+    >
       <!-- ── Coming Up Next ── -->
       <ng-container *ngIf="nextWebinar">
-        <div class="bg-white rounded-[2.5rem] shadow-2xl border border-[#e5ded6] overflow-hidden flex flex-col"
-          style="background: #fffafa;">
+        <div
+          class="bg-white rounded-[2.5rem] shadow-2xl border border-[#e5ded6] overflow-hidden flex flex-col"
+          style="background: #fffafa"
+        >
           <!-- Image Header -->
           <div class="h-56 overflow-hidden relative group">
-            <img [src]="nextWebinar.imageUrl" [alt]="nextWebinar.title"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img
+              [src]="nextWebinar.imageUrl"
+              [alt]="nextWebinar.title"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
             <div class="absolute inset-0 bg-black/5"></div>
             <!-- Slide Control Mockup -->
             <div
-              class="absolute left-0 top-1/2 -translate-y-1/2 h-20 w-8 bg-white/90 backdrop-blur rounded-r-2xl flex items-center justify-center shadow-lg cursor-pointer">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              class="absolute left-0 top-1/2 -translate-y-1/2 h-20 w-8 bg-white/90 backdrop-blur rounded-r-2xl flex items-center justify-center shadow-lg cursor-pointer"
+            >
+              <svg
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
                 <path d="M15 19l-7-7 7-7" />
               </svg>
             </div>
@@ -421,60 +770,96 @@
           <div class="p-8">
             <!-- Badges -->
             <div class="flex flex-wrap items-center gap-3 mb-5">
-              <span class="text-[11px] font-bold text-[#836054]/80 uppercase tracking-widest">{{ dateStr }}, {{
-                nextWebinar.time }}</span>
               <span
-                class="px-3 py-1 bg-[#7b5a4a] text-white text-[10px] font-bold rounded-full uppercase tracking-tighter shadow-sm">Upcoming</span>
+                class="text-[11px] font-bold text-[#836054]/80 uppercase tracking-widest"
+                >{{ dateStr }}, {{ nextWebinar.time }}</span
+              >
+              <span
+                class="px-3 py-1 bg-[#7b5a4a] text-white text-[10px] font-bold rounded-full uppercase tracking-tighter shadow-sm"
+                >Upcoming</span
+              >
               <span
                 class="px-3 py-1 bg-[#fbf3db] text-[#8b6e3d] text-[10px] font-bold rounded-full border border-[#f0e4b8] uppercase tracking-tighter"
-                *ngIf="daysLabel.includes('day') || daysLabel === 'Today' || daysLabel === 'Tomorrow'">
+                *ngIf="
+                  daysLabel.includes('day') ||
+                  daysLabel === 'Today' ||
+                  daysLabel === 'Tomorrow'
+                "
+              >
                 {{ daysLabel }}
               </span>
             </div>
 
             <!-- Title -->
-            <h3 class="font-display text-2xl font-bold leading-tight mb-4 tracking-tight"
-              style="color: #3d2318; font-family: 'Playfair Display', serif;">
+            <h3
+              class="font-display text-2xl font-bold leading-tight mb-4 tracking-tight"
+              style="
+                color: #3d2318;
+                font-family: &quot;Playfair Display&quot;, serif;
+              "
+            >
               {{ nextWebinar.title }}
             </h3>
 
             <!-- Description -->
-            <p class="text-[15px] leading-relaxed mb-6 line-clamp-3" style="color: #5c3d30">
+            <p
+              class="text-[15px] leading-relaxed mb-6 line-clamp-3"
+              style="color: #5c3d30"
+            >
               {{ nextWebinar.description }}
             </p>
 
             <!-- Tags -->
             <div class="flex flex-wrap gap-2 mb-8">
-              <span *ngFor="let tag of nextWebinar.tags" class="text-[11px] font-medium px-4 py-1.5 rounded-full border"
-                style="background: #fff; color: #7b5a4a; border-color: #f0e2d0">
+              <span
+                *ngFor="let tag of nextWebinar.tags"
+                class="text-[11px] font-medium px-4 py-1.5 rounded-full border"
+                style="background: #fff; color: #7b5a4a; border-color: #f0e2d0"
+              >
                 {{ tag }}
               </span>
             </div>
 
             <!-- Divider -->
-            <div class="h-px w-full mb-6" style="background: #f0e2d0;"></div>
+            <div class="h-px w-full mb-6" style="background: #f0e2d0"></div>
 
             <!-- Host Info -->
             <div class="flex items-center gap-4 mb-8">
               <div
                 class="w-12 h-12 rounded-full text-white flex items-center justify-center font-bold text-sm shadow-inner"
-                style="background: #7b5a4a">
+                style="background: #7b5a4a"
+              >
                 {{ sidebarInitials }}
               </div>
               <div class="flex-1">
-                <p class="text-sm font-bold m-0" style="color: #3d2318">{{ nextWebinar.host?.name }}</p>
-                <p class="text-[11px] font-medium uppercase tracking-wider" style="color: #7b5a4a">{{
-                  nextWebinar.host?.role }}</p>
+                <p class="text-sm font-bold m-0" style="color: #3d2318">
+                  {{ nextWebinar.host?.name }}
+                </p>
+                <p
+                  class="text-[11px] font-medium uppercase tracking-wider"
+                  style="color: #7b5a4a"
+                >
+                  {{ nextWebinar.host?.role }}
+                </p>
               </div>
             </div>
 
             <!-- Action Button -->
-            <button (click)="selectWebinarForDetails(nextWebinar.id); scrollToDetails()"
+            <button
+              (click)="
+                selectWebinarForDetails(nextWebinar.id); scrollToDetails()
+              "
               class="w-full py-5 rounded-2xl font-bold text-white text-[15px] tracking-wide shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group"
-              style="background: #7b5a4a">
+              style="background: #7b5a4a"
+            >
               View Full Details
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2.5">
+              <svg
+                class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
                 <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </button>
@@ -484,7 +869,10 @@
 
       <!-- Stats -->
       <div class="rounded-2xl p-6 text-white mt-8" style="background: #7b5a4a">
-        <p class="text-xs font-medium uppercase tracking-wider mb-4" style="color: #ffffff">
+        <p
+          class="text-xs font-medium uppercase tracking-wider mb-4"
+          style="color: #ffffff"
+        >
           Our Community
         </p>
         <div class="grid grid-cols-3 gap-4 text-center">
