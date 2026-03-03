@@ -135,12 +135,12 @@
   </div>
 
   <!-- Desktop Layout -->
-  <div class="hidden md:grid max-w-6xl mx-auto grid-cols-3 gap-8">
+  <div class="hidden md:grid max-w-6xl mx-auto grid-cols-3 gap-6">
     <div
       *ngFor="let card of cards"
-      class="bg-gradient-to-b from-[#fffdfb] to-[#fef3e1] border-2 border-[#c89d63] p-8"
+      class="bg-gradient-to-b from-[#fffdfb] to-[#fef3e1] border-2 border-[#c89d63] p-4"
     >
-      <ul class="space-y-1 list-disc list-inside text-[#836054]">
+      <ul class="space-y-3 list-disc list-inside text-[#836054]">
         <li *ngFor="let item of card">
           {{ item }}
         </li>
@@ -152,7 +152,7 @@
   <div class="md:hidden max-w-sm mx-auto relative mt-10 mx-2">
     <!-- Card -->
     <div
-      class="bg-gradient-to-b from-[#fffdfb] to-[#fef3e1] border border-[#c89d63] rounded-sm p-8 min-h-[420px] flex items-start mx-6"
+      class="bg-gradient-to-b from-[#fffdfb] to-[#fef3e1] border border-[#c89d63] rounded-sm p-4 min-h-[420px] flex items-start mx-6"
     >
       <ul class="space-y-5 list-disc list-inside text-[#836054]">
         <li *ngFor="let item of cards[currentIndex]">
@@ -542,7 +542,6 @@ For Schools/Universities -->
 <app-mental-health-advantage-card-section></app-mental-health-advantage-card-section>
 
 <!-- Feature Card -->
-
 <section class="relative bg-white text-center text-black py-12 px-6 overflow-hidden flex flex-wrap justify-center">
 
 <div class="flex justify-center flex-col">

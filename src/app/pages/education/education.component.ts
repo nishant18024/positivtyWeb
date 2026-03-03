@@ -46,12 +46,26 @@ export class EducationComponent implements OnInit, OnDestroy {
         'https://positivtystaticassets.blob.core.windows.net/images/education/silentstruggles/behavioral-condition.jpeg'
     },
     {
-      percentage: '13%',
+      percentage: '7%',
       description:
-        '1 in 7 children aged 3–17 (13%) has a diagnosed mental or behavioral condition.',
+        '7% face behavioural disorders, with males showing a higher prevalence (10%) than females (5%) .',
       imageUrl:
         'https://positivtystaticassets.blob.core.windows.net/images/education/silentstruggles/higher-prevalence.jpeg'
-    }
+    },
+    {
+      percentage: '4%',
+      description:
+        '4% suffer from diagnosed depression, with females more affected (6%) than males (3%)',
+      imageUrl:
+        'https://positivtystaticassets.blob.core.windows.net/images/education/silentstruggles/diagnosed-depression.jpeg'
+    },
+    {
+      percentage: '37%',
+      description:
+        'Additionally, 37% of children with a mental health condition face two or more co-existing challenges, intensifying their struggles.',
+      imageUrl:
+        'https://positivtystaticassets.blob.core.windows.net/images/education/silentstruggles/additionally.jpeg'
+    },
   ];
 
   // ===============================
@@ -63,18 +77,23 @@ export class EducationComponent implements OnInit, OnDestroy {
   cards: string[][] = [
     [
       'Persistent sadness lasting two or more weeks',
-      'Avoidance of social interactions',
+      'Avoidance of social interactions or isolating themselves',
       'Self-harm or talking about hurting oneself'
     ],
     [
       'Mentioning thoughts of death or suicide',
-      'Frequent mood swings',
-      'Dangerous out-of-control behaviour'
+      'Frequent outbursts, mood swings, or irritability',
+      'Dangerous or harmful out-of-control behaviour',
+      'Noticeable changes in mood, behaviour, or personality',
+      'Significant changes in eating habits',
     ],
     [
       'Unexplained weight loss',
-      'Difficulty sleeping',
-      'Declining academic performance'
+      'Difficulty falling or staying asleep',
+      'Frequent headaches or stomach aches without medical cause',
+      'Trouble focusing or concentrating',
+      'Declining academic performance',
+      'Avoidance of attending school'
     ]
   ];
 
@@ -340,51 +359,51 @@ export class EducationComponent implements OnInit, OnDestroy {
   // ===============================
 
   features = [
-  {
-    title: "Early in School Support",
-    subtitle: "Guiding Students Through Crucial Transition Periods",
-    description: "The first 90–180 days in a new school environment are vital for a student’s emotional and academic growth. Our programs offer targeted support to help students adjust to new peers, teachers, and surroundings, ensuring they feel confident and included."
-  },
-  {
-    title: "Institution-Wide Mental Health Assessment",
-    subtitle: "Holistic Insights for a Growing Campus",
-    description: "Conduct annual comprehensive evaluations to analyze the mental health dynamics across your institution. This proactive assessment helps identify challenges and create data-driven strategies to improve student well-being."
-  },
-  {
-    title: "Mental Health Awareness Workshops",
-    subtitle: "Building a Culture of Understanding and Empathy",
-    description: "Interactive workshops educate students and faculty on recognizing mental health symptoms, understanding therapy, and exploring treatment options. Topics include:"
-  },
-  {
-    title: "1-on-1 Online Therapy",
-    subtitle: "Safe, Private, and On-Demand Support",
-    description: "Connect students with qualified and certified therapists for confidential one-on-one online sessions. These sessions are tailored to individual needs and are conducted in a secure environment, ensuring complete privacy."
-  },
-  {
-    title: "Gift a Session (School/Universities)",
-    subtitle: "Support When It’s Needed Most",
-    description: "Empower students to uplift their peers by gifting therapy sessions during challenging times. Whether it's due to personal loss, financial difficulties, or other stressors, this unique offering fosters community support and resilience."
-  },
-  {
-    title: "Group Therapy Sessions",
-    subtitle: "Shared Healing Through Collective Growth",
-    description: "Small groups of students with shared concerns, such as academic underperformance or social challenges like bullying, work together in a supportive setting to overcome obstacles and build coping mechanisms."
-  },
-  {
-    title: "Therapy @ School",
-    subtitle: "Therapy Accessible On-Campus",
-    description: "Offer in-person therapy sessions within your school or university premises. Whether scheduled weekly or monthly, these face-to-face interactions create a convenient and approachable support system for students."
-  },
-  {
-    title: "Therapy @ Home",
-    subtitle: "Support Delivered to Your Doorstep",
-    description: "For students experiencing severe mental health issues or those unable to attend sessions on-campus or online, we provide face-to-face therapy sessions at home. This personalized care ensures no one is left behind."
-  },
-  {
-    title: "24x7 Helpline",
-    subtitle: "Round-the-Clock Support",
-    description: "Our emergency helpline is available 24/7, 365 days a year, connecting students to qualified therapists in times of urgent need. Help is always just a call away."
-  },
-];
+    {
+      title: "Early in School Support",
+      subtitle: "Guiding Students Through Crucial Transition Periods",
+      description: "The first 90–180 days in a new school environment are vital for a student’s emotional and academic growth. Our programs offer targeted support to help students adjust to new peers, teachers, and surroundings, ensuring they feel confident and included."
+    },
+    {
+      title: "Institution-Wide Mental Health Assessment",
+      subtitle: "Holistic Insights for a Growing Campus",
+      description: "Conduct annual comprehensive evaluations to analyze the mental health dynamics across your institution. This proactive assessment helps identify challenges and create data-driven strategies to improve student well-being."
+    },
+    {
+      title: "Mental Health Awareness Workshops",
+      subtitle: "Building a Culture of Understanding and Empathy",
+      description: "Interactive workshops educate students and faculty on recognizing mental health symptoms, understanding therapy, and exploring treatment options. Topics include:"
+    },
+    {
+      title: "1-on-1 Online Therapy",
+      subtitle: "Safe, Private, and On-Demand Support",
+      description: "Connect students with qualified and certified therapists for confidential one-on-one online sessions. These sessions are tailored to individual needs and are conducted in a secure environment, ensuring complete privacy."
+    },
+    {
+      title: "Gift a Session (School/Universities)",
+      subtitle: "Support When It’s Needed Most",
+      description: "Empower students to uplift their peers by gifting therapy sessions during challenging times. Whether it's due to personal loss, financial difficulties, or other stressors, this unique offering fosters community support and resilience."
+    },
+    {
+      title: "Group Therapy Sessions",
+      subtitle: "Shared Healing Through Collective Growth",
+      description: "Small groups of students with shared concerns, such as academic underperformance or social challenges like bullying, work together in a supportive setting to overcome obstacles and build coping mechanisms."
+    },
+    {
+      title: "Therapy @ School",
+      subtitle: "Therapy Accessible On-Campus",
+      description: "Offer in-person therapy sessions within your school or university premises. Whether scheduled weekly or monthly, these face-to-face interactions create a convenient and approachable support system for students."
+    },
+    {
+      title: "Therapy @ Home",
+      subtitle: "Support Delivered to Your Doorstep",
+      description: "For students experiencing severe mental health issues or those unable to attend sessions on-campus or online, we provide face-to-face therapy sessions at home. This personalized care ensures no one is left behind."
+    },
+    {
+      title: "24x7 Helpline",
+      subtitle: "Round-the-Clock Support",
+      description: "Our emergency helpline is available 24/7, 365 days a year, connecting students to qualified therapists in times of urgent need. Help is always just a call away."
+    },
+  ];
 
 }
