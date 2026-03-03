@@ -5,5 +5,7 @@ export const API_ENDPOINTS = {
     HOME_BANNER: 'Home/GetBanner',
     PSYCHOLOGIST_LIST: 'Psychologist/GetAll',
     USER_PROFILE: 'User/GetProfile',
-    LOGIN: 'Auth/Login'
+    LOGIN: 'Auth/Login',
+    WEBINAR_LIST: 'Zoom/getWebinarList?fetchFromDb=true',
+    WEBINAR_REGISTER: 'Zoom/RegisterWebinarParticipant'
 };
