@@ -9,12 +9,10 @@ import { Component, Input } from '@angular/core';
   styleUrl: './education-stats-card.component.scss'
 })
 export class EducationStatsCardComponent {
-  @Input() percentage: string = '13%';
+  @Input() percentage!: string;
 
-  @Input() description: string =
-    '1 in 7 children aged 3–17 (13%) has a diagnosed mental or behavioral condition.';
+  @Input() description!: string;
 
-  @Input() imageUrl: string =
-    'https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner1.jpeg';
+  @Input() imageUrl!: string;
 
 }
