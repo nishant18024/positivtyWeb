@@ -1,24 +1,35 @@
 <section
-  class="relative bg-cover bg-[position:center_30%] bg-no-repeat overflow-hidden lg:px-[190px] px-[10px] pt-[143px] md:py-10"
+  class="relative bg-cover bg-[position:68%_0%] min-h-[80px] md:min-h-auto md:bg-[position:center_30%] bg-no-repeat overflow-hidden lg:px-[190px] px-[10px] pt-[143px] md:py-10 lg:pb-[50px] md:pb-[75px] pb-[40px]"
   [style.background-image]="
     'url(https://positivtystaticassets.blob.core.windows.net/images/banner/EnterprisesBanner.jpeg)'
   "
   >
 
-    <div class="items-center pb-[10px]">
+    <div class="items-center ">
       <!-- Content -->
       <div class=" md:pl-10">
+
         <h2
-          class="text-white text-xl md:text-3xl font-bold leading-relaxed mb-4"
+          class="text-white text-xl md:text-3xl font-bold leading-relaxed mb-[15px]"
         >
-          Strong <br class="block md:hidden" />
-          Minds,<br />
-          Stronger <br class="block md:hidden" />
-          Workplaces
+
+        <div class="flex md:flex-row flex-col pb-[12px]
+          md:pb-0 ">
+          <P class="text-[16px] md:text-[29px] pr-[7px] pb-[12px]
+          md:pb-0 ">Strong</P>
+          <P class="text-[16px] md:text-[29px]">Minds,</P>
+        </div>
+
+        <div class="flex  md:flex-row flex-col">
+          <P class="text-[16px] md:text-[29px] pr-[7px] pb-[12px]
+          md:pb-0">Stronger</P>
+          <P class="text-[16px] md:text-[29px]">Workplaces</P>
+        </div>
+
         </h2>
 
-        <div class="space-y-1 text-[#D1D1D0] text-[10px] lg:text-[15px] md:text-md ">
-          <p>
+        <div class=" md:text-[#D1D1D0]  text-[#f9f8f8] text-[10px] lg:text-[15px] md:text-md mb-[20px] ">
+          <p class=" md:leading-loose lg:leading-normal">
             Every employee has a story, <br />
             a struggle, and a potential waiting to <br />
             be nurtured. Some may be silently carrying <br />
@@ -31,16 +42,20 @@
         </div>
 
         <!-- Buttons -->
-        <div class="flex flex-wrap gap-4 mt-6 sm:pb-[30px]">
+        <div class="flex flex-wrap gap-4  ">
           <button
-            class="px-6 py-2 border border-white text-white rounded-full uppercase text-sm hover:bg-white hover:text-black transition hover:scale-110 duration-300"
-          >
-            Book Now
+              class="group flex items-center gap-2 lg:px-[35px] md:px-[28px] md:py-[8px] px-[15px] py-[8px] border border-white text-white rounded-full uppercase md:text-[15px] text-[12px] transition duration-300 hover:bg-white hover:text-black hover:scale-110"
+              routerLink="/contact-us"
+              >
+              Book Now
+            <i
+              class="fa-solid fa-external-link-alt ml-2 transition-transform duration-300 group-hover:scale-110"
+            ></i>
           </button>
 
           <button
             routerLink="/contact-us"
-            class="px-6 py-2 bg-[#836054] text-white rounded-full uppercase text-sm shadow-md hover:opacity-90 transition hover:scale-110 duration-300"
+            class="border border-white px-[15px] py-[8px] lg:px-[35px] md:px-[28px] md:py-[8px] bg-[#836054] text-white rounded-full uppercase md:text-[15px] text-[12px] shadow-md hover:opacity-90 transition hover:scale-110 duration-300"
           >
             Enquire Now
           </button>
@@ -50,16 +65,16 @@
 
 </section>
 
-<section class="py-6 mx-auto px-6 max-w-6xl">
-  <div class="text-center md:px-20 justify-center">
+<section class="lg:pt-[22px] pt-[30px] md:pt-[59px] bd-[#F9F8F8]  mx-auto px-4 lg:max-w-6xl md:max-w-3xl">
+  <div class="text-center md:px-10 justify-center">
     <!-- Heading -->
-    <h3 class="text-2xl font-semibold text-[#705146] mb-4">
+    <h3 class="text-[24px] font-semibold text-[#0a0a0a] mb-4">
       75% of employees face mental health challenges
       <span class="block md:inline">but don’t seek help</span>
     </h3>
 
     <!-- Description -->
-    <p class="text-gray-700 mb-8 max-w-3xl">
+    <p class="md:text-[#535074] text-[#363636] font-[700px] mb-8 text-[16px] md:text-[14px] max-w-4xl md:font-normal font-medium leading-relaxed mx-auto">
       Workplaces are becoming silent battlegrounds for mental health issues,
       with employees facing challenges like stress, anxiety, and burnout. The
       impact is clear from recent findings:
@@ -67,10 +82,10 @@
   </div>
 
   <!-- Stats Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-[20px]">
     <div
       *ngFor="let item of workplaceCards; trackBy: trackByIndex"
-      class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-[#EADBC8] border-l-[#836054] hover:shadow-xl transition duration-300"
+      class="bg-white rounded-xl shadow-lg p-6 border-l-2 border-[#EADBC8] border-l-[#836054] hover:shadow-xl transition duration-300"
     >
       <h4 class="text-lg md:text-xl font-semibold text-[#705146] mb-2">
         {{ item.title }}
@@ -81,7 +96,7 @@
       </p>
     </div>
   </div>
-  <p class="text-md py-4 justify-center text-center">
+  <p class="text-[18px] pb-[25px] text-[#363636]  hidden md:block text-center">
     Despite these alarming statistics, many employees hesitate to seek help due
     to stigma or limited access to care. This highlights the urgent need for
     organizations to create environments that prioritize mental health and
@@ -89,13 +104,13 @@
   </p>
 </section>
 
-<section class="bg-[#fef2dd] py-10 px-6">
+<section class="bg-[#fef2dd] py-[25px] px-6">
   <div class="max-w-4xl mx-auto text-center justify-center">
-    <h2 class="text-2xl md:text-3xl font-semibold text-[#6b3f2b] mb-4">
+    <h2 class="md:text-[40px] text-[21px] font-medium text-[#705146] mb-4">
       Stigma Surrounding Mental Health
     </h2>
 
-    <p class="text-gray-700 leading-relaxed text-base md:text-md">
+    <p class="text-[#363636] md:leading-snug leading-normal text-base text-[16px]">
       The stigma associated with mental health remains one of the biggest
       barriers preventing individuals from speaking up and seeking help. This
       stigma, both external and internal, creates a culture of silence, leaving
@@ -116,25 +131,25 @@
 
   <!-- footer text -->
   <div class="max-w-3xl mx-auto text-center justify-center">
-    <p class="text-gray-700 leading-relaxed text-base md:text-md mb-6">
+    <p class="text-[#363636] md:text-[17px] md:leading-relaxed leading-snug text-base text-[15px] mb-6">
       These statistics emphasize a critical truth: there is no health without
       mental health (WHO). Overcoming these stigmas and barriers requires a
       collective effort, led by organizations that prioritize mental wellness
       and foster a culture of understanding and support.
     </p>
-    <p class="text-gray-700 leading-relaxed text-base md:text-md font-semibold">
+    <p class="text-[#363636] leading-relaxed text-base md:text-[17px] text-[15px] leading-snug font-normal">
       <i class="fa-solid fa-star text-[#836054]"></i>
       Source: AON 2023 Asia Mental Health Index Report.
     </p>
   </div>
 </section>
 
-<section class="py-6 mx-auto px-5 max-w-5xl flex flex-col md:flex-row gap-8">
-  <div>
-    <h3 class="text-3xl md:text-4xl mb-2 md:mb-4">
+<section class="py-6 mx-auto px-5 max-w-6xl flex flex-col md:flex-row gap-5">
+  <div class="px-3">
+    <h3 class="lg:text-[40px] md:text-[21px] text-[26px]    mb-2 md:mb-4">
       Understanding Mental Health
     </h3>
-    <p class="text-md md:text-lg">
+    <p class="text-[18px] text-[#363636] leading-relaxed md:leading-normal">
       Mental health conditions affect millions globally, yet many remain unaware
       of their prevalence and impact. It’s crucial to foster understanding to
       build a supportive community. Here, we demystify some of the most common
@@ -151,7 +166,7 @@
       >
         <!-- Pill Button -->
         <div
-          class="px-6 py-3 rounded-[20px] border border-[#8b6457] text-[#8b6457] font-medium text-sm tracking-wide whitespace-nowrap cursor-pointer transition-all duration-300 hover:bg-[#8b6457] hover:text-white"
+          class="px-6 py-3 rounded-[20px] border border-[#8b6457] text-[#836054] font-bold text-[16px] tracking-wide whitespace-nowrap cursor-pointer transition-all duration-300 hover:bg-[#8b6457] hover:text-white "
         >
           {{ truncateTitle(item.title) }}
         </div>
@@ -174,15 +189,15 @@
   </div>
 </section>
 
-<section class="px-6 bg-[#fef2dd] py-8">
-  <div class="max-w-4xl mx-auto text-center px-4">
+<section class=" sm:px-[30px]  bg-[#fef2dd] py-[22px]">
+  <div class="max-w-5xl mx-auto text-center px-4">
     <h2
-      class="max-w-3xl mx-auto text-2xl md:text-4xl leading-snug md:leading-tight text-[#705146] mb-6 font-semibold"
+      class="max-w-3xl mx-auto text-[22px] lg:text-[36px] md:text-[30px] leading-normal md:leading-tight  lg:leading-[1.15] text-[#705146] mb-6 font-medium"
     >
       Comprehensive Care Tailored to Your Workforce’s Needs
     </h2>
 
-    <p class="mx-auto text-base md:text-lg text-[#4a3a33] leading-relaxed mb-4">
+    <p class="mx-auto  text-[18px] font-medium text-[#363636] md:leading-normal leading-tight mb-4">
       At Positivty, we understand that every organization is unique, just like
       the individuals within it. Our programs are designed to address the mental
       wellness needs of diverse teams through professional expertise,
@@ -202,18 +217,30 @@
   <div class="justify-center text-center">
     <button
       routerLink="/contact-us"
-      class="px-6 py-2 bg-[#836054] text-white rounded-full uppercase text-sm shadow-md hover:opacity-90 transition hover:scale-110 duration-300"
+      class="px-[35px] py-[11px] bg-[#836054] text-white rounded-full uppercase text-sm shadow-md hover:opacity-90 transition hover:scale-110 duration-300"
     >
       Book Now
+    <i
+    class="fa-solid fa-external-link-alt ml-2 transition-transform duration-300 group-hover:scale-110"
+  ></i>
     </button>
   </div>
+
+
 </section>
+<div class="bg-[#e8dcc8] ">
+  <div class="pt-[10px] pb-[10px]   ">
+    <div class="border-t border-dashed border-[#c9b79c]"></div>
+  </div>
+
+
+</div>
 
 <!-- how it works  -->
 <section>
   <!-- for enterpricess section  -->
   <div class="py-4 px-6 md:px-28">
-    <h2 class="text-2xl md:text-4xl font-semibold text-center">How it Works</h2>
+    <h2 class="text-2xl md:text-4xl md:font-normal font-medium text-center">How it Works</h2>
     <div class="max-w-7xl mx-auto mt-10">
       <!-- Section Badge -->
       <div class="mb-12">
@@ -275,18 +302,24 @@
   </div> -->
 
   <div class="max-w-2xl mx-auto text-center relative z-10">
-    <!-- Heading -->
-    <h2 class="text-2xl md:text-4xl font-serif mb-2">
+
+    <div class>
+
+<!-- Heading -->
+    <h2 class="md:text-[37px] text-[23px] font-serif mb-2 leading-loose">
       Proven Impact on Employee Wellbeing
     </h2>
 
     <!-- Subtext -->
-    <p class="mx-auto text-md md:text-lg text-[#f3eae5] leading-relaxed mb-16">
+    <p class="mx-auto text-md md:text-lg  text-[#ffffff] leading-relaxed mb-16 ">
       Enterprises that prioritize mental health see a profound difference in
       employee morale, productivity, and retention. After just 12 weeks of
       Positivity’s therapy sessions, the transformation is measurable and
       meaningful.
     </p>
+
+    </div>
+
 
     <!-- Impact Card -->
     <div
@@ -316,4 +349,132 @@
       </button>
     </div>
   </div>
+
+
+
+</section>
+
+<section class="bg-[#ffffff] pt-[25px] px-6 max-w-[1100px] mx-auto">
+
+  <!-- Title + Description -->
+  <div class=" text-center">
+
+    <h2 class="lg:text-[40px]  md:text-[27px] text-[23px] text-[#6b4f45] md:font-medium font-semibold mb-[15px] leading-normal md:leading-tight">
+      Why Mental Health is Your Organization’s Greatest Asset?
+    </h2>
+
+    <p class=" text-[#363636] text-[16px] leading-tight">
+      Focusing on mental health is a win-win for both organizations and employees.
+      By investing in mental well-being, enterprises cultivate a thriving workforce,
+      enhance operational efficiency, and foster a positive workplace culture.
+      Here are the compelling reasons to focus on mental health:
+    </p>
+
+  </div>
+
+  <!-- Cards Layout (Grid only) -->
+  <div class="max-w-[1100px] mx-auto mt-14 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-10">
+
+    <div class="h-[150px] border border-gray-300 rounded-lg"></div>
+    <div class="h-[150px] border border-gray-300 rounded-lg"></div>
+    <div class="h-[150px] border border-gray-300 rounded-lg"></div>
+    <div class="h-[150px] border border-gray-300 rounded-lg"></div>
+
+  </div>
+
+  <!-- Button -->
+  <div class="flex justify-center mt-12">
+    <button class="border border-[#7b5a4a] px-6 py-2 rounded-full text-[#7b5a4a]">
+      View More
+    </button>
+  </div>
+
+</section>
+
+
+<section class="bg-[#F9F8F8] pt-[25px]  md:px-28 px-6">
+
+  <!-- Title + Description -->
+  <div class=" text-center ">
+
+    <h2 class="text-[30px]  md:text-[40px]  text-[#0a0a0a] md:font-medium font-semibold mb-[15px] leading-normal md:leading-tight">
+      Why Choose Positivty?
+    </h2>
+
+    <p class="mb-[15px] text-[22px] font-[#363636]">
+      Empowering Organizations with Positivty 360° Mental Health Solutions
+    </p>
+
+    <p class=" text-[#363636] text-[19px] leading-tight">
+      At Positivty, we offer an end-to-end enterprise suite of mental health services designed to address every aspect of your workforce's well-being. With innovative, customizable solutions, we ensure your organization fosters a supportive and mentally healthy environment.
+    </p>
+
+  </div>
+
+  <!-- Cards Layout (Grid only) -->
+  <div class="max-w-[1100px] mx-auto mt-14 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-10">
+
+    <div class="h-[150px] border border-gray-300 rounded-lg"></div>
+    <div class="h-[150px] border border-gray-300 rounded-lg"></div>
+    <div class="h-[150px] border border-gray-300 rounded-lg"></div>
+    <div class="h-[150px] border border-gray-300 rounded-lg"></div>
+
+  </div>
+
+  <!-- Button -->
+  <div class="flex justify-center mt-12">
+    <button class="border border-[#7b5a4a] px-6 py-2 rounded-full text-[#7b5a4a]">
+      View More
+    </button>
+  </div>
+
+</section>
+
+<section class="bg-[#e9dcc8] py-20 px-6">
+
+  <!-- Cards Container -->
+  <div class="max-w-[1100px] mx-auto flex flex-wrap justify-center gap-10">
+
+    <!-- Card 1 -->
+    <div class="w-[320px] h-[260px] bg-[#efe5d4] border border-[#cbb79f] rounded-[20px] shadow-md flex flex-col items-center justify-center text-center p-8">
+      <i class="fa-solid fa-wallet text-[40px] text-[#7a5a45] mb-6"></i>
+      <h3 class="text-[20px] text-[#3d2c20]">
+        Complete Control <br> Over Spending
+      </h3>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="w-[320px] h-[260px] bg-[#efe5d4] border border-[#cbb79f] rounded-[20px] shadow-md flex flex-col items-center justify-center text-center p-8">
+      <i class="fa-solid fa-chart-line text-[40px] text-[#7a5a45] mb-6"></i>
+      <h3 class="text-[20px] text-[#3d2c20]">
+        Comprehensive <br> Reporting & Analytics
+      </h3>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="w-[320px] h-[260px] bg-[#efe5d4] border border-[#cbb79f] rounded-[20px] shadow-md flex flex-col items-center justify-center text-center p-8">
+      <i class="fa-solid fa-cube text-[40px] text-[#7a5a45] mb-6"></i>
+      <h3 class="text-[20px] text-[#3d2c20]">
+        Seamless Scalability <br> for Every Organization
+      </h3>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="w-[320px] h-[260px] bg-[#efe5d4] border border-[#cbb79f] rounded-[20px] shadow-md flex flex-col items-center justify-center text-center p-8">
+      <i class="fa-solid fa-shield-halved text-[40px] text-[#7a5a45] mb-6"></i>
+      <h3 class="text-[20px] text-[#3d2c20]">
+        Data Security and <br> Privacy
+      </h3>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="w-[320px] h-[260px] bg-[#efe5d4] border border-[#cbb79f] rounded-[20px] shadow-md flex flex-col items-center justify-center text-center p-8">
+      <i class="fa-solid fa-headset text-[40px] text-[#7a5a45] mb-6"></i>
+      <h3 class="text-[20px] text-[#3d2c20]">
+        Real-Time Support <br> and Assistance
+      </h3>
+    </div>
+
+  </div>
+
 </section>
