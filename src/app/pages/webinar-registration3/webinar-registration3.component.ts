@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { WebinarService } from '../../core/services/api/webinar.service';
 import { environment } from '../../../environments/environment';
+import { COUNTRIES, Country } from '../../core/constants/countries';
 
 interface WebinarHost {
   name: string;
@@ -81,7 +82,16 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
   errorMessage = '';
   redirectCountdown = 10;
   showDetails = false;
+  showStickyCta = false;
   showMoreSessions = false;
+
+  // ── Country Dropdown State ────────────────────────────────────────────────
+  countryDropdownOpen = false;
+  countrySearchQuery = '';
+  selectedCountry: Country;
+  countries = COUNTRIES;
+
+  @ViewChild('countrySearch') countrySearchRef!: ElementRef<HTMLInputElement>;
   private countdownInterval?: any;
 
   webinars: any[] = [];
@@ -90,7 +100,9 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
   constructor(
     private webinarService: WebinarService,
     private router: Router
-  ) { }
+  ) {
+    this.selectedCountry = this.countries[0]; // Default: India
+  }
 
   ngOnInit(): void {
     this.loading = true;
@@ -200,6 +212,91 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // ── Country dropdown methods ───────────────────────────────────────────────
+
+  get filteredCountries(): Country[] {
+    const q = this.countrySearchQuery.toLowerCase().trim();
+    if (!q) return this.countries;
+    return this.countries.filter(
+      c => c.name.toLowerCase().includes(q) || c.code.includes(q)
+    );
+  }
+
+  toggleCountryDropdown(): void {
+    this.countryDropdownOpen = !this.countryDropdownOpen;
+    if (this.countryDropdownOpen) {
+      this.countrySearchQuery = '';
+      setTimeout(() => this.countrySearchRef?.nativeElement?.focus(), 60);
+    }
+  }
+
+  selectCountry(country: Country): void {
+    this.selectedCountry = country;
+    this.countryDropdownOpen = false;
+    this.countrySearchQuery = '';
+  }
+
+  onCountryFocusOut(e: FocusEvent): void {
+    const container = e.currentTarget as HTMLElement;
+    if (container.contains(e.relatedTarget as Node)) return;
+    this.countryDropdownOpen = false;
+  }
+
+  // ── Style Helpers ──────────────────────────────────────────────────────────
+
+  onInputFocus(e: Event): void {
+    const el = e.target as HTMLInputElement;
+    el.style.borderColor = '#7b5a4a';
+    el.style.boxShadow = '0 0 0 3px rgba(123,90,74,0.15)';
+  }
+
+  onInputBlur(e: Event): void {
+    const el = e.target as HTMLInputElement;
+    el.style.borderColor = 'rgba(123,90,74,0.25)';
+    el.style.boxShadow = 'none';
+  }
+
+  onSearchFocus(e: Event): void {
+    const el = e.target as HTMLInputElement;
+    el.style.borderColor = '#7b5a4a';
+    el.style.boxShadow = '0 0 0 3px rgba(123,90,74,0.12)';
+  }
+
+  onSearchBlur(e: Event): void {
+    const el = e.target as HTMLInputElement;
+    el.style.borderColor = 'rgba(123,90,74,0.25)';
+    el.style.boxShadow = 'none';
+  }
+
+  onBtnHover(e: Event, isEnter: boolean): void {
+    const el = e.target as HTMLButtonElement;
+    if (isEnter) {
+      el.style.background = '#9a7060';
+      el.style.transform = 'translateY(-2px)';
+      el.style.boxShadow = '0 10px 28px rgba(123,90,74,0.35)';
+    } else {
+      el.style.background = '#7b5a4a';
+      el.style.transform = 'translateY(0)';
+      el.style.boxShadow = 'none';
+    }
+  }
+
+  onCardHover(e: Event, isEnter: boolean): void {
+    const el = e.currentTarget as HTMLElement;
+    if (isEnter) {
+      el.style.borderColor = '#7b5a4a';
+      el.style.boxShadow = '0 4px 20px rgba(123,90,74,0.15)';
+    } else {
+      el.style.borderColor = 'rgba(123,90,74,0.2)';
+      el.style.boxShadow = 'none';
+    }
+  }
+
+  onCountryHover(e: Event, isEnter: boolean): void {
+    const el = e.currentTarget as HTMLElement;
+    el.style.background = isEnter ? 'rgba(123,90,74,0.08)' : '';
+  }
+
   isFormValid(): boolean {
     return (
       this.registrationData.fullName.trim().length > 0 &&
@@ -226,7 +323,7 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
       firstName: firstName,
       lastName: lastName,
       email: this.registrationData.email,
-      contactNumber: this.registrationData.phone,
+      contactNumber: `${this.selectedCountry.code} ${this.registrationData.phone}`,
       organizationName: this.registrationData.organisation,
       referrer: 'WebinarRegistration3',
       createdBy: 'User'

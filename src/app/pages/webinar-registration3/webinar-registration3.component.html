@@ -32,58 +32,271 @@
     </header>
 
     <ng-container *ngIf="!isRegistered; else successState">
-        <div class="form-area">
-            <div class="r2">
-                <div class="fi">
-                    <label>Full Name <span class="rq">*</span></label>
-                    <input type="text" placeholder="Your full name" [(ngModel)]="registrationData.fullName"
-                        name="fullName" #fullName="ngModel" required [class.er]="
-              fullName.invalid && (fullName.dirty || fullName.touched)
-            " />
-                </div>
-                <div class="fi">
-                    <label>Email Address <span class="rq">*</span></label>
-                    <input type="email" placeholder="you@example.com" [(ngModel)]="registrationData.email" name="email"
-                        #email="ngModel" required email [class.er]="email.invalid && (email.dirty || email.touched)" />
-                </div>
-            </div>
-            <div class="r2">
-                <div class="fi">
-                    <label>Mobile Number <span class="rq">*</span></label>
-                    <div class="phone-input-wrap">
-                        <div class="country-sel">
-                            <span class="cc-flag">IN</span>
-                            <span class="cc-code">+91</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M6 9l6 6 6-6" />
-                            </svg>
+        <!-- FORM VIEW -->
+        <section id="register" #registerSection class="pb-10 pt-4">
+            <div class="max-w-[680px] mx-auto px-4 sm:px-6">
+                <div class="rounded-3xl px-4 sm:px-6 py-5 sm:py-6" style="
+              background: #fff9f4;
+              border: 1px solid rgba(123, 90, 74, 0.2);
+              box-shadow: 0 8px 48px rgba(123, 90, 74, 0.1);
+            ">
+
+                    <form #regForm="ngForm" (ngSubmit)="register()" novalidate>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                            <!-- Full Name -->
+                            <div class="flex flex-col gap-1.5">
+                                <label class="text-[13px] font-medium tracking-wide" style="color: #7b5a4a">
+                                    Full Name <span style="color: #ff2400">*</span>
+                                </label>
+                                <input type="text" [(ngModel)]="registrationData.fullName" name="fullName"
+                                    #fullName="ngModel" required placeholder="Your full name" autocomplete="name"
+                                    class="w-full px-[18px] py-2 rounded-xl text-[15px] outline-none transition-all duration-200"
+                                    style="
+                          border: 1px solid rgba(123, 90, 74, 0.25);
+                          background: white;
+                          color: #1e2a22;
+                        " [style.border-color]="
+                          fullName.invalid && (fullName.dirty || fullName.touched) ? '#f87171' : ''
+                        " (focus)="onInputFocus($event)" (blur)="onInputBlur($event)" />
+                                @if (fullName.invalid && (fullName.dirty || fullName.touched)) {
+                                <span class="text-xs" style="color: #ef4444">Please enter your full name.</span>
+                                }
+                            </div>
+
+                            <!-- Email -->
+                            <div class="flex flex-col gap-1.5">
+                                <label class="text-[13px] font-medium tracking-wide" style="color: #7b5a4a">
+                                    Email Address <span style="color: #ff2400">*</span>
+                                </label>
+                                <input type="email" [(ngModel)]="registrationData.email" name="email" #email="ngModel"
+                                    required email placeholder="you@example.com" autocomplete="email"
+                                    class="w-full px-[18px] py-2 rounded-xl text-[15px] outline-none transition-all duration-200"
+                                    style="
+                          border: 1px solid rgba(123, 90, 74, 0.25);
+                          background: white;
+                          color: #1e2a22;
+                        " [style.border-color]="email.invalid && (email.dirty || email.touched) ? '#f87171' : ''"
+                                    (focus)="onInputFocus($event)" (blur)="onInputBlur($event)" />
+                                @if (email.invalid && (email.dirty || email.touched)) {
+                                <span class="text-xs" style="color: #ef4444">Please enter a valid email address.</span>
+                                }
+                            </div>
+
+                            <!-- Mobile with Custom Country Dropdown -->
+                            <div class="flex flex-col gap-1.5">
+                                <label class="text-[13px] font-medium tracking-wide" style="color: #7b5a4a">
+                                    Mobile Number <span style="color: #ff2400">*</span>
+                                </label>
+
+                                <div class="flex items-stretch relative" style="height: 40px"
+                                    (focusout)="onCountryFocusOut($event)">
+                                    <!-- Country Trigger Button -->
+                                    <button type="button" (click)="toggleCountryDropdown()"
+                                        class="flex items-center gap-1.5 px-3 shrink-0 rounded-l-xl transition-all duration-200 outline-none cursor-pointer"
+                                        style="
+                            background: white;
+                            border: 1px solid rgba(123, 90, 74, 0.25);
+                            border-right: none;
+                            color: #7b5a4a;
+                            font-size: 14px;
+                            white-space: nowrap;
+                            min-width: 80px;
+                            height: 40px;
+                          " [style.border-color]="
+                            countryDropdownOpen
+                              ? '#7b5a4a'
+                              : phone.invalid && (phone.dirty || phone.touched)
+                                ? '#f87171'
+                                : ''
+                          " [style.box-shadow]="
+                            countryDropdownOpen
+                              ? '0 0 0 3px rgba(123,90,74,0.15)'
+                              : 'none'
+                          ">
+                                        <span style="font-size: 17px; line-height: 1">{{
+                                            selectedCountry.flag
+                                            }}</span>
+                                        <span style="
+                              font-size: 13px;
+                              font-weight: 500;
+                              color: #7b5a4a;
+                            ">{{ selectedCountry.code }}</span>
+                                        <span style="
+                              font-size: 9px;
+                              opacity: 0.5;
+                              margin-left: 2px;
+                              transition: transform 0.2s;
+                            " [style.transform]="
+                              countryDropdownOpen
+                                ? 'rotate(180deg)'
+                                : 'rotate(0deg)'
+                            ">▼</span>
+                                    </button>
+
+                                    <!-- Dropdown Panel -->
+                                    @if (countryDropdownOpen) {
+                                    <div tabindex="-1"
+                                        class="absolute top-[calc(100%+6px)] left-0 z-50 rounded-[14px] overflow-hidden"
+                                        style="
+                              min-width: 260px;
+                              background: #fff9f4;
+                              border: 1px solid rgba(123, 90, 74, 0.2);
+                              box-shadow:
+                                0 8px 32px rgba(123, 90, 74, 0.18),
+                                0 2px 8px rgba(0, 0, 0, 0.06);
+                              animation: dropdownIn 0.15s ease both;
+                              outline: none;
+                            ">
+                                        <!-- Search -->
+                                        <div style="
+                                padding: 10px 10px 6px;
+                                border-bottom: 1px solid rgba(123, 90, 74, 0.12);
+                              ">
+                                            <input #countrySearch type="text" [(ngModel)]="countrySearchQuery"
+                                                [ngModelOptions]="{ standalone: true }" placeholder="Search country…"
+                                                class="w-full outline-none rounded-lg text-[13px] transition-all duration-200"
+                                                style="
+                                   padding: 7px 12px;
+                                   border: 1px solid rgba(123, 90, 74, 0.25);
+                                   background: white;
+                                   color: #1e2a22;
+                                 " (focus)="onSearchFocus($event)" (blur)="onSearchBlur($event)"
+                                                (click)="$event.stopPropagation()" />
+                                        </div>
+
+                                        <!-- Country List -->
+                                        <div style="
+                                max-height: 220px;
+                                overflow-y: auto;
+                                padding: 6px 0;
+                              " class="scrollbar-thin">
+                                            @for (
+                                            country of filteredCountries;
+                                            track country.code + country.name
+                                            ) {
+                                            <div class="flex items-center gap-2.5 cursor-pointer transition-colors duration-100"
+                                                style="
+                                    padding: 8px 14px;
+                                    font-size: 13.5px;
+                                    color: #1e2a22;
+                                  " [style.background]="
+                                    selectedCountry.name === country.name
+                                      ? 'rgba(123,90,74,0.1)'
+                                      : ''
+                                  " (mousedown)="selectCountry(country)" (mouseenter)="onCountryHover($event, true)"
+                                                (mouseleave)="onCountryHover($event, false)">
+                                                <span style="
+                                        font-size: 18px;
+                                        line-height: 1;
+                                        flex-shrink: 0;
+                                      ">{{ country.flag }}</span>
+                                                <span style="flex: 1; color: #1e2a22">{{
+                                                    country.name
+                                                    }}</span>
+                                                <span style="
+                                        color: #7b5a4a;
+                                        font-size: 12.5px;
+                                        font-weight: 500;
+                                      ">{{ country.code }}</span>
+                                            </div>
+                                            }
+                                            @if (filteredCountries.length === 0) {
+                                            <div style="
+                                    padding: 16px 14px;
+                                    text-align: center;
+                                    font-size: 13px;
+                                    color: #7b5a4a;
+                                    opacity: 0.6;
+                                  ">
+                                                No countries found
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    }
+
+                                    <!-- Phone Input -->
+                                    <input type="tel" [(ngModel)]="registrationData.phone" name="phone" #phone="ngModel"
+                                        required placeholder="00000 00000" autocomplete="tel"
+                                        class="flex-1 min-w-0 px-[18px] rounded-r-xl text-[15px] outline-none transition-all duration-200"
+                                        style="
+                            border: 1px solid rgba(123, 90, 74, 0.25);
+                            border-left: none;
+                            background: white;
+                            color: #1e2a22;
+                            height: 40px;
+                          " [style.border-color]="
+                            phone.invalid && (phone.dirty || phone.touched) ? '#f87171' : ''
+                          " (focus)="onInputFocus($event)" (blur)="onInputBlur($event)" />
+                                </div>
+
+                                @if (phone.invalid && (phone.dirty || phone.touched)) {
+                                <span class="text-xs" style="color: #ef4444">Please enter a valid mobile number.</span>
+                                }
+                            </div>
+
+                            <!-- Organization -->
+                            <div class="flex flex-col gap-1.5">
+                                <label class="text-[13px] font-medium tracking-wide" style="color: #7b5a4a">
+                                    Organization Name
+                                    <span style="color: #7b5a4a; font-weight: 400; opacity: 0.7">(Optional)</span>
+                                </label>
+                                <input type="text" [(ngModel)]="registrationData.organisation" name="organisation"
+                                    placeholder="Where do you work?"
+                                    class="w-full px-[18px] py-2 rounded-xl text-[15px] outline-none transition-all duration-200"
+                                    style="
+                          border: 1px solid rgba(123, 90, 74, 0.25);
+                          background: white;
+                          color: #1e2a22;
+                          height: 40px;
+                        " (focus)="onInputFocus($event)" (blur)="onInputBlur($event)" />
+                            </div>
                         </div>
-                        <input type="tel" placeholder="00000 00000" [(ngModel)]="registrationData.phone" name="phone"
-                            #phone="ngModel" required [class.er]="phone.invalid && (phone.dirty || phone.touched)" />
-                    </div>
-                </div>
-                <div class="fi">
-                    <label>Organization Name <span class="rq">(Optional)</span></label>
-                    <input type="text" placeholder="Where do you work?" [(ngModel)]="registrationData.organisation"
-                        name="organisation" />
+
+                        <!-- Info Nudge -->
+                        <div class="mb-6 rounded-xl p-3 flex items-center justify-center gap-2" style="
+                        background: rgba(123, 90, 74, 0.05);
+                        border: 1px solid rgba(123, 90, 74, 0.1);
+                      ">
+                            <span style="color: #7b5a4a; font-size: 13px;">
+                                <span style="color: #1e2a22; font-weight: 600;">✓</span> Takes less than <strong>30
+                                    seconds</strong> · Register once → Attend all selected webinars
+                            </span>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="flex flex-col items-center">
+                            <button type="submit" [disabled]="loading || !isFormValid()"
+                                class="inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 ease-out focus:outline-none w-full sm:w-auto min-w-[280px]"
+                                style="
+                        background: #7b5a4a;
+                        color: white;
+                        padding: 12px 32px;
+                        font-size: 16px;
+                      " (mouseenter)="onBtnHover($event, true)" (mouseleave)="onBtnHover($event, false)">
+                                @if (loading) {
+                                <span class="w-[18px] h-[18px] rounded-full animate-spin inline-block mr-2" style="
+                            border: 2px solid rgba(255, 255, 255, 0.4);
+                            border-top-color: white;
+                          "></span>
+                                }
+                                Register
+                            </button>
+                        </div>
+
+                        @if (errorMessage) {
+                        <div class="text-xs px-4 py-2 rounded-xl mt-4 text-center" style="
+                        background: #fef2f2;
+                        border: 1px solid #fecaca;
+                        color: #dc2626;
+                      ">
+                            {{ errorMessage }}
+                        </div>
+                        }
+                    </form>
                 </div>
             </div>
-
-            <div class="nudge">
-                <span class="ti"><span class="ck">✓</span> Takes less than
-                    <strong>30 seconds</strong>
-                    · Register once → Attend all selected webinars</span>
-            </div>
-        </div>
-
-        <div class="cta-bar">
-            <button class="sub-btn main-cta" [disabled]="loading || !isFormValid()" (click)="register()"
-                [class.ld]="loading">
-                <span class="bt">Register</span>
-                <div class="spin"></div>
-            </button>
-            <div class="ierr" [class.on]="errorMessage">{{ errorMessage }}</div>
-        </div>
+        </section>
 
         <!-- PICKER -->
         <section class="pk-sec">
