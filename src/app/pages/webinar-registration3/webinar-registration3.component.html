@@ -32,32 +32,39 @@
     </header>
 
     <ng-container *ngIf="!isRegistered; else successState">
-        <!-- form area -->
         <div class="form-area">
             <div class="r2">
                 <div class="fi">
                     <label>Full Name <span class="rq">*</span></label>
-                    <input type="text" placeholder="e.g. Jane Doe" [(ngModel)]="registrationData.fullName"
+                    <input type="text" placeholder="Your full name" [(ngModel)]="registrationData.fullName"
                         name="fullName" #fullName="ngModel" required [class.er]="
               fullName.invalid && (fullName.dirty || fullName.touched)
             " />
                 </div>
                 <div class="fi">
                     <label>Email Address <span class="rq">*</span></label>
-                    <input type="email" placeholder="jane@example.com" [(ngModel)]="registrationData.email" name="email"
+                    <input type="email" placeholder="you@example.com" [(ngModel)]="registrationData.email" name="email"
                         #email="ngModel" required email [class.er]="email.invalid && (email.dirty || email.touched)" />
                 </div>
             </div>
             <div class="r2">
                 <div class="fi">
                     <label>Mobile Number <span class="rq">*</span></label>
-                    <input type="tel" placeholder="+1 (555) 000-0000" [(ngModel)]="registrationData.phone" name="phone"
-                        #phone="ngModel" required [class.er]="phone.invalid && (phone.dirty || phone.touched)" />
+                    <div class="phone-input-wrap">
+                        <div class="country-sel">
+                            <span class="cc-flag">IN</span>
+                            <span class="cc-code">+91</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+                        </div>
+                        <input type="tel" placeholder="00000 00000" [(ngModel)]="registrationData.phone" name="phone"
+                            #phone="ngModel" required [class.er]="phone.invalid && (phone.dirty || phone.touched)" />
+                    </div>
                 </div>
                 <div class="fi">
-                    <label>Organisation
-                        <span class="rq" style="font-weight: 300; opacity: 0.6">(Optional)</span></label>
-                    <input type="text" placeholder="Your company or school" [(ngModel)]="registrationData.organisation"
+                    <label>Organization Name <span class="rq">(Optional)</span></label>
+                    <input type="text" placeholder="Where do you work?" [(ngModel)]="registrationData.organisation"
                         name="organisation" />
                 </div>
             </div>
@@ -69,16 +76,12 @@
             </div>
         </div>
 
-        <!-- CTA bar -->
         <div class="cta-bar">
-            <button class="sub-btn" [disabled]="loading || !isFormValid()" (click)="register()" [class.ld]="loading">
+            <button class="sub-btn main-cta" [disabled]="loading || !isFormValid()" (click)="register()"
+                [class.ld]="loading">
                 <span class="bt">Register</span>
                 <div class="spin"></div>
             </button>
-            <!-- <div class="trust">
-                <div class="ti"><span class="ck">✓</span> Secure Connection</div>
-                <div class="ti"><span class="ck">✓</span> Instant Confirmation</div>
-            </div> -->
             <div class="ierr" [class.on]="errorMessage">{{ errorMessage }}</div>
         </div>
 
@@ -117,7 +120,7 @@
 
             <button *ngIf="webinars.length > 3" (click)="showMoreSessions = !showMoreSessions" class="vm-btn"
                 [class.exp]="showMoreSessions">
-                <span *ngIf="!showMoreSessions">View More Sessions ({{ webinars.length - 3 }} more)</span>
+                <span *ngIf="!showMoreSessions">View More Webinars ({{ webinars.length - 3 }} more)</span>
                 <span *ngIf="showMoreSessions">View Less</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M19 9l-7 7-7-7" />
@@ -197,7 +200,7 @@
         <div class="dt-panel" [class.on]="showDetails" *ngIf="activeWebinar">
             <div class="dt-inner">
                 <div class="dt-sec">
-                    <div class="dt-lbl">About This Session</div>
+                    <div class="dt-lbl">About This Webinar</div>
                     <div class="dt-body">
                         {{ activeWebinar.fullDescription || activeWebinar.description }}
                     </div>
@@ -230,7 +233,7 @@
                 </div>
 
                 <div class="dt-sec" *ngIf="activeWebinar.agenda">
-                    <div class="dt-lbl">Session Outline</div>
+                    <div class="dt-lbl">Webinar Outline</div>
                     <div class="dt-agenda">
                         <div class="dt-ag-item" *ngFor="let item of activeWebinar.agenda; let i = index">
                             <div class="dt-ag-n">{{ i + 1 }}</div>
@@ -256,9 +259,9 @@
         <!-- YOUR SESSIONS SUMMARY -->
         <section class="s3">
             <div class="sec-lb">Registration Summary</div>
-            <h2 class="sec-ti">Sessions you're signing up for</h2>
+            <h2 class="sec-ti">Webinars you're signing up for</h2>
             <p class="sec-su">
-                You're registering for {{ selectedSessions.length }} sessions.
+                You're registering for {{ selectedSessions.length }} Webinars.
             </p>
 
             <div class="s3-list" *ngIf="selectedSessions.length > 0; else emptySessions">
@@ -278,7 +281,7 @@
             </div>
             <ng-template #emptySessions>
                 <div class="s3-empty">
-                    No sessions selected yet. Please pick at least one session from the
+                    No Webinars selected yet. Please pick at least one Webinar from the
                     list above to register.
                 </div>
             </ng-template>
@@ -302,24 +305,116 @@
 
     <!-- success state -->
     <ng-template #successState>
-        <div class="sw on">
-            <div class="si">🎉</div>
-            <h2 class="st">Registration Complete!</h2>
-            <p class="ss">
-                You've successfully registered for
-                {{ selectedSessions.length }} sessions. Check your email for calendar
-                invites and Zoom links.
-            </p>
+        <div class="succ-wrap">
+            <div class="succ-card animate-fadeIn">
+                <div class="succ-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
 
-            <div class="sb" *ngFor="let s of selectedSessions">
-                <span class="ck">✓</span> {{ s.title }}
-            </div>
+                <h2 class="succ-title">Registration Confirmed!</h2>
+                <p class="succ-desc">Thank you for registering for the webinar hosted by Positivty.</p>
 
-            <p class="se">Hang tight, we're taking you to your dashboard...</p>
+                <div class="succ-grid">
+                    <div class="grid-item">
+                        <span class="label">Attendee</span>
+                        <div class="value">{{ registrationData.fullName }}</div>
+                    </div>
+                    <div class="grid-item">
+                        <span class="label">Email</span>
+                        <div class="value">{{ registrationData.email }}</div>
+                    </div>
+                    <div class="grid-item">
+                        <span class="label">Webinars Registered</span>
+                        <div class="value">{{ selectedSessions.length }}</div>
+                    </div>
+                    <div class="grid-item">
+                        <span class="label">Registration Date</span>
+                        <div class="value">{{ localTodayStr() }}</div>
+                    </div>
+                </div>
 
-            <div class="rt">Redirecting in 3 seconds</div>
-            <div class="rb">
-                <div class="rf"></div>
+                <div class="session-list-card">
+                    <span class="label">Webinars Registered</span>
+                    <div class="sessions-container">
+                        <div class="session-text" *ngFor="let s of selectedSessions">
+                            {{ s.title }}, {{ s.date | date: 'd MMMM y h:mm a' }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="status-badge">Status: Confirmed</div>
+
+                <div class="next-steps-sec">
+                    <div class="next-steps-hd">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        What Happens Next?
+                    </div>
+
+                    <div class="step-row">
+                        <div class="step-num">1</div>
+                        <div class="step-info">
+                            <div class="step-ti">Confirmation Sent</div>
+                            <div class="step-ds">You'll receive a separate email for each Webinar with access details.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-row">
+                        <div class="step-num">2</div>
+                        <div class="step-info">
+                            <div class="step-ti">Add Events to Calendar</div>
+                            <div class="step-ds">Use the invites to save the webinars to your schedule.</div>
+                        </div>
+                    </div>
+
+                    <div class="step-row">
+                        <div class="step-num">3</div>
+                        <div class="step-info">
+                            <div class="step-ti">Reminder Emails</div>
+                            <div class="step-ds">We'll send you a nudge before each Webinar to ensure you're ready.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-row">
+                        <div class="step-num">4</div>
+                        <div class="step-info">
+                            <div class="step-ti">Contact Support</div>
+                            <div class="step-ds">Need changes or have questions? Write to info&#64;positivty.com.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-box">
+                    <p class="footer-txt">
+                        Thanks for signing up for multiple events. Your dedication to mental wellbeing is commendable!
+                        Invite a friend, or explore more events on our platform while you wait.
+                    </p>
+                    <div class="footer-actions">
+                        <button class="btn-succ dark" (click)="isRegistered = false">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                style="width: 14px; height: 14px">
+                                <path d="M19 12H5M12 19l-7-7 7-7" />
+                            </svg>
+                            BACK TO WEBINARS
+                        </button>
+                        <button class="btn-succ outline" onclick="window.location.href='https://positivty.com'">
+                            HOMEPAGE
+                        </button>
+                    </div>
+                </div>
+
+                <div class="redir-txt">
+                    Redirecting to positivty.com in {{ redirectCountdown }} seconds
+                    <div class="redir-bar-wrap">
+                        <div class="redir-bar-fill"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </ng-template>

@@ -79,7 +79,7 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
   isRegistered = false;
   loading = false;
   errorMessage = '';
-  redirectCountdown = 3;
+  redirectCountdown = 10;
   showDetails = false;
   showMoreSessions = false;
   private countdownInterval?: any;
@@ -257,15 +257,22 @@ export class WebinarRegistration3Component implements OnInit, OnDestroy {
   }
 
 
+  localTodayStr(): string {
+    const n = new Date();
+    const yyyy = n.getFullYear();
+    const mm = String(n.getMonth() + 1).padStart(2, '0');
+    const dd = String(n.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
   private startRedirectCountdown(): void {
-    this.redirectCountdown = 3;
+    this.redirectCountdown = 10;
     this.countdownInterval = setInterval(() => {
       this.redirectCountdown--;
       if (this.redirectCountdown <= 0) {
         clearInterval(this.countdownInterval);
-        // Refresh or navigate away
-        this.isRegistered = false;
-        this.registrationData = { fullName: '', email: '', phone: '', organisation: '' };
+        // Redirect to positivty.com
+        window.location.href = 'https://positivty.com';
       }
     }, 1000);
   }
