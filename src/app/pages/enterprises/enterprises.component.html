@@ -1,5 +1,5 @@
 <section
-  class="relative bg-cover bg-[position:68%_0%] min-h-[80px] md:min-h-auto md:bg-[position:center_30%] bg-no-repeat overflow-hidden lg:px-[190px] px-[10px] pt-[143px] md:py-10 lg:pb-[50px] md:pb-[75px] pb-[40px]"
+  class="relative bg-cover bg-[position:68%_0%] min-h-[80px] md:min-h-auto md:bg-[position:center_30%] bg-no-repeat overflow-hidden lg:px-[190px] px-[10px] pt-[143px] md:py-10 lg:pb-[50px] md:pb-[75px] pb-[40px] text-white"
   [style.background-image]="
     'url(https://positivtystaticassets.blob.core.windows.net/images/banner/EnterprisesBanner.jpeg)'
   "
@@ -68,13 +68,13 @@
 <section class="lg:pt-[22px] pt-[30px] md:pt-[59px] bd-[#F9F8F8]  mx-auto px-4 lg:max-w-6xl md:max-w-3xl">
   <div class="text-center md:px-10 justify-center">
     <!-- Heading -->
-    <h3 class="text-[24px] font-semibold text-[#0a0a0a] mb-4">
+    <h3 class="text-[24px] font-semibold text-[#0a0a0a] dark:text-white mb-4">
       75% of employees face mental health challenges
       <span class="block md:inline">but don’t seek help</span>
     </h3>
 
     <!-- Description -->
-    <p class="md:text-[#535074] text-[#363636] font-[700px] mb-8 text-[16px] md:text-[14px] max-w-4xl md:font-normal font-medium leading-relaxed mx-auto">
+    <p class="md:text-[#535074] text-[#363636] font-[700px] mb-8 text-[16px] md:text-[14px] max-w-4xl md:font-normal font-medium leading-relaxed mx-auto dark:text-white">
       Workplaces are becoming silent battlegrounds for mental health issues,
       with employees facing challenges like stress, anxiety, and burnout. The
       impact is clear from recent findings:
@@ -96,7 +96,7 @@
       </p>
     </div>
   </div>
-  <p class="text-[18px] pb-[25px] text-[#363636]  hidden md:block text-center">
+  <p class="text-[18px] pb-[25px] text-[#363636] dark:text-white  hidden md:block text-center">
     Despite these alarming statistics, many employees hesitate to seek help due
     to stigma or limited access to care. This highlights the urgent need for
     organizations to create environments that prioritize mental health and
@@ -104,13 +104,13 @@
   </p>
 </section>
 
-<section class="bg-[#fef2dd] py-[25px] px-6">
+<section class="bg-[#fef2dd] dark:bg-[#1f1f1f] py-[25px] px-6">
   <div class="max-w-4xl mx-auto text-center justify-center">
     <h2 class="md:text-[40px] text-[21px] font-medium text-[#705146] mb-4">
       Stigma Surrounding Mental Health
     </h2>
 
-    <p class="text-[#363636] md:leading-snug leading-normal text-base text-[16px]">
+    <p class="text-[#363636] md:leading-snug dark:text-white leading-normal text-base text-[16px]">
       The stigma associated with mental health remains one of the biggest
       barriers preventing individuals from speaking up and seeking help. This
       stigma, both external and internal, creates a culture of silence, leaving
@@ -120,10 +120,10 @@
     </p>
   </div>
 
-  <!-- card part -->>
+  <!-- card part -->
   <div class="px-4 md:px-6 py-10 overflow-hidden">
     <div class="max-w-5xl mx-auto flex flex-col gap-10">
-      @for (card of cards; track card.id; let i = $index) {
+      @for (card of cards; let i = $index; track card.id) {
         <app-enterprises-info-card [card]="card" [index]="i" />
       }
     </div>
@@ -131,13 +131,13 @@
 
   <!-- footer text -->
   <div class="max-w-3xl mx-auto text-center justify-center">
-    <p class="text-[#363636] md:text-[17px] md:leading-relaxed leading-snug text-base text-[15px] mb-6">
+    <p class="text-[#363636] dark:text-white md:text-[17px] md:leading-relaxed leading-snug text-base text-[15px] mb-6">
       These statistics emphasize a critical truth: there is no health without
       mental health (WHO). Overcoming these stigmas and barriers requires a
       collective effort, led by organizations that prioritize mental wellness
       and foster a culture of understanding and support.
     </p>
-    <p class="text-[#363636] leading-relaxed text-base md:text-[17px] text-[15px] leading-snug font-normal">
+    <p class="text-[#363636] leading-relaxed text-base md:text-[17px] dark:text-white text-[15px] leading-snug font-normal">
       <i class="fa-solid fa-star text-[#836054]"></i>
       Source: AON 2023 Asia Mental Health Index Report.
     </p>
@@ -149,7 +149,7 @@
     <h3 class="lg:text-[40px] md:text-[21px] text-[26px]    mb-2 md:mb-4">
       Understanding Mental Health
     </h3>
-    <p class="text-[18px] text-[#363636] leading-relaxed md:leading-normal">
+    <p class="text-[18px] text-[#363636] dark:text-white leading-relaxed md:leading-normal">
       Mental health conditions affect millions globally, yet many remain unaware
       of their prevalence and impact. It’s crucial to foster understanding to
       build a supportive community. Here, we demystify some of the most common
@@ -354,7 +354,7 @@
 
 </section>
 
-<section class="bg-[#ffffff] pt-[25px] px-6 max-w-[1100px] mx-auto">
+<section class="lg:pt-[22px] pt-[30px] md:pt-[59px] bd-[#F9F8F8]  mx-auto px-4 lg:max-w-6xl md:max-w-3xl">
 
   <!-- Title + Description -->
   <div class=" text-center">
@@ -363,7 +363,7 @@
       Why Mental Health is Your Organization’s Greatest Asset?
     </h2>
 
-    <p class=" text-[#363636] text-[16px] leading-tight">
+    <p class=" text-[#363636] text-[16px] leading-tigh dark:text-white">
       Focusing on mental health is a win-win for both organizations and employees.
       By investing in mental well-being, enterprises cultivate a thriving workforce,
       enhance operational efficiency, and foster a positive workplace culture.
@@ -392,16 +392,16 @@
 </section>
 
 
-<section class="bg-[#F9F8F8] pt-[25px]  md:px-28 px-6">
+<section class="bg-[#F9F8F8] pt-[25px] md:px-28 px-6">
 
   <!-- Title + Description -->
   <div class=" text-center ">
 
-    <h2 class="text-[30px]  md:text-[40px]  text-[#0a0a0a] md:font-medium font-semibold mb-[15px] leading-normal md:leading-tight">
+    <h2 class="text-[30px]  md:text-[40px] text-[#0a0a0a] md:font-medium font-semibold mb-[15px] leading-normal md:leading-tight">
       Why Choose Positivty?
     </h2>
 
-    <p class="mb-[15px] text-[22px] font-[#363636]">
+    <p class="mb-[15px] text-[22px] text-[#363636] ">
       Empowering Organizations with Positivty 360° Mental Health Solutions
     </p>
 
@@ -477,4 +477,12 @@
 
   </div>
 
+</section>
+
+<section class="py-10 text-center px-6 md:px-24">
+  <h2 class="text-2xl md:text-4xl font-semibold">
+    FAQs (Frequently Asked Questions)
+  </h2>
+
+  <app-faqs [faqs]="faqData" [defaultOpenIndex]="0"> </app-faqs>
 </section>
