@@ -4,6 +4,9 @@ import { EnterprisesInfoCardComponent, InfoCard } from "../../shared/components/
 import { EnterprisesCareCardComponent } from "../../shared/components/enterprises-care-card/enterprises-care-card.component";
 import { EnterprisesStepsCardComponent } from "../../shared/components/enterprises-steps-card/enterprises-steps-card.component";
 import { EmployeesStepsCardComponent } from "../../shared/components/employees-steps-card/employees-steps-card.component";
+import { EnterprisesFormComponent } from '../../shared/components/enterprises-form/enterprises-form.component';
+import { AuthService } from '../../core/services/api/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 interface ImpactItem {
   percentage: string;
@@ -12,13 +15,19 @@ interface ImpactItem {
 
 @Component({
   selector: 'app-enterprises',
-  imports: [CommonModule, EnterprisesInfoCardComponent, EnterprisesCareCardComponent, EnterprisesStepsCardComponent, EmployeesStepsCardComponent],
+  imports: [CommonModule, EnterprisesInfoCardComponent, EnterprisesCareCardComponent, EnterprisesStepsCardComponent, EmployeesStepsCardComponent, EnterprisesFormComponent],
   templateUrl: './enterprises.component.html',
   styleUrl: './enterprises.component.scss'
 })
 export class EnterprisesComponent implements OnInit, OnDestroy {
+  showForm: boolean = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   workplaceCards = [
     {
@@ -229,6 +238,49 @@ export class EnterprisesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.startAutoChange();
+    }
+
+    // Check if user was redirected back after login to open the form
+    this.route.queryParams.subscribe(params => {
+      if (params['startBooking'] === 'true') {
+        this.showForm = true;
+
+        // Wait for the view to render the form, then scroll to it
+        if (isPlatformBrowser(this.platformId)) {
+          setTimeout(() => {
+            const formSection = document.getElementById('booking-form-section');
+            if (formSection) {
+              formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      }
+    });
+  }
+
+  handleToggleClick(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+
+    if (this.showForm) {
+      this.showForm = false;
+    } else {
+      if (this.authService.isLoggedIn()) {
+        // If logged in, show form and scroll to it
+        this.showForm = true;
+        if (isPlatformBrowser(this.platformId)) {
+          setTimeout(() => {
+            const formSection = document.getElementById('booking-form-section');
+            if (formSection) {
+              formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      } else {
+        // If not logged in, redirect to login with a globally handled returnUrl
+        this.authService.ensureLoggedIn('/enterprises?startBooking=true');
+      }
     }
   }
 

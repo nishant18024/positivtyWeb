@@ -1,8 +1,64 @@
 @use "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant p-dark (&:where(.p-dark, .p-dark *));
+@variant dark (&:where(.dark, .dark *));
+@variant p-dark (&:where(.p-dark, .p-dark *));
+
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
 
 body {
     font-family: "Playfair Display", serif;
+}
+
+/* Custom Slick Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fdfaf6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c2ada4;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #836054;
+}
+
+/* Firefox scrollbar support */
+html,
+body {
+    scrollbar-width: thin;
+    scrollbar-color: #c2ada4 #fdfaf6;
+}
+
+/* Hide up/down arrows (spinners) for number inputs */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+/* Intl Tel Input Fixes */
+.iti {
+    display: block !important;
+    width: 100% !important;
+}
+
+.iti__flag-container {
+    z-index: 10;
 }

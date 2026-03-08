@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-job-card',
@@ -18,5 +19,13 @@ export class JobCardComponent {
   @Input() exp?: string;
   @Input() btnlink?: string;
 
+  constructor(private sanitizer: DomSanitizer) { }
 
+  get sanitizedDescription(): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(this.description || '');
+  }
+
+  get sanitizedSubdetail(): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(this.subdetail || '');
+  }
 }

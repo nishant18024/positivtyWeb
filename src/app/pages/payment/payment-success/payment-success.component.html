@@ -1,0 +1,155 @@
+<div class="min-h-screen bg-[#faf7f2] flex items-center justify-center py-20 px-4 pt-48">
+    <div class="bg-white rounded-[40px] p-6 md:p-10 max-w-4xl w-full shadow-[0_4px_24px_rgba(0,0,0,0.06)] text-center">
+
+        <div *ngIf="status === 'processing'">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#7b5a4a] mx-auto mb-6"></div>
+            <h2 class="font-playfair text-3xl text-[#7b5a4a] font-bold mb-4">Processing...</h2>
+            <p class="text-[#7b5a4a] opacity-80 mb-8">Please wait while we confirm your payment and fulfill your
+                request.</p>
+        </div>
+
+        <div *ngIf="status === 'success'" class="w-full text-left font-sans">
+            <!-- Top Green Banner -->
+            <div
+                class="bg-[#f0f9f1] border border-[#d8ecd9] rounded-xl p-4 flex flex-col md:flex-row justify-between items-center text-sm md:text-xs mb-8">
+                <span class="font-bold text-[#2e7d32] uppercase tracking-wide mb-2 md:mb-0">Booking Confirmed</span>
+                <span class="text-[#2e7d32] text-center mb-2 md:mb-0">
+                    Confirmation email sent to {{userDetails?.emailId || 'your email'}} and SMS sent to
+                    {{userDetails?.contactNumber || 'your phone'}}.
+                    <a href="#" class="underline font-semibold ml-1 cursor-pointer">View Details</a>
+                </span>
+            </div>
+
+            <!-- Card 1: Session booked with -->
+            <div class="border border-[#e8dfd1] rounded-[20px] p-6 mb-4">
+                <p class="text-xs text-gray-500 mb-4 uppercase font-semibold tracking-wide">Session booked with</p>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end">
+                    <div class="text-[#4e342e] text-sm leading-relaxed mb-4 md:mb-0">
+                        <p class="font-bold text-lg mb-1">{{psychologistDetails?.psychologist?.firstName || 'Dr. Jane'}}
+                            {{psychologistDetails?.psychologist?.lastName || 'Doe'}}</p>
+                        <p class="font-bold mb-1">{{psychologistDetails?.profile?.licenseType || 'Clinical
+                            Psychologist'}}</p>
+                        <p class="text-xs text-gray-600 mb-1">
+                            {{psychologistDetails?.professionalQualifications?.[0]?.title || 'Ph.D. in Psychology'}}</p>
+                        <p class="text-xs text-gray-600 mb-1">English, Hindi</p>
+                        <p class="text-xs text-gray-600">{{psychologistDetails?.profile?.yearsOfExperience || '10'}}+
+                            years experience</p>
+                    </div>
+                    <div class="text-right text-xs text-gray-500 flex flex-col gap-1">
+                        <p>For Individual</p>
+                        <p>{{ durationMap?.[bookingDetails?.durationId || 0] || '60 Min' }}</p>
+                        <p>Via Video Call</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Bill To -->
+            <div class="border border-[#e8dfd1] rounded-[20px] p-6 mb-4">
+                <p class="text-xs text-gray-500 mb-4 uppercase font-semibold tracking-wide">Bill To</p>
+                <div class="flex justify-between items-center mb-2 text-sm text-[#4e342e]">
+                    <span class="font-bold">Name</span>
+                    <span class="text-gray-500">{{userDetails?.firstName || 'Guest'}} {{userDetails?.lastName ||
+                        'User'}}</span>
+                </div>
+                <div class="flex justify-between items-center mb-2 text-sm text-[#4e342e]">
+                    <span class="font-bold">Contact No.</span>
+                    <span class="text-gray-500">{{userDetails?.contactNumber || 'N/A'}}</span>
+                </div>
+                <div class="flex justify-between items-center text-sm text-[#4e342e]">
+                    <span class="font-bold">Email</span>
+                    <span class="text-gray-500">{{userDetails?.emailId || 'N/A'}}</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Session Date / Slot -->
+            <div class="border border-[#e8dfd1] rounded-[20px] p-6 mb-4 flex justify-between items-center">
+                <p class="font-bold text-[#4e342e] text-lg">Session Date / Slot</p>
+                <p class="text-sm text-gray-500">{{bookingDetails?.startTime || bookingDate | date:'medium'}}</p>
+            </div>
+
+            <!-- Card 4: Booking Summary -->
+            <div class="border border-[#e8dfd1] rounded-[20px] p-6 mb-4">
+                <p class="text-xs text-gray-500 mb-4 uppercase font-semibold tracking-wide">Booking Summary</p>
+                <div class="flex justify-between items-center mb-2 text-sm text-[#4e342e]">
+                    <span class="font-bold">Booking Created On</span>
+                    <span class="text-gray-500">{{bookingDate | date:'medium'}}</span>
+                </div>
+                <div class="flex justify-between items-center mb-2 text-sm text-[#4e342e]">
+                    <span class="font-bold">Booking ID</span>
+                    <span class="text-gray-500">{{bookingId}}</span>
+                </div>
+                <div class="flex justify-between items-center text-sm text-[#4e342e]">
+                    <span class="font-bold">Booking Type</span>
+                    <span class="text-gray-500">1 Session</span>
+                </div>
+            </div>
+
+            <!-- Card 5: Payment Details -->
+            <div class="border border-[#e8dfd1] rounded-[20px] p-6 mb-8">
+                <p class="text-xs text-gray-500 mb-4 uppercase font-semibold tracking-wide">Payment Details</p>
+                <div class="flex justify-between items-center mb-2 text-sm text-[#4e342e]">
+                    <span class="font-bold">Transaction ID</span>
+                    <span class="text-gray-500">{{transactionId}}</span>
+                </div>
+                <div class="flex justify-between items-center mb-2 text-sm text-[#4e342e]">
+                    <span class="font-bold">Session Price</span>
+                    <span class="text-gray-500">₹ {{finalAmount}}</span>
+                </div>
+                <div class="flex justify-between items-center mb-2 text-sm text-[#4e342e]">
+                    <span class="font-bold">Discount</span>
+                    <span class="text-gray-500">₹ 0</span>
+                </div>
+                <div
+                    class="flex justify-between items-center text-sm text-[#4e342e] mt-4 pt-4 border-t border-[#e8dfd1]">
+                    <span class="font-bold text-base">Final Amount</span>
+                    <span class="font-bold">₹ {{finalAmount}}</span>
+                </div>
+            </div>
+
+            <!-- Footer area -->
+            <div class="bg-[#fcfbf9] rounded-[20px] p-6 border border-[#e8dfd1] mb-8">
+                <p class="font-bold text-[#4e342e] text-sm mb-4">Next Steps:</p>
+                <p class="text-sm text-[#4e342e] mb-2">Go to "Session Summary" to view your new Session</p>
+                <p class="text-sm text-[#4e342e] mb-6">1. Prepare for your session and join via the provided Zoom link
+                    when it's time</p>
+
+                <p class="text-sm text-[#2e7d32] leading-relaxed">
+                    We've sent a confirmation email with all the details of your purchase. If you don't receive it
+                    within a few minutes, please check your spam folder.
+                </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-6">
+                <button
+                    class="border border-[#4e342e] text-[#4e342e] py-3 px-8 rounded-full font-semibold text-sm hover:bg-[#faf7f2] transition-colors">
+                    Download invoice
+                </button>
+                <button (click)="goToHome()"
+                    class="bg-[#836054] text-white py-3 px-8 rounded-full font-semibold text-sm hover:bg-[#6b4e43] transition-colors shadow-md border-2 border-transparent">
+                    User Profile
+                </button>
+            </div>
+
+            <p class="text-center text-xs text-[#4e342e] hover:underline cursor-pointer">Support Ticket/Help Desk Access
+            </p>
+        </div>
+
+        <div *ngIf="status === 'error'">
+            <div class="h-20 w-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </div>
+            <h2 class="font-playfair text-3xl text-[#7b5a4a] font-bold mb-4">Something went wrong</h2>
+            <p class="text-[#7b5a4a] opacity-80 mb-8">{{ errorMessage }}</p>
+
+            <button (click)="goToHome()"
+                class="w-full bg-white text-[#836054] border border-[#836054] py-4 rounded-full font-medium text-lg hover:bg-[#faf7f2] transition-colors">
+                Return to Home
+            </button>
+        </div>
+    </div>
+</div>

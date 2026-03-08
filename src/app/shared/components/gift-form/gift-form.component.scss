@@ -1,6 +1,43 @@
+::placeholder {
+  color: #c4b5a6;
+  opacity: 1;
+  /* Firefox */
+}
 
+::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: #c4b5a6;
+}
+
+select:invalid {
+  color: #c4b5a6;
+}
+
+.phone-input-container {
+  ::ng-deep .iti {
+    width: 100%;
+
+    .iti__selected-flag {
+      background-color: transparent !important;
+    }
+
+    .iti__selected-dial-code {
+      color: #4e342e;
+      font-size: 14px;
+      font-weight: 500;
+      padding-left: 4px;
+    }
+  }
+}
 
 @keyframes scaleIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

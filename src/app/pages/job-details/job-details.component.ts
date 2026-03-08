@@ -1,14 +1,48 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { JobCardComponent } from "../../shared/components/job-card/job-card.component";
+import { CareerService } from '../../core/services/api/career.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-job-details',
+  standalone: true,
   imports: [CommonModule, JobCardComponent],
   templateUrl: './job-details.component.html',
   styleUrl: './job-details.component.scss'
 })
-export class JobDetailsComponent {
+export class JobDetailsComponent implements OnInit {
+  jobs: any[] = [];
+  loading: boolean = false;
+
+  constructor(
+    private careerService: CareerService,
+    private sanitizer: DomSanitizer
+  ) { }
+
+  ngOnInit(): void {
+    this.loadAllJobs();
+  }
+
+  loadAllJobs() {
+    this.loading = true;
+    // Fetching Full-Time by default as the page title implies Full-Time Roles
+    this.careerService.getJobDetails('Full-Time').subscribe({
+      next: (res: any) => {
+        this.jobs = Array.isArray(res) ? res : (res?.data || []);
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Error fetching jobs:', err);
+        this.loading = false;
+      }
+    });
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html || '');
+  }
 
   truncateTitle(title: string, limit = 12): string {
     const words = title.split(' ');
@@ -82,53 +116,9 @@ export class JobDetailsComponent {
   }
 
 
-  jobs = [
-    {
-      title: 'In-House Therapist/ Operations Executive',
-      location: 'Remote',
-      description:
-        'The In House Therapist / Operations Executive is a dual role position responsible for delivering in '
-    },
-    {
-      title: 'Senior Full Stack Developer',
-      location: 'Location: Remote ',
-      description:
-        'Senior Angular + .NET Developer (4-5 Years Experience)',
-      location2: 'Location: Hybrid/On-site',
-      subdetail: 'Reporting To: CEO & CTO',
-      exp: 'Expe'
-    },
-    {
-      title: 'Full Stack Developer',
-      location: 'Location: Remote',
-      description:
-        'Angular + .NET Developer (1.5-2.5 Years Experience)',
-      location2: 'Location: Hybrid/On-site',
-      subdetail: 'Reporting To: CEO & CTO',
-      exp: 'Experience:&'
-    },
-    {
-      title: 'Marketing Executive',
-      location: 'Location: India',
-      description: 'Job: Marketing Executive'
-    },
-    {
-      title: 'Business Development Executive',
-      location: 'Location: Work From Home',
-      description: 'POSITIVTY is a user friendly mental wellness platform designed to he'
-    },
-    {
-      title: 'SEO Executive',
-      location: 'Location: Noida',
-      description: 'Positivty is a fast-growing mental health and wellness platform dedicated to making professional support accessible and&nb'
-    },
-
-  ];
-
   roles = [
     { title: 'Mental Health Ambassador Roles' },
     { title: 'Volunteer Roles' },
     { title: 'Internship Roles' }
   ];
-
 }

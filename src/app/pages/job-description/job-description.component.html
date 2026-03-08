@@ -1,0 +1,542 @@
+<div class="min-h-screen bg-[#FDFCF9] pb-20">
+    <!-- HEADER / HERO -->
+    <div class="relative bg-white pt-24 pb-12 px-6 md:px-20 overflow-hidden">
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-[#FDF6EE] rounded-full blur-3xl opacity-50"></div>
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-end gap-6 relative z-10">
+            <div>
+                <nav class="flex text-sm text-[#8B6A5A] mb-4 gap-2 font-medium">
+                    <a routerLink="/talent" class="hover:underline">Talent</a>
+                    <span>/</span>
+                    <span class="text-[#4E342E]">{{ loading ? 'Loading...' : job?.jobName }}</span>
+                </nav>
+                <h1 class="text-3xl md:text-5xl font-bold text-[#4E342E] leading-tight mb-2">
+                    {{ loading ? 'Loading Job Details...' : job?.jobName }}
+                </h1>
+                <div class="flex items-center gap-4 text-[#8B6A5A] font-medium">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot"></i> {{ job?.jobLocation }}
+                    </span>
+                    <span class="w-1 h-1 bg-[#8B6A5A] rounded-full"></span>
+                    <span>{{ job?.employmentType }}</span>
+                </div>
+            </div>
+            <button *ngIf="!loading" (click)="scrollToForm()"
+                class="bg-[#8B6A5A] text-white px-10 py-3.5 rounded-full font-semibold shadow-lg hover:bg-[#755145] transform hover:-translate-y-1 transition-all">
+                APPLY FOR ROLE
+            </button>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 md:px-20 mt-12 pb-20">
+        <!-- JOB DETAILS SECTION -->
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-20 items-start">
+            <div class="lg:col-span-8 space-y-12">
+                <!-- ABOUT -->
+                <section>
+                    <h2 class="text-2xl font-bold text-[#4E342E] mb-6 flex items-center gap-3">
+                        <span class="w-2 h-8 bg-[#8B6A5A] rounded-full"></span> Job Overview
+                    </h2>
+                    <div class="max-w-3xl">
+                        <div class="prose prose-brown max-w-none text-[#6B4A3D] leading-relaxed"
+                            [innerHTML]="sanitizeHtml(job?.jobDescription)"></div>
+                    </div>
+                </section>
+
+                <!-- ROLE OVERVIEW -->
+                <section *ngIf="job?.jobRole">
+                    <h2 class="text-2xl font-bold text-[#4E342E] mb-6 flex items-center gap-3">
+                        <span class="w-2 h-8 bg-[#8B6A5A] rounded-full"></span> About the Role
+                    </h2>
+                    <div class="max-w-3xl">
+                        <div class="prose prose-brown max-w-none text-[#6B4A3D] leading-relaxed"
+                            [innerHTML]="sanitizeHtml(job?.jobRole)"></div>
+                    </div>
+                </section>
+
+                <!-- RESPONSIBILITIES -->
+                <section *ngIf="job?.rolesAndResponsibilities">
+                    <h2 class="text-2xl font-bold text-[#4E342E] mb-6 flex items-center gap-3">
+                        <span class="w-2 h-8 bg-[#8B6A5A] rounded-full"></span> Roles & Responsibilities
+                    </h2>
+                    <div class="max-w-3xl">
+                        <div class="prose prose-brown max-w-none text-[#6B4A3D] leading-relaxed"
+                            [innerHTML]="sanitizeHtml(job?.rolesAndResponsibilities)"></div>
+                    </div>
+                </section>
+
+                <!-- QUALIFICATIONS -->
+                <section *ngIf="job?.qualificationsAndRequirements">
+                    <h2 class="text-2xl font-bold text-[#4E342E] mb-6 flex items-center gap-3">
+                        <span class="w-2 h-8 bg-[#8B6A5A] rounded-full"></span> Qualifications & Requirements
+                    </h2>
+                    <div class="max-w-3xl">
+                        <div class="prose prose-brown max-w-none text-[#6B4A3D] leading-relaxed"
+                            [innerHTML]="sanitizeHtml(job?.qualificationsAndRequirements)"></div>
+                    </div>
+                </section>
+
+                <!-- SKILLS -->
+                <section *ngIf="job?.preferredSkills">
+                    <h2 class="text-2xl font-bold text-[#4E342E] mb-6 flex items-center gap-3">
+                        <span class="w-2 h-8 bg-[#8B6A5A] rounded-full"></span> Preferred Skills
+                    </h2>
+                    <div class="max-w-3xl">
+                        <div class="prose prose-brown max-w-none text-[#6B4A3D] leading-relaxed"
+                            [innerHTML]="sanitizeHtml(job?.preferredSkills)"></div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="lg:col-span-4">
+                <div class="sticky top-28 space-y-6">
+                    <div class="bg-white rounded-3xl p-8 border border-[#E6D5CC] shadow-sm">
+                        <h3 class="text-lg font-bold text-[#4E342E] mb-6">Summary</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-briefcase text-[#8B6A5A] mt-1"></i>
+                                <div>
+                                    <p class="text-xs text-[#8B6A5A] uppercase font-bold tracking-wider">Employment Type
+                                    </p>
+                                    <p class="text-[#4E342E]">{{ job?.employmentType }}</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-clock text-[#8B6A5A] mt-1"></i>
+                                <div>
+                                    <p class="text-xs text-[#8B6A5A] uppercase font-bold tracking-wider">Role Type</p>
+                                    <p class="text-[#4E342E]">{{ job?.roleType }}</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-house-laptop text-[#8B6A5A] mt-1"></i>
+                                <div>
+                                    <p class="text-xs text-[#8B6A5A] uppercase font-bold tracking-wider">Location</p>
+                                    <p class="text-[#4E342E]">{{ job?.jobLocation }}</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-clipboard-check text-[#8B6A5A] mt-1"></i>
+                                <div>
+                                    <p class="text-xs text-[#8B6A5A] uppercase font-bold tracking-wider">Assessment</p>
+                                    <p class="text-[#4E342E]">{{ job?.assessmentAvailable ? 'Required' : 'Not Required'
+                                        }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <button (click)="scrollToForm()"
+                            class="w-full mt-8 bg-[#8B6A5A] text-white py-3 rounded-full font-bold hover:bg-[#755145] transition-colors">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- APPLICATION FORM SECTION -->
+        <div id="apply-form"
+            class="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 border border-[#E6D5CC] shadow-xl scroll-mt-24 overflow-hidden relative">
+
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-[#4E342E] mb-6">Application Form</h2>
+                <p class="text-[#8B6A5A] max-w-2xl mx-auto leading-relaxed">
+                    We're excited to welcome passionate individuals to our team! Please fill out the form below to apply
+                    for a position at Positivty. Your journey toward making a meaningful impact starts here!
+                </p>
+            </div>
+
+            <!-- STEP INDICATORS -->
+            <div *ngIf="assessmentQuestions.length > 0"
+                class="flex items-center justify-between max-w-2xl mx-auto mb-12 relative">
+                <div class="flex-1 text-center relative z-10 cursor-pointer" (click)="goToStep(1)">
+                    <p class="text-sm font-bold" [class.text-[#4E342E]]="currentStep === 1"
+                        [class.text-[#8B6A5A]]="currentStep !== 1">Step 1</p>
+                    <p class="text-xs font-medium" [class.text-[#4E342E]]="currentStep === 1"
+                        [class.text-[#8B6A5A]]="currentStep !== 1">Personal Details</p>
+                </div>
+                <div class="flex-1 text-center relative z-10 cursor-pointer" (click)="goToStep(2)">
+                    <p class="text-sm font-bold" [class.text-[#4E342E]]="currentStep === 2"
+                        [class.text-[#8B6A5A]]="currentStep !== 2">Step 2</p>
+                    <p class="text-xs font-medium" [class.text-[#4E342E]]="currentStep === 2"
+                        [class.text-[#8B6A5A]]="currentStep !== 2">Role-Based Assessment</p>
+                </div>
+                <!-- Progress Line -->
+                <div class="absolute bottom-[-10px] left-0 right-0 h-0.5 bg-gray-200">
+                    <div class="h-full bg-[#8B6A5A] transition-all duration-300"
+                        [style.width]="currentStep === 1 ? '50%' : '100%'"></div>
+                </div>
+            </div>
+
+            <div class="text-center mb-10">
+                <p *ngIf="assessmentQuestions.length > 0" class="text-[#8B6A5A] font-bold italic mb-2 tracking-wide">
+                    "Step {{ currentStep }} of 2 – {{ currentStep === 1 ? 'Personal Details' : 'Role-Based Assessment'
+                    }}"
+                </p>
+                <h3 class="text-2xl font-bold text-[#4E342E] tracking-tight">{{ currentStep === 1 ? 'Personal Details' :
+                    'Role-Based Assessment' }}</h3>
+            </div>
+
+            <form [formGroup]="personalForm" *ngIf="currentStep === 1" class="space-y-8 animate-fadeSlideUp">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">First Name *</label>
+                        <input formControlName="firstName" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            [class.border-red-500]="personalForm.get('firstName')?.invalid && personalForm.get('firstName')?.touched"
+                            placeholder="Enter First Name">
+                        <app-form-error controlName="firstName"
+                            [control]="personalForm.get('firstName')"></app-form-error>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">Last Name *</label>
+                        <input formControlName="lastName" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            [class.border-red-500]="personalForm.get('lastName')?.invalid && personalForm.get('lastName')?.touched"
+                            placeholder="Enter Last Name">
+                        <app-form-error controlName="lastName"
+                            [control]="personalForm.get('lastName')"></app-form-error>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">Address Line 1 *</label>
+                        <input formControlName="addressLine1" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            [class.border-red-500]="personalForm.get('addressLine1')?.invalid && personalForm.get('addressLine1')?.touched"
+                            placeholder="Enter Address Line 1">
+                        <app-form-error controlName="addressLine1"
+                            [control]="personalForm.get('addressLine1')"></app-form-error>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">Address Line 2</label>
+                        <input formControlName="addressLine2" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            placeholder="Enter Address Line 2">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">Pincode *</label>
+                        <input formControlName="pincode" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            [class.border-red-500]="personalForm.get('pincode')?.invalid && personalForm.get('pincode')?.touched"
+                            placeholder="Enter Pincode">
+                        <app-form-error controlName="pincode" [control]="personalForm.get('pincode')"></app-form-error>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">City *</label>
+                        <input formControlName="city" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            [class.border-red-500]="personalForm.get('city')?.invalid && personalForm.get('city')?.touched"
+                            placeholder="Enter City">
+                        <app-form-error controlName="city" [control]="personalForm.get('city')"></app-form-error>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">State *</label>
+                        <input formControlName="state" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            [class.border-red-500]="personalForm.get('state')?.invalid && personalForm.get('state')?.touched"
+                            placeholder="Enter State">
+                        <app-form-error controlName="state" [control]="personalForm.get('state')"></app-form-error>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">Country *</label>
+                        <input formControlName="country" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            [class.border-red-500]="personalForm.get('country')?.invalid && personalForm.get('country')?.touched"
+                            placeholder="Enter Country">
+                        <app-form-error controlName="country" [control]="personalForm.get('country')"></app-form-error>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">Phone Number *</label>
+                        <input formControlName="phone" type="tel"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            [class.border-red-500]="personalForm.get('phone')?.invalid && personalForm.get('phone')?.touched"
+                            placeholder="Enter Phone Number">
+                        <app-form-error controlName="phone" [control]="personalForm.get('phone')"></app-form-error>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">Alternative No</label>
+                        <input formControlName="alternativeNo" type="tel"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            placeholder="Enter Alternative No">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">Email Id *</label>
+                        <input formControlName="email" type="email"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            [class.border-red-500]="personalForm.get('email')?.invalid && personalForm.get('email')?.touched"
+                            placeholder="Enter Email Id">
+                        <app-form-error controlName="email" [control]="personalForm.get('email')"></app-form-error>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-sm font-semibold text-[#4E342E]">Role</label>
+                        <input formControlName="role" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 bg-white/50 text-gray-500 focus:outline-none"
+                            placeholder="Product & Brand Executive (PBE)">
+                    </div>
+                </div>
+
+                <!-- VIDEO SECTION -->
+                <div class="space-y-6 pt-4">
+                    <p class="text-[#8B6A5A] leading-relaxed text-sm">
+                        Help us get to know you better. Please record a video introducing yourself (limit to 2-4 mins)
+                        field to upload video file (with instructions)
+                    </p>
+
+                    <!-- Tip Card -->
+                    <div class="bg-[#FDF6EE] border-2 border-dashed border-[#E6D5CC] rounded-3xl p-6 md:p-8 flex gap-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#8B6A5A] flex-shrink-0 shadow-sm">
+                            <i class="fa-solid fa-info"></i>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-[#4E342E]">What to include in your video:</h4>
+                            <ul class="text-[#8B6A5A] text-sm space-y-2 list-disc pl-4">
+                                <li>Brief introduction about yourself</li>
+                                <li>Why you want to work at Positivty</li>
+                                <li>What excites you about this role</li>
+                                <li>Your career aspirations</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Video Tabs -->
+                    <div class="bg-white border border-[#E6D5CC] rounded-3xl p-1 shadow-sm overflow-hidden">
+                        <h4 class="text-center font-bold text-[#4E342E] py-6 text-lg">Choose Your Method</h4>
+
+                        <div class="flex border-b border-gray-100 mb-6">
+                            <button type="button" (click)="setVideoTab('record')"
+                                class="flex-1 py-4 font-bold text-sm transition-all border-b-2 flex items-center justify-center gap-2"
+                                [class.border-[#8B6A5A]]="activeVideoTab === 'record'"
+                                [class.text-[#8B6A5A]]="activeVideoTab === 'record'"
+                                [class.border-transparent]="activeVideoTab !== 'record'"
+                                [class.text-gray-400]="activeVideoTab !== 'record'">
+                                <i class="fa-solid fa-video"></i> Record Video
+                            </button>
+                            <button type="button" (click)="setVideoTab('upload')"
+                                class="flex-1 py-4 font-bold text-sm transition-all border-b-2 flex items-center justify-center gap-2"
+                                [class.border-[#8B6A5A]]="activeVideoTab === 'upload'"
+                                [class.text-[#8B6A5A]]="activeVideoTab === 'upload'"
+                                [class.border-transparent]="activeVideoTab !== 'upload'"
+                                [class.text-gray-400]="activeVideoTab !== 'upload'">
+                                <i class="fa-solid fa-upload"></i> Upload Video
+                            </button>
+                        </div>
+
+                        <div class="p-8">
+                            <!-- Record Tab -->
+                            <div *ngIf="activeVideoTab === 'record'" class="text-center space-y-6">
+                                <!-- Camera Preview -->
+                                <div *ngIf="isCameraActive && !recordedUrl"
+                                    class="relative rounded-3xl overflow-hidden bg-black aspect-video shadow-2xl">
+                                    <video #videoPreview autoplay muted playsinline
+                                        class="w-full h-full object-cover"></video>
+                                    <div *ngIf="isRecording"
+                                        class="absolute top-4 right-4 flex items-center gap-2 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+                                        <span class="w-2 h-2 bg-white rounded-full"></span>
+                                        REC {{ formatDuration(recordingDuration) }}
+                                    </div>
+                                </div>
+
+                                <!-- Recorded Video Review -->
+                                <div *ngIf="recordedUrl"
+                                    class="relative rounded-3xl overflow-hidden bg-black aspect-video shadow-2xl">
+                                    <video #recordedVideo [src]="recordedUrl" controls
+                                        class="w-full h-full object-cover"></video>
+                                    <div
+                                        class="absolute top-4 left-4 bg-[#8B6A5A] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                                        Preview Recording
+                                    </div>
+                                </div>
+
+                                <!-- Empty State / Instruction -->
+                                <div *ngIf="!isCameraActive && !recordedUrl" class="space-y-6">
+                                    <div
+                                        class="w-20 h-20 bg-[#FDF6EE] rounded-full flex items-center justify-center mx-auto text-[#8B6A5A]">
+                                        <i class="fa-solid fa-camera text-3xl"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-2xl font-bold text-[#4E342E] mb-2 font-outfit">Record
+                                            Introduction
+                                            Video</h5>
+                                        <p class="text-[#8B6A5A] text-sm underline decoration-[#8B6A5A]/30">Click Start
+                                            Camera to begin recording your introduction.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Controls -->
+                                <div class="flex flex-wrap justify-center gap-4">
+                                    <button *ngIf="!isCameraActive && !recordedUrl" type="button"
+                                        (click)="startCamera()"
+                                        class="bg-[#8B6A5A] text-white px-12 py-3 rounded-full font-bold shadow-lg hover:bg-[#755145] transition-all flex items-center gap-3">
+                                        <i class="fa-solid fa-video"></i> Start Camera
+                                    </button>
+
+                                    <button *ngIf="isCameraActive && !isRecording" type="button"
+                                        (click)="startRecording()"
+                                        class="bg-red-500 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-red-600 transition-all flex items-center gap-3">
+                                        <i class="fa-solid fa-circle text-[10px]"></i> Start Recording
+                                    </button>
+
+                                    <button *ngIf="isCameraActive && !isRecording" type="button" (click)="stopCamera()"
+                                        class="bg-white text-[#8B6A5A] border border-[#8B6A5A] px-10 py-3 rounded-full font-bold shadow-lg hover:bg-[#FDF6EE] transition-all flex items-center gap-3">
+                                        <i class="fa-solid fa-camera-slash"></i> Stop Camera
+                                    </button>
+
+                                    <button *ngIf="isRecording" type="button" (click)="stopRecording()"
+                                        class="bg-gray-800 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-black transition-all flex items-center gap-3">
+                                        <i class="fa-solid fa-square"></i> Stop Recording
+                                    </button>
+
+                                    <button *ngIf="recordedUrl" type="button" (click)="retakeVideo()"
+                                        class="bg-white text-[#8B6A5A] border border-[#8B6A5A] px-10 py-3 rounded-full font-bold shadow-lg hover:bg-[#FDF6EE] transition-all flex items-center gap-3">
+                                        <i class="fa-solid fa-rotate-left"></i> Retake Video
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Upload Tab -->
+                            <div *ngIf="activeVideoTab === 'upload'" class="text-center">
+                                <div
+                                    class="border-2 border-dashed border-[#E6D5CC] rounded-3xl p-12 relative hover:bg-gray-50 transition-colors">
+                                    <input type="file" (change)="onFileChange($event, 'video')" accept="video/*"
+                                        class="absolute inset-0 opacity-0 cursor-pointer">
+                                    <div
+                                        class="w-16 h-16 bg-[#FDF6EE] rounded-full flex items-center justify-center mx-auto text-[#8B6A5A] mb-4">
+                                        <i class="fa-solid fa-file-video text-2xl"></i>
+                                    </div>
+                                    <h5 class="text-2xl font-bold text-[#4E342E] mb-2 font-outfit">Upload Video File
+                                    </h5>
+                                    <p class="text-[#8B6A5A] text-sm underline mb-4">Click anywhere in this box to
+                                        select your video file</p>
+                                    <div class="flex justify-center gap-3">
+                                        <span
+                                            class="px-4 py-1.5 bg-white border border-gray-200 rounded-full text-[10px] font-bold text-gray-500 uppercase tracking-widest">Supported
+                                            formats: MP4, MOV, WebM</span>
+                                        <span
+                                            class="px-4 py-1.5 bg-white border border-gray-200 rounded-full text-[10px] font-bold text-gray-500 uppercase tracking-widest">Maximum
+                                            size: 200MB</span>
+                                    </div>
+                                    <p *ngIf="personalForm.get('videoFile')?.value"
+                                        class="mt-4 text-[#8B6A5A] font-bold text-sm">
+                                        Selected: {{ personalForm.get('videoFile')?.value.name }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer row: Resume and Social Media -->
+                <div class="grid md:grid-cols-2 gap-8 items-end pt-8">
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-[#4E342E]">Resume *</label>
+                        <div class="border-2 border-dashed border-[#E6D5CC] rounded-xl p-3 flex items-center gap-3 bg-[#FDFCF9]"
+                            [class.border-red-500]="personalForm.get('resume')?.invalid && personalForm.get('resume')?.touched">
+                            <button type="button"
+                                class="bg-[#8B6A5A] text-white px-6 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider relative overflow-hidden">
+                                Choose File
+                                <input type="file" (change)="onFileChange($event, 'resume')" accept=".pdf"
+                                    class="absolute inset-0 opacity-0 cursor-pointer">
+                            </button>
+                            <span class="text-xs text-gray-400">{{ personalForm.get('resume')?.value?.name || 'No file
+                                chosen' }}</span>
+                        </div>
+                        <app-form-error [control]="personalForm.get('resume')"></app-form-error>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-[#4E342E]">Social Media (URL)</label>
+                        <input formControlName="socialMediaUrl" type="text"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 placeholder:text-gray-300 focus:outline-none"
+                            placeholder="linkedin, github, etc">
+                    </div>
+                </div>
+
+                <div class="pt-10 flex justify-end">
+                    <button type="button" (click)="assessmentQuestions.length > 0 ? goToStep(2) : submitApplication()"
+                        [disabled]="submitting"
+                        class="px-14 py-3.5 rounded-2xl bg-[#8B6A5A] text-white font-bold hover:bg-[#755145] transition-all shadow-lg transform hover:-translate-y-0.5 text-sm uppercase tracking-widest disabled:opacity-50">
+                        {{ assessmentQuestions.length > 0 ? 'Next' : (submitting ? 'Submitting...' : 'Submit
+                        Application') }}
+                    </button>
+                </div>
+            </form>
+
+            <!-- STEP 2: ASSESSMENT -->
+            <div *ngIf="currentStep === 2" class="space-y-8 animate-fadeSlideUp">
+                <p class="text-[#8B6A5A] text-center text-sm">
+                    Please answer all questions thoughtfully. Each response should be 200-500 words
+                </p>
+
+                <div [formGroup]="assessmentForm" class="space-y-12">
+                    <div formArrayName="answers" class="space-y-10">
+                        <div *ngFor="let question of assessmentQuestions; let i = index" [formGroupName]="i"
+                            class="space-y-6">
+                            <div class="flex gap-4">
+                                <span
+                                    class="flex-shrink-0 w-10 h-10 rounded-full bg-[#8B6A5A] text-white flex items-center justify-center font-bold text-lg shadow-sm">{{
+                                    i + 1 }}</span>
+                                <div class="max-w-3xl">
+                                    <div class="prose-brown"
+                                        [innerHTML]="sanitizeHtml(question.question || question.questionName)"></div>
+                                </div>
+                            </div>
+
+                            <textarea formControlName="answer" rows="8"
+                                class="w-full border border-gray-200 rounded-2xl p-6 focus:outline-none focus:ring-1 focus:ring-[#8B6A5A]/20 resize-none transition-all"
+                                [class.border-red-500]="answers.at(i).get('answer')?.invalid && answers.at(i).get('answer')?.touched"
+                                placeholder="Enter your answer..."></textarea>
+                            <app-form-error [control]="answers.at(i).get('answer')"></app-form-error>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPTCHA & CONSENT -->
+                <div class="pt-8 space-y-8 max-w-2xl">
+                    <!-- Recaptcha Placeholder -->
+                    <div
+                        class="bg-gray-50 border border-gray-200 rounded-lg p-4 w-fit flex items-center gap-4 shadow-sm">
+                        <div class="w-6 h-6 border-2 border-gray-300 rounded"></div>
+                        <span class="text-sm font-medium text-gray-700">I'm not a robot</span>
+                        <div class="flex flex-col items-center ml-10">
+                            <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" class="w-8" alt="reCAPTCHA">
+                            <span class="text-[8px] text-gray-500">reCAPTCHA</span>
+                            <div class="flex gap-1 text-[8px] text-gray-500">
+                                <span>Privacy</span>
+                                <span>-</span>
+                                <span>Terms</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1" [formGroup]="personalForm">
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" formControlName="consent"
+                                class="mt-1 w-4 h-4 rounded border-gray-300 text-[#8B6A5A] focus:ring-[#8B6A5A]">
+                            <label class="text-xs text-[#8B6A5A] leading-relaxed">
+                                By submitting this application, I consent to Positivty collecting and using my personal
+                                data
+                                for recruitment purposes in accordance with their
+                                <a href="#" class="underline">Privacy Policy</a> and <a href="#" class="underline">Terms
+                                    &
+                                    Conditions</a>
+                            </label>
+                        </div>
+                        <app-form-error [control]="personalForm.get('consent')"></app-form-error>
+                    </div>
+                </div>
+
+                <div class="pt-10 flex justify-end gap-4">
+                    <button type="button" (click)="goToStep(1)"
+                        class="px-14 py-3.5 rounded-2xl bg-[#FDFCF9] border border-[#E6D5CC] text-[#755145] font-bold hover:bg-[#FDF6EE] transition-all text-sm uppercase tracking-widest">
+                        Previous
+                    </button>
+                    <button type="button" (click)="submitApplication()"
+                        [disabled]="personalForm.invalid || (assessmentQuestions.length > 0 && assessmentForm.invalid) || submitting"
+                        class="px-14 py-3.5 rounded-2xl bg-[#8B6A5A] text-white font-bold hover:bg-[#755145] transition-all shadow-lg text-sm uppercase tracking-widest disabled:opacity-50 flex items-center gap-3">
+                        <span *ngIf="submitting"
+                            class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                        Submit Application & Assessment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

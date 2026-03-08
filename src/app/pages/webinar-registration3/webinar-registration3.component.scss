@@ -486,7 +486,6 @@
   border-radius: 100px;
   padding: 4px 11px;
   cursor: pointer;
-  font-family: "DM Sans", sans-serif;
   transition: all 0.15s;
 
   &:hover {
@@ -702,7 +701,6 @@
   border-radius: 100px;
   padding: 5px 16px;
   cursor: pointer;
-  font-family: "DM Sans", sans-serif;
   transition: all 0.15s;
   display: flex;
   align-items: center;
@@ -922,7 +920,6 @@
   padding: 13px 20px;
   background: var(--br);
   color: #fff;
-  font-family: "DM Sans", sans-serif;
   font-size: 14px;
   font-weight: 600;
   border-radius: var(--r5);
@@ -951,7 +948,6 @@
   padding: 12px 20px;
   background: transparent;
   color: var(--br-md);
-  font-family: "DM Sans", sans-serif;
   font-size: 13.5px;
   font-weight: 500;
   border-radius: var(--r5);
@@ -1137,7 +1133,6 @@
   padding: 12px 32px;
   background: transparent;
   color: var(--tx-md);
-  font-family: inherit;
   font-size: 14px;
   font-weight: 500;
   border-radius: 100px;

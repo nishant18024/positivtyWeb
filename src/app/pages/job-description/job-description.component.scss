@@ -1,0 +1,173 @@
+@reference "tailwindcss";
+
+:host {
+    display: block;
+    background-color: #FDFCF9;
+}
+
+.prose-brown {
+    @apply text-[#6B4A3D] leading-relaxed w-full max-w-none overflow-hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+
+    @media (min-width: 1024px) {
+        max-width: 720px;
+    }
+
+    img {
+        @apply max-w-full h-auto rounded-2xl my-6;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+
+            &::before {
+                content: "•";
+                color: #8B6A5A;
+                font-weight: bold;
+                position: absolute;
+                left: 0;
+                font-size: 1.2rem;
+                line-height: inherit;
+            }
+        }
+    }
+
+    p {
+        margin-bottom: 1.25rem;
+    }
+
+    strong {
+        color: #4E342E;
+        font-weight: 700;
+    }
+}
+
+// PREMIUM FORM STYLING
+#apply-form {
+    animation: fadeSlideUp 0.6s ease-out forwards;
+    background-color: #fef2dd !important;
+
+    // Wavy/Dashed top border simulation from screenshot
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background-image: repeating-linear-gradient(90deg, #8B6A5A 0, #8B6A5A 20px, transparent 20px, transparent 40px);
+        opacity: 0.3;
+    }
+}
+
+input,
+textarea {
+    @apply transition-all duration-200 border-gray-200;
+    background-color: #ffffff;
+
+    &:focus {
+        @apply border-[#8B6A5A] ring-4 ring-[#8B6A5A]/5 outline-none;
+    }
+
+    &:disabled,
+    &[readonly] {
+        background-color: #ffffff;
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    &::placeholder {
+        @apply text-gray-300;
+    }
+
+    &.ng-invalid.ng-touched {
+        @apply border-red-500 ring-red-500/10;
+
+        &:focus {
+            @apply border-red-500 ring-red-500/10;
+        }
+    }
+}
+
+.scroll-mt-24 {
+    scroll-margin-top: 6rem;
+}
+
+input[type="file"]::file-selector-button {
+    display: none;
+}
+
+.animate-fadeSlideUp {
+    animation: fadeSlideUp 0.4s ease-out forwards;
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Media queries
+@media (max-width: 1023px) {
+    .sticky {
+        position: static !important;
+    }
+}
+
+.font-outfit {
+    font-family: 'Outfit', sans-serif;
+}
+
+// Custom Radio Styling
+input[type="radio"] {
+    @apply accent-[#8B6A5A];
+}
+
+// SUCCESS PAGE STYLING
+.success-card {
+    background: #FFFFFF;
+    border: 1.5px solid #E6D5CC;
+    border-radius: 32px;
+    box-shadow: 0 10px 30px -10px rgba(139, 106, 90, 0.1);
+}
+
+.timeline-dot {
+    @apply w-8 h-8 rounded-full bg-[#8B6A5A] text-white flex items-center justify-center font-bold text-xs flex-shrink-0;
+    box-shadow: 0 4px 10px rgba(139, 106, 90, 0.2);
+}
+
+.status-badge {
+    @apply inline-flex items-center bg-[#8B6A5A] text-white px-6 py-2 rounded-full font-bold text-sm shadow-md;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-premium {
+    @apply px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm uppercase tracking-wider flex items-center gap-3;
+
+    &:active {
+        @apply transform translate-y-0.5 shadow-md;
+    }
+}
+
+// Divider style from screenshots
+.border-dashed-custom {
+    border-style: dashed;
+    border-width: 2px;
+}

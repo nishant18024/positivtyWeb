@@ -1,4 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import {
   Component,
   HostListener,
@@ -8,6 +9,7 @@ import {
 import { ValuesCardComponent } from '../../shared/components/values-card/values-card.component';
 import { WorkFeatureCardComponent } from '../../shared/components/work-feature-card/work-feature-card.component';
 import { RouterLink } from '@angular/router';
+import { CareerService } from '../../core/services/api/career.service';
 
 @Component({
   selector: 'app-talent',
@@ -27,13 +29,21 @@ export class TalentComponent {
   // ─────────────────────────────────────────────
   private isBrowser: boolean;
   screenWidth = 0;
+  jobs: any[] = [];
+  selectedJob: any = null;
+  loadingJobs: boolean = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private careerService: CareerService,
+    private sanitizer: DomSanitizer
+  ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
     if (this.isBrowser) {
       this.screenWidth = window.innerWidth;
       this._featurePageSize = this.screenWidth >= 768 ? 3 : 1;
+      this.loadJobs('Full-Time');
     }
   }
 
@@ -96,6 +106,55 @@ export class TalentComponent {
 
   get current() {
     return this.tabs.find((t) => t.key === this.activeTab);
+  }
+
+  selectTab(tab: any) {
+    this.activeTab = tab.key;
+    if (tab.key === 'fulltime') {
+      this.loadJobs('Full-Time');
+    } else if (tab.key === 'internship') {
+      this.loadJobs('Internship');
+    } else {
+      this.jobs = []; // Clear for others if not implemented in API yet
+    }
+  }
+
+  loadJobs(employmentType: string) {
+    this.loadingJobs = true;
+    this.careerService.getJobDetails(employmentType).subscribe({
+      next: (res: any) => {
+        this.jobs = Array.isArray(res) ? res : (res?.data || []);
+        if (this.jobs.length > 0) {
+          this.selectJobDetails(this.jobs[0].id);
+        } else {
+          this.selectedJob = null;
+          this.loadingJobs = false;
+        }
+      },
+      error: (err) => {
+        console.error('Error loading jobs:', err);
+        this.loadingJobs = false;
+        this.jobs = [];
+      }
+    });
+  }
+
+  selectJobDetails(jobId: number) {
+    this.loadingJobs = true;
+    this.careerService.getJobById(jobId).subscribe({
+      next: (res: any) => {
+        this.selectedJob = res?.jobDetails || res?.data || res;
+        this.loadingJobs = false;
+      },
+      error: (err) => {
+        console.error('Error fetching job details:', err);
+        this.loadingJobs = false;
+      }
+    });
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html || '');
   }
 
   // Values Carousel

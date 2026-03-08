@@ -21,6 +21,7 @@ import { LeadershipComponent } from './pages/leadership/leadership.component';
 import { CommunityComponent } from './pages/community/community.component';
 import { TalentComponent } from './pages/talent/talent.component';
 import { JobDetailsComponent } from './pages/job-details/job-details.component';
+import { JobDescriptionComponent } from './pages/job-description/job-description.component';
 import { TermsOfUseComponent } from './pages/terms-of-use/terms-of-use.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { WebinarComponent } from './pages/webinar/webinar.component';
@@ -33,9 +34,16 @@ import { EnterprisesComponent } from './pages/enterprises/enterprises.component'
 import { WebinarRegistration2Component } from './pages/webinar-registration2/webinar-registration2.component';
 import { WebinarRegistration3Component } from './pages/webinar-registration3/webinar-registration3.component';
 
+import { PaymentSuccessComponent } from './pages/payment/payment-success/payment-success.component';
+import { PaymentFailureComponent } from './pages/payment/payment-failure/payment-failure.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'profile', component: ProfileComponent },
+    { path: 'payment/success', component: PaymentSuccessComponent },
+    { path: 'payment/failure', component: PaymentFailureComponent },
 
     { path: 'about-us', component: AboutUsComponent },
     { path: 'bipolar-disorder', component: BipolarDisorderComponent },
@@ -57,6 +65,7 @@ export const routes: Routes = [
     { path: 'community', component: CommunityComponent },
     { path: 'talent', component: TalentComponent },
     { path: 'job-details', component: JobDetailsComponent },
+    { path: 'job/:id', component: JobDescriptionComponent },
     { path: 'terms-of-use', component: TermsOfUseComponent },
     { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
     { path: 'webinars', component: WebinarComponent },

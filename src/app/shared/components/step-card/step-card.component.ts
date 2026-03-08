@@ -11,4 +11,5 @@ export class StepCardComponent {
   @Input() title = '';
   @Input() desc = '';
   @Input() icon = '';
+  @Input() stepNumber: number | string | null = null;
 }

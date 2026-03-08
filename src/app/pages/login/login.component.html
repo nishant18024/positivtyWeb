@@ -1,311 +1,232 @@
-<div
-  class="min-h-screen bg-[#FBF6EE] flex items-center justify-center px-4 py-6"
->
-  <div
-    class="max-w-6xl w-full grid md:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-lg"
-  >
+<div class="bg-[#FBF6EE] flex items-center justify-center px-4 py-4 md:py-12">
+  <div class="max-w-6xl w-full grid md:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-lg">
     <!-- LEFT IMAGE -->
-    <div
-      class="relative hidden md:block h-full w-full bg-cover bg-center"
-      style="
-        background-image: url(&quot;https://www.positivty.com/assets/website/assets/images/login-new/login.jpg&quot;);
-      "
-    >
+    <div class="relative hidden md:block h-full w-full bg-cover bg-center"
+      style="background-image: url('https://www.positivty.com/assets/website/assets/images/login-new/login.jpg');">
       <div class="absolute inset-0 bg-black/40 flex items-end p-10">
         <div class="text-white">
-          <h2 class="text-3xl font-serif mb-4">Let’s get you started</h2>
+          <h2 class="text-3xl mb-4">Let’s get you started</h2>
           <p class="text-sm leading-relaxed">
-            Log in to continue your journey toward clarity, confidence, and
-            emotional well-being. <br />
-
-            Access your sessions, progress, and personalized tools—all in one
-            safe, supportive place.
+            Log in to continue your journey toward clarity, confidence, and emotional well-being. <br />
+            Access your sessions, progress, and personalized tools—all in one safe, supportive place.
           </p>
         </div>
       </div>
     </div>
 
     <!-- RIGHT CONTENT -->
-    <div class="p-10">
-      <!-- STEP 1: LOGIN -->
-      <div *ngIf="step === 1" class="w-full max-w-md mx-auto">
-        <!-- Logo -->
-        <img
-          src="https://positivtystaticassets.blob.core.windows.net/images/common/logo.webp"
-          alt="logo"
-          class="w-28 mx-auto mb-6"
-        />
+    <div class="px-6 py-6 md:p-10">
+      <!-- STEP: EMAIL/PHONE -->
+      <div *ngIf="currentStep === 'emailPhone'" class="w-full max-w-md mx-auto">
+        <img src="https://positivtystaticassets.blob.core.windows.net/images/common/logo.webp" alt="logo"
+          class="w-24 mx-auto mb-4" />
 
-        <!-- Heading -->
-        <h2 class="text-3xl text-[#4e342e] font-serif text-center mb-2">
-          Welcome to Positivty
-        </h2>
-        <p class="text-sm text-[#8B6A5A] text-center mb-6">
-          Let's get you started
-        </p>
+        <h2 class="text-2xl md:text-3xl text-[#4e342e] text-center mb-1">Welcome to Positivty</h2>
+        <p class="text-sm text-[#8B6A5A] text-center mb-4">Let's get you started</p>
 
-        <!-- Input -->
-        <label class="block text-sm text-[#4e342e] mb-2">
-          Email or Phone Number <span class="text-red-500">*</span>
-        </label>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmitEmailPhone()">
+          <label class="block text-sm text-[#4e342e] mb-2">
+            Email or Phone Number <span class="text-red-500">*</span>
+          </label>
+          <input id="emailPhone" formControlName="emailPhone" type="text"
+            class="w-full border border-gray-300 rounded-lg px-4 py-3 mb-1 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
+            placeholder="Enter Email or Phone" />
+          <app-form-error [controlName]="'emailPhone'" class="mb-5 block"></app-form-error>
+          <div *ngIf="loginMode === 'password'" class="relative mb-6">
+            <label class="block text-sm text-[#4e342e] mb-2">Password <span class="text-red-500">*</span></label>
+            <input formControlName="password" [type]="showPassword ? 'text' : 'password'"
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
+              placeholder="Enter Password" />
+            <app-form-error [controlName]="'password'"></app-form-error>
+            <button type="button" class="absolute right-3 top-9 text-gray-500 hover:text-[#8B6A5A]"
+              (click)="showPassword = !showPassword">
+              <i class="fa-solid" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+            <div class="text-right mt-2">
+              <span (click)="goToPasswordReset()" class="text-xs text-[#8B6A5A] hover:underline cursor-pointer">Forgot
+                Password?</span>
+            </div>
+          </div>
 
-        <input
-          [(ngModel)]="form.identifier"
-          type="text"
-          class="w-full border border-gray-300 rounded-lg px-4 py-3 mb-6 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
-          placeholder="Enter Email or Phone"
-        />
+          <div class="flex justify-center">
+            <button type="submit" [disabled]="loading"
+              class="w-[80%] bg-[#8B6A5A] text-white py-2 rounded-full font-medium transition hover:opacity-90 flex items-center justify-center gap-2">
+              <span *ngIf="loading"
+                class="animate-spin border-2 border-white border-t-transparent rounded-full w-4 h-4"></span>
+              {{ loginMode === 'otp' ? 'Continue with OTP' : 'Login' }}
+            </button>
+          </div>
+        </form>
 
-        <div class="flex justify-center">
-          <!-- Continue Button -->
-          <button
-            class="w-[80%] bg-[#8B6A5A] text-white py-2 rounded-full font-medium transition hover:opacity-90"
-            (click)="nextStep()"
-          >
-            Continue with OTP
-          </button>
-        </div>
-
-        <!-- Divider -->
+        <!-- Social Login -->
         <div class="flex items-center gap-3 my-6">
           <span class="flex-1 border-b border-[#8B6A5A]"></span>
-          <p
-            class="text-xs text-[#8B6A5A] uppercase tracking-wider whitespace-nowrap"
-          >
-            Or sign in via
-          </p>
+          <p class="text-xs text-[#8B6A5A] uppercase tracking-wider whitespace-nowrap">Or sign in via</p>
           <span class="flex-1 border-b border-[#8B6A5A]"></span>
         </div>
 
-        <!-- Password Login -->
-        <button
-          class="w-full border border-[#dbdfe9] text-[#4b5999] py-2 rounded-lg font-medium transition hover:bg-[#dbdfe9]/10"
-          (click)="nextStep()"
-        >
+        <button *ngIf="loginMode === 'otp'"
+          class="w-full border border-[#dbdfe9] text-[#4b5999] py-2 rounded-lg font-medium transition hover:bg-[#dbdfe9]/10 mb-4"
+          (click)="toggleLoginMode()">
           Login via Password
         </button>
-        <div class="mt-6">
-          <!-- Login by Google -->
-          <button
-            class="w-48 border border-[#dbdfe9] dark:text-[#fff] py-2 rounded-lg font-medium transition hover:bg-[#dbdfe9]/10 flex items-center justify-center gap-2 px-2"
-            (click)="nextStep()"
-          >
-            <img
-              src="https://www.citypng.com/public/uploads/preview/google-logo-icon-gsuite-hd-701751694791470gzbayltphh.png"
-              alt="google icon "
-              class="w-4"
-            />
-            Sign in with Google
-          </button>
+        <button *ngIf="loginMode === 'password'"
+          class="w-full border border-[#dbdfe9] text-[#4b5999] py-2 rounded-lg font-medium transition hover:bg-[#dbdfe9]/10 mb-4"
+          (click)="toggleLoginMode()">
+          Login via OTP
+        </button>
+
+        <div class="flex flex-col items-center gap-4">
+          <div id="buttonDiv"></div>
         </div>
       </div>
 
-      <!-- STEP 2: OTP -->
-      <div *ngIf="step === 2" class="w-full max-w-md mx-auto text-center">
-        <!-- Logo -->
-        <img
-          src="https://positivtystaticassets.blob.core.windows.net/images/common/logo.webp"
-          alt="logo"
-          class="w-28 mx-auto mb-6"
-        />
+      <!-- STEP: OTP -->
+      <div *ngIf="currentStep === 'otp'" class="w-full max-w-md mx-auto text-center">
+        <img src="https://positivtystaticassets.blob.core.windows.net/images/common/logo.webp" alt="logo"
+          class="w-24 mx-auto mb-4" />
 
-        <!-- Title -->
-        <h2 class="text-2xl font-serif text-[#4e342e] mb-2">
-          Verify your Email / Phone
-        </h2>
+        <h2 class="text-xl md:text-2xl text-[#4e342e] mb-1">Verify your Account</h2>
+        <p class="text-sm text-gray-600 mb-0.5">Enter the verification code we sent to</p>
+        <p class="text-sm font-medium text-[#8B6A5A] mb-4">{{ maskedIdentifier }}</p>
 
-        <p class="text-sm text-gray-600 mb-1">
-          Enter the verification code we sent to
-        </p>
-
-        <p class="text-sm font-medium text-[#8B6A5A] mb-6">
-          {{ maskedIdentifier }}
-        </p>
-
-        <!-- OTP Inputs -->
-        <div class="flex justify-center gap-4 mb-6">
-          <input
-            *ngFor="let o of form.otp; let i = index"
-            [(ngModel)]="form.otp[i]"
-            maxlength="1"
-            type="text"
-            inputmode="numeric"
-            class="w-14 h-14 border border-gray-300 rounded-lg text-center text-xl focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
-          />
+        <div class="flex justify-center gap-4 mb-6 otp-inputs">
+          <input *ngFor="let i of [0,1,2,3]" #otpInput type="text" maxlength="1" inputmode="numeric"
+            (keyup)="onKeyUp($event, i)"
+            class="w-12 h-12 border border-gray-300 rounded-lg text-center text-xl focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]" />
         </div>
 
-        <!-- Actions -->
         <div class="text-sm text-gray-600 space-y-2 mb-6">
           <p>
             Didn't receive OTP?
-            <span
-              class="text-[#8B6A5A] font-medium cursor-pointer hover:underline"
-            >
-              Resend
-            </span>
-            <span class="text-gray-400">(Try again in 24 sec)</span>
+            <span *ngIf="canResend" (click)="resendOtp()"
+              class="text-[#8B6A5A] font-medium cursor-pointer hover:underline">Resend</span>
+            <span *ngIf="!canResend" class="text-gray-400">(Try again in {{ countdown }} sec)</span>
           </p>
-
           <p>
-            Added the wrong Email/Phone?
-            <span
-              class="text-[#8B6A5A] font-medium cursor-pointer hover:underline"
-              (click)="goBackToLogin()"
-            >
-              Change email/phone
-            </span>
+            Wrong Email/Phone?
+            <span class="text-[#8B6A5A] font-medium cursor-pointer hover:underline"
+              (click)="goBackToEmailPhone()">Change</span>
           </p>
         </div>
 
-        <!-- Verify Button -->
-        <button
-          class="w-[90%] bg-[#8B6A5A] text-white py-2 rounded-full font-medium transition hover:opacity-90"
-          (click)="nextStep()"
-        >
+        <button type="button" [disabled]="loading"
+          class="w-[90%] bg-[#8B6A5A] text-white py-2 rounded-full font-medium transition hover:opacity-90 flex items-center justify-center gap-2 mx-auto"
+          (click)="verifyOtp()">
+          <span *ngIf="loading"
+            class="animate-spin border-2 border-white border-t-transparent rounded-full w-4 h-4"></span>
           Verify
         </button>
       </div>
 
-      <!-- STEP 3: COMPLETE PROFILE -->
-      <div *ngIf="step === 3" class="w-full max-w-md mx-auto text-center">
-        <!-- Logo -->
-        <img
-          src="https://positivtystaticassets.blob.core.windows.net/images/common/logo.webp"
-          alt="logo"
-          class="w-28 mx-auto mb-4"
-        />
 
-        <!-- Title -->
-        <h2 class="text-2xl text-[#8B6A5A] font-serif mb-6">
-          Complete Your Profile
-        </h2>
 
-        <!-- Name Fields -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-          <div>
-            <label class="block text-sm mb-1">
-              First Name <span class="text-red-500">*</span>
-            </label>
-            <input
-              [(ngModel)]="form.firstName"
-              placeholder="First Name"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
-            />
-          </div>
+      <!-- STEP: RESET PASSWORD REQUEST -->
+      <div *ngIf="currentStep === 'resetPassword'" class="w-full max-w-md mx-auto text-center">
+        <h2 class="text-xl md:text-2xl text-[#4e342e] mb-1 text-center font-semibold">Reset Password</h2>
+        <p class="text-sm text-gray-600 mb-4">Enter your registered email/phone to receive reset instructions</p>
 
-          <div>
-            <label class="block text-sm mb-1">
-              Last Name <span class="text-red-500">*</span>
-            </label>
-            <input
-              [(ngModel)]="form.lastName"
-              placeholder="Last Name"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
-            />
-          </div>
-        </div>
+        <form [formGroup]="passwordResetForm" (ngSubmit)="userRequestPasswordReset()">
+          <input formControlName="emailPhone" type="text"
+            class="w-full border border-gray-300 rounded-lg px-4 py-3 mb-1 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
+            placeholder="Email or Phone" />
+          <app-form-error [controlName]="'emailPhone'" class="mb-4 block text-left"></app-form-error>
 
-        <!-- Contact Fields -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-left">
-          <div>
-            <label class="block text-sm mb-1">
-              Phone Number <span class="text-red-500">*</span>
-            </label>
-            <input
-              [(ngModel)]="form.phone"
-              placeholder="Phone Number"
-              type="tel"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
-            />
-          </div>
-
-          <div>
-            <label class="block text-sm mb-1">
-              Email <span class="text-red-500">*</span>
-            </label>
-            <input
-              [(ngModel)]="form.email"
-              placeholder="Email"
-              type="email"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
-            />
-          </div>
-        </div>
-
-        <!-- Submit -->
-        <button
-          class="w-[70%] bg-[#8B6A5A] text-white py-2 rounded-full mt-6 font-medium transition hover:opacity-90"
-          (click)="nextStep()"
-        >
-          Continue
-        </button>
+          <button type="submit" [disabled]="loading"
+            class="w-full bg-[#8B6A5A] text-white py-2 rounded-full font-medium transition hover:opacity-90 flex items-center justify-center gap-2">
+            <span *ngIf="loading"
+              class="animate-spin border-2 border-white border-t-transparent rounded-full w-4 h-4"></span>
+            Send Request
+          </button>
+        </form>
+        <p class="mt-4">
+          <span class="text-sm text-[#8B6A5A] hover:underline cursor-pointer" (click)="goBackToEmailPhone()">Back to
+            Login</span>
+        </p>
       </div>
 
-      <!-- STEP 4: SET PASSWORD -->
-      <div *ngIf="step === 4" class="w-full max-w-md mx-auto text-center">
-        <h2 class="text-2xl font-serif text-[#4e342e] mb-6">Set Password</h2>
+      <!-- STEP: COMPLETE PROFILE -->
+      <div *ngIf="currentStep === 'completeProfile'" class="w-full max-w-md mx-auto text-center">
+        <img src="https://positivtystaticassets.blob.core.windows.net/images/common/logo.webp" alt="logo"
+          class="w-24 mx-auto mb-3" />
+        <h2 class="text-xl md:text-2xl text-[#8B6A5A] mb-4">Complete Your Profile</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-          <!-- New Password -->
-          <div class="relative">
-            <label class="block text-sm mb-1">
-              New Password <span class="text-red-500">*</span>
-            </label>
-
-            <input
-              [(ngModel)]="form.password"
-              [type]="showPassword ? 'text' : 'password'"
-              placeholder="New Password"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
-            />
-
-            <!-- Eye Icon -->
-            <button
-              type="button"
-              class="absolute right-3 top-[42px] text-gray-500 hover:text-[#8B6A5A]"
-              (click)="showPassword = !showPassword"
-            >
-              <i
-                class="fa-solid"
-                [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
-              ></i>
-            </button>
+        <form [formGroup]="profileForm" (ngSubmit)="completeProfile()">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+            <div>
+              <label class="block text-sm mb-1">First Name <span class="text-red-500">*</span></label>
+              <input formControlName="firstName" placeholder="First Name"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]" />
+              <app-form-error [controlName]="'firstName'"></app-form-error>
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Last Name <span class="text-red-500">*</span></label>
+              <input formControlName="lastName" placeholder="Last Name"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]" />
+              <app-form-error [controlName]="'lastName'"></app-form-error>
+            </div>
           </div>
 
-          <!-- Confirm Password -->
-          <div class="relative">
-            <label class="block text-sm mb-1">
-              Confirm New Password <span class="text-red-500">*</span>
-            </label>
-
-            <input
-              [(ngModel)]="form.confirmPassword"
-              [type]="showConfirmPassword ? 'text' : 'password'"
-              placeholder="Confirm New Password"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]"
-            />
-
-            <!-- Eye Icon -->
-            <button
-              type="button"
-              class="absolute right-3 top-[42px] text-gray-500 hover:text-[#8B6A5A]"
-              (click)="showConfirmPassword = !showConfirmPassword"
-            >
-              <i
-                class="fa-solid"
-                [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
-              ></i>
-            </button>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-left">
+            <div>
+              <label class="block text-sm mb-1">Phone Number <span class="text-red-500">*</span></label>
+              <input formControlName="phoneNumber" placeholder="Phone Number" type="tel"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]" />
+              <app-form-error [controlName]="'phoneNumber'"></app-form-error>
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Email <span class="text-red-500">*</span></label>
+              <input formControlName="email" placeholder="Email" type="email"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]" />
+              <app-form-error [controlName]="'email'"></app-form-error>
+            </div>
           </div>
-        </div>
 
-        <!-- Continue Button -->
-        <button
-          class="w-[70%] bg-[#8B6A5A] text-white py-2 rounded-full mt-6 font-medium transition hover:opacity-90"
-         (click)="goHome()"
-        >
-          Continue
-        </button>
+          <button type="submit" [disabled]="loading"
+            class="w-[70%] bg-[#8B6A5A] text-white py-2 rounded-full mt-6 font-medium transition hover:opacity-90 flex items-center justify-center gap-2 mx-auto">
+            <span *ngIf="loading"
+              class="animate-spin border-2 border-white border-t-transparent rounded-full w-4 h-4"></span>
+            Continue
+          </button>
+        </form>
+      </div>
+
+      <!-- STEP: SET PASSWORD -->
+      <div *ngIf="currentStep === 'setPassword'" class="w-full max-w-md mx-auto text-center">
+        <h2 class="text-xl md:text-2xl text-[#4e342e] mb-4 font-semibold">Set Password</h2>
+
+        <form [formGroup]="setPasswordForm" (ngSubmit)="setPassword()">
+          <div class="grid grid-cols-1 gap-3 text-left">
+            <div class="relative">
+              <label class="block text-sm mb-1">New Password <span class="text-red-500">*</span></label>
+              <input formControlName="newPassword" [type]="showNewPassword ? 'text' : 'password'"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]" />
+              <app-form-error [controlName]="'newPassword'"></app-form-error>
+              <button type="button" class="absolute right-3 top-9 text-gray-500 hover:text-[#8B6A5A]"
+                (click)="showNewPassword = !showNewPassword">
+                <i class="fa-solid" [ngClass]="showNewPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+              </button>
+            </div>
+
+            <div class="relative">
+              <label class="block text-sm mb-1">Confirm New Password <span class="text-red-500">*</span></label>
+              <input formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-[#8B6A5A]" />
+              <app-form-error [controlName]="'confirmPassword'"></app-form-error>
+              <button type="button" class="absolute right-3 top-9 text-gray-500 hover:text-[#8B6A5A]"
+                (click)="showConfirmPassword = !showConfirmPassword">
+                <i class="fa-solid" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" [disabled]="loading"
+            class="w-[70%] bg-[#8B6A5A] text-white py-2 rounded-full mt-4 font-medium transition hover:opacity-90 flex items-center justify-center gap-2 mx-auto">
+            <span *ngIf="loading"
+              class="animate-spin border-2 border-white border-t-transparent rounded-full w-4 h-4"></span>
+            Set Password
+          </button>
+        </form>
       </div>
     </div>
   </div>

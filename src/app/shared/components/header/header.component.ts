@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ThemeService } from '../../../../../theme.service';
+import { AuthService } from '../../../core/services/api/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +16,16 @@ import { ThemeService } from '../../../../../theme.service';
 export class HeaderComponent {
   isDarkMode = false;
 
-  constructor(public theme: ThemeService) {
+  constructor(public theme: ThemeService, public authService: AuthService, private router: Router) {
     // Subscribe to theme changes
     this.theme.isDark$.subscribe(isDark => {
       this.isDarkMode = isDark;
     });
+  }
+
+  logout() {
+    this.authService.clearToken();
+    this.router.navigate(['/login']);
   }
 
   toggleTheme() {
@@ -98,12 +104,12 @@ export class HeaderComponent {
       ]
     },
     {
-      title: 'Services For',
+      title: 'Services',
       dropdown: [
         {
-          title: 'Individuals',
+          title: 'Individual',
           children: [
-            { title: '1*1 Online Therapy', path: '/view-positivty-psychologists' },
+            { title: '1x1 Online Therapy', path: '/view-positivty-psychologists' },
             { title: 'Gift a Session', path: '/gift-a-session' }
           ]
         },
