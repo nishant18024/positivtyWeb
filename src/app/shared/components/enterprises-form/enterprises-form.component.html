@@ -1,0 +1,424 @@
+<form [formGroup]="enterpriseForm" class="w-full">
+
+    <!-- =============================== -->
+    <!-- STEP 1: CONTACT DETAILS         -->
+    <!-- =============================== -->
+    <div *ngIf="currentStep === 1"
+        class="w-full mx-auto p-8 md:p-12 lg:px-16 rounded-[40px] shadow-sm border border-[#e8dfd1]"
+        style="background-color: #fdfaf6;">
+        <h2 class="text-3xl font-serif text-[#836054] mb-8 font-semibold flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full border-4 border-[#836054] opacity-80"></div>
+            Enterprises
+        </h2>
+
+        <h3 class="text-xl font-serif text-[#4e342e] mb-6 font-semibold">Your Contact Details:</h3>
+
+        <!-- Grid -->
+        <div formGroupName="contactDetails" class="flex flex-col gap-y-6">
+            <div class="grid md:grid-cols-4 gap-x-6 gap-y-6">
+                <!-- Salutation -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Salutation</label>
+                    <div class="relative">
+                        <select formControlName="salutation"
+                            class="w-full appearance-none px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all">
+                            <option value="" disabled selected>Title</option>
+                            <option value="Mr">Mr.</option>
+                            <option value="Ms">Ms.</option>
+                            <option value="Mrs">Mrs.</option>
+                            <option value="Dr">Dr.</option>
+                        </select>
+                        <div
+                            class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 text-xs text-[#4e342e]">
+                            ▼
+                        </div>
+                    </div>
+                    <app-form-error [controlName]="'contactDetails.salutation'"></app-form-error>
+                </div>
+
+                <!-- First Name -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">First Name <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="firstName"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="First Name" />
+                    <app-form-error [controlName]="'contactDetails.firstName'"></app-form-error>
+                </div>
+
+                <!-- Last Name -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Last Name <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="lastName"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Last Name" />
+                    <app-form-error [controlName]="'contactDetails.lastName'"></app-form-error>
+                </div>
+
+                <!-- Job Title -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Job Title <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="jobTitle"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Job Title" />
+                    <app-form-error [controlName]="'contactDetails.jobTitle'"></app-form-error>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-6">
+                <!-- Company Name -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Company Name <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="companyName"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Company Name" />
+                    <app-form-error [controlName]="'contactDetails.companyName'"></app-form-error>
+                </div>
+
+                <!-- Company Phone -->
+                <div class="relative phone-input-container">
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Company Phone <span
+                            class="text-red-500">*</span></label>
+                    <input id="companyPhone" appIntlTelInput formControlName="companyPhone"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Company Phone" />
+                    <app-form-error [controlName]="'contactDetails.companyPhone'"></app-form-error>
+                </div>
+
+                <!-- Company Email -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Company Email <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="companyEmail"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Company Email" />
+                    <app-form-error [controlName]="'contactDetails.companyEmail'"></app-form-error>
+                </div>
+
+                <!-- Company Address -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Company Address <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="companyAddress"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Address" />
+                    <app-form-error [controlName]="'contactDetails.companyAddress'"></app-form-error>
+                </div>
+
+                <!-- City -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">City <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="city"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="City" />
+                    <app-form-error [controlName]="'contactDetails.city'"></app-form-error>
+                </div>
+
+                <!-- State -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">State <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="state"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="State" />
+                    <app-form-error [controlName]="'contactDetails.state'"></app-form-error>
+                </div>
+
+                <!-- Country -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Country <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="country"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Country" />
+                    <app-form-error [controlName]="'contactDetails.country'"></app-form-error>
+                </div>
+
+                <!-- Post Code -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Post Code <span
+                            class="text-red-500">*</span></label>
+                    <input formControlName="postCode"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Post Code" />
+                    <app-form-error [controlName]="'contactDetails.postCode'"></app-form-error>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alternate Contact Details -->
+        <h3 class="text-xl font-serif text-[#4e342e] mt-12 mb-6 font-semibold">Alternate Contact Details:</h3>
+        <div formGroupName="alternateContactDetails" class="flex flex-col gap-y-6">
+            <div class="grid md:grid-cols-3 gap-x-6 gap-y-6">
+                <!-- Salutation -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Salutation</label>
+                    <div class="relative">
+                        <select formControlName="salutation"
+                            class="w-full appearance-none px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all">
+                            <option value="" disabled selected>Title</option>
+                            <option value="Mr">Mr.</option>
+                            <option value="Ms">Ms.</option>
+                            <option value="Mrs">Mrs.</option>
+                            <option value="Dr">Dr.</option>
+                        </select>
+                        <div
+                            class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 text-xs text-[#4e342e]">
+                            ▼
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Name -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Name</label>
+                    <input formControlName="name"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Name" />
+                </div>
+
+                <!-- Job Title -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Job Title</label>
+                    <input formControlName="jobTitle"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Job Title" />
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-6">
+                <!-- Contact Number -->
+                <div class="relative phone-input-container">
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Contact Number</label>
+                    <input id="altContactNumber" appIntlTelInput formControlName="contactNumber"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="Contact Number" />
+                </div>
+
+                <!-- Email ID -->
+                <div>
+                    <label class="block text-[#4e342e] text-xs font-semibold mb-2">Email ID</label>
+                    <input formControlName="emailId"
+                        class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] focus:ring-1 focus:ring-[#7b5a4a] transition-all"
+                        placeholder="xyz@gmail.com" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Action -->
+        <div class="flex justify-center mt-12">
+            <button type="button" (click)="nextStep()"
+                class="bg-[#836054] text-white px-14 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-[#6d4f45] transition-colors shadow-md uppercase border-2 border-transparent">
+                NEXT
+            </button>
+        </div>
+    </div>
+
+
+    <!-- =============================== -->
+    <!-- STEP 2: COUPON DETAILS          -->
+    <!-- =============================== -->
+    <div *ngIf="currentStep === 2"
+        class="w-full mx-auto p-8 md:p-12 lg:px-16 rounded-[40px] shadow-sm border border-[#e8dfd1]"
+        style="background-color: #fdfaf6;">
+        <h2 class="text-3xl font-serif text-[#836054] mb-8 font-semibold flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full border-4 border-[#836054] opacity-80"></div>
+            Enterprises
+        </h2>
+
+        <h3 class="text-xl font-serif text-[#4e342e] mb-6 font-semibold">Coupon Details:</h3>
+
+        <div formArrayName="couponDetails">
+            <div *ngFor="let coupon of couponDetails.controls; let i = index" [formGroupName]="i"
+                class="border border-[#e8dfd1] rounded-2xl p-6 md:p-8 bg-white mb-6 relative shadow-sm">
+
+                <!-- Remove Icon -->
+                <button *ngIf="couponDetails.length > 1" (click)="removeCoupon(i)" title="Remove Coupon row"
+                    class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+
+                <div class="grid md:grid-cols-2 gap-x-10 gap-y-6">
+                    <!-- Number of Coupons -->
+                    <div>
+                        <label class="block text-[#4e342e] text-xs font-semibold mb-2">Number of Coupons <span
+                                class="text-red-500">*</span></label>
+                        <input type="number" formControlName="numberOfCoupons"
+                            class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] transition-all"
+                            placeholder="Coupon Number" />
+                        <app-form-error [controlName]="'couponDetails.' + i + '.numberOfCoupons'"></app-form-error>
+                    </div>
+
+                    <!-- Amount per coupon -->
+                    <div>
+                        <label class="block text-[#4e342e] text-xs font-semibold mb-2">Amount Per Coupon (₹) <span
+                                class="text-red-500">*</span></label>
+                        <input type="number" formControlName="amountPerCoupon"
+                            class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-white text-[#4e342e] placeholder-[#a69688] outline-none focus:border-[#7b5a4a] transition-all"
+                            placeholder="Amount per Coupon" />
+                        <app-form-error [controlName]="'couponDetails.' + i + '.amountPerCoupon'"></app-form-error>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-x-10 gap-y-6 mt-6 items-center">
+                    <!-- Send Via Email -->
+                    <div class="flex items-center gap-4">
+                        <label class="text-[#4e342e] text-xs font-semibold">Send Coupon to Employee Via Email <span
+                                class="text-red-500">*</span></label>
+                        <div class="flex items-center gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer text-sm text-[#4e342e]">
+                                <input type="radio" formControlName="sendViaEmail" value="no"
+                                    class="accent-[#836054]" />
+                                No
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer text-sm text-[#4e342e]">
+                                <input type="radio" formControlName="sendViaEmail" value="yes"
+                                    class="accent-[#836054]" />
+                                Yes
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-x-10 mt-6">
+                    <!-- Total -->
+                    <div>
+                        <label class="block text-[#4e342e] text-xs font-semibold mb-2">Total (₹) <span
+                                class="text-red-500">*</span></label>
+                        <input readonly [value]="getCouponTotal(i)"
+                            class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-gray-50 text-[#4e342e] font-semibold outline-none cursor-not-allowed" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Add more coupons button -->
+        <div class="flex justify-end mb-10">
+            <button type="button" (click)="addCoupon()"
+                class="border border-[#836054] text-[#836054] px-6 py-2 rounded-full uppercase text-xs font-semibold hover:bg-[#836054] hover:text-white transition">
+                ADD MORE COUPONS
+            </button>
+        </div>
+
+        <!-- Grand Total -->
+        <div class="max-w-md">
+            <label class="block text-[#4e342e] text-xs font-semibold mb-2">Grand Total (₹) <span
+                    class="text-red-500">*</span></label>
+            <input readonly [value]="grandTotal"
+                class="w-full px-5 py-3 rounded-xl border border-[#e8dfd1] bg-gray-50 text-[#836054] text-lg font-bold outline-none cursor-not-allowed"
+                placeholder="Grand Total" />
+        </div>
+
+        <div class="flex justify-center mt-12 gap-6">
+            <button type="button" (click)="previousStep()"
+                class="bg-white text-[#836054] border border-[#836054] px-14 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-gray-50 transition-colors uppercase">
+                BACK
+            </button>
+
+            <button type="button" (click)="nextStep()"
+                class="bg-[#836054] text-white px-14 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-[#6d4f45] transition-colors shadow-md uppercase border-2 border-transparent">
+                REVIEW & CONFIRM
+            </button>
+        </div>
+    </div>
+
+    <!-- =============================== -->
+    <!-- STEP 3: CONFIRMATION            -->
+    <!-- =============================== -->
+    <div *ngIf="currentStep === 3"
+        class="w-full mx-auto p-8 md:p-12 lg:px-16 rounded-[40px] shadow-sm border border-[#e8dfd1]"
+        style="background-color: #fdfaf6;">
+        <h2 class="text-3xl font-serif text-[#836054] mb-8 font-semibold flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full border-4 border-[#836054] opacity-80"></div>
+            Review Your Details
+        </h2>
+
+        <!-- Contact Details Summary -->
+        <h3 class="text-xl font-serif text-[#4e342e] mb-4 font-semibold border-b border-[#e8dfd1] pb-2">Contact Details
+        </h3>
+        <div class="grid md:grid-cols-2 gap-4 mb-8 text-sm text-[#4e342e]">
+            <p><span class="font-semibold text-[#836054]">Name:</span> {{
+                enterpriseForm.get('contactDetails.salutation')?.value }} {{
+                enterpriseForm.get('contactDetails.firstName')?.value }} {{
+                enterpriseForm.get('contactDetails.lastName')?.value }}</p>
+            <p><span class="font-semibold text-[#836054]">Job Title:</span> {{
+                enterpriseForm.get('contactDetails.jobTitle')?.value }}</p>
+            <p><span class="font-semibold text-[#836054]">Company:</span> {{
+                enterpriseForm.get('contactDetails.companyName')?.value }}</p>
+            <p><span class="font-semibold text-[#836054]">Phone:</span> {{
+                enterpriseForm.get('contactDetails.companyPhone')?.value }}</p>
+            <p><span class="font-semibold text-[#836054]">Email:</span> {{
+                enterpriseForm.get('contactDetails.companyEmail')?.value }}</p>
+            <p><span class="font-semibold text-[#836054]">Address:</span> {{
+                enterpriseForm.get('contactDetails.companyAddress')?.value }}, {{
+                enterpriseForm.get('contactDetails.city')?.value }}, {{
+                enterpriseForm.get('contactDetails.state')?.value }}, {{
+                enterpriseForm.get('contactDetails.postCode')?.value }}, {{
+                enterpriseForm.get('contactDetails.country')?.value }}</p>
+        </div>
+
+        <!-- Alternate Contact Details Summary -->
+        <ng-container *ngIf="enterpriseForm.get('alternateContactDetails.name')?.value">
+            <h3 class="text-xl font-serif text-[#4e342e] mb-4 font-semibold border-b border-[#e8dfd1] pb-2">Alternate
+                Contact</h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-8 text-sm text-[#4e342e]">
+                <p><span class="font-semibold text-[#836054]">Name:</span> {{
+                    enterpriseForm.get('alternateContactDetails.salutation')?.value }} {{
+                    enterpriseForm.get('alternateContactDetails.name')?.value }}</p>
+                <p><span class="font-semibold text-[#836054]">Job Title:</span> {{
+                    enterpriseForm.get('alternateContactDetails.jobTitle')?.value }}</p>
+                <p><span class="font-semibold text-[#836054]">Phone:</span> {{
+                    enterpriseForm.get('alternateContactDetails.contactNumber')?.value || 'N/A' }}</p>
+                <p><span class="font-semibold text-[#836054]">Email:</span> {{
+                    enterpriseForm.get('alternateContactDetails.emailId')?.value || 'N/A' }}</p>
+            </div>
+        </ng-container>
+
+        <!-- Coupons Summary -->
+        <h3 class="text-xl font-serif text-[#4e342e] mb-4 font-semibold border-b border-[#e8dfd1] pb-2">Coupons</h3>
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-sm text-[#4e342e]">
+                <thead class="text-xs uppercase bg-[#e8dfd1] text-[#4e342e]">
+                    <tr>
+                        <th class="px-4 py-3 rounded-tl-lg">Qty</th>
+                        <th class="px-4 py-3">Amount</th>
+                        <th class="px-4 py-3">Send via Email</th>
+                        <th class="px-4 py-3 text-right rounded-tr-lg">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let coupon of couponDetails.controls; let i = index" class="border-b border-[#e8dfd1]">
+                        <td class="px-4 py-3">{{ coupon.get('numberOfCoupons')?.value }}</td>
+                        <td class="px-4 py-3">₹{{ coupon.get('amountPerCoupon')?.value }}</td>
+                        <td class="px-4 py-3">{{ coupon.get('sendViaEmail')?.value | titlecase }}</td>
+                        <td class="px-4 py-3 text-right font-semibold">₹{{ getCouponTotal(i) }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="font-semibold text-lg text-[#836054]">
+                        <td colspan="3" class="px-4 py-4 text-right">Grand Total:</td>
+                        <td class="px-4 py-4 text-right">₹{{ grandTotal }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- Footer Action -->
+        <div class="flex flex-col md:flex-row justify-center mt-12 gap-6">
+            <button type="button" (click)="modifyForm()"
+                class="bg-white text-[#836054] border border-[#836054] px-14 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-gray-50 transition-colors uppercase">
+                MODIFY
+            </button>
+
+            <button type="button" (click)="submitForm()"
+                class="bg-[#836054] text-white px-14 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-[#6d4f45] transition-colors shadow-md uppercase border-2 border-transparent">
+                CONFIRM & PAY
+            </button>
+        </div>
+    </div>
+</form>

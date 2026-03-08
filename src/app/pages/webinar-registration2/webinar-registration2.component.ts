@@ -9,7 +9,6 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
 
 interface WebinarHost {
   name: string;
@@ -243,7 +242,7 @@ function localTodayStr(): string {
 @Component({
   selector: 'app-webinar-registration2',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, FooterComponent],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './webinar-registration2.component.html',
   styleUrls: ['./webinar-registration2.component.scss'],
 })

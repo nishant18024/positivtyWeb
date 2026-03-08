@@ -1,6 +1,7 @@
 import {
   Component,
   AfterViewInit,
+  OnInit,
   Inject,
   PLATFORM_ID,
 } from '@angular/core';
@@ -14,7 +15,7 @@ import { TherapyCardComponent } from '../therapy-card/therapy-card.component';
   templateUrl: './therapy-card-section.component.html',
   styleUrl: './therapy-card-section.component.scss',
 })
-export class TherapyCardSectionComponent implements AfterViewInit {
+export class TherapyCardSectionComponent implements OnInit, AfterViewInit {
   therapyList = [
     {
       image: '/assets/doremon.jpg',
@@ -53,10 +54,14 @@ export class TherapyCardSectionComponent implements AfterViewInit {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.updateView();
+    }
+  }
+
   ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
-
-    this.updateView();
 
     window.addEventListener('resize', () => {
       this.updateView();

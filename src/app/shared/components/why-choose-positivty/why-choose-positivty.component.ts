@@ -1,6 +1,7 @@
 import {
   Component,
   AfterViewInit,
+  OnInit,
   Inject,
   PLATFORM_ID,
   OnDestroy,
@@ -15,7 +16,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   styleUrls: ['./why-choose-positivty.component.scss'],
 })
 export class WhyChoosePositivtyComponent
-  implements AfterViewInit, OnDestroy {
+  implements OnInit, AfterViewInit, OnDestroy {
   cards = [
     {
       icon: 'fa-solid fa-award',
@@ -39,7 +40,6 @@ export class WhyChoosePositivtyComponent
     },
   ];
 
-
   currentIndex = 0;
   cardsPerView = 1;
   isSlider = true;
@@ -47,16 +47,22 @@ export class WhyChoosePositivtyComponent
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.updateView();
+      this.startAutoScroll();
+    }
+  }
+
   ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    this.updateView();
     window.addEventListener('resize', () => this.updateView());
-
-    this.startAutoScroll();
   }
 
   updateView() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const width = window.innerWidth;
 
     if (width >= 1024) {

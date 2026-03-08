@@ -1,16 +1,13 @@
 <!-- hero section -->
-<section
-  class="relative w-full bg-center bg-cover"
-  style="
+<section class="relative w-full bg-center bg-cover h-[400px] lg:h-[500px] flex items-center" style="
     background-image: url(&quot;https://preview--positivity-team-showcase.lovable.app/assets/team-hero-ClLHjxDl.jpg&quot;);
-  "
->
+  ">
   <!-- Overlay -->
   <div class="absolute inset-0 bg-white/80"></div>
 
   <!-- Content -->
-  <div class="relative max-w-5xl mx-auto px-6 py-20 text-center">
-    <h2 class="text-2xl md:text-4xl font-serif text-[#8B6A5A] mb-8">
+  <div class="relative max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-2xl md:text-4xl text-[#8B6A5A] mb-8">
       Leadership at Positivty
     </h2>
 
@@ -41,7 +38,7 @@
 <div class="md:px-30 px-6 py-10">
   <!-- Heading -->
   <div class="text-center mb-12">
-    <h2 class="text-4xl font-serif mb-4">Core Team</h2>
+    <h2 class="text-4xl mb-4">Core Team</h2>
     <p class="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
       Meet the dedicated leaders driving our mission to make mental health
       support inclusive and accessible.
@@ -50,34 +47,23 @@
 
   <!-- Cards -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    <app-leadership-card
-      *ngFor="let card of leadershipCards"
-      [name]="card.name"
-      [role]="card.role"
-      [image]="card.image"
-      [description]="card.description"
-    ></app-leadership-card>
+    <app-leadership-card *ngFor="let card of leadershipCards" [name]="card.name" [role]="card.role" [image]="card.image"
+      [description]="card.description"></app-leadership-card>
   </div>
 </div>
 
 <!-- values cards  -->
-<section
-  class="relative px-6 md:px-20 py-6 bg-gradient-to-br from-[#FFF3D6] via-[#FFE9B3] to-[#FFD6A0]"
->
+<section class="relative px-6 md:px-20 py-6 bg-gradient-to-br from-[#FFF3D6] via-[#FFE9B3] to-[#FFD6A0]">
   <!-- Decorative soft shapes -->
   <div class="absolute inset-0 opacity-40 pointer-events-none">
-    <div
-      class="absolute top-10 right-10 w-72 h-72 rounded-full bg-orange-200"
-    ></div>
-    <div
-      class="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-yellow-200"
-    ></div>
+    <div class="absolute top-10 right-10 w-72 h-72 rounded-full bg-orange-200"></div>
+    <div class="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-yellow-200"></div>
   </div>
 
   <div class="relative max-w-5xl mx-auto">
     <!-- Heading -->
     <div class="text-center mb-10">
-      <h2 class="text-2xl md:text-3xl font-serif text-[#4A3A2F] mb-4">
+      <h2 class="text-2xl md:text-3xl text-[#4A3A2F] mb-4">
         Our Values
       </h2>
       <p class="text-md text-[#6B5A4D]">At Positivty, we believe in</p>
@@ -87,7 +73,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Card 1 -->
       <div class="bg-[#faf2de] rounded-2xl p-10 shadow-sm">
-        <h3 class="text-2xl font-serif text-[#2F2A26] mb-3">Empathy first:</h3>
+        <h3 class="text-2xl text-[#2F2A26] mb-3">Empathy first:</h3>
         <p class="text-[#5E554E] text-lg">
           We lead with compassion in every interaction.
         </p>
@@ -95,7 +81,7 @@
 
       <!-- Card 2 -->
       <div class="bg-[#faf2de] rounded-2xl p-10 shadow-sm">
-        <h3 class="text-2xl font-serif text-[#2F2A26] mb-3">Access for all</h3>
+        <h3 class="text-2xl text-[#2F2A26] mb-3">Access for all</h3>
         <p class="text-[#5E554E] text-lg">
           Mental health support should be affordable, approachable, and
           available to everyone.
@@ -104,7 +90,7 @@
 
       <!-- Card 3 -->
       <div class="bg-[#faf2de] rounded-2xl p-10 shadow-sm">
-        <h3 class="text-2xl font-serif text-[#2F2A26] mb-3">
+        <h3 class="text-2xl text-[#2F2A26] mb-3">
           Diversity & inclusion
         </h3>
         <p class="text-[#5E554E] text-lg">
@@ -114,7 +100,7 @@
 
       <!-- Card 4 -->
       <div class="bg-[#faf2de] rounded-2xl p-10 shadow-sm">
-        <h3 class="text-2xl font-serif text-[#2F2A26] mb-3">
+        <h3 class="text-2xl text-[#2F2A26] mb-3">
           Innovation with intention
         </h3>
         <p class="text-[#5E554E] text-lg">
@@ -126,10 +112,8 @@
 </section>
 
 <!-- join section  -->
-<section
-  class="w-full py-10 px-6 bg-gradient-to-b from-[#8d6a5c] via-[#6f5045] to-[#3e2c25] text-center"
->
-  <h2 class="text-4xl md:text-5xl font-serif text-white mb-4">
+<section class="w-full py-10 px-6 bg-gradient-to-b from-[#8d6a5c] via-[#6f5045] to-[#3e2c25] text-center">
+  <h2 class="text-4xl md:text-5xl text-white mb-4">
     Join Our Mission
   </h2>
 
@@ -138,8 +122,7 @@
   </p>
 
   <button
-    class="inline-flex items-center justify-center px-8 py-3 rounded-full border border-white text-white font-medium tracking-wide hover:bg-white hover:text-[#3e2c25] transition-all duration-300"
-  >
+    class="inline-flex items-center justify-center px-8 py-3 rounded-full border border-white text-white font-medium tracking-wide hover:bg-white hover:text-[#3e2c25] transition-all duration-300">
     EXPLORE CAREERS
   </button>
 </section>

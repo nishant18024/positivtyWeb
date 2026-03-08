@@ -1,40 +1,28 @@
 <!-- hero banner section  -->
 <section class="w-full bg-[#f9e5c3] relative overflow-hidden">
-  <div
-    class="max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-12 items-center"
-  >
+  <div class="max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-12 items-center">
     <!-- LEFT CONTENT -->
     <div class="md:pl-14">
       <div class="flex">
         <!-- Heading -->
-        <h1
-          class="text-2xl md:text-4xl font-semibold text-[#6b4f46] leading-snug"
-        >
+        <h1 class="text-2xl md:text-4xl font-semibold text-[#6b4f46] leading-snug">
           Shaping Young Minds for <br />
           a Healthier Tomorrow
         </h1>
 
         <!-- Mobile Images -->
         <div class="flex flex-wrap gap-3 justify-center mt-6 md:hidden">
-          <img
-            src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner1.jpeg"
-            class="rounded-[0_40px] object-cover w-24 h-16 border-2 border-[#7b5b4f]"
-          />
+          <img src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner1.jpeg"
+            class="rounded-[0_40px] object-cover w-24 h-16 border-2 border-[#7b5b4f]" />
 
-          <img
-            src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner2.jpeg"
-            class="rounded-[40px_0] object-cover w-24 h-16 border-2 border-[#7b5b4f]"
-          />
+          <img src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner2.jpeg"
+            class="rounded-[40px_0] object-cover w-24 h-16 border-2 border-[#7b5b4f]" />
 
-          <img
-            src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner3.jpeg"
-            class="rounded-[40px_0] object-cover w-24 h-16 border-2 border-[#7b5b4f]"
-          />
+          <img src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner3.jpeg"
+            class="rounded-[40px_0] object-cover w-24 h-16 border-2 border-[#7b5b4f]" />
 
-          <img
-            src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner4.jpeg"
-            class="rounded-[0_40px] object-cover w-24 h-16 border-2 border-[#7b5b4f]"
-          />
+          <img src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner4.jpeg"
+            class="rounded-[0_40px] object-cover w-24 h-16 border-2 border-[#7b5b4f]" />
         </div>
       </div>
 
@@ -49,365 +37,307 @@
 
       <!-- Buttons -->
       <div class="mt-8 flex flex-wrap gap-4">
-        <button
-          class="px-6 py-3 bg-[#7b5b4f] text-white rounded-full shadow-md hover:scale-105 transition duration-300"
-        >
+        <button type="button" (click)="goToContactUs()"
+          class="px-6 py-3 bg-[#7b5b4f] text-white rounded-full shadow-md hover:scale-105 transition duration-300 cursor-pointer">
           CALL US TODAY
         </button>
 
-        <button
-          class="px-6 py-3 bg-[#7b5b4f] text-white rounded-full shadow-md hover:scale-105 transition duration-300"
-        >
-          BOOK NOW
+        <button type="button" (click)="handleToggleClick($event)"
+          class="px-6 py-3 bg-[#7b5b4f] text-white rounded-full shadow-md hover:scale-105 transition duration-300 cursor-pointer">
+          {{ showForm ? 'READ MORE' : 'BOOK NOW' }}
         </button>
       </div>
     </div>
 
     <!-- RIGHT IMAGE GRID (Desktop Only) -->
     <div class="hidden md:grid grid-cols-2 gap-6 justify-center">
-      <img
-        src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner1.jpeg"
-        class="rounded-[0_60px] object-cover w-full h-56 border-2 border-[#7b5b4f]"
-      />
+      <img src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner1.jpeg"
+        class="rounded-[0_60px] object-cover w-full h-56 border-2 border-[#7b5b4f]" />
 
-      <img
-        src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner2.jpeg"
-        class="rounded-[60px_0] object-cover w-full h-56 border-2 border-[#7b5b4f]"
-      />
+      <img src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner2.jpeg"
+        class="rounded-[60px_0] object-cover w-full h-56 border-2 border-[#7b5b4f]" />
 
-      <img
-        src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner3.jpeg"
-        class="rounded-[60px_0] object-cover w-full h-56 border-2 border-[#7b5b4f]"
-      />
+      <img src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner3.jpeg"
+        class="rounded-[60px_0] object-cover w-full h-56 border-2 border-[#7b5b4f]" />
 
-      <img
-        src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner4.jpeg"
-        class="rounded-[0_60px] object-cover w-full h-56 border-2 border-[#7b5b4f]"
-      />
+      <img src="https://positivtystaticassets.blob.core.windows.net/images/education/banner/banner4.jpeg"
+        class="rounded-[0_60px] object-cover w-full h-56 border-2 border-[#7b5b4f]" />
     </div>
   </div>
 </section>
 
-<section class="bg-[#fef2dd] py-4 px-6">
-  <div class="max-w-4xl mx-auto text-center">
-    <!-- Source -->
-    <p class="text-sm md:text-base text-gray-600 mb-3">
-      Source: U.S. studies (2018–2022).
-    </p>
-
-    <!-- Main Heading -->
-    <h2 class="text-2xl md:text-4xl font-semibold text-[#705146] mb-2">
-      The Silent Struggles of Our Youth
-    </h2>
-
-    <!-- Sub Heading -->
-    <h4 class="text-md md:text-lg font-medium text-gray-800 leading-relaxed">
-      Mental Health Challenges Among Adolescents Are Real
-    </h4>
-  </div>
-
-  <div class="py-6 md:px-18 grid grid-cols-1 md:grid-cols-2 gap-6">
-    <app-education-stats-card
-      *ngFor="let item of challenges"
-      [percentage]="item.percentage"
-      [description]="item.description"
-      [imageUrl]="item.imageUrl"
-    >
-    </app-education-stats-card>
+<!-- THE BOOKING FORM (Shows when showForm is true) -->
+<section *ngIf="showForm" class="py-12 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <app-education-form></app-education-form>
   </div>
 </section>
 
-<section class="bg-[#f9f8f8] py-6 px-6">
-  <!-- Heading -->
-  <div class="max-w-3xl mx-auto text-center mb-12">
-    <h2 class="text-3xl text-[#131313] mb-6">
-      Early Signs Matter – Identifying Mental Health Challenges in Children
-    </h2>
+<ng-container *ngIf="!showForm">
 
-    <p class="text-[#363636] leading-relaxed">
-      Children often express their struggles through subtle changes in
-      behaviour, mood, or habits. Recognizing these early signs of mental health
-      challenges is crucial for timely intervention and support. By
-      understanding these indicators, schools and families can work together to
-      create a nurturing environment and provide the care and support children
-      need.
-    </p>
-  </div>
+  <section class="bg-[#fef2dd] py-4 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Source -->
+      <p class="text-sm md:text-base text-gray-600 mb-3">
+        Source: U.S. studies (2018–2022).
+      </p>
 
-  <!-- Desktop Layout -->
-  <div class="hidden md:grid max-w-6xl mx-auto grid-cols-3 gap-6">
-    <div
-      *ngFor="let card of cards"
-      class="bg-gradient-to-b from-[#fffdfb] to-[#fef3e1] border-2 border-[#c89d63] p-4"
-    >
-      <ul class="space-y-3 list-disc list-inside text-[#836054]">
-        <li *ngFor="let item of card">
-          {{ item }}
-        </li>
-      </ul>
-    </div>
-  </div>
+      <!-- Main Heading -->
+      <h2 class="text-2xl md:text-4xl font-semibold text-[#705146] mb-2">
+        The Silent Struggles of Our Youth
+      </h2>
 
-  <!-- Mobile Slider -->
-  <div class="md:hidden max-w-sm mx-auto relative mt-10 mx-2">
-    <!-- Card -->
-    <div
-      class="bg-gradient-to-b from-[#fffdfb] to-[#fef3e1] border border-[#c89d63] rounded-sm p-4 min-h-[420px] flex items-start mx-6"
-    >
-      <ul class="space-y-5 list-disc list-inside text-[#836054]">
-        <li *ngFor="let item of cards[currentIndex]">
-          {{ item }}
-        </li>
-      </ul>
+      <!-- Sub Heading -->
+      <h4 class="text-md md:text-lg font-medium text-gray-800 leading-relaxed">
+        Mental Health Challenges Among Adolescents Are Real
+      </h4>
     </div>
 
-    <!-- Left Arrow -->
-    <button
-      (click)="prev()"
-      class="absolute -left-4 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center border border-[#8b6a5c] text-[#8b6a5c] rounded-full bg-white shadow-sm"
-    >
-      <i class="fa-solid fa-angle-left"></i>
-    </button>
+    <div class="py-6 md:px-18 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <app-education-stats-card *ngFor="let item of challenges" [percentage]="item.percentage"
+        [description]="item.description" [imageUrl]="item.imageUrl">
+      </app-education-stats-card>
+    </div>
+  </section>
 
-    <!-- Right Arrow -->
-    <button
-      (click)="next()"
-      class="absolute -right-4 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center border border-[#8b6a5c] text-[#8b6a5c] rounded-full bg-white shadow-sm"
-    >
-      <i class="fa-solid fa-angle-right"></i>
-    </button>
+  <section class="bg-[#f9f8f8] py-6 px-6">
+    <!-- Heading -->
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <h2 class="text-3xl text-[#131313] mb-6">
+        Early Signs Matter – Identifying Mental Health Challenges in Children
+      </h2>
 
-    <!-- Dots Indicator -->
-    <div class="flex justify-center gap-3 mt-6">
+      <p class="text-[#363636] leading-relaxed">
+        Children often express their struggles through subtle changes in
+        behaviour, mood, or habits. Recognizing these early signs of mental health
+        challenges is crucial for timely intervention and support. By
+        understanding these indicators, schools and families can work together to
+        create a nurturing environment and provide the care and support children
+        need.
+      </p>
+    </div>
+
+    <!-- Desktop Layout -->
+    <div class="hidden md:grid max-w-6xl mx-auto grid-cols-3 gap-6">
+      <div *ngFor="let card of cards"
+        class="bg-gradient-to-b from-[#fffdfb] to-[#fef3e1] border-2 border-[#c89d63] p-4">
+        <ul class="space-y-3 list-disc list-inside text-[#836054]">
+          <li *ngFor="let item of card">
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mobile Slider -->
+    <div class="md:hidden max-w-sm mx-auto relative mt-10 mx-2">
+      <!-- Card -->
       <div
-        *ngFor="let card of cards; let i = index"
-        class="w-3 h-3 rounded-full transition-all duration-300 transform"
-        [ngClass]="{
+        class="bg-gradient-to-b from-[#fffdfb] to-[#fef3e1] border border-[#c89d63] rounded-sm p-4 min-h-[420px] flex items-start mx-6">
+        <ul class="space-y-5 list-disc list-inside text-[#836054]">
+          <li *ngFor="let item of cards[currentIndex]">
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Left Arrow -->
+      <button (click)="prev()"
+        class="absolute -left-4 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center border border-[#8b6a5c] text-[#8b6a5c] rounded-full bg-white shadow-sm">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+
+      <!-- Right Arrow -->
+      <button (click)="next()"
+        class="absolute -right-4 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center border border-[#8b6a5c] text-[#8b6a5c] rounded-full bg-white shadow-sm">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+
+      <!-- Dots Indicator -->
+      <div class="flex justify-center gap-3 mt-6">
+        <div *ngFor="let card of cards; let i = index"
+          class="w-3 h-3 rounded-full transition-all duration-300 transform" [ngClass]="{
           'bg-[#8b6a5c] scale-110': i === currentIndex,
           'border border-[#8b6a5c] bg-transparent scale-100':
             i !== currentIndex,
-        }"
-      ></div>
+        }"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="bg-[#fef2dd] py-8 px-6">
-  <div class="max-w-3xl mx-auto text-center mb-12">
-    <h2 class="text-[#705146] text-2xl font-semibold mb-4">
-      The Hidden Struggle
-    </h2>
-    <h4 class="text-xl mb-4">Why Mental Health Stigma in Education Matters?</h4>
-    <p class="text-base mb-4 justify-center text-gray-600">
-      Behind each stigma lies a story waiting to be heard. Mental health stigma
-      in schools and universities prevents countless young minds from accessing
-      the support they need. Despite 1 in 5 children globally experiencing
-      mental health challenges, over 70% remain unsupported due to fear of
-      judgment and misunderstanding. It's time to shed light on these
-      perceptions, giving each student the acceptance and strength they deserve.
-    </p>
-  </div>
+  <section class="bg-[#fef2dd] py-8 px-6">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <h2 class="text-[#705146] text-2xl font-semibold mb-4">
+        The Hidden Struggle
+      </h2>
+      <h4 class="text-xl mb-4">Why Mental Health Stigma in Education Matters?</h4>
+      <p class="text-base mb-4 justify-center text-gray-600">
+        Behind each stigma lies a story waiting to be heard. Mental health stigma
+        in schools and universities prevents countless young minds from accessing
+        the support they need. Despite 1 in 5 children globally experiencing
+        mental health challenges, over 70% remain unsupported due to fear of
+        judgment and misunderstanding. It's time to shed light on these
+        perceptions, giving each student the acceptance and strength they deserve.
+      </p>
+    </div>
 
-  <!-- Desktop -->
-  <div
-    class="hidden md:grid max-w-6xl mx-auto grid-cols-2 gap-6 md: px-24 items-center"
-    (mouseenter)="stopStruggleAutoSlide()"
-    (mouseleave)="startStruggleAutoSlide()"
-  >
-    <app-struggle-card
-      *ngFor="let card of struggleCards"
-      [title]="card.title"
-      [items]="card.items"
-    >
-    </app-struggle-card>
-  </div>
-
-  <!-- Mobile Slider -->
-  <div
-    class="md:hidden max-w-sm mx-auto relative mt-10"
-    (mouseenter)="stopStruggleAutoSlide()"
-    (mouseleave)="startStruggleAutoSlide()"
-  >
-    <!-- Card -->
-    <ng-container *ngFor="let item of struggleCards; let i = index">
-      <app-struggle-card
-        *ngIf="i === struggleCardsCurrentIndex"
-        [title]="item.title"
-        [items]="item.items"
-      >
+    <!-- Desktop -->
+    <div class="hidden md:grid max-w-6xl mx-auto grid-cols-2 gap-6 md: px-24 items-center"
+      (mouseenter)="stopStruggleAutoSlide()" (mouseleave)="startStruggleAutoSlide()">
+      <app-struggle-card *ngFor="let card of struggleCards" [title]="card.title" [items]="card.items">
       </app-struggle-card>
-    </ng-container>
+    </div>
 
-    <!-- Left Arrow -->
-    <button
-      type="button"
-      (click)="struggleCardsprev()"
-      class="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center border border-[#8b6a5c] text-[#8b6a5c] rounded-full bg-[#efe3cf]"
-    >
-      ‹
-    </button>
+    <!-- Mobile Slider -->
+    <div class="md:hidden max-w-sm mx-auto relative mt-10" (mouseenter)="stopStruggleAutoSlide()"
+      (mouseleave)="startStruggleAutoSlide()">
+      <!-- Card -->
+      <ng-container *ngFor="let item of struggleCards; let i = index">
+        <app-struggle-card *ngIf="i === struggleCardsCurrentIndex" [title]="item.title" [items]="item.items">
+        </app-struggle-card>
+      </ng-container>
 
-    <!-- Right Arrow -->
-    <button
-      type="button"
-      (click)="struggleCardsnext()"
-      class="absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center border border-[#8b6a5c] text-[#8b6a5c] rounded-full bg-[#efe3cf]"
-    >
-      ›
-    </button>
+      <!-- Left Arrow -->
+      <button type="button" (click)="struggleCardsprev()"
+        class="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center border border-[#8b6a5c] text-[#8b6a5c] rounded-full bg-[#efe3cf]">
+        ‹
+      </button>
 
-    <!-- Dots -->
-    <div class="flex justify-center gap-3 mt-8">
-      <div
-        *ngFor="let card of struggleCards; let i = index"
-        class="w-3 h-3 rounded-full transition-all duration-300 transform"
-        [ngClass]="{
+      <!-- Right Arrow -->
+      <button type="button" (click)="struggleCardsnext()"
+        class="absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center border border-[#8b6a5c] text-[#8b6a5c] rounded-full bg-[#efe3cf]">
+        ›
+      </button>
+
+      <!-- Dots -->
+      <div class="flex justify-center gap-3 mt-8">
+        <div *ngFor="let card of struggleCards; let i = index"
+          class="w-3 h-3 rounded-full transition-all duration-300 transform" [ngClass]="{
           'bg-[#8b6a5c] scale-110': i === struggleCardsCurrentIndex,
           'border border-[#8b6a5c] bg-transparent':
             i !== struggleCardsCurrentIndex,
-        }"
-      ></div>
+        }"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- banner section  -->
-<div class="bg-[#836054] w-full text-center relative overflow-hidden">
-  <!-- <img
+  <!-- banner section  -->
+  <div class="bg-[#836054] w-full text-center relative overflow-hidden">
+    <!-- <img
     src="https://www.positivty.com/assets/website/assets/images/student/Path%2011.svg"
     alt=" "
     class="w-20 h-24 mt-4"
   /> -->
-  <div
-    class="bg-[#5a423a] mx-4 md:rounded-[0_200px] rounded-[0_80px] px-10 py-12"
-  >
-    <h2 class="text-xl md:text-3xl text-white font-semibold">
-      Take the First Step Toward Mental Wellness!
-    </h2>
+    <div class="bg-[#5a423a] mx-4 md:rounded-[0_200px] rounded-[0_80px] px-10 py-12">
+      <h2 class="text-xl md:text-3xl text-white font-semibold">
+        Take the First Step Toward Mental Wellness!
+      </h2>
 
-    <button
-      class="px-6 py-2 mt-6 border-2 border-white bg-[#7b5b4f] text-white rounded-full shadow-md hover:scale-105 transition duration-300"
-    >
-      BOOK NOW
-    </button>
-  </div>
-  <!-- <img
+      <button type="button" (click)="handleToggleClick($event)"
+        class="px-6 py-2 mt-6 border-2 border-white bg-[#7b5b4f] text-white rounded-full shadow-md hover:scale-105 transition duration-300 cursor-pointer">
+        {{ showForm ? 'READ MORE' : 'BOOK NOW' }}
+      </button>
+    </div>
+    <!-- <img
     src="https://www.positivty.com/assets/website/assets/images/student/Path%2010.svg"
     alt=""
   /> -->
-</div>
-
-<!-- Understanding Young Minds -->
-<section class="bg-[#f9f8f8] py-6">
-  <div class="text-center max-w-3xl mx-auto px-6 mb-12">
-    <h2 class="text-3xl font-semibold mb-3 text-[#5a423a]">
-      Understanding Young Minds
-    </h2>
-
-    <h4 class="text-lg text-gray-600 mb-4">
-      Common Mental Health Disorders in Children
-    </h4>
-
-    <p class="text-gray-600">
-      Every child is unique, but mental health disorders can disrupt their
-      ability to learn, grow, and thrive. Understanding these conditions is the
-      first step toward creating supportive environments where children can
-      flourish.
-    </p>
   </div>
 
-  <!-- Cards -->
-  <div
-    *ngFor="let item of visibleDisorders; let i = index"
-    class="max-w-6xl mx-auto mb-6 px-6"
-  >
-    <app-disorder-card
-      [title]="item.title"
-      [description]="item.description"
-      [image]="item.image"
-      [reverse]="i % 2 !== 0"
-    >
-    </app-disorder-card>
-  </div>
-
-  <!-- Show More Button -->
-  <div class="text-center mt-8">
-    <button
-      (click)="toggleShow()"
-      class="px-6 py-2 bg-[#7b5b4f] text-white rounded-full shadow-md hover:scale-105 transition duration-300"
-    >
-      {{ showAll ? "Show Less" : "Show More" }}
-    </button>
-  </div>
-</section>
-
-<!-- Why Prioritize Student Mental Health? -->
-<app-prioritize-student-mental-health></app-prioritize-student-mental-health>
-
-<section class="py-8 px-6 md:px-24">
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-    <!-- LEFT CONTENT -->
-    <div>
-      <h1 class="text-4xl font-semibold text-[#7a5b50] mb-2">
+  <!-- Understanding Young Minds -->
+  <section class="bg-[#f9f8f8] py-6">
+    <div class="text-center max-w-3xl mx-auto px-6 mb-12">
+      <h2 class="text-3xl font-semibold mb-3 text-[#5a423a]">
         Understanding Young Minds
-      </h1>
-
-      <h2 class="text-xl text-black mb-4 leading-snug">
-        Common Mental Health Disorders in <br />
-        Children
       </h2>
 
-      <p class="text-gray-700 leading-relaxed text-md max-w-xl">
+      <h4 class="text-lg text-gray-600 mb-4">
+        Common Mental Health Disorders in Children
+      </h4>
+
+      <p class="text-gray-600">
         Every child is unique, but mental health disorders can disrupt their
-        ability to learn, grow, and thrive. Understanding these conditions is
-        the first step toward creating supportive environments where children
-        can flourish. Below are some of the most common mental health disorders
-        affecting children, along with brief explanations to shed light on their
-        impact.
+        ability to learn, grow, and thrive. Understanding these conditions is the
+        first step toward creating supportive environments where children can
+        flourish.
       </p>
     </div>
 
-    <!-- RIGHT SIDE PILLS -->
-    <div class="relative flex flex-wrap gap-2 justify-center">
-      <ng-container *ngFor="let item of heroBtnList; let i = index">
-        <div
-          class="group relative"
-          (mouseenter)="activeIndex = i"
-          (mouseleave)="activeIndex = null"
-        >
-          <!-- Pill Button -->
-          <div
-            class="px-4 py-2 rounded-[0_20px] border border-[#8b6457] text-[#8b6457] font-medium text-sm tracking-wide whitespace-nowrap cursor-pointer transition-all duration-300 hover:bg-[#8b6457] hover:text-white"
-          >
-            {{ truncateTitle(item.title) }}
-          </div>
-
-          <!-- Hover Card -->
-          <div
-            *ngIf="activeIndex === i"
-            class="absolute z-20 top-full mt-4 w-80 rounded-2xl border border-[#e6d5cc] bg-white shadow-xl p-5 animate-fadeSlide"
-          >
-            <h4 class="text-[#4a2f2a] font-semibold mb-2">
-              {{ item.title }}
-            </h4>
-
-            <p class="text-sm text-gray-600 leading-relaxed">
-              {{ item.desc }}
-            </p>
-          </div>
-        </div>
-      </ng-container>
+    <!-- Cards -->
+    <div *ngFor="let item of visibleDisorders; let i = index" class="max-w-6xl mx-auto mb-6 px-6">
+      <app-disorder-card [title]="item.title" [description]="item.description" [image]="item.image"
+        [reverse]="i % 2 !== 0">
+      </app-disorder-card>
     </div>
-  </div>
-</section>
 
-<section class="relative overflow-hidden">
-  <!-- Background Container -->
-  <div
-    class="relative bg-gradient-to-r from-[#8b6457] to-[#5a3e36] text-white py-10 md:py-14 flex items-center justify-center"
-  >
-    <!-- TOP CURVE -->
-    <!-- <div class="absolute -top-24 left-0 w-full overflow-hidden leading-none">
+    <!-- Show More Button -->
+    <div class="text-center mt-8">
+      <button (click)="toggleShow()"
+        class="px-6 py-2 bg-[#7b5b4f] text-white rounded-full shadow-md hover:scale-105 transition duration-300">
+        {{ showAll ? "Show Less" : "Show More" }}
+      </button>
+    </div>
+  </section>
+
+  <!-- Why Prioritize Student Mental Health? -->
+  <app-prioritize-student-mental-health></app-prioritize-student-mental-health>
+
+  <section class="py-8 px-6 md:px-24">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <!-- LEFT CONTENT -->
+      <div>
+        <h1 class="text-4xl font-semibold text-[#7a5b50] mb-2">
+          Understanding Young Minds
+        </h1>
+
+        <h2 class="text-xl text-black mb-4 leading-snug">
+          Common Mental Health Disorders in <br />
+          Children
+        </h2>
+
+        <p class="text-gray-700 leading-relaxed text-md max-w-xl">
+          Every child is unique, but mental health disorders can disrupt their
+          ability to learn, grow, and thrive. Understanding these conditions is
+          the first step toward creating supportive environments where children
+          can flourish. Below are some of the most common mental health disorders
+          affecting children, along with brief explanations to shed light on their
+          impact.
+        </p>
+      </div>
+
+      <!-- RIGHT SIDE PILLS -->
+      <div class="relative flex flex-wrap gap-2 justify-center">
+        <ng-container *ngFor="let item of heroBtnList; let i = index">
+          <div class="group relative" (mouseenter)="activeIndex = i" (mouseleave)="activeIndex = null">
+            <!-- Pill Button -->
+            <div
+              class="px-4 py-2 rounded-[0_20px] border border-[#8b6457] text-[#8b6457] font-medium text-sm tracking-wide whitespace-nowrap cursor-pointer transition-all duration-300 hover:bg-[#8b6457] hover:text-white">
+              {{ truncateTitle(item.title) }}
+            </div>
+
+            <!-- Hover Card -->
+            <div *ngIf="activeIndex === i"
+              class="absolute z-20 top-full mt-4 w-80 rounded-2xl border border-[#e6d5cc] bg-white shadow-xl p-5 animate-fadeSlide">
+              <h4 class="text-[#4a2f2a] font-semibold mb-2">
+                {{ item.title }}
+              </h4>
+
+              <p class="text-sm text-gray-600 leading-relaxed">
+                {{ item.desc }}
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden">
+    <!-- Background Container -->
+    <div
+      class="relative bg-gradient-to-r from-[#8b6457] to-[#5a3e36] text-white py-10 md:py-14 flex items-center justify-center">
+      <!-- TOP CURVE -->
+      <!-- <div class="absolute -top-24 left-0 w-full overflow-hidden leading-none">
       <svg
         viewBox="0 0 1440 320"
         class="relative block w-full h-32 md:h-20"
@@ -420,44 +350,33 @@
       </svg>
     </div> -->
 
-    <!-- Content -->
-    <div class="relative z-10 text-center px-6">
-      <h2 class="text-2xl mb-8">Start Your Journey to Mental Wellness!</h2>
+      <!-- Content -->
+      <div class="relative z-10 text-center px-6">
+        <h2 class="text-2xl mb-8">Start Your Journey to Mental Wellness!</h2>
 
 
 
-      <button
-        class="border border-white px-5 py-1 rounded-full hover:bg-white hover:text-[#5a3e36] transition-all duration-300 flex items-center gap-2 mx-auto"
-      >
-        FILL THE FORM
-        <span class="text-lg">↗</span>
-      </button>
-    </div>
+        <button type="button" (click)="handleToggleClick($event)"
+          class="border border-white px-5 py-1 rounded-full hover:bg-white hover:text-[#5a3e36] transition-all duration-300 flex items-center gap-2 mx-auto cursor-pointer">
+          FILL THE FORM
+          <span class="text-lg">↗</span>
+        </button>
+      </div>
 
-    <!-- Decorative Logo Left -->
-    <div
-      class="absolute left-10 top-1/2 -translate-y-1/2 opacity-30 hidden md:block"
-    >
-      <img
-        src="https://www.positivty.com/assets/website/assets/images/student/Path%2012.svg"
-        alt="icon"
-        class="w-20"
-      />
-    </div>
+      <!-- Decorative Logo Left -->
+      <div class="absolute left-10 top-1/2 -translate-y-1/2 opacity-30 hidden md:block">
+        <img src="https://www.positivty.com/assets/website/assets/images/student/Path%2012.svg" alt="icon"
+          class="w-20" />
+      </div>
 
-    <!-- Decorative Logo Right -->
-    <div
-      class="absolute right-10 top-1/2 -translate-y-1/2 opacity-30 hidden md:block"
-    >
-      <img
-        src="https://www.positivty.com/assets/website/assets/images/student/Path%2012.svg"
-        alt="icon"
-        class="w-20"
-      />
-    </div>
+      <!-- Decorative Logo Right -->
+      <div class="absolute right-10 top-1/2 -translate-y-1/2 opacity-30 hidden md:block">
+        <img src="https://www.positivty.com/assets/website/assets/images/student/Path%2012.svg" alt="icon"
+          class="w-20" />
+      </div>
 
-    <!-- BOTTOM CURVE -->
-    <!-- <div class="absolute -bottom-24 left-0 w-full overflow-hidden leading-none">
+      <!-- BOTTOM CURVE -->
+      <!-- <div class="absolute -bottom-24 left-0 w-full overflow-hidden leading-none">
       <svg
         viewBox="0 0 1440 320"
         class="relative block w-full h-32 md:h-40"
@@ -469,135 +388,117 @@
         ></path>
       </svg>
     </div> -->
-  </div>
-</section>
+    </div>
+  </section>
 
-<!-- How It Works?
+  <!-- How It Works?
 For Schools/Universities and Studnets
 
 For Schools/Universities -->
 
-<section>
-  <div
-    class="max-w-7xl mx-auto md:flex gap-10 items-center bg-[#f3f3f3] py-6 px-6 md:px-44"
-  >
-    <!-- LEFT CONTENT -->
-    <div>
-      <h2
-        class="text-2xl md:text-3xl font-serif text-[#7a5b50] mb-4 leading-snug"
-      >
-        Proven Impact on <br class="hidden md:block" />
-        Student Wellbeing
+  <section>
+    <div class="max-w-7xl mx-auto md:flex gap-10 items-center bg-[#f3f3f3] py-6 px-6 md:px-44">
+      <!-- LEFT CONTENT -->
+      <div>
+        <h2 class="text-2xl md:text-3xl text-[#7a5b50] mb-4 leading-snug">
+          Proven Impact on <br class="hidden md:block" />
+          Student Wellbeing
+        </h2>
+
+        <p class="text-gray-700 leading-relaxed text-sm md:text-md max-w-xl">
+          At Positivty, we believe in measurable results and meaningful change.
+          Our Schools and Universities Mental Wellness Program is designed to
+          create a lasting impact on children’s emotional well-being, empowering
+          them to thrive academically and personally. The results speak volumes
+          about the effectiveness of our initiative in just 12 weeks, showcasing
+          the importance of prioritizing mental health in educational
+          institutions.
+        </p>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="relative flex gap-2 items-center lg:items-end mt-8">
+        <!-- TOP STAT -->
+        <div class="relative flex flex-col items-center lg:items-start">
+          <img
+            src="https://positivtystaticassets.blob.core.windows.net/images/education/provenimpact/proven-impact.jpeg"
+            alt="Student" class="md:w-48 md:h-48 w-28 h-28 mt-4object-cover rounded-[100px_100px_100px_0]" />
+
+          <p class="mt-4 text-center lg:text-left text-gray-800 max-w-xs text-sm md:text-base leading-relaxed">
+            <span class="font-semibold text-[#7a5b50]">83%</span> of children
+            reported feeling more confident and equipped to manage stress and
+            anxiety
+          </p>
+        </div>
+
+        <!-- BOTTOM STAT -->
+        <div class="relative flex flex-col items-center lg:items-start lg:ml-24">
+          <p class="text-center lg:text-left text-gray-800 max-w-xs text-sm md:text-base leading-relaxed">
+            <span class="font-semibold text-[#7a5b50]">78%</span> of students
+            experienced significant improvements in their emotional well-being,
+            enabling them to focus better on their studies and relationships
+          </p>
+          <img
+            src="https://positivtystaticassets.blob.core.windows.net/images/education/provenimpact/stress-anxiety.jpeg"
+            alt="Student" class="md:w-48 md:h-48 mt-4 w-28 h-28 object-cover rounded-[100px_0px_100px_100px]" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-mental-health-advantage-card-section></app-mental-health-advantage-card-section>
+
+  <!-- Feature Card -->
+  <section class="relative bg-white text-center text-black py-12 px-6 overflow-hidden flex flex-wrap justify-center">
+
+    <div class="flex justify-center flex-col">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-medium text-[#7a5b50] mb-2 text-center">
+        Psychometric Testing & Evaluation
       </h2>
 
-      <p class="text-gray-700 leading-relaxed text-sm md:text-md max-w-xl">
-        At Positivty, we believe in measurable results and meaningful change.
-        Our Schools and Universities Mental Wellness Program is designed to
-        create a lasting impact on children’s emotional well-being, empowering
-        them to thrive academically and personally. The results speak volumes
-        about the effectiveness of our initiative in just 12 weeks, showcasing
-        the importance of prioritizing mental health in educational
-        institutions.
+      <H3 class="text-xl lg:text-2xl md:text-xl font-normal text-gray-700 mt-2">
+        Laying the Foundation for Student Well-Being
+      </H3>
+
+      <p class="text-[26px] lg:text-[20px] md:text-xl font-normal text-gray-700 mt-2">
+        Assess the mental health and emotional readiness of incoming students to ensure they’re set up for success. Our
+        psychometric testing provides valuable insights, helping educators and parents support students effectively from
+        day one.
       </p>
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="relative flex gap-2 items-center lg:items-end mt-8">
-      <!-- TOP STAT -->
-      <div class="relative flex flex-col items-center lg:items-start">
-        <img
-          src="https://positivtystaticassets.blob.core.windows.net/images/education/provenimpact/proven-impact.jpeg"
-          alt="Student"
-          class="md:w-48 md:h-48 w-28 h-28 mt-4object-cover rounded-[100px_100px_100px_0]"
-        />
+    <div class="relative bg-white text-center text-black py-12 px-6 overflow-hidden flex flex-wrap justify-center">
 
-        <p
-          class="mt-4 text-center lg:text-left text-gray-800 max-w-xs text-sm md:text-base leading-relaxed"
-        >
-          <span class="font-semibold text-[#7a5b50]">83%</span> of children
-          reported feeling more confident and equipped to manage stress and
-          anxiety
-        </p>
-      </div>
+      <app-feature-card *ngFor="let feature of features" class="w-full md:w-[45%]" [title]="feature.title"
+        [subtitle]="feature.subtitle" [description]="feature.description">
+      </app-feature-card>
 
-      <!-- BOTTOM STAT -->
-      <div class="relative flex flex-col items-center lg:items-start lg:ml-24">
-        <p
-          class="text-center lg:text-left text-gray-800 max-w-xs text-sm md:text-base leading-relaxed"
-        >
-          <span class="font-semibold text-[#7a5b50]">78%</span> of students
-          experienced significant improvements in their emotional well-being,
-          enabling them to focus better on their studies and relationships
-        </p>
-        <img
-          src="https://positivtystaticassets.blob.core.windows.net/images/education/provenimpact/stress-anxiety.jpeg"
-          alt="Student"
-          class="md:w-48 md:h-48 mt-4 w-28 h-28 object-cover rounded-[100px_0px_100px_100px]"
-        />
-      </div>
+
     </div>
-  </div>
-</section>
 
-<app-mental-health-advantage-card-section></app-mental-health-advantage-card-section>
+  </section>
 
-<!-- Feature Card -->
-<section class="relative bg-white text-center text-black py-12 px-6 overflow-hidden flex flex-wrap justify-center">
+  <section class="relative bg-[#7a5b50] text-center text-black py-12 px-6 overflow-hidden">
+    <!-- Content -->
+    <div class="relative z-10 max-w-5xl mx-auto">
+      <h2 class="text-2xl md:text-4xl font-semibold mb-10">
+        Empower Your Journey – Start Now!
+      </h2>
 
-<div class="flex justify-center flex-col">
-  <h2 class="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#7a5b50] mb-2 text-center">
-    Psychometric Testing & Evaluation
-  </h2>
+      <button
+        class="border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#7a5b50] transition-all duration-300 flex items-center gap-2 mx-auto">
+        TAKE CONTROL TODAY!
+        <span class="text-md">↗</span>
+      </button>
+    </div>
+  </section>
 
-  <H3 class="text-xl lg:text-2xl md:text-xl font-normal text-gray-700 mt-2">
-    Laying the Foundation for Student Well-Being
-  </H3>
+  <app-advanced-functionalities-section></app-advanced-functionalities-section>
 
-  <p class="text-[26px] lg:text-[20px] md:text-xl font-normal text-gray-700 mt-2">
-    Assess the mental health and emotional readiness of incoming students to ensure they’re set up for success. Our psychometric testing provides valuable insights, helping educators and parents support students effectively from day one.
-  </p>
-</div>
-
-<div class="relative bg-white text-center text-black py-12 px-6 overflow-hidden flex flex-wrap justify-center">
-
-  <app-feature-card
-    *ngFor="let feature of features"
-    class="w-full md:w-[45%]"
-    [title]="feature.title"
-    [subtitle]="feature.subtitle"
-    [description]="feature.description"
-  >
-  </app-feature-card>
-
-
-</div>
-
-</section>
-
-<section
-  class="relative bg-[#7a5b50] text-center text-black py-12 px-6 overflow-hidden"
->
-  <!-- Content -->
-  <div class="relative z-10 max-w-5xl mx-auto">
-    <h2 class="text-2xl md:text-4xl font-semibold mb-10">
-      Empower Your Journey – Start Now!
+  <section class="py-10 text-center px-6 md:px-24">
+    <h2 class="text-2xl md:text-4xl font-semibold">
+      FAQs (Frequently Asked Questions)
     </h2>
 
-    <button
-      class="border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#7a5b50] transition-all duration-300 flex items-center gap-2 mx-auto"
-    >
-      TAKE CONTROL TODAY!
-      <span class="text-md">↗</span>
-    </button>
-  </div>
-</section>
-
-<app-advanced-functionalities-section></app-advanced-functionalities-section>
-
-<section class="py-10 text-center px-6 md:px-24">
-  <h2 class="text-2xl md:text-4xl font-semibold">
-    FAQs (Frequently Asked Questions)
-  </h2>
-
-  <app-faqs [faqs]="faqData" [defaultOpenIndex]="0"> </app-faqs>
-</section>
+    <app-faqs [faqs]="faqData" [defaultOpenIndex]="0"> </app-faqs>
+  </section>

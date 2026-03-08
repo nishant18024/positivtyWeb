@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FaqComponent } from "../../../shared/components/faqs/faqs.component";
 import { StepCardComponent } from "../../../shared/components/step-card/step-card.component";
 import { GiftASessionCardComponent } from "../../../shared/components/gift-a-session-card/gift-a-session-card.component";
 import { GiftFormComponent } from "../../../shared/components/gift-form/gift-form.component";
+import { AuthService } from '../../../core/services/api/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gift-a-session',
@@ -11,23 +13,65 @@ import { GiftFormComponent } from "../../../shared/components/gift-form/gift-for
   templateUrl: './gift-a-session.component.html',
   styleUrl: './gift-a-session.component.scss'
 })
-export class GiftASessionComponent {
+export class GiftASessionComponent implements OnInit {
 
-  login = false; // if true then show form otherwise show all pages
+  isLoggedIn = false;
+  showDetails = false;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit() {
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.showDetails = !this.isLoggedIn;
+
+    // Check if we should auto-open the form (e.g., after returning from login)
+    this.route.queryParams.subscribe(params => {
+      if (params['startGifting'] === 'true' && this.isLoggedIn) {
+        this.showDetails = false;
+        // Clean up the query params without refreshing the page
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { startGifting: null },
+          queryParamsHandling: 'merge'
+        });
+      }
+    });
+  }
+
+  handleMainButtonClick() {
+    if (this.isLoggedIn) {
+      this.showDetails = !this.showDetails;
+    } else {
+      // Set the current URL as returnUrl with a flag to auto-open the form
+      const returnUrl = '/services-for/gift-a-session?startGifting=true';
+      this.router.navigate(['/login'], { queryParams: { returnUrl } });
+    }
+  }
+
+  goToLogin(isRegister: boolean = false) {
+    const returnUrl = '/services-for/gift-a-session?startGifting=true';
+    const queryParams: any = { returnUrl };
+    if (isRegister) queryParams.register = true;
+    this.router.navigate(['/login'], { queryParams });
+  }
 
   senderSteps = [
     {
-      icon: '',
+      icon: 'https://www.positivty.com/assets/img/InvitationForm.png',
       title: 'Complete the Invitation Form',
       desc: 'Provide us your receiver’s details, add a personal note, and select a value to gift. You can also choose to remain anonymous'
     },
     {
-      icon: '',
-      title: `Review the Information`,
+      icon: 'https://www.positivty.com/assets/img/ReviewInformation.png',
+      title: 'Review the Information',
       desc: 'Check the information for accuracy, modify if required by clicking Modify, or click on Confirm & Pay to proceed.'
     },
     {
-      icon: '',
+      icon: 'https://www.positivty.com/assets/img/PersonalizedECoupon.png',
       title: 'Personalized E-Coupon',
       desc: 'Positivty will send a coupon with your personalized message via e-mail to the recipient on your behalf. You will receive a notification as well.'
     }

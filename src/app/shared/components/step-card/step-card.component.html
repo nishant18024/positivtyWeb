@@ -1,20 +1,25 @@
 <div
-  class="group bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 border border-[#e7ded6] min-h-[340px]"
->
-  <!-- ICON -->
-  <div
-    class="w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-full bg-[#fff1dc] transition-transform duration-500 group-hover:rotate-y-180"
-    style="transform-style: preserve-3d"
-  >
-    <img
-      [src]="icon"
-      alt="icon"
-      class="w-10 h-10 transition-transform duration-500 group-hover:scale-110"
-    />
+  class="group bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 border border-[#e7ded6] h-full">
+  <!-- ICON / NUMBER -->
+  <div class="relative w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+    <!-- Offset decorative circle (blob) -->
+    <div *ngIf="stepNumber || icon" class="absolute bottom-1 right-1 w-14 h-14 rounded-full bg-[#faecd6]/90 -z-10">
+    </div>
+
+    <!-- Main Container -->
+    <div
+      class="w-20 h-20 flex items-center justify-center rounded-full transition-transform duration-500 group-hover:scale-110"
+      [ngClass]="stepNumber ? 'border-2 border-[#836054] bg-white' : ''">
+      <img *ngIf="icon && !stepNumber" [src]="icon" alt="icon"
+        class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110" />
+      <span *ngIf="stepNumber" class="text-4xl font-bold text-[#836054] z-10">
+        {{ stepNumber }}
+      </span>
+    </div>
   </div>
 
   <!-- TITLE -->
-  <h3 class="text-2xl font-serif text-[#836054] mb-4">
+  <h3 class="text-2xl text-[#836054] mb-4">
     {{ title }}
   </h3>
 

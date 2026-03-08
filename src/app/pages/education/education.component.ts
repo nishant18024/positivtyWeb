@@ -1,38 +1,39 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { EducationStatsCardComponent } from '../../shared/components/education-stats-card/education-stats-card.component';
 import { StruggleCardComponent } from '../../shared/components/struggle-card/struggle-card.component';
 import { DisorderCardComponent } from "../../shared/components/disorder-card/disorder-card.component";
-import { MentalHealthCard } from "../../shared/components/mental-health-card/mental-health-card.component";
-import { PrioritizeStudentMentalHealthComponent } from "../../shared/components/prioritize-student-mental-health/prioritize-student-mental-health.component";
+import { PrioritizeStudentMentalHealthComponent } from '../../shared/components/prioritize-student-mental-health/prioritize-student-mental-health.component';
 import { MentalHealthAdvantageCardSectionComponent } from "../../shared/components/mental-health-advantage-card-section/mental-health-advantage-card-section.component";
 import { AdvancedFunctionalitiesSectionComponent } from "../../shared/components/advanced-functionalities-section/advanced-functionalities-section.component";
 import { FaqComponent, FaqItem } from "../../shared/components/faqs/faqs.component";
-import { Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import { FeatureCardComponent } from '../../shared/components/feature-card/feature-card.component';
+import { Router, ActivatedRoute, RouterModule, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { AuthService } from '../../core/services/api/auth.service';
+import { EducationFormComponent } from '../../shared/components/education-form/education-form.component';
+
+export interface MentalHealthCard {
+  title: string;
+  points: { text: string; source?: string }[];
+}
 
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [
-    CommonModule,
-    EducationStatsCardComponent,
-    StruggleCardComponent,
-    DisorderCardComponent,
-    PrioritizeStudentMentalHealthComponent,
-    MentalHealthAdvantageCardSectionComponent,
-    AdvancedFunctionalitiesSectionComponent,
-    FaqComponent,
-    FeatureCardComponent
-
-  ],
+  imports: [CommonModule, RouterModule, PrioritizeStudentMentalHealthComponent, FaqComponent, MentalHealthAdvantageCardSectionComponent, AdvancedFunctionalitiesSectionComponent, FeatureCardComponent, DisorderCardComponent, StruggleCardComponent, EducationStatsCardComponent, EducationFormComponent],
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss']
 })
 export class EducationComponent implements OnInit, OnDestroy {
+  showForm: boolean = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
+  ) { }
   // ===============================
   // Silent Struggles Data
   // ===============================
@@ -159,9 +160,54 @@ export class EducationComponent implements OnInit, OnDestroy {
   // ===============================
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params['startBooking'] === 'true') {
+        this.showForm = true;
+        if (isPlatformBrowser(this.platformId)) {
+          setTimeout(() => {
+            const formSection = document.getElementById('education-booking-form-section');
+            if (formSection) {
+              formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      }
+    });
+
     if (isPlatformBrowser(this.platformId)) {
       this.startStruggleAutoSlide();
     }
+  }
+
+  handleToggleClick(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+
+    if (this.showForm) {
+      this.showForm = false;
+      if (isPlatformBrowser(this.platformId)) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      if (this.authService.isLoggedIn()) {
+        this.showForm = true;
+        if (isPlatformBrowser(this.platformId)) {
+          setTimeout(() => {
+            const formSection = document.getElementById('education-booking-form-section');
+            if (formSection) {
+              formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      } else {
+        this.authService.ensureLoggedIn('/education?startBooking=true');
+      }
+    }
+  }
+
+  goToContactUs(): void {
+    this.router.navigate(['/contact-us']);
   }
 
   ngOnDestroy() {
