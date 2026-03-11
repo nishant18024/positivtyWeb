@@ -109,6 +109,10 @@ export class EducationComponent implements OnInit, OnDestroy {
       this.cards.length;
   }
 
+
+  goToSlide(index: number) {
+  this.currentIndex = index;
+}
   // ===============================
   // Struggle Cards Slider
   // ===============================
